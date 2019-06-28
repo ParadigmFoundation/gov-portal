@@ -1,4 +1,9 @@
+/**
+ * Displays the header
+ */
+
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   Collapse,
   Navbar,
@@ -9,7 +14,12 @@ import {
   NavLink,
 } from 'reactstrap';
 
-function Header() {
+function Header(props) {
+  const {
+    address,
+    balance,
+  } = props;
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -22,10 +32,14 @@ function Header() {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/">Test</NavLink>
+              <NavLink>
+                {address}
+              </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/">Test 2</NavLink>
+              <span className="header__balance">
+                {balance}
+              </span>
             </NavItem>
           </Nav>
         </Collapse>
@@ -33,5 +47,15 @@ function Header() {
     </div>
   );
 }
+
+Header.propTypes = {
+  address: PropTypes.string,
+  balance: PropTypes.string,
+};
+
+Header.defaultProps = {
+  address: '0x0',
+  balance: '0',
+};
 
 export default Header;
