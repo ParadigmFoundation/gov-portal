@@ -1,2 +1,4 @@
-@import '~bootstrap/scss/bootstrap';
+@import './variables.scss';
 @import '../components/header/index.scss';
+@import '../components/kosuSymbol/index.scss';
+@import '~bootstrap/scss/bootstrap';
