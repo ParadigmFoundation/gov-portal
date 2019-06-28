@@ -3,4 +3,17 @@
 .header__balance {
   font-size: 40px;
   color: #000000;
+  font-family: 'DINPro-medium', sans-serif;
+  opacity: 0.75;
+  display: block;
+  padding: 0.5rem 1rem;
+}
+
+.header__address {
+  font-size: 18px;
+  color: #000000;
+  font-family: 'DINPro-medium', sans-serif;
+  opacity: 0.18;
+  display: block;
+  padding: 0.5rem 1rem;
 }

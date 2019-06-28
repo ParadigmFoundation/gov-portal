@@ -11,7 +11,6 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
 } from 'reactstrap';
 
 function Header(props) {
@@ -30,11 +29,11 @@ function Header(props) {
         </NavbarBrand>
         <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className="ml-auto align-items-center" navbar>
             <NavItem>
-              <NavLink>
+              <span className="header__address">
                 {address}
-              </NavLink>
+              </span>
             </NavItem>
             <NavItem>
               <span className="header__balance">
