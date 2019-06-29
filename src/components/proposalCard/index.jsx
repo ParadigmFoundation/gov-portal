@@ -9,6 +9,10 @@ import {
 
 import Button from '../button';
 
+import {
+  timestampToCountdown,
+} from '../../utils/formatting';
+
 function ProposalCard(props) {
   const {
     tendermint,
@@ -16,11 +20,13 @@ function ProposalCard(props) {
     stakeSize,
     dailyReward,
     estimatedVotePower,
-    timestamp,
+    deadline,
   } = props;
 
   const shortTendermint = `${tendermint.substring(0, 8)}...${tendermint.substring(tendermint.length - 8, tendermint.length)}`;
   const shortAddress = `${address.substring(0, 8)}...${address.substring(address.length - 8, address.length)}`;
+
+  const countdown = timestampToCountdown(deadline, true);
 
   return (
     <Card className="proposal-card">
@@ -32,7 +38,7 @@ function ProposalCard(props) {
             </div>
           </Col>
           <Col xs="3">
-            {timestamp - Date.now() > 1000 * 60 * 60 * 24 ? (
+            {deadline - Date.now() > 1000 * 60 * 60 * 24 ? (
               <div className="proposal-card__status--new">
                 New Proposal
               </div>
@@ -81,7 +87,7 @@ function ProposalCard(props) {
               Proposal ends in:
             </div>
             <div className="proposal-card__info-amount">
-              {timestamp}
+              {countdown}
             </div>
           </Col>
           <Col className="text-right">
@@ -99,7 +105,7 @@ ProposalCard.propTypes = {
   stakeSize: PropTypes.number.isRequired,
   dailyReward: PropTypes.number.isRequired,
   estimatedVotePower: PropTypes.number.isRequired,
-  timestamp: PropTypes.number.isRequired,
+  deadline: PropTypes.number.isRequired,
 };
 
 export default ProposalCard;
