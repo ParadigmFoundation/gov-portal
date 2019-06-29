@@ -13,6 +13,8 @@ import {
   NavItem,
 } from 'reactstrap';
 
+import KosuSymbol from '../kosuSymbol';
+
 function Header(props) {
   const {
     address,
@@ -23,7 +25,7 @@ function Header(props) {
 
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      <Navbar light expand="md" className="header">
         <NavbarBrand href="/">
           Paradigm Governance
         </NavbarBrand>
@@ -31,9 +33,16 @@ function Header(props) {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto align-items-center" navbar>
             <NavItem>
+              <div className="header__icon" />
+              {' '}
+            </NavItem>
+            <NavItem>
               <span className="header__address">
                 {address}
               </span>
+            </NavItem>
+            <NavItem>
+              <KosuSymbol />
             </NavItem>
             <NavItem>
               <span className="header__balance">
