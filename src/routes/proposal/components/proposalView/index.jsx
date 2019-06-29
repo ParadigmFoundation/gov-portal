@@ -8,6 +8,10 @@ import {
 import KosuSymbol from '../../../../components/kosuSymbol';
 import Button from '../../../../components/button';
 
+import {
+  timestampToCountdown,
+} from '../../../../utils/formatting';
+
 function ProposalView(props) {
   const {
     tendermint,
@@ -20,6 +24,11 @@ function ProposalView(props) {
     goBack,
   } = props;
 
+  const shortTendermint = `${tendermint.substring(0, 8)}...${tendermint.substring(tendermint.length - 8, tendermint.length)}`;
+  const shortAddress = `${address.substring(0, 8)}...${address.substring(address.length - 8, address.length)}`;
+
+  const countdown = timestampToCountdown(deadline, true);
+
   return (
     <div>
       <Row className="pb-5">
@@ -31,7 +40,7 @@ function ProposalView(props) {
             Tendermint public key:
           </div>
           <div className="proposal-view__tendermint">
-            0x8976003…01000000
+            {shortTendermint}
           </div>
         </Col>
       </Row>
@@ -39,7 +48,7 @@ function ProposalView(props) {
         <Col>
           <div className="proposal-view__content">
             <span className="proposal-view__address">
-              0x12345...56789
+              {shortAddress}
             </span>
             {' '}
             wants to become a validator.
@@ -48,7 +57,7 @@ function ProposalView(props) {
             If unchallenged, 0x12345...56789 will become a validator on
             {' '}
             <span className="proposal-view__subcontent-deadline">
-              01d : 14h : 45m
+              {countdown}
             </span>
           </div>
         </Col>
@@ -60,7 +69,7 @@ function ProposalView(props) {
               Stake size
             </div>
             <div className="proposal-view__card-content">
-              123,983.54
+              {stakeSize}
             </div>
             <div className="proposal-view__card-footer">
               <KosuSymbol />
@@ -73,7 +82,7 @@ function ProposalView(props) {
               Daily reward
             </div>
             <div className="proposal-view__card-content">
-              546
+              {dailyReward}
             </div>
             <div className="proposal-view__card-footer">
               <KosuSymbol />
@@ -86,7 +95,7 @@ function ProposalView(props) {
               Estimated vote power
             </div>
             <div className="proposal-view__card-content">
-              12%
+              {`${estimatedVotePower}%`}
             </div>
           </div>
         </Col>
@@ -115,6 +124,12 @@ function ProposalView(props) {
 }
 
 ProposalView.propTypes = {
+  tendermint: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  deadline: PropTypes.number.isRequired,
+  stakeSize: PropTypes.number.isRequired,
+  estimatedVotePower: PropTypes.number.isRequired,
+  dailyReward: PropTypes.number.isRequired,
   challengeProposal: PropTypes.func.isRequired,
   goBack: PropTypes.func.isRequired,
 };
