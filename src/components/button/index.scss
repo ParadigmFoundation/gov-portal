@@ -1,12 +1,21 @@
 /* @define button */
 
 .button {
-  background: #4A4A4A;
+  background: #4a4a4a;
   font-family: 'Gilroy-Medium', sans-serif;
   font-size: 14px;
-  color: #FFFFFF;
+  color: #fff;
   text-align: center;
   border: none;
-  width: 100px;
-  height: 30px;
+  border-radius: 2px;
+  padding: 6px 30px;
+
+  &--inverted {
+    background: none;
+    color: #4a4a4a;
+  }
+
+  &--red {
+    background: #fd4848;
+  }
 }
