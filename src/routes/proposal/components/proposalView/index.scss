@@ -1,0 +1,79 @@
+.proposal-view {
+  &__title {
+    font-family: DINPro-Medium;
+    font-size: 39px;
+    color: #838383;
+    text-align: left;
+  }
+
+  &__tendermint-label {
+    font-family: DINPro-Medium;
+    font-size: 12px;
+    color: #BFBFBF;
+    text-align: left;
+  }
+
+  &__tendermint {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 16px;
+    color: #BFBFBF;
+    text-align: left;
+  }
+
+  &__address {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 25px;
+    color: #404040;
+    text-align: left;
+  }
+
+  &__content {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 25px;
+    color: #838383;
+    text-align: left;
+  }
+
+  &__subcontent {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 16px;
+    color: #838383;
+    text-align: left;
+  }
+
+  &__subcontent-deadline {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 16px;
+    color: #404040;
+    text-align: left;
+  }
+
+  &__card {
+    background: #fff;
+    border: 1px solid #ededed;
+    box-shadow: 3px 9px 15px 0 rgba(0,0,0,0.07);
+    padding: 12px 15px;
+    min-height: 145px;
+  }
+
+  &__card-title {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 18px;
+    color: #404040;
+    text-align: left;
+    padding-bottom: 18px;
+  }
+
+  &__card-content {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 25px;
+    color: #404040;
+    text-align: left;
+  }
+
+  &__card-footer {
+    text-align: -webkit-right;;
+  }
+
+
+}
