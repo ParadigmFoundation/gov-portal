@@ -11,7 +11,7 @@ import Button from '../button';
 
 function ProposalCard(props) {
   const {
-    hash,
+    tendermint,
     address,
     stakeSize,
     dailyReward,
@@ -19,7 +19,7 @@ function ProposalCard(props) {
     timestamp,
   } = props;
 
-  const shortHash = `${hash.substring(0, 8)}...${hash.substring(hash.length - 8, hash.length)}`;
+  const shortTendermint = `${tendermint.substring(0, 8)}...${tendermint.substring(tendermint.length - 8, tendermint.length)}`;
   const shortAddress = `${address.substring(0, 8)}...${address.substring(address.length - 8, address.length)}`;
 
   return (
@@ -28,7 +28,7 @@ function ProposalCard(props) {
         <Row className="pb-4 align-items-center">
           <Col>
             <div className="proposal-card__header">
-              {shortHash}
+              {shortTendermint}
             </div>
           </Col>
           <Col xs="3">
@@ -94,7 +94,7 @@ function ProposalCard(props) {
 }
 
 ProposalCard.propTypes = {
-  hash: PropTypes.string.isRequired,
+  tendermint: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
   stakeSize: PropTypes.number.isRequired,
   dailyReward: PropTypes.number.isRequired,
