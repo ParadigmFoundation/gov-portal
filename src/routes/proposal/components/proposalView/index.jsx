@@ -167,7 +167,11 @@ ProposalView.propTypes = {
   dailyReward: PropTypes.number.isRequired,
   challengeProposal: PropTypes.func.isRequired,
   goBack: PropTypes.func.isRequired,
-  canBeChallenged: PropTypes.bool.isRequired,
+  canBeChallenged: PropTypes.bool,
+};
+
+ProposalView.defaultProps = {
+  canBeChallenged: false,
 };
 
 export default ProposalView;
