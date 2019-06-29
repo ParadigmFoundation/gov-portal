@@ -19,25 +19,34 @@ function ProposalCard(props) {
     timestamp,
   } = props;
 
+  const shortHash = `${hash.substring(0, 8)}...${hash.substring(hash.length - 8, hash.length)}`;
+  const shortAddress = `${address.substring(0, 8)}...${address.substring(address.length - 8, address.length)}`;
+
   return (
     <Card className="proposal-card">
       <CardBody>
         <Row className="pb-4 align-items-center">
           <Col>
             <div className="proposal-card__header">
-              {hash}
+              {shortHash}
             </div>
           </Col>
           <Col xs="3">
-            <div className="proposal-card__status--new">
-              New Proposal
-            </div>
+            {timestamp - Date.now() > 1000 * 60 * 60 * 24 ? (
+              <div className="proposal-card__status--new">
+                New Proposal
+              </div>
+            ) : (
+              <div className="proposal-card__status--ending-soon">
+                Ending soon
+              </div>
+            )}
           </Col>
         </Row>
         <Row className="pb-4 align-items-center">
           <Col>
             <div className="proposal-card__content">
-              {`${address} wants to become a validator.`}
+              {`${shortAddress} wants to become a validator.`}
             </div>
           </Col>
         </Row>
