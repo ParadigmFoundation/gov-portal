@@ -51,7 +51,7 @@
   &__card {
     background: #fff;
     border: 1px solid #ededed;
-    box-shadow: 3px 9px 15px 0 rgba(0,0,0,0.07);
+    box-shadow: 3px 9px 15px 0 rgba(0, 0, 0, 0.07);
     padding: 12px 15px;
     min-height: 145px;
   }
@@ -72,8 +72,25 @@
   }
 
   &__card-footer {
-    text-align: -webkit-right;;
+    text-align: -webkit-right;
   }
 
+  &__challenge-label {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 16px;
+    color: #4a4a4a;
+    text-align: left;
+    padding-bottom: 10px;
+  }
 
+  &__already-challenged-label {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 18px;
+    color: #4a4a4a;
+    text-align: left;
+  }
+
+  &__challenge-link {
+    color: #0bd080;
+  }
 }
