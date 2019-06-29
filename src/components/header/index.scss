@@ -1,19 +1,33 @@
 /* @define header */
 
-.header__balance {
-  font-size: 40px;
-  color: #000000;
-  font-family: 'DINPro-medium', sans-serif;
-  opacity: 0.75;
-  display: block;
-  padding: 0.5rem 1rem;
-}
+.header {
+  background-color: #fff;
 
-.header__address {
-  font-size: 18px;
-  color: #000000;
-  font-family: 'DINPro-medium', sans-serif;
-  opacity: 0.18;
-  display: block;
-  padding: 0.5rem 1rem;
+  &__balance {
+    font-size: 40px;
+    color: #000000;
+    font-family: 'DINPro-medium', sans-serif;
+    opacity: 0.75;
+    display: block;
+    padding: 0.5rem 1rem;
+    letter-spacing: 0;
+  }
+
+  &__address {
+    font-size: 18px;
+    color: #000000;
+    font-family: 'DINPro-medium', sans-serif;
+    opacity: 0.25;
+    display: block;
+    padding: 0.5rem 1rem;
+    letter-spacing: 0;
+    margin-right: 75px;
+  }
+
+  &__icon {
+    background: #0BD080;
+    border-radius: 10px;
+    width: 12px;
+    height: 12px;
+  }
 }
