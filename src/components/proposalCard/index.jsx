@@ -7,14 +7,25 @@ import {
   Col,
 } from 'reactstrap';
 
+import Button from '../button';
+
 function ProposalCard(props) {
+  const {
+    hash,
+    address,
+    stakeSize,
+    dailyReward,
+    estimatedVotePower,
+    timestamp,
+  } = props;
+
   return (
     <Card className="proposal-card">
       <CardBody>
-        <Row className="pb-4">
+        <Row className="pb-4 align-items-center">
           <Col>
             <div className="proposal-card__header">
-              0x8976003…01000000
+              {hash}
             </div>
           </Col>
           <Col xs="3">
@@ -23,54 +34,63 @@ function ProposalCard(props) {
             </div>
           </Col>
         </Row>
-        <Row className="pb-4">
+        <Row className="pb-4 align-items-center">
           <Col>
             <div className="proposal-card__content">
-              0x1234…6789 wants to become a validator.
+              {`${address} wants to become a validator.`}
             </div>
           </Col>
         </Row>
-        <Row className="pb-4">
+        <Row className="pb-4 align-items-center">
           <Col>
             <div className="proposal-card__info-label">
               Stake size:
               {' '}
               <span className="proposal-card__info-amount">
-                26,000
+                {stakeSize}
               </span>
             </div>
             <div className="proposal-card__info-label">
               Daily reward:
               {' '}
               <span className="proposal-card__info-amount">
-                2,234
+                {dailyReward}
               </span>
             </div>
             <div className="proposal-card__info-label">
               Estimated vote power:
               {' '}
               <span className="proposal-card__info-amount">
-                12%
+                {`${estimatedVotePower}%`}
               </span>
             </div>
           </Col>
         </Row>
-        <Row>
+        <Row className="align-items-center">
           <Col>
             <div className="proposal-card__info-label">
               Proposal ends in:
             </div>
             <div className="proposal-card__info-amount">
-              01d : 04h : 45m
+              {timestamp}
             </div>
           </Col>
-          <Col>
-            View
+          <Col className="text-right">
+            <Button text="View" />
           </Col>
         </Row>
       </CardBody>
     </Card>
   );
 }
+
+ProposalCard.propTypes = {
+  hash: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
+  stakeSize: PropTypes.number.isRequired,
+  dailyReward: PropTypes.number.isRequired,
+  estimatedVotePower: PropTypes.number.isRequired,
+  timestamp: PropTypes.number.isRequired,
+};
 
 export default ProposalCard;
