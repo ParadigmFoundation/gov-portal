@@ -6,24 +6,31 @@ function Button(props) {
     text,
     action,
     color,
+    block,
   } = props;
 
-  function getColor(prop) {
-    if (prop === 'inverted') {
-      return 'button button--inverted';
-    }
+  let classname = 'button';
 
-    if (prop === 'red') {
-      return 'button button--red';
-    }
+  if (color === 'inverted') {
+    classname += ' button button--inverted';
+  }
 
-    return 'button';
+  if (color === 'red') {
+    classname += ' button--red';
+  }
+
+  if (color === 'green') {
+    classname += ' button--green';
+  }
+
+  if (block) {
+    classname += ' button--block';
   }
 
   return (
     <button
       type="button"
-      className={getColor(color)}
+      className={classname}
       onClick={() => action()}
     >
       {text}
@@ -35,10 +42,12 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
   action: PropTypes.func.isRequired,
   color: PropTypes.string,
+  block: PropTypes.bool,
 };
 
 Button.defaultProps = {
   color: 'default',
+  block: false,
 };
 
 export default Button;
