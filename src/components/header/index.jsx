@@ -15,6 +15,8 @@ import {
 
 import KosuSymbol from '../kosuSymbol';
 
+import ParadigmLogo from '../../assets/img/paradigm-Logo2@2x.png';
+
 function Header(props) {
   const {
     address,
@@ -27,7 +29,10 @@ function Header(props) {
     <div>
       <Navbar light expand="md" className="header">
         <NavbarBrand href="/">
-          Paradigm Governance
+          <img src={ParadigmLogo} alt="Paradigm" />
+          <div className="header__subtitle">
+            Governance
+          </div>
         </NavbarBrand>
         <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
         <Collapse isOpen={isOpen} navbar>
