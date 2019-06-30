@@ -24,6 +24,8 @@ function ChallengeView(props) {
     keepProposal,
     removeProposal,
     reveal,
+    voteAgain,
+    addToCalendar,
     goBack,
     status,
   } = props;
@@ -102,18 +104,44 @@ function ChallengeView(props) {
       );
     }
 
+    if (status === 'alreadyVoted') {
+      return (
+        <div>
+          <div className="challenge-view__voted-label">
+            You have already voted on this challenge.
+            <br />
+            <span
+              className="challenge-view__text-action"
+              onClick={voteAgain}
+              role="button"
+              tabIndex="0"
+              onKeyDown={voteAgain}
+            >
+              Click here
+            </span>
+            {' '}
+            to vote again.
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div>
-        <div className="challenge-view__thanks">
+        <div className="challenge-view__voted-label">
           Thanks for voting.
-        </div>
-        <div className="challenge-view__thanks">
+          <br />
           Remeber to reveal your vote here when the challenge ends.
-        </div>
-        <div className="challenge-view__thanks">
+          <br />
           Add a reminder to your
           {' '}
-          <span className="challenge-view__calendar">
+          <span
+            className="challenge-view__text-action"
+            onClick={addToCalendar}
+            tabIndex="-1"
+            role="button"
+            onKeyDown={addToCalendar}
+          >
             Google Calendar
           </span>
           .
@@ -226,6 +254,8 @@ ChallengeView.propTypes = {
   keepProposal: PropTypes.func,
   removeProposal: PropTypes.func,
   reveal: PropTypes.func,
+  voteAgain: PropTypes.func,
+  addToCalendar: PropTypes.func,
   goBack: PropTypes.func.isRequired,
   status: PropTypes.string,
 };
@@ -235,6 +265,8 @@ ChallengeView.defaultProps = {
   keepProposal: () => {},
   removeProposal: () => {},
   reveal: () => {},
+  voteAgain: () => {},
+  addToCalendar: () => {},
 };
 
 export default ChallengeView;

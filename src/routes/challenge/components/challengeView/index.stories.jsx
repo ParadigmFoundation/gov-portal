@@ -17,9 +17,9 @@ storiesOf('ChallengeView', module)
         deadline={deadline}
         potentialReward={123456.78}
         challengerStake={32912.34}
-        keepProposal={action('keep')}
-        removeProposal={action('remove')}
-        goBack={action('back')}
+        keepProposal={action('Keep')}
+        removeProposal={action('Remove')}
+        goBack={action('Back')}
         status="vote"
       />
     </div>
@@ -34,9 +34,25 @@ storiesOf('ChallengeView', module)
         deadline={deadline}
         potentialReward={123456.78}
         challengerStake={32912.34}
-        reveal={action('reveal')}
-        goBack={action('back')}
+        reveal={action('Reveal')}
+        goBack={action('Back')}
         status="reveal"
+      />
+    </div>
+  ))
+  .add('Already voted', () => (
+    <div className="p-5">
+      <ChallengeView
+        challengeId={42}
+        validatorPublicKey="39C04A480B54AB258A45355A5E48ADDED9956C65"
+        address="0x09c1e4c1adad99436b5c22a395174a1320ee716b"
+        address2="0x09c1e4c1adad99436b5c22a395174a1320ee716b"
+        deadline={deadline}
+        potentialReward={123456.78}
+        challengerStake={32912.34}
+        voteAgain={action('Vote again')}
+        goBack={action('Back')}
+        status="alreadyVoted"
       />
     </div>
   ))
@@ -50,7 +66,8 @@ storiesOf('ChallengeView', module)
         deadline={deadline}
         potentialReward={123456.78}
         challengerStake={32912.34}
-        goBack={action('back')}
+        addToCalendar={action('Add to calendar')}
+        goBack={action('Back')}
       />
     </div>
   ));
