@@ -1,0 +1,73 @@
+/* @define validator-view */
+
+.validator-view {
+  &__header {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 39px;
+    color: #838383;
+    text-align: left;
+  }
+
+  &__validator-label {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 25px;
+    color: #4A4A4A;
+    text-align: left;
+  }
+
+  &__address {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 25px;
+    color: #4A4A4A;
+    text-align: left;
+  }
+
+  &__validator-label {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 12px;
+    color: #BFBFBF;
+    text-align: left;
+  }
+
+  &__validator-public-key {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 16px;
+    color: #BFBFBF;
+    text-align: left;
+    padding-bottom: 10px;
+  }
+
+  &__link-label {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 14px;
+    color: #BFBFBF;
+    text-align: left;
+  }
+
+  &__link {
+    color: #0BD080;
+  }
+
+  &__rank-th-label {
+    font-size: 15px;
+  }
+
+  &__rank-label {
+    color: #BFBFBF;
+  }
+
+  &__age-block-label {
+    opacity: 0.5;
+    font-family: 'Gilroy-Regular', sans-serif;
+    font-size: 16px;
+    color: #4A4A4A;
+    text-align: left;
+  }
+
+  &__formatted-age {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 12px;
+    color: #404040;
+    text-align: left;
+  }
+}

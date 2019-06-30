@@ -44,25 +44,33 @@ function ValidatorView(props) {
           </div>
         </Col>
       </Row>
-      <Row>
+      <Row className="pb-2">
+        <Col>
+          <div className="validator-view__address">
+            {shortAddress}
+          </div>
+        </Col>
+      </Row>
+      <Row className="pb-4">
         <Col>
           <div className="validator-view__validator-label">
             Validator&apos;s public key:
-            <br />
+          </div>
+          <div className="validator-view__validator-public-key">
             {validatorPublicKey}
           </div>
-          <div className="validator-view__validator-label">
+          <div className="validator-view__link-label">
             View on
             {' '}
-            <a href={etherscanLink} className="validator-view__etherscan-link">
+            <a href={etherscanLink} className="validator-view__link">
               Etherscan
             </a>
             .
           </div>
         </Col>
       </Row>
-      <Row>
-        <Col>
+      <Row className="pb-4">
+        <Col xs={12} sm={3}>
           <Card>
             <CardTitle>
               Tokens staked
@@ -75,7 +83,7 @@ function ValidatorView(props) {
             </CardFooter>
           </Card>
         </Col>
-        <Col>
+        <Col xs={12} sm={3}>
           <Card>
             <CardTitle>
               Monthly reward
@@ -88,7 +96,7 @@ function ValidatorView(props) {
             </CardFooter>
           </Card>
         </Col>
-        <Col>
+        <Col xs={12} sm={3}>
           <Card>
             <CardTitle>
               Voting power
@@ -98,7 +106,7 @@ function ValidatorView(props) {
             </CardContent>
           </Card>
         </Col>
-        <Col>
+        <Col xs={12} sm={3}>
           <Card>
             <CardTitle>
               Uptime
@@ -109,30 +117,44 @@ function ValidatorView(props) {
           </Card>
         </Col>
       </Row>
-      <Row>
-        <Col>
+      <Row className="pb-5">
+        <Col xs={12} sm={3}>
           <Card>
             <CardTitle>
               Rank
             </CardTitle>
             <CardContent>
-              {rank}th of 99
+              {rank}
+              <span className="validator-view__rank-th-label">
+                th
+              </span>
+              {' '}
+              <span className="validator-view__rank-label">
+                of 99
+              </span>
             </CardContent>
           </Card>
         </Col>
-        <Col>
+        <Col xs={12} sm={3}>
           <Card>
             <CardTitle>
               Age
             </CardTitle>
             <CardContent>
-              {blockNumber} Blocks
-              {formattedAge}
+              {blockNumber}
+              {' '}
+              <span className="validator-view__age-block-label">
+                Blocks
+              </span>
+              <br />
+              <div className="validator-view__formatted-age">
+                {formattedAge}
+              </div>
             </CardContent>
           </Card>
         </Col>
       </Row>
-      <Row>
+      <Row className="pb-4">
         <Col>
           <Button
             color="red"
