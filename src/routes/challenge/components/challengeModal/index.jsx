@@ -43,7 +43,7 @@ function ChallengeModal(props) {
               </div>
             </Col>
           </Row>
-          <Row className="pb-4">
+          <Row className="pb-5">
             <Col>
               <input
                 type="number"
