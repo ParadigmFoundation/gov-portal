@@ -70,4 +70,15 @@
     color: #404040;
     text-align: left;
   }
+
+  &__already-challenged-label {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 18px;
+    color: #4A4A4A;
+    text-align: left;
+  }
+
+  &__already-challenged-link {
+    color: #0BD080;
+  }
 }

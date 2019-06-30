@@ -29,11 +29,36 @@ function ValidatorView(props) {
     blockNumber,
     confirmationUnix,
     challenge,
+    challengeLink,
     goBack,
+    status,
   } = props;
 
   const formattedAge = timestampToCountdown(confirmationUnix, true);
   const shortAddress = `${validatorAddress.substring(0, 8)}...${validatorAddress.substring(validatorAddress.length - 8, validatorAddress.length)}`;
+
+  function returnAction() {
+    if (status === 'alreadyChallenged') {
+      return (
+        <div className="validator-view__already-challenged-label">
+          You&apos;ve already challenged Validator Name. View your challenge
+          {' '}
+          <a href={challengeLink} className="validator-view__already-challenged-link">
+            here
+          </a>
+          .
+        </div>
+      );
+    }
+
+    return (
+      <Button
+        color="red"
+        action={challenge}
+        text={`Challenge ${shortAddress}`}
+      />
+    );
+  }
 
   return (
     <div>
@@ -102,7 +127,7 @@ function ValidatorView(props) {
               Voting power
             </CardTitle>
             <CardContent>
-              {votingPower}
+              {`${votingPower}%`}
             </CardContent>
           </Card>
         </Col>
@@ -154,13 +179,9 @@ function ValidatorView(props) {
           </Card>
         </Col>
       </Row>
-      <Row className="pb-4">
+      <Row className="pb-5">
         <Col>
-          <Button
-            color="red"
-            action={challenge}
-            text={`Challenge ${shortAddress}`}
-          />
+          {returnAction()}
         </Col>
       </Row>
       <Row>
@@ -187,8 +208,16 @@ ValidatorView.propTypes = {
   rank: PropTypes.number.isRequired,
   blockNumber: PropTypes.number.isRequired,
   confirmationUnix: PropTypes.number.isRequired,
-  challenge: PropTypes.func.isRequired,
+  challenge: PropTypes.func,
+  challengeLink: PropTypes.string,
   goBack: PropTypes.func.isRequired,
+  status: PropTypes.string,
+};
+
+ValidatorView.defaultProps = {
+  challenge: () => {},
+  status: '',
+  challengeLink: '',
 };
 
 export default ValidatorView;
