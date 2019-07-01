@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './index.scss';
+
 function Table(props) {
   const {
     children,

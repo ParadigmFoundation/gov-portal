@@ -16,6 +16,8 @@ import {
   timestampToCountdown,
 } from '../../../../utils/formatting';
 
+import './index.scss';
+
 function ValidatorView(props) {
   const {
     validatorName,

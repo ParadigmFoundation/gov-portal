@@ -17,6 +17,8 @@ import KosuSymbol from '../symbols/kosuSymbol';
 
 import ParadigmLogo from '../../assets/img/paradigm-Logo2@2x.png';
 
+import './index.scss';
+
 function Header(props) {
   const {
     address,

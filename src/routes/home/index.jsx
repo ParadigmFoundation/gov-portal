@@ -4,6 +4,8 @@ import React, {
 
 import GovContext from '../../store/govContext';
 
+import ValidatorSymbol from '../../components/symbols/validatorSymbol';
+
 function Home() {
   const gov = useContext(GovContext);
 
@@ -12,6 +14,7 @@ function Home() {
   return (
     <div>
       <p>Home</p>
+      <ValidatorSymbol />
     </div>
   );
 }

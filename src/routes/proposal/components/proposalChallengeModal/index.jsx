@@ -11,6 +11,8 @@ import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
 import WarningSign from '../../../../components/warningSign';
 
+import './index.scss';
+
 function ProposalChallengeModal(props) {
   const {
     isOpen,

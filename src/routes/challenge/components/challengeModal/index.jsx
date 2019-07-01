@@ -10,6 +10,8 @@ import {
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
 
+import './index.scss';
+
 function ChallengeModal(props) {
   const {
     isOpen,

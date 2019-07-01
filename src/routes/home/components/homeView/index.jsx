@@ -8,6 +8,8 @@ import {
 import Table from '../../../../components/table';
 import ConnectMetaMask from './components/connectMetaMask';
 
+import './index.scss';
+
 function HomeView(props) {
   const {
     metaMaskConnected,

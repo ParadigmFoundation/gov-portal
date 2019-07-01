@@ -12,6 +12,8 @@ import {
   timestampToCountdown,
 } from '../../../../utils/formatting';
 
+import './index.scss';
+
 function ChallengeView(props) {
   const {
     challengeId,

@@ -12,6 +12,8 @@ import {
   timestampToCountdown,
 } from '../../../../utils/formatting';
 
+import './index.scss';
+
 function ProposalView(props) {
   const {
     tendermint,

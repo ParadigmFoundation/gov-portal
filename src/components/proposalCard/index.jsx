@@ -13,6 +13,8 @@ import {
   timestampToCountdown,
 } from '../../utils/formatting';
 
+import './index.scss';
+
 function ProposalCard(props) {
   const {
     tendermint,

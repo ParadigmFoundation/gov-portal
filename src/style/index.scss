@@ -5,32 +5,3 @@
 /* Variables and Boostrap */
 @import './variables.scss';
 @import '~bootstrap/scss/bootstrap';
-
-/* Common components */
-@import '../components/header/index.scss';
-@import '../components/card/index.scss';
-@import '../components/button/index.scss';
-@import '../components/proposalCard/index.scss';
-@import '../components/table/index.css';
-
-/* Symbols */
-@import '../components/symbols/kosuSymbol/index.scss';
-@import '../components/symbols/proposalSymbol/index.scss';
-
-/* Routes and their components */
-
-/* Home */
-@import '../routes/validator/components/validatorChallengeModal/index.scss';
-@import '../routes/home/components/homeView/components/connectMetaMask/index.scss';
-@import '../routes/home/components/homeView/index.scss';
-
-/* Proposal */
-@import '../routes/proposal/components/proposalView/index.scss';
-@import '../routes/proposal/components/proposalChallengeModal/index.scss';
-
-/* Validator */
-@import '../routes/validator/components/validatorView/index.scss';
-
-/* Challenge */
-@import '../routes/challenge/components/challengeView/index.scss';
-@import '../routes/challenge/components/challengeModal/index.scss';
