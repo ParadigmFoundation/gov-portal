@@ -52,6 +52,21 @@ function ValidatorView(props) {
       );
     }
 
+    if (status === 'ongoing') {
+      return (
+        <div className="validator-view__already-challenged-label">
+          There is an ongoing challenge already open against validator.
+          <br />
+          View the challenge
+          {' '}
+          <a href={challengeLink} className="validator-view__already-challenged-link">
+            here
+          </a>
+          .
+        </div>
+      );
+    }
+
     return (
       <Button
         color="red"
