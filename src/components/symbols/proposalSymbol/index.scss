@@ -1,0 +1,16 @@
+/* @define proposal-symbol */
+
+.proposal-symbol {
+  background: #2188EA;
+  font-family: 'DINPro-Bold', sans-serif;
+  font-size: 14px;
+  color: #FFFFFF;
+  letter-spacing: 0.89px;
+  text-align: center;
+
+  &--small {
+    font-family: 'DINPro-Bold', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.57px;
+  }
+}
