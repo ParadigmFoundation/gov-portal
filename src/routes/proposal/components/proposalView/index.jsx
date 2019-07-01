@@ -10,6 +10,7 @@ import Button from '../../../../components/button';
 
 import {
   timestampToCountdown,
+  shortenAddress,
 } from '../../../../utils/formatting';
 
 import './index.scss';
@@ -27,11 +28,6 @@ function ProposalView(props) {
     canBeChallenged,
   } = props;
 
-  const shortTendermint = `${tendermint.substring(0, 8)}...${tendermint.substring(tendermint.length - 8, tendermint.length)}`;
-  const shortAddress = `${address.substring(0, 8)}...${address.substring(address.length - 8, address.length)}`;
-
-  const countdown = timestampToCountdown(deadline, true);
-
   return (
     <div>
       <Row className="pb-5">
@@ -43,7 +39,7 @@ function ProposalView(props) {
             Tendermint public key:
           </div>
           <div className="proposal-view__tendermint">
-            {shortTendermint}
+            {shortenAddress(tendermint)}
           </div>
         </Col>
       </Row>
@@ -51,7 +47,7 @@ function ProposalView(props) {
         <Col>
           <div className="proposal-view__content">
             <span className="proposal-view__address">
-              {shortAddress}
+              {shortenAddress(address)}
             </span>
             {' '}
             wants to become a validator.
@@ -60,7 +56,7 @@ function ProposalView(props) {
             If unchallenged, 0x12345...56789 will become a validator on
             {' '}
             <span className="proposal-view__subcontent-deadline">
-              {countdown}
+              {timestampToCountdown(deadline, true)}
             </span>
           </div>
         </Col>

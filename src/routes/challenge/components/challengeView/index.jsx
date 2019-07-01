@@ -10,6 +10,7 @@ import Button from '../../../../components/button';
 
 import {
   timestampToCountdown,
+  shortenAddress,
 } from '../../../../utils/formatting';
 
 import './index.scss';
@@ -31,11 +32,6 @@ function ChallengeView(props) {
     goBack,
     status,
   } = props;
-
-  const shortAddress = `${address.substring(0, 8)}...${address.substring(address.length - 8, address.length)}`;
-  const shortAddress2 = `${address2.substring(0, 8)}...${address2.substring(address2.length - 8, address2.length)}`;
-
-  const countdown = timestampToCountdown(deadline, true);
 
   function returnStatus() {
     if (status === 'vote') {
@@ -181,13 +177,13 @@ function ChallengeView(props) {
         <Col>
           <div className="challenge-view__content">
             <span className="challenge-view__address">
-              {shortAddress}
+              {shortenAddress(address)}
             </span>
             {' '}
             is challenging
             {' '}
             <span className="challenge-view__address">
-              {`${shortAddress2}'s`}
+              {`${shortenAddress(address2)}'s`}
             </span>
             {' '}
             proposal.
@@ -203,7 +199,7 @@ function ChallengeView(props) {
             This challenge will end in
             {' '}
             <span className="challenge-view__subcontent-deadline">
-              {countdown}
+              {timestampToCountdown(deadline, true)}
             </span>
           </div>
         </Col>

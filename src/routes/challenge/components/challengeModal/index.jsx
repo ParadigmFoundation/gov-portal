@@ -10,6 +10,10 @@ import {
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
 
+import {
+  shortenAddress,
+} from '../../../../utils/formatting';
+
 import './index.scss';
 
 function ChallengeModal(props) {
@@ -19,8 +23,6 @@ function ChallengeModal(props) {
     close,
     confirmVote,
   } = props;
-
-  const shortAddress = `${address.substring(0, 8)}...${address.substring(address.length - 8, address.length)}`;
 
   return (
     <div>
@@ -34,7 +36,7 @@ function ChallengeModal(props) {
           <Row className="pb-5">
             <Col>
               <div className="challenge-modal__header">
-                {`Vote to keep ${shortAddress}.`}
+                {`Vote to keep ${shortenAddress(address)}.`}
               </div>
             </Col>
           </Row>

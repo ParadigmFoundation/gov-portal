@@ -11,6 +11,7 @@ import Button from '../button';
 
 import {
   timestampToCountdown,
+  shortenAddress,
 } from '../../utils/formatting';
 
 import './index.scss';
@@ -25,18 +26,13 @@ function ProposalCard(props) {
     deadline,
   } = props;
 
-  const shortTendermint = `${tendermint.substring(0, 8)}...${tendermint.substring(tendermint.length - 8, tendermint.length)}`;
-  const shortAddress = `${address.substring(0, 8)}...${address.substring(address.length - 8, address.length)}`;
-
-  const countdown = timestampToCountdown(deadline, true);
-
   return (
     <Card className="proposal-card">
       <CardBody>
         <Row className="pb-4 align-items-center">
           <Col>
             <div className="proposal-card__header">
-              {shortTendermint}
+              {shortenAddress(tendermint)}
             </div>
           </Col>
           <Col xs="3">
@@ -54,7 +50,7 @@ function ProposalCard(props) {
         <Row className="pb-4 align-items-center">
           <Col>
             <div className="proposal-card__content">
-              {`${shortAddress} wants to become a validator.`}
+              {`${shortenAddress(address)} wants to become a validator.`}
             </div>
           </Col>
         </Row>
@@ -89,7 +85,7 @@ function ProposalCard(props) {
               Proposal ends in:
             </div>
             <div className="proposal-card__info-amount">
-              {countdown}
+              {timestampToCountdown(deadline, true)}
             </div>
           </Col>
           <Col className="text-right">

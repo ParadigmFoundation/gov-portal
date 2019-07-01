@@ -14,6 +14,7 @@ import Button from '../../../../components/button';
 
 import {
   timestampToCountdown,
+  shortenAddress,
 } from '../../../../utils/formatting';
 
 import './index.scss';
@@ -38,7 +39,6 @@ function ValidatorView(props) {
   } = props;
 
   const formattedAge = timestampToCountdown(confirmationUnix, true);
-  const shortAddress = `${validatorAddress.substring(0, 8)}...${validatorAddress.substring(validatorAddress.length - 8, validatorAddress.length)}`;
 
   function returnAction() {
     if (status === 'alreadyChallenged') {
@@ -73,7 +73,7 @@ function ValidatorView(props) {
       <Button
         color="red"
         action={challenge}
-        text={`Challenge ${shortAddress}`}
+        text={`Challenge ${shortenAddress(validatorAddress)}`}
       />
     );
   }
@@ -90,7 +90,7 @@ function ValidatorView(props) {
       <Row className="pb-2">
         <Col>
           <div className="validator-view__address">
-            {shortAddress}
+            {shortenAddress(validatorAddress)}
           </div>
         </Col>
       </Row>
