@@ -1,0 +1,72 @@
+/* @define validator-challenge-modal */
+
+.validator-challenge-modal {
+  &__body {
+    padding-top: 15px;
+    padding-right: 35px;
+    padding-bottom: 35px;
+    padding-left: 35px;
+  }
+
+  &__close {
+    text-align: right;
+  }
+
+  &__header {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 25px;
+    color: #404040;
+    text-align: left;
+  }
+
+  &__cost-label {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 18px;
+    color: #838383;
+    text-align: left;
+  }
+
+  &__price {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 30px;
+    color: #4a4a4a;
+    display: inline-block;
+  }
+
+  &__reason-input {
+    background: #FBFBFB;
+    border: 1px solid #ECECEC;
+    width: 100%;
+    resize: none;
+    font-family: 'Gilroy-Regular', sans-serif;
+    font-size: 12px;
+    color: #4A4A4A;
+    padding: 5px;
+
+    &::placeholder {
+      font-family: 'Gilroy-Regular', sans-serif;
+      font-size: 12px;
+      color: #4A4A4A;
+    }
+  }
+
+  &__warning {
+    border: 1px solid #FD4848;
+    padding: 10px;
+  }
+
+  &__warning-title {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 16px;
+    color: #FD4848;
+  }
+
+  &__warning-content {
+    font-family: 'Gilroy-Regular', sans-serif;
+    font-size: 12px;
+    color: #FD4848;
+    text-align: left;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+}
