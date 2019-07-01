@@ -20,3 +20,5 @@ ProposalSymbol.propTypes = {
 ProposalSymbol.defaultProps = {
   small: false,
 };
+
+export default ProposalSymbol;

@@ -3,5 +3,6 @@ import { storiesOf } from '@storybook/react';
 
 import ProposalSymbol from '.';
 
-storiesOf('Proposal Symbol', module)
-  .add('Standard', () => <ProposalSymbol />);
+storiesOf('Symbols/Proposal Symbol', module)
+  .add('Standard', () => <ProposalSymbol />)
+  .add('Small', () => <ProposalSymbol small />);
