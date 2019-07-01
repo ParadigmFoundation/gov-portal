@@ -9,8 +9,7 @@ import {
 
 import KosuSymbol from '../../../../components/kosuSymbol';
 import Button from '../../../../components/button';
-
-import WarningSign from './components/warningSign';
+import WarningSign from '../../../../components/warningSign';
 
 function ProposalChallengeModal(props) {
   const {
