@@ -3,5 +3,5 @@ import { storiesOf } from '@storybook/react';
 
 import KosuSymbol from '.';
 
-storiesOf('Kosu Symbol', module)
+storiesOf('Symbols/Kosu Symbol', module)
   .add('Standard', () => <KosuSymbol />);
