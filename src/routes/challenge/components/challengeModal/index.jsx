@@ -7,7 +7,7 @@ import {
   Col,
 } from 'reactstrap';
 
-import KosuSymbol from '../../../../components/kosuSymbol';
+import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
 
 function ChallengeModal(props) {

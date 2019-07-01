@@ -7,7 +7,7 @@ import {
   ModalBody,
 } from 'reactstrap';
 
-import KosuSymbol from '../../../../components/kosuSymbol';
+import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
 import WarningSign from '../../../../components/warningSign';
 

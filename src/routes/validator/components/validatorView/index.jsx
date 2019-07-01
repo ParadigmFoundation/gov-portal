@@ -9,7 +9,7 @@ import Card from '../../../../components/card';
 import CardTitle from '../../../../components/card/components/cardTitle';
 import CardContent from '../../../../components/card/components/cardContent';
 import CardFooter from '../../../../components/card/components/cardFooter';
-import KosuSymbol from '../../../../components/kosuSymbol';
+import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
 
 import {

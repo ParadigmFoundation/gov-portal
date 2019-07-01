@@ -13,7 +13,7 @@ import {
   NavItem,
 } from 'reactstrap';
 
-import KosuSymbol from '../kosuSymbol';
+import KosuSymbol from '../symbols/kosuSymbol';
 
 import ParadigmLogo from '../../assets/img/paradigm-Logo2@2x.png';
 

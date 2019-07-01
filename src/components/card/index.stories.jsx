@@ -6,7 +6,7 @@ import CardTitle from './components/cardTitle';
 import CardContent from './components/cardContent';
 import CardFooter from './components/cardFooter';
 
-import KosuSymbol from '../kosuSymbol';
+import KosuSymbol from '../symbols/kosuSymbol';
 
 storiesOf('Card', module)
   .add('Without footer', () => (
