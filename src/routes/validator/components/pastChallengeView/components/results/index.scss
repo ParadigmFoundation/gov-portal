@@ -1,0 +1,47 @@
+/* @define results */
+
+@import 'style/variables.scss';
+
+.results {
+  width: 360px;
+  font-family: 'Gilroy-Medium', sans-serif;
+
+  &__legend-label {
+    width: 50%;
+    display: inline-block;
+    font-size: 14px;
+    color: #4A4A4A;
+
+    &--left {
+      text-align: left;
+    }
+
+    &--right {
+      text-align: right;
+    }
+  }
+
+  &__legend-amount {
+    width: 50%;
+    display: inline-block;
+    font-size: 12px;
+    color: #838383;
+
+    &--left {
+      text-align: left;
+    }
+
+    &--right {
+      text-align: right;
+    }
+  }
+
+  &__progress {
+    background-color: $color-green;
+    border-radius: 25px;
+  }
+
+  &__progress .progress-bar {
+    background-color: $color-red;
+  }
+}
