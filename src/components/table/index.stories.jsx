@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import AcceptedSymbol from '../symbols/acceptedSymbol';
 import RejectedSymbol from '../symbols/rejectedSymbol';
+import Address from '../address';
 
 import Table from '.';
 
@@ -49,9 +50,11 @@ storiesOf('Components/Table', module)
         <tbody>
           <tr>
             <td>
+              <Address address="0x3E08FC7Cb11366c6E0091fb0fD64E0E5F8190bCa" short />
+            </td>
+            <td>
               <AcceptedSymbol />
             </td>
-            <td>Bar</td>
             <td>
               <RejectedSymbol />
             </td>
