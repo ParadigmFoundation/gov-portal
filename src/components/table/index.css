@@ -1,0 +1,22 @@
+/* @define table */
+
+.table {
+  background: #FFFFFF;
+  border: 1px solid #EDEDED;
+  box-shadow: 3px 9px 15px 0 rgba(0, 0, 0, 0.07);
+  font-size: 16px;
+  color: #4A4A4A;
+  text-align: left;
+}
+
+.table thead th {
+  border-bottom: 0.2px solid #979797;
+}
+
+th {
+  font-family: 'Gilroy-Medium', sans-serif;
+  font-size: 20px;
+  color: #404040;
+  text-align: left;
+  font-weight: normal;
+}
