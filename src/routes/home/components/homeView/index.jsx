@@ -5,6 +5,7 @@ import {
   Col,
 } from 'reactstrap';
 
+import Table from '../../../../components/table';
 import ConnectMetaMask from './components/connectMetaMask';
 
 function HomeView(props) {
@@ -49,7 +50,7 @@ function HomeView(props) {
           )}
         </Col>
       </Row>
-      <Row className="pb-5">
+      <Row className="pb-4">
         <Col>
           <div className="home-view__subtitle">
             Validator
@@ -58,12 +59,42 @@ function HomeView(props) {
       </Row>
       <Row className="pb-5">
         <Col>
-          {!metaMaskConnected && (
-            <ConnectMetaMask />
-          )}
+          <Table>
+            <thead>
+              <tr>
+                <th>
+                  Name
+                </th>
+                <th>
+                  Stake
+                </th>
+                <th>
+                  Daily Reward
+                </th>
+                <th>
+                  Voting Power
+                </th>
+                <th>
+                  Uptime
+                </th>
+                <th>
+                  Age
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {!metaMaskConnected && (
+                <tr>
+                  <td colSpan="6">
+                    <ConnectMetaMask />
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </Table>
         </Col>
       </Row>
-      <Row className="pb-5">
+      <Row className="pb-4">
         <Col>
           <div className="home-view__subtitle">
             Past Challenges
@@ -72,9 +103,39 @@ function HomeView(props) {
       </Row>
       <Row className="pb-5">
         <Col>
-          {!metaMaskConnected && (
-            <ConnectMetaMask />
-          )}
+          <Table>
+            <thead>
+              <tr>
+                <th>
+                  Id
+                </th>
+                <th>
+                  Challenger
+                </th>
+                <th>
+                  Type
+                </th>
+                <th>
+                  Result
+                </th>
+                <th>
+                  Tokens at Stake
+                </th>
+                <th>
+                  Time
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {!metaMaskConnected && (
+                <tr>
+                  <td colSpan="6">
+                    <ConnectMetaMask />
+                  </td>
+                </tr>
+              )}
+            </tbody>
+          </Table>
         </Col>
       </Row>
     </div>
