@@ -18,6 +18,7 @@ import {
 
 function ValidatorView(props) {
   const {
+    validatorName,
     validatorAddress,
     validatorPublicKey,
     etherscanLink,
@@ -41,7 +42,7 @@ function ValidatorView(props) {
     if (status === 'alreadyChallenged') {
       return (
         <div className="validator-view__already-challenged-label">
-          You&apos;ve already challenged Validator Name. View your challenge
+          {`You've already challenged ${validatorName}. View your challenge`}
           {' '}
           <a href={challengeLink} className="validator-view__already-challenged-link">
             here
@@ -198,6 +199,7 @@ function ValidatorView(props) {
 }
 
 ValidatorView.propTypes = {
+  validatorName: PropTypes.string,
   validatorAddress: PropTypes.string.isRequired,
   validatorPublicKey: PropTypes.string.isRequired,
   etherscanLink: PropTypes.string.isRequired,
@@ -215,6 +217,7 @@ ValidatorView.propTypes = {
 };
 
 ValidatorView.defaultProps = {
+  validatorName: '',
   challenge: () => {},
   status: '',
   challengeLink: '',
