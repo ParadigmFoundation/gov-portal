@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import Table from '.';
 
-storiesOf('Table', module)
+storiesOf('Components/Table', module)
   .add('Standard', () => (
     <div className="p-5">
       <Table>

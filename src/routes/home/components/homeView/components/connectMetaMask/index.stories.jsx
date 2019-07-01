@@ -3,7 +3,7 @@ import { storiesOf } from '@storybook/react';
 
 import ConnectMetamask from '.';
 
-storiesOf('ConnectMetamask', module)
+storiesOf('Routes/Home/ConnectMetamask', module)
   .add('Standard', () => (
     <div className="p-5">
       <ConnectMetamask />

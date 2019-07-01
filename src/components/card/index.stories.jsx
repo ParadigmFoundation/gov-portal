@@ -8,7 +8,7 @@ import CardFooter from './components/cardFooter';
 
 import KosuSymbol from '../symbols/kosuSymbol';
 
-storiesOf('Card', module)
+storiesOf('Components/Card', module)
   .add('Without footer', () => (
     <div className="p-5">
       <Card>

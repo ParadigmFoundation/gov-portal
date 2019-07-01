@@ -5,7 +5,7 @@ import ProposalView from '.';
 
 const deadline = (Date.now() / 1000) + 60 * 60 * 24 * 2;
 
-storiesOf('ProposalView', module)
+storiesOf('Routes/Proposal/ProposalView', module)
   .add('Can be challenged', () => (
     <div className="p-5">
       <ProposalView

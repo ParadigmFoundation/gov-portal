@@ -6,7 +6,7 @@ import ChallengeView from '.';
 
 const deadline = (Date.now() / 1000) + 60 * 60 * 24 * 2;
 
-storiesOf('ChallengeView', module)
+storiesOf('Routes/Challenge/ChallengeView', module)
   .add('Vote', () => (
     <div className="p-5">
       <ChallengeView

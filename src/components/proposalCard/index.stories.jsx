@@ -6,7 +6,7 @@ import ProposalCard from '.';
 const newDeadline = (Date.now() / 1000) + 60 * 60 * 24 * 2;
 const endingSoonDeadline = (Date.now() / 1000) + 6 * 60 * 60;
 
-storiesOf('Proposal Card', module)
+storiesOf('Components/Proposal Card', module)
   .add('New', () => (
     <div className="p-5">
       <ProposalCard

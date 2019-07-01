@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 import Button from '.';
 
-storiesOf('Button', module)
+storiesOf('Components/Button', module)
   .add('Standard', () => <Button text="View" action={action('clicked')} />)
   .add('Standard Block', () => <Button text="View" action={action('clicked')} block />)
   .add('Inverted', () => <Button text="View" action={action('clicked')} color="inverted" />)

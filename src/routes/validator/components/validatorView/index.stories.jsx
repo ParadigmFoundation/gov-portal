@@ -6,7 +6,7 @@ import ValidatorView from '.';
 
 const timestamp = (Date.now() / 1000) - 60 * 60 * 24 * 4;
 
-storiesOf('ValidatorView', module)
+storiesOf('Routes/Validator/ValidatorView', module)
   .add('Standard', () => (
     <div className="p-5">
       <ValidatorView

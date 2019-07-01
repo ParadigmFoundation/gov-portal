@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 import ProposalChallengeModal from '.';
 
-storiesOf('ProposalChallengeModal', module)
+storiesOf('Routes/Proposal/ProposalChallengeModal', module)
   .add('Standard', () => (
     <div className="p-5">
       <ProposalChallengeModal

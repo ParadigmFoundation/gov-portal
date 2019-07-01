@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 import ValidatorChallengeModal from '.';
 
-storiesOf('ValidatorChallengeModal', module)
+storiesOf('Routes/Validator/ValidatorChallengeModal', module)
   .add('Standard', () => (
     <div className="p-5">
       <ValidatorChallengeModal
