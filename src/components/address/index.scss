@@ -1,0 +1,24 @@
+/* @define address */
+
+@import 'style/variables.scss';
+
+.address {
+  display: -webkit-inline-box;
+
+  &__icon {
+    background-color: $color-green;
+    width: 16px;
+    height: 16px;
+    border-radius: 10px;
+    margin-right: 10px;
+    display: inherit;
+  }
+
+  &__text {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 16px;
+    color: #404040;
+    text-align: left;
+    display: inherit;
+  }
+}
