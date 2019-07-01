@@ -1,0 +1,40 @@
+/* @define past-challenge-view */
+
+@import 'style/variables.scss';
+
+.past-challenge-view {
+  &__title {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 39px;
+    color: #838383;
+    text-align: left;
+  }
+
+  &__content-address {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 25px;
+    color: #404040;
+    text-align: left;
+  }
+
+  &__content {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 25px;
+    color: #838383;
+    text-align: left;
+  }
+
+  &__subcontent {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 16px;
+    color: #838383;
+    text-align: left;
+  }
+
+  &__results-title {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 25px;
+    color: #4A4A4A;
+    text-align: left;
+  }
+}
