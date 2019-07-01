@@ -70,4 +70,19 @@ storiesOf('ChallengeView', module)
         goBack={action('Back')}
       />
     </div>
+  ))
+  .add('You Started', () => (
+    <div className="p-5">
+      <ChallengeView
+        challengeId={42}
+        validatorPublicKey="39C04A480B54AB258A45355A5E48ADDED9956C65"
+        address="0x09c1e4c1adad99436b5c22a395174a1320ee716b"
+        address2="0x09c1e4c1adad99436b5c22a395174a1320ee716b"
+        deadline={deadline}
+        potentialReward={123456.78}
+        challengerStake={32912.34}
+        goBack={action('Back')}
+        status="youStarted"
+      />
+    </div>
   ));

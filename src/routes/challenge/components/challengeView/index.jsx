@@ -126,6 +126,16 @@ function ChallengeView(props) {
       );
     }
 
+    if (status === 'youStarted') {
+      return (
+        <div>
+          <div className="challenge-view__started-label">
+            You started this challenge.
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div>
         <div className="challenge-view__voted-label">
