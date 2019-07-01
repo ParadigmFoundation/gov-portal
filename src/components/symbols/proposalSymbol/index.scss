@@ -3,10 +3,10 @@
 @import 'style/variables.scss';
 
 .proposal-symbol {
-  background: #2188EA;
+  background: $color-blue;
   font-family: 'DINPro-Bold', sans-serif;
   font-size: 14px;
-  color: #FFFFFF;
+  color: $color-white;
   letter-spacing: 0.89px;
   text-align: center;
   padding: 2px;
