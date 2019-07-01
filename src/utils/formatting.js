@@ -20,6 +20,11 @@ function timestampToCountdown(timestamp, isUnixTimestamp) {
   return `${remainingDays}d : ${remainingHours}h : ${remainingMinutes}m`;
 }
 
+function shortenAddress(address) {
+  return `${address.substring(0, 6)}...${address.substring(address.length - 6, address.length)}`;
+}
+
 export {
   timestampToCountdown,
+  shortenAddress,
 };
