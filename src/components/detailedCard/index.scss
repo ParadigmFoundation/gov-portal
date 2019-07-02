@@ -1,10 +1,10 @@
-/* @define proposal-card */
+/* @define detailed-card */
 
 @import 'style/variables.scss';
 
-.proposal-card {
-  background: #FFFFFF;
-  border: 1px solid #EDEDED;
+.detailed-card {
+  background: $color-white;
+  border: 1px solid #ededed;
   box-shadow: 3px 9px 15px 0 rgba(0,0,0,0.07);
 
   &__header {
@@ -17,14 +17,14 @@
   &__status--new {
     font-family: 'Gilroy-Medium', sans-serif;
     font-size: 12px;
-    color: #0BD080;
+    color: $color-green;
     text-align: right;
   }
 
   &__status--ending-soon {
     font-family: 'Gilroy-Medium', sans-serif;
     font-size: 12px;
-    color: #FD4848;
+    color: $color-red;
     text-align: right;
   }
 

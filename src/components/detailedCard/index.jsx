@@ -16,7 +16,7 @@ import {
 
 import './index.scss';
 
-function ProposalCard(props) {
+function DetailedCard(props) {
   const {
     tendermint,
     address,
@@ -27,21 +27,21 @@ function ProposalCard(props) {
   } = props;
 
   return (
-    <Card className="proposal-card">
+    <Card className="detailed-card">
       <CardBody>
         <Row className="pb-4 align-items-center">
           <Col>
-            <div className="proposal-card__header">
+            <div className="detailed-card__header">
               {shortenAddress(tendermint)}
             </div>
           </Col>
           <Col xs="3">
             {deadline - Date.now() > 1000 * 60 * 60 * 24 ? (
-              <div className="proposal-card__status--new">
+              <div className="detailed-card__status--new">
                 New Proposal
               </div>
             ) : (
-              <div className="proposal-card__status--ending-soon">
+              <div className="detailed-card__status--ending-soon">
                 Ending soon
               </div>
             )}
@@ -49,31 +49,31 @@ function ProposalCard(props) {
         </Row>
         <Row className="pb-4 align-items-center">
           <Col>
-            <div className="proposal-card__content">
+            <div className="detailed-card__content">
               {`${shortenAddress(address)} wants to become a validator.`}
             </div>
           </Col>
         </Row>
         <Row className="pb-4 align-items-center">
           <Col>
-            <div className="proposal-card__info-label">
+            <div className="detailed-card__info-label">
               Stake size:
               {' '}
-              <span className="proposal-card__info-amount">
+              <span className="detailed-card__info-amount">
                 {stakeSize}
               </span>
             </div>
-            <div className="proposal-card__info-label">
+            <div className="detailed-card__info-label">
               Daily reward:
               {' '}
-              <span className="proposal-card__info-amount">
+              <span className="detailed-card__info-amount">
                 {dailyReward}
               </span>
             </div>
-            <div className="proposal-card__info-label">
+            <div className="detailed-card__info-label">
               Estimated vote power:
               {' '}
-              <span className="proposal-card__info-amount">
+              <span className="detailed-card__info-amount">
                 {`${estimatedVotePower}%`}
               </span>
             </div>
@@ -81,10 +81,10 @@ function ProposalCard(props) {
         </Row>
         <Row className="align-items-center">
           <Col>
-            <div className="proposal-card__info-label">
+            <div className="detailed-card__info-label">
               Proposal ends in:
             </div>
-            <div className="proposal-card__info-amount">
+            <div className="detailed-card__info-amount">
               {timestampToCountdown(deadline, true)}
             </div>
           </Col>
@@ -97,7 +97,7 @@ function ProposalCard(props) {
   );
 }
 
-ProposalCard.propTypes = {
+DetailedCard.propTypes = {
   tendermint: PropTypes.string.isRequired,
   address: PropTypes.string.isRequired,
   stakeSize: PropTypes.number.isRequired,
@@ -106,4 +106,4 @@ ProposalCard.propTypes = {
   deadline: PropTypes.number.isRequired,
 };
 
-export default ProposalCard;
+export default DetailedCard;
