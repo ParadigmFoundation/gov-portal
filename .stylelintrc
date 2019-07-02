@@ -1,9 +1,11 @@
 {
   "plugins": [
     "stylelint-selector-bem-pattern",
-    "stylelint-declaration-strict-value"
+    "stylelint-declaration-strict-value",
+    "stylelint-no-unused-selectors"
   ],
   "rules": {
+    "plugin/no-unused-selectors": true,
     "scale-unlimited/declaration-strict-value": "color",
     "plugin/selector-bem-pattern": {
         "preset": "bem"

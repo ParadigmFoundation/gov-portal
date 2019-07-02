@@ -18,6 +18,7 @@
     "react-scripts": "3.0.1",
     "reactstrap": "^8.0.0",
     "storybook-react-router": "^1.0.5",
+    "stylelint-no-unused-selectors": "^1.0.6",
     "typescript": "^3.5.2"
   },
   "scripts": {
