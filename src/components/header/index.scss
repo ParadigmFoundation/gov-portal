@@ -9,7 +9,7 @@
     opacity: 0.25;
     font-family: 'Gilroy-Medium', sans-serif;
     font-size: 20px;
-    color: #000000;
+    color: $color-black;
     letter-spacing: 0;
     float: right;
     margin-left: 10px;
@@ -17,7 +17,7 @@
 
   &__balance {
     font-size: 40px;
-    color: #000000;
+    color: $color-black;
     font-family: 'DINPro-medium', sans-serif;
     opacity: 0.75;
     display: block;
@@ -27,7 +27,7 @@
 
   &__address {
     font-size: 18px;
-    color: #000000;
+    color: $color-black;
     font-family: 'DINPro-medium', sans-serif;
     opacity: 0.25;
     display: block;
@@ -37,7 +37,7 @@
   }
 
   &__icon {
-    background: #0BD080;
+    background: $color-green;
     border-radius: 10px;
     width: 12px;
     height: 12px;
