@@ -1,3 +1,5 @@
+/* stylelint-disable plugin/no-unused-selectors */
+
 /* @define button */
 
 @import 'style/variables.scss';
@@ -6,7 +8,7 @@
   background: #4a4a4a;
   font-family: 'Gilroy-Medium', sans-serif;
   font-size: 14px;
-  color: #fff;
+  color: $color-white;
   text-align: center;
   border: none;
   border-radius: 2px;
@@ -19,11 +21,11 @@
   }
 
   &--red {
-    background: #fd4848;
+    background: $color-red;
   }
 
   &--green {
-    background: #0BD080;
+    background: $color-green;
   }
 
   &--block {
