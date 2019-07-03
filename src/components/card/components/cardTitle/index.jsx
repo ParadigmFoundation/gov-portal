@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './index.scss';
+
 function CardTitle(props) {
   const {
     children,
   } = props;
 
   return (
-    <div className="card__title">
+    <div className="card-title">
       {children}
     </div>
   );

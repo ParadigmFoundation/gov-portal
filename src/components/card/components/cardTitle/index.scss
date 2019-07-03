@@ -1,0 +1,11 @@
+/* @define card-title */
+
+@import 'style/variables.scss';
+
+.card-title {
+  font-family: 'Gilroy-Medium', sans-serif;
+  font-size: 18px;
+  color: #404040;
+  text-align: left;
+  padding-bottom: 18px;
+}
