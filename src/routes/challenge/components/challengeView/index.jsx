@@ -36,7 +36,7 @@ function ChallengeView(props) {
   function returnStatus() {
     if (status === 'vote') {
       return (
-        <div>
+        <div className="challenge-view">
           <div className="challenge-view__challenge-label">
             Vote on this challenge
             {' '}
