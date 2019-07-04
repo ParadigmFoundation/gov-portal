@@ -1,76 +1,47 @@
-/**
- * Displays the header
- */
+import React, {
+  useState,
+  useContext,
+  useEffect,
+} from 'react';
 
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import GovContext from '../../store/govContext';
+
+import HeaderView from './components';
+
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-} from 'reactstrap';
+  shortenAddress,
+} from '../../utils/formatting';
 
-import KosuSymbol from '../symbols/kosuSymbol';
+function Header() {
+  const gov = useContext(GovContext);
 
-import ParadigmLogo from '../../assets/img/paradigm-Logo2@2x.png';
+  const [isMetaMaskConnected, setIsMetaMaskConnected] = useState(false);
+  const [address, setAddress] = useState();
+  const [balance, setBalance] = useState();
 
-import './index.scss';
+  useEffect(() => {
+    async function fetchUserInfo() {
+      if (gov) {
+        const { coinbase } = gov;
 
-function Header(props) {
-  const {
-    address,
-    balance,
-  } = props;
+        const res = await gov.kosu.kosuToken.balanceOf(coinbase);
 
-  const [isOpen, setIsOpen] = useState(false);
+        setIsMetaMaskConnected(true);
+        setAddress(coinbase);
+        setBalance(res.toString());
+      }
+    }
+
+    fetchUserInfo();
+  }, [gov]);
 
   return (
-    <div>
-      <Navbar light expand="md" className="header">
-        <NavbarBrand href="/">
-          <img src={ParadigmLogo} alt="Paradigm" />
-          <div className="header__subtitle">
-            Governance
-          </div>
-        </NavbarBrand>
-        <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto align-items-center" navbar>
-            <NavItem>
-              <div className="header__icon" />
-              {' '}
-            </NavItem>
-            <NavItem>
-              <span className="header__address">
-                {address}
-              </span>
-            </NavItem>
-            <NavItem>
-              <KosuSymbol />
-            </NavItem>
-            <NavItem>
-              <span className="header__balance">
-                {balance}
-              </span>
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar>
-    </div>
+    <HeaderView
+      address={address && shortenAddress(address)}
+      balance={balance && balance}
+      metaMaskConnected={isMetaMaskConnected}
+    />
   );
 }
-
-Header.propTypes = {
-  address: PropTypes.string,
-  balance: PropTypes.string,
-};
-
-Header.defaultProps = {
-  address: '0x0',
-  balance: '0',
-};
 
 export default Header;
