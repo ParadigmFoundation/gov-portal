@@ -1,0 +1,26 @@
+/* @define detailed-card-header */
+
+@import 'style/variables.scss';
+
+.detailed-card-header {
+  &__id {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 20px;
+    color: #838383;
+    text-align: left;
+  }
+
+  &__timestamp-badge {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 12px;
+    text-align: right;
+
+    &--new-proposal {
+      color: $color-green;
+    }
+
+    &--ending-soon {
+      color: $color-red;
+    }
+  }
+}

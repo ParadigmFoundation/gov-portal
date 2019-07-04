@@ -6,46 +6,5 @@
   background: $color-white;
   border: 1px solid #ededed;
   box-shadow: 3px 9px 15px 0 rgba(0, 0, 0, 0.07);
-
-  &__header {
-    font-family: 'DINPro-Medium', sans-serif;
-    font-size: 20px;
-    color: #838383;
-    text-align: left;
-  }
-
-  &__status--new {
-    font-family: 'Gilroy-Medium', sans-serif;
-    font-size: 12px;
-    color: $color-green;
-    text-align: right;
-  }
-
-  &__status--ending-soon {
-    font-family: 'Gilroy-Medium', sans-serif;
-    font-size: 12px;
-    color: $color-red;
-    text-align: right;
-  }
-
-  &__content {
-    font-family: 'DINPro-Medium', sans-serif;
-    font-size: 14px;
-    color: #4A4A4A;
-    text-align: left;
-  }
-
-  &__info-label {
-    font-family: 'Gilroy-Regular', sans-serif;
-    font-size: 12px;
-    color: #838383;
-    text-align: left;
-  }
-
-  &__info-amount {
-    font-family: 'DINPro-Medium', sans-serif;
-    font-size: 12px;
-    color: #4A4A4A;
-    text-align: left;
-  }
+  padding: 20px;
 }
