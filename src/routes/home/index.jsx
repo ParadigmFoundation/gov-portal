@@ -14,10 +14,17 @@ function Home() {
   const [isMetaMaskConnected, setIsMetaMaskConnected] = useState(false);
 
   useEffect(() => {
-    if (gov) {
-      console.log(gov);
-      setIsMetaMaskConnected(true);
+    async function fetchData() {
+      if (gov) {
+        console.log(gov);
+
+        setIsMetaMaskConnected(true);
+
+        const proposals = gov.currentProposals();
+      }
     }
+
+    fetchData();
   }, [gov]);
 
   return (

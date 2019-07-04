@@ -18,7 +18,7 @@ function HomeView(props) {
   } = props;
 
   return (
-    <div className="home-view">
+    <div className="home-view container">
       <Row className="pb-4">
         <Col>
           <div className="home-view__title">
