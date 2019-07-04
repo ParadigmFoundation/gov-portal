@@ -24,7 +24,26 @@ function shortenAddress(address) {
   return `${address.substring(0, 6)}...${address.substring(address.length - 6, address.length)}`;
 }
 
+function getTimestampBadge(timestamp) {
+  const day = 60 * 60 * 24;
+  const week = day * 7;
+
+  const now = Date.now() / 1000;
+  const timeleft = timestamp - now;
+
+  if (timeleft < day) {
+    return 'endingSoon';
+  }
+
+  if (timeleft > week) {
+    return 'newProposal';
+  }
+
+  return 'noBadge';
+}
+
 export {
   timestampToCountdown,
   shortenAddress,
+  getTimestampBadge,
 };
