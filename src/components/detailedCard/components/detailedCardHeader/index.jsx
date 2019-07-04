@@ -14,6 +14,7 @@ import {
 function DetailedCardHeader(props) {
   const {
     id,
+    type,
     acceptUnix,
   } = props;
 
@@ -30,13 +31,13 @@ function DetailedCardHeader(props) {
       );
     }
 
-    if (getTimestampBadge(timestamp) === 'newProposal') {
+    if (getTimestampBadge(timestamp) === 'new') {
       return (
         <Col>
           <div
-            className="detailed-card-header__timestamp-badge detailed-card-header__timestamp-badge--new-proposal"
+            className="detailed-card-header__timestamp-badge detailed-card-header__timestamp-badge--new"
           >
-            New proposal
+            {type === 'challenge' ? 'New challenge' : 'New proposal'}
           </div>
         </Col>
       );
@@ -61,6 +62,7 @@ function DetailedCardHeader(props) {
 
 DetailedCardHeader.propTypes = {
   acceptUnix: PropTypes.number.isRequired,
+  type: PropTypes.oneOf(['challenge', 'proposal']).isRequired,
   id: PropTypes.string.isRequired,
 };
 

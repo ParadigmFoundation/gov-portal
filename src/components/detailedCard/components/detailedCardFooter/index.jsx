@@ -48,7 +48,7 @@ function DetailedCardFooter(props) {
 }
 
 DetailedCardFooter.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['challenge', 'proposal']).isRequired,
   acceptUnix: PropTypes.number.isRequired,
 };
 

@@ -36,7 +36,7 @@ function getTimestampBadge(timestamp) {
   }
 
   if (timeleft > week) {
-    return 'newProposal';
+    return 'new';
   }
 
   return 'noBadge';
