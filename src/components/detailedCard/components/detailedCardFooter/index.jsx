@@ -6,6 +6,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
+  NavLink,
+} from 'react-router-dom';
+import {
   Row,
   Col,
 } from 'reactstrap';
@@ -20,6 +23,7 @@ import './index.scss';
 
 function DetailedCardFooter(props) {
   const {
+    id,
     type,
     acceptUnix,
   } = props;
@@ -39,7 +43,9 @@ function DetailedCardFooter(props) {
         </Col>
         <Col className="text-right">
           <Button
+            tag={NavLink}
             text="View"
+            to={`/${type}/${id}`}
           />
         </Col>
       </Row>
@@ -48,6 +54,7 @@ function DetailedCardFooter(props) {
 }
 
 DetailedCardFooter.propTypes = {
+  id: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['challenge', 'proposal']).isRequired,
   acceptUnix: PropTypes.number.isRequired,
 };
