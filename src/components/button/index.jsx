@@ -42,7 +42,7 @@ function Button(props) {
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  action: PropTypes.func.isRequired,
+  action: PropTypes.func,
   color: PropTypes.string,
   block: PropTypes.bool,
 };
@@ -50,6 +50,7 @@ Button.propTypes = {
 Button.defaultProps = {
   color: 'default',
   block: false,
+  action: () => {},
 };
 
 export default Button;
