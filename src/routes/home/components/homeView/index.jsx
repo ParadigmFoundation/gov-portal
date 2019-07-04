@@ -6,17 +6,19 @@ import {
 } from 'reactstrap';
 
 import Table from '../../../../components/table';
-import ConnectMetaMask from './components/connectMetaMask';
+import ConnectMetaMask from '../../../../components/connectMetaMask';
 
 import './index.scss';
 
 function HomeView(props) {
   const {
     metaMaskConnected,
+    validators,
+    pastChallenges,
   } = props;
 
   return (
-    <div>
+    <div className="home-view">
       <Row className="pb-4">
         <Col>
           <div className="home-view__title">
@@ -65,7 +67,7 @@ function HomeView(props) {
             <thead>
               <tr>
                 <th>
-                  Name
+                  Address
                 </th>
                 <th>
                   Stake
@@ -85,12 +87,14 @@ function HomeView(props) {
               </tr>
             </thead>
             <tbody>
-              {!metaMaskConnected && (
+              {!metaMaskConnected ? (
                 <tr>
                   <td colSpan="6">
                     <ConnectMetaMask />
                   </td>
                 </tr>
+              ) : (
+                validators.map(validator => validator)
               )}
             </tbody>
           </Table>
@@ -129,12 +133,14 @@ function HomeView(props) {
               </tr>
             </thead>
             <tbody>
-              {!metaMaskConnected && (
+              {!metaMaskConnected ? (
                 <tr>
                   <td colSpan="6">
                     <ConnectMetaMask />
                   </td>
                 </tr>
+              ) : (
+                pastChallenges.map(pastChallenge => pastChallenge)
               )}
             </tbody>
           </Table>
@@ -146,10 +152,14 @@ function HomeView(props) {
 
 HomeView.propTypes = {
   metaMaskConnected: PropTypes.bool,
+  validators: PropTypes.arrayOf(PropTypes.element),
+  pastChallenges: PropTypes.arrayOf(PropTypes.element),
 };
 
 HomeView.defaultProps = {
   metaMaskConnected: false,
+  validators: [],
+  pastChallenges: [],
 };
 
 export default HomeView;

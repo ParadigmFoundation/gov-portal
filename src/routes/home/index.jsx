@@ -1,20 +1,30 @@
 import React, {
+  useState,
   useContext,
+  useEffect,
 } from 'react';
 
 import GovContext from '../../store/govContext';
 
-import ValidatorSymbol from '../../components/symbols/validatorSymbol';
+import HomeView from './components/homeView';
 
 function Home() {
   const gov = useContext(GovContext);
 
-  console.log(gov);
+  const [isMetaMaskConnected, setIsMetaMaskConnected] = useState(false);
+
+  useEffect(() => {
+    if (gov) {
+      console.log(gov);
+      setIsMetaMaskConnected(true);
+    }
+  }, [gov]);
 
   return (
     <div>
-      <p>Home</p>
-      <ValidatorSymbol />
+      <HomeView
+        metaMaskConnected={isMetaMaskConnected}
+      />
     </div>
   );
 }
