@@ -42,8 +42,24 @@ function getTimestampBadge(timestamp) {
   return 'noBadge';
 }
 
+function timestampToAge(timestamp) {
+  const now = Date.now() / 1000;
+  const age = now - timestamp;
+
+  const minute = 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+
+  const ageInDays = Math.floor(age / day);
+  const ageInHours = Math.floor((age % day) / hour);
+  const ageInMinutes = Math.floor((age % hour) / minute);
+
+  return `${ageInDays}d : ${ageInHours}h : ${ageInMinutes}m`;
+}
+
 export {
   timestampToCountdown,
   shortenAddress,
   getTimestampBadge,
+  timestampToAge,
 };

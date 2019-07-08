@@ -7,14 +7,32 @@ import {
 
 import Table from '../../../../components/table';
 import ConnectMetaMask from '../../../../components/connectMetaMask';
+import EmptyState from '../../../../components/emptyState';
+
+import ValidatorsView from '../validatorsView';
+import PastChallengesView from '../pastChallengesView';
 
 import './index.scss';
 
 function HomeView(props) {
+  function displayProposals(proposalsToDisplay) {
+    if (proposalsToDisplay.length === 0) {
+      return <EmptyState />;
+    }
+  }
+
+  function displayActiveChallenges(activeChallengesToDisplay) {
+    if (activeChallengesToDisplay.length === 0) {
+      return <EmptyState />;
+    }
+  }
+
   const {
     metaMaskConnected,
-    validators,
+    proposals,
+    activeChallenges,
     pastChallenges,
+    validators,
   } = props;
 
   return (
@@ -35,8 +53,10 @@ function HomeView(props) {
       </Row>
       <Row className="pb-5">
         <Col>
-          {!metaMaskConnected && (
+          {!metaMaskConnected ? (
             <ConnectMetaMask />
+          ) : (
+            displayProposals(proposals)
           )}
         </Col>
       </Row>
@@ -49,55 +69,26 @@ function HomeView(props) {
       </Row>
       <Row className="pb-5">
         <Col>
-          {!metaMaskConnected && (
+          {!metaMaskConnected ? (
             <ConnectMetaMask />
+          ) : (
+            displayActiveChallenges(activeChallenges)
           )}
         </Col>
       </Row>
       <Row className="pb-4">
         <Col>
           <div className="home-view__subtitle">
-            Validator
+            Validators
           </div>
         </Col>
       </Row>
       <Row className="pb-5">
         <Col>
-          <Table>
-            <thead>
-              <tr>
-                <th>
-                  Address
-                </th>
-                <th>
-                  Stake
-                </th>
-                <th>
-                  Daily Reward
-                </th>
-                <th>
-                  Voting Power
-                </th>
-                <th>
-                  Uptime
-                </th>
-                <th>
-                  Age
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {!metaMaskConnected ? (
-                <tr>
-                  <td colSpan="6">
-                    <ConnectMetaMask />
-                  </td>
-                </tr>
-              ) : (
-                validators.map(validator => validator)
-              )}
-            </tbody>
-          </Table>
+          <ValidatorsView
+            metaMaskConnected={metaMaskConnected}
+            validators={validators}
+          />
         </Col>
       </Row>
       <Row className="pb-4">
@@ -109,41 +100,10 @@ function HomeView(props) {
       </Row>
       <Row className="pb-5">
         <Col>
-          <Table>
-            <thead>
-              <tr>
-                <th>
-                  Id
-                </th>
-                <th>
-                  Challenger
-                </th>
-                <th>
-                  Type
-                </th>
-                <th>
-                  Result
-                </th>
-                <th>
-                  Tokens at Stake
-                </th>
-                <th>
-                  Time
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {!metaMaskConnected ? (
-                <tr>
-                  <td colSpan="6">
-                    <ConnectMetaMask />
-                  </td>
-                </tr>
-              ) : (
-                pastChallenges.map(pastChallenge => pastChallenge)
-              )}
-            </tbody>
-          </Table>
+          <PastChallengesView
+            metaMaskConnected={metaMaskConnected}
+            pastChallenges={pastChallenges}
+          />
         </Col>
       </Row>
     </div>
@@ -152,12 +112,16 @@ function HomeView(props) {
 
 HomeView.propTypes = {
   metaMaskConnected: PropTypes.bool,
+  proposals: PropTypes.arrayOf(PropTypes.element),
+  activeChallenges: PropTypes.arrayOf(PropTypes.element),
   validators: PropTypes.arrayOf(PropTypes.element),
   pastChallenges: PropTypes.arrayOf(PropTypes.element),
 };
 
 HomeView.defaultProps = {
   metaMaskConnected: false,
+  proposals: [],
+  activeChallenges: [],
   validators: [],
   pastChallenges: [],
 };

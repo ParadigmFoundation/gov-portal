@@ -12,6 +12,10 @@ function Home() {
   const gov = useContext(GovContext);
 
   const [isMetaMaskConnected, setIsMetaMaskConnected] = useState(false);
+  const [proposals, setProposals] = useState([]);
+  const [validators, setValidators] = useState([]);
+  const [activeChallenges, setActiveChallenges] = useState([]);
+  const [pastChallenges, setPastChallenges] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -19,8 +23,7 @@ function Home() {
         console.log(gov);
 
         setIsMetaMaskConnected(true);
-
-        const proposals = gov.currentProposals();
+        // setProposals(gov.currentProposals());
       }
     }
 
@@ -31,6 +34,10 @@ function Home() {
     <div>
       <HomeView
         metaMaskConnected={isMetaMaskConnected}
+        proposals={proposals}
+        validators={validators}
+        activeChallenges={activeChallenges}
+        pastChallenges={pastChallenges}
       />
     </div>
   );
