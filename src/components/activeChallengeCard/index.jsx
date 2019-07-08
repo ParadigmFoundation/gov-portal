@@ -36,6 +36,7 @@ function ActiveChallengeCard(props) {
             {shortenAddress(challenger)}
             {' '}
             is challenging
+            {' '}
             {`${shortenAddress(listingOwner)}'s`}
             {' '}
             proposal
