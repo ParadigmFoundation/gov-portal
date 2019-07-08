@@ -38,7 +38,7 @@ function Header() {
   return (
     <HeaderView
       address={address && shortenAddress(address)}
-      balance={balance && balance}
+      balance={balance && gov.weiToEther(balance)}
       metaMaskConnected={isMetaMaskConnected}
     />
   );
