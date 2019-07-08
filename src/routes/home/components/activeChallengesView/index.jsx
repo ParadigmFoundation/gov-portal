@@ -32,7 +32,7 @@ function ActiveChallengesView(props) {
 }
 
 ActiveChallengesView.propTypes = {
-  metaMaskConnected: false,
+  metaMaskConnected: PropTypes.bool,
   activeChallenges: PropTypes.arrayOf(PropTypes.object),
 };
 

@@ -32,7 +32,7 @@ function ActiveProposalsView(props) {
 }
 
 ActiveProposalsView.propTypes = {
-  metaMaskConnected: false,
+  metaMaskConnected: PropTypes.bool,
   proposals: PropTypes.arrayOf(PropTypes.object),
 };
 
