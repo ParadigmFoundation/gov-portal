@@ -5,28 +5,14 @@ import {
   Col,
 } from 'reactstrap';
 
-import Table from '../../../../components/table';
-import ConnectMetaMask from '../../../../components/connectMetaMask';
-import EmptyState from '../../../../components/emptyState';
-
 import ValidatorsView from '../validatorsView';
 import PastChallengesView from '../pastChallengesView';
+import ActiveChallengesView from '../activeChallengesView';
+import ActiveProposalsView from '../activeProposalsView';
 
 import './index.scss';
 
 function HomeView(props) {
-  function displayProposals(proposalsToDisplay) {
-    if (proposalsToDisplay.length === 0) {
-      return <EmptyState />;
-    }
-  }
-
-  function displayActiveChallenges(activeChallengesToDisplay) {
-    if (activeChallengesToDisplay.length === 0) {
-      return <EmptyState />;
-    }
-  }
-
   const {
     metaMaskConnected,
     proposals,
@@ -53,11 +39,10 @@ function HomeView(props) {
       </Row>
       <Row className="pb-5">
         <Col>
-          {!metaMaskConnected ? (
-            <ConnectMetaMask />
-          ) : (
-            displayProposals(proposals)
-          )}
+          <ActiveProposalsView
+            metaMaskConnected={metaMaskConnected}
+            proposals={proposals}
+          />
         </Col>
       </Row>
       <Row className="pb-5">
@@ -69,11 +54,10 @@ function HomeView(props) {
       </Row>
       <Row className="pb-5">
         <Col>
-          {!metaMaskConnected ? (
-            <ConnectMetaMask />
-          ) : (
-            displayActiveChallenges(activeChallenges)
-          )}
+          <ActiveChallengesView
+            metaMaskConnected={metaMaskConnected}
+            activeChallenges={activeChallenges}
+          />
         </Col>
       </Row>
       <Row className="pb-4">
