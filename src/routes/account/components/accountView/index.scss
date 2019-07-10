@@ -1,0 +1,19 @@
+/* @define account-view */
+
+@import 'style/variables.scss';
+
+.account-view {
+  &__title {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 39px;
+    color: #404040;
+    text-align: left;
+  }
+
+  &__subtitle {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 25px;
+    color: #404040;
+    text-align: left;
+  }
+}
