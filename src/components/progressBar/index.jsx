@@ -11,6 +11,7 @@ import './index.scss';
 function ProgressBar(props) {
   const {
     value,
+    max,
   } = props;
 
   function getClassName(v) {
@@ -28,8 +29,9 @@ function ProgressBar(props) {
       <Row className="pb-2">
         <Col>
           <Progress
-            className="my-progress-bar__bar"
-            max={100}
+            className="my-progress-bar__progress-bar"
+            barClassName="my-progress-bar__bar"
+            max={max}
             value={value}
           />
         </Col>
@@ -68,10 +70,12 @@ function ProgressBar(props) {
 
 ProgressBar.propTypes = {
   value: PropTypes.number,
+  max: PropTypes.number,
 };
 
 ProgressBar.defaultProps = {
   value: 0,
+  max: 100,
 };
 
 export default ProgressBar;

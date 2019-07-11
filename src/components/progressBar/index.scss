@@ -3,14 +3,15 @@
 @import 'style/variables.scss';
 
 .my-progress-bar {
-  &__bar {
+  &__progress-bar {
     background: #ececec;
     border-radius: 18px;
+  }
 
-    & .progress-bar {
-      background: $color-green;
-      border-radius: 18px;
-    }
+  &__bar {
+    background: $color-green;
+    border-radius: 18px;
+    min-width: 1%;
   }
 
   &__label {
