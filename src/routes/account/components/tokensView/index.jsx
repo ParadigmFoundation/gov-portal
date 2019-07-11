@@ -2,11 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import ConnectMetaMask from '../../../../components/connectMetaMask';
-import Card from '../../../../components/card';
-import CardTitle from '../../../../components/card/components/cardTitle';
-import CardContent from '../../../../components/card/components/cardContent';
-import CardFooter from '../../../../components/card/components/cardFooter';
+import SimpleCard from '../../../../components/simpleCard';
+import SimpleCardTitle from '../../../../components/simpleCard/components/simpleCardTitle';
+import SimpleCardContent from '../../../../components/simpleCard/components/simpleCardContent';
+import SimpleCardFooter from '../../../../components/simpleCard/components/simpleCardFooter';
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
+
+import QuestionIcon from '../../../../components/questionIcon';
 
 function TokensView(props) {
   const {
@@ -15,72 +17,73 @@ function TokensView(props) {
 
   return (
     <>
-      <Card>
-        <CardTitle>
+      <SimpleCard>
+        <SimpleCardTitle>
           Total balance
-        </CardTitle>
-        <CardContent>
+          <QuestionIcon />
+        </SimpleCardTitle>
+        <SimpleCardContent>
           0
-        </CardContent>
-        <CardFooter>
+        </SimpleCardContent>
+        <SimpleCardFooter>
           <KosuSymbol />
-        </CardFooter>
-      </Card>
-      <Card>
-        <CardTitle>
+        </SimpleCardFooter>
+      </SimpleCard>
+      <SimpleCard>
+        <SimpleCardTitle>
           System balance
-        </CardTitle>
-        <CardContent>
+        </SimpleCardTitle>
+        <SimpleCardContent>
           0
-        </CardContent>
-        <CardFooter>
+        </SimpleCardContent>
+        <SimpleCardFooter>
           <KosuSymbol />
-        </CardFooter>
-      </Card>
-      <Card>
-        <CardTitle>
+        </SimpleCardFooter>
+      </SimpleCard>
+      <SimpleCard>
+        <SimpleCardTitle>
           In wallet
-        </CardTitle>
-        <CardContent>
+        </SimpleCardTitle>
+        <SimpleCardContent>
           0
-        </CardContent>
-        <CardFooter>
+        </SimpleCardContent>
+        <SimpleCardFooter>
           <KosuSymbol />
-        </CardFooter>
-      </Card>
-      <Card>
-        <CardTitle>
+        </SimpleCardFooter>
+      </SimpleCard>
+      <SimpleCard>
+        <SimpleCardTitle>
           Bonded
-        </CardTitle>
-        <CardContent>
+        </SimpleCardTitle>
+        <SimpleCardContent>
           0
-        </CardContent>
-        <CardFooter>
+        </SimpleCardContent>
+        <SimpleCardFooter>
           <KosuSymbol />
-        </CardFooter>
-      </Card>
-      <Card>
-        <CardTitle>
+        </SimpleCardFooter>
+      </SimpleCard>
+      <SimpleCard>
+        <SimpleCardTitle>
           Staked
-        </CardTitle>
-        <CardContent>
+        </SimpleCardTitle>
+        <SimpleCardContent>
           0
-        </CardContent>
-        <CardFooter>
+        </SimpleCardContent>
+        <SimpleCardFooter>
           <KosuSymbol />
-        </CardFooter>
-      </Card>
-      <Card>
-        <CardTitle>
+        </SimpleCardFooter>
+      </SimpleCard>
+      <SimpleCard>
+        <SimpleCardTitle>
           In treasury
-        </CardTitle>
-        <CardContent>
+        </SimpleCardTitle>
+        <SimpleCardContent>
           0
-        </CardContent>
-        <CardFooter>
+        </SimpleCardContent>
+        <SimpleCardFooter>
           <KosuSymbol />
-        </CardFooter>
-      </Card>
+        </SimpleCardFooter>
+      </SimpleCard>
     </>
   );
 }
