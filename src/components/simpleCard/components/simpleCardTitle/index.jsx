@@ -3,23 +3,23 @@ import PropTypes from 'prop-types';
 
 import './index.scss';
 
-function CardTitle(props) {
+function SimpleCardTitle(props) {
   const {
     children,
   } = props;
 
   return (
-    <div className="card-title">
+    <div className="simple-card-title">
       {children}
     </div>
   );
 }
 
-CardTitle.propTypes = {
+SimpleCardTitle.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element),
   ]).isRequired,
 };
 
-export default CardTitle;
+export default SimpleCardTitle;

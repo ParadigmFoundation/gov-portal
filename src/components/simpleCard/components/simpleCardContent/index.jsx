@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 
 import './index.scss';
 
-function Card(props) {
+function SimpleCardContent(props) {
   const {
     children,
   } = props;
 
   return (
-    <div className="card">
-      {children.map(child => child)}
+    <div className="simple-card-content">
+      {children}
     </div>
   );
 }
 
-Card.propTypes = {
+SimpleCardContent.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-export default Card;
+export default SimpleCardContent;
