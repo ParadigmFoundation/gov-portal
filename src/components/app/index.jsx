@@ -1,3 +1,8 @@
+/**
+ * This is the base of our dashboard:
+ * Handles and injects the context, and tracks the routes
+ */
+
 import React, {
   useState,
   useEffect,
@@ -12,18 +17,22 @@ import Gov from '@kosu/gov-portal-helper';
 import GovContext from '../../store/govContext';
 
 import Header from '../header';
+
 import Home from '../../routes/home';
+import Account from '../../routes/account';
 
 function App() {
-  const [govContext, setGovContext] = useState();
+  const [govObject, setGovObject] = useState();
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     async function init() {
       const gov = new Gov();
+      setGovObject(gov);
 
       try {
         await gov.init();
-        setGovContext(gov);
+        setIsReady(true);
       } catch (error) {
         console.log(error);
       }
@@ -32,13 +41,29 @@ function App() {
     init();
   }, []);
 
+  async function initGov() {
+    try {
+      await govObject.init();
+      setIsReady(true);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
-    <GovContext.Provider value={govContext}>
+    <GovContext.Provider
+      value={{
+        gov: govObject,
+        isReady,
+        initGov,
+      }}
+    >
       <BrowserRouter>
         <div>
           <Header />
           <Switch>
             <Route path="/" component={Home} />
+            <Route path="/account" component={Account} />
           </Switch>
         </div>
       </BrowserRouter>
