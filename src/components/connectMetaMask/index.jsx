@@ -13,19 +13,9 @@ function ConnectMetaMask(props) {
     text,
   } = props;
 
-  const gov = useContext(GovContext);
-
-  async function initGov() {
-    if (gov) {
-      try {
-        await gov.init();
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      console.log('Gov is not defined');
-    }
-  }
+  const {
+    initGov,
+  } = useContext(GovContext);
 
   return (
     <div
