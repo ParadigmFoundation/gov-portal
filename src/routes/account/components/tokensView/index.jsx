@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {
+  Row,
+  Col,
+} from 'reactstrap';
+
 import ConnectMetaMask from '../../../../components/connectMetaMask';
 import SimpleCard from '../../../../components/simpleCard';
 import SimpleCardTitle from '../../../../components/simpleCard/components/simpleCardTitle';
 import SimpleCardContent from '../../../../components/simpleCard/components/simpleCardContent';
 import SimpleCardFooter from '../../../../components/simpleCard/components/simpleCardFooter';
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
+import Button from '../../../../components/button';
 
 import QuestionIcon from '../../../../components/questionIcon';
 
@@ -32,6 +38,7 @@ function TokensView(props) {
       <SimpleCard>
         <SimpleCardTitle>
           System balance
+          <QuestionIcon />
         </SimpleCardTitle>
         <SimpleCardContent>
           0
@@ -42,7 +49,15 @@ function TokensView(props) {
       </SimpleCard>
       <SimpleCard>
         <SimpleCardTitle>
-          In wallet
+          <Row>
+            <Col>
+              In wallet
+              <QuestionIcon />
+            </Col>
+            <Col className="text-right">
+              <Button color="outlined" text="Add" small />
+            </Col>
+          </Row>
         </SimpleCardTitle>
         <SimpleCardContent>
           0
@@ -53,7 +68,15 @@ function TokensView(props) {
       </SimpleCard>
       <SimpleCard>
         <SimpleCardTitle>
-          Bonded
+          <Row>
+            <Col>
+              Bonded
+              <QuestionIcon />
+            </Col>
+            <Col className="text-right">
+              <Button color="outlined" text="Bond" small />
+            </Col>
+          </Row>
         </SimpleCardTitle>
         <SimpleCardContent>
           0
@@ -64,7 +87,15 @@ function TokensView(props) {
       </SimpleCard>
       <SimpleCard>
         <SimpleCardTitle>
-          Staked
+          <Row>
+            <Col>
+              Staked
+              <QuestionIcon />
+            </Col>
+            <Col className="text-right">
+              <Button color="outlined" text="Stake" small />
+            </Col>
+          </Row>
         </SimpleCardTitle>
         <SimpleCardContent>
           0
@@ -75,7 +106,15 @@ function TokensView(props) {
       </SimpleCard>
       <SimpleCard>
         <SimpleCardTitle>
-          In treasury
+          <Row>
+            <Col>
+              In treasury
+              <QuestionIcon />
+            </Col>
+            <Col xs={4} className="text-right">
+              <Button color="outlined" text="Add" small />
+            </Col>
+          </Row>
         </SimpleCardTitle>
         <SimpleCardContent>
           0
