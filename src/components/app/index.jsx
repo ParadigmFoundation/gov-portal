@@ -62,7 +62,7 @@ function App() {
         <div>
           <Header />
           <Switch>
-            <Route path="/" component={Home} />
+            <Route path="/" exact component={Home} />
             <Route path="/account" component={Account} />
           </Switch>
         </div>
