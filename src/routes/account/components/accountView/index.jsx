@@ -5,6 +5,8 @@ import {
   Col,
 } from 'reactstrap';
 
+import QuestionIcon from '../../../../components/questionIcon';
+
 import OrdersView from '../ordersView';
 import TokensView from '../tokensView';
 import GovernanceActivityView from '../governanceActivityView';
@@ -41,6 +43,7 @@ function AccountView(props) {
         <Col>
           <div className="account-view__subtitle">
             Your Orders
+            <QuestionIcon />
           </div>
         </Col>
       </Row>
@@ -53,6 +56,7 @@ function AccountView(props) {
         <Col>
           <div className="account-view__subtitle">
             Your Governance Activity
+            <QuestionIcon />
           </div>
         </Col>
       </Row>
