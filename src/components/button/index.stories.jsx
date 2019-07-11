@@ -11,4 +11,5 @@ storiesOf('Components/Button', module)
   .add('Red', () => <Button text="Challenge proposal" action={action('clicked')} color="red" />)
   .add('Green', () => <Button text="Challenge proposal" action={action('clicked')} color="green" />)
   .add('Outlined', () => <Button text="Challenge proposal" action={action('clicked')} color="outlined" />)
+  .add('Outlined Small', () => <Button text="Add" action={action('clicked')} color="outlined" small />)
   .add('Outlined green', () => <Button text="Challenge proposal" action={action('clicked')} color="outlined-green" />);

@@ -9,6 +9,7 @@ function Button(props) {
     action,
     color,
     block,
+    small,
   } = props;
 
   let classname = 'button';
@@ -33,6 +34,10 @@ function Button(props) {
     classname += ' button--outlined-green';
   }
 
+  if (small) {
+    classname += ' button--small';
+  }
+
   if (block) {
     classname += ' button--block';
   }
@@ -53,12 +58,14 @@ Button.propTypes = {
   action: PropTypes.func,
   color: PropTypes.string,
   block: PropTypes.bool,
+  small: PropTypes.bool,
 };
 
 Button.defaultProps = {
   color: 'default',
   block: false,
   action: () => {},
+  small: false,
 };
 
 export default Button;
