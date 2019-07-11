@@ -1,0 +1,27 @@
+/* @define my-progress-bar */
+
+@import 'style/variables.scss';
+
+.my-progress-bar {
+  &__bar {
+    background: #ececec;
+    border-radius: 18px;
+
+    & .progress-bar {
+      background: $color-green;
+      border-radius: 18px;
+    }
+  }
+
+  &__label {
+    opacity: 0.5;
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 20px;
+    color: #000;
+    letter-spacing: 0;
+  }
+
+  &__label--light {
+    opacity: 0.25;
+  }
+}
