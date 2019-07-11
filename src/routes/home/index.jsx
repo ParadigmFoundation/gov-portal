@@ -9,7 +9,10 @@ import GovContext from '../../store/govContext';
 import HomeView from './components/homeView';
 
 function Home() {
-  const gov = useContext(GovContext);
+  const {
+    gov,
+    isReady,
+  } = useContext(GovContext);
 
   const [isMetaMaskConnected, setIsMetaMaskConnected] = useState(false);
   const [proposals, setProposals] = useState([]);
@@ -19,11 +22,12 @@ function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      if (gov) {
-        console.log(gov);
-
+      if (isReady) {
         setIsMetaMaskConnected(true);
         // setProposals(gov.currentProposals());
+
+        const formattedValidators = [];
+        const currentValidators = await gov.currentValidators();
       }
     }
 
