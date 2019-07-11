@@ -37,15 +37,25 @@ function BondModal(props) {
               <KosuSymbol />
             </div>
           </Col>
-          <Col>
+          <Col className="text-right">
             <CloseIcon action={close} />
           </Col>
         </Row>
-        <Row className="align-items-center p-5">
+        <Row className="px-5 pb-3">
           <Col>
             <div className="bond-modal__label">
               Tokens to bond
             </div>
+          </Col>
+          <Col xs={2} />
+          <Col>
+            <div className="bond-modal__label">
+              Your order post limit
+            </div>
+          </Col>
+        </Row>
+        <Row className="align-items-center px-5">
+          <Col>
             <input
               placeholder={0}
               type="number"
@@ -60,9 +70,6 @@ function BondModal(props) {
             <img src={ArrowRightSrc} alt="arrow-right" width="100%" />
           </Col>
           <Col>
-            <div className="bond-modal__label">
-              Your order post limit
-            </div>
             <div className="bond-modal__limit">
               {limit}
             </div>
