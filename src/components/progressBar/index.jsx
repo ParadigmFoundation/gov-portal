@@ -14,10 +14,10 @@ function ProgressBar(props) {
     max,
   } = props;
 
-  function getClassName(v) {
+  function getClassName(percentage) {
     let className = 'my-progress-bar__label';
 
-    if (v > value) {
+    if (percentage > (value / max) * 100) {
       className += ' my-progress-bar__label--light';
     }
 
