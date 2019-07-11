@@ -10,6 +10,7 @@ function Button(props) {
     color,
     block,
     small,
+    disabled,
   } = props;
 
   let classname = 'button';
@@ -38,6 +39,10 @@ function Button(props) {
     classname += ' button--small';
   }
 
+  if (disabled) {
+    classname += ' button--disabled';
+  }
+
   if (block) {
     classname += ' button--block';
   }
@@ -47,6 +52,7 @@ function Button(props) {
       type="button"
       className={classname}
       onClick={() => action()}
+      disabled={disabled}
     >
       {text}
     </button>
@@ -59,6 +65,7 @@ Button.propTypes = {
   color: PropTypes.string,
   block: PropTypes.bool,
   small: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 Button.defaultProps = {
@@ -66,6 +73,7 @@ Button.defaultProps = {
   block: false,
   action: () => {},
   small: false,
+  disabled: false,
 };
 
 export default Button;

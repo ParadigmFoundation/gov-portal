@@ -35,7 +35,6 @@
   &--outlined {
     border: 1px solid #bfbfbf;
     font-family: 'DINPro-Medium', sans-serif;
-    font-size: 12px;
     color: #bfbfbf;
     text-align: center;
     background: none;
@@ -44,13 +43,20 @@
   &--outlined-green {
     border: 1px solid $color-green;
     font-family: 'DINPro-Medium', sans-serif;
-    font-size: 12px;
     color: $color-green;
     text-align: center;
     background: none;
   }
 
   &--small {
-    padding: 0px 10px;
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  &--disabled {
+    background: #bfbfbf;
+    font-family: 'Gilroy-Medium', sans-serif;
+    color: #fff;
+    text-align: center;
   }
 }
