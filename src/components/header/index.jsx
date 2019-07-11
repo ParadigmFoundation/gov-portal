@@ -13,7 +13,10 @@ import {
 } from '../../utils/formatting';
 
 function Header() {
-  const gov = useContext(GovContext);
+  const {
+    gov,
+    isReady,
+  } = useContext(GovContext);
 
   const [isMetaMaskConnected, setIsMetaMaskConnected] = useState(false);
   const [address, setAddress] = useState();
@@ -21,7 +24,7 @@ function Header() {
 
   useEffect(() => {
     async function fetchUserInfo() {
-      if (gov) {
+      if (isReady) {
         const { coinbase } = gov;
 
         const res = await gov.kosu.kosuToken.balanceOf(coinbase);
@@ -33,7 +36,7 @@ function Header() {
     }
 
     fetchUserInfo();
-  }, [gov]);
+  }, [isReady]);
 
   return (
     <HeaderView
