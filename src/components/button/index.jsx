@@ -25,6 +25,14 @@ function Button(props) {
     classname += ' button--green';
   }
 
+  if (color === 'outlined') {
+    classname += ' button--outlined';
+  }
+
+  if (color === 'outlined-green') {
+    classname += ' button--outlined-green';
+  }
+
   if (block) {
     classname += ' button--block';
   }

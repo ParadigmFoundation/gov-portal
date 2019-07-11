@@ -31,4 +31,22 @@
   &--block {
     width: 100%;
   }
+
+  &--outlined {
+    border: 1px solid #bfbfbf;
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 12px;
+    color: #bfbfbf;
+    text-align: center;
+    background: none;
+  }
+
+  &--outlined-green {
+    border: 1px solid $color-green;
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 12px;
+    color: $color-green;
+    text-align: center;
+    background: none;
+  }
 }
