@@ -1,0 +1,51 @@
+/* @define treasure-balance-modal*/
+
+.treasure-balance-modal {
+  background: #fff;
+  border: 1px solid #ededed;
+  box-shadow: 3px 9px 15px 0 rgba(0, 0, 0, 0.07);
+  min-width: 70%;
+
+  &__header {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 25px;
+    color: #404040;
+    text-align: left;
+  }
+
+  &__label {
+    opacity: 0.75;
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 17px;
+    color: #838383;
+    letter-spacing: 0;
+  }
+
+  &__input {
+    padding: 0 10px;
+    border: none;
+    background-color: #fafafa;
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 100px;
+    color: #000;
+    letter-spacing: -2.56px;
+    caret-color: #444;
+    width: 100%;
+  }
+
+  &__current-balance {
+    opacity: 0.75;
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 100px;
+    color: #000;
+    letter-spacing: -2.56px;
+  }
+
+  &__difference {
+    opacity: 0.75;
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 100px;
+    color: #000;
+    letter-spacing: -2.56px;
+  }
+}
