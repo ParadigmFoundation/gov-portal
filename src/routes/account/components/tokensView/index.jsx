@@ -19,6 +19,12 @@ import QuestionIcon from '../../../../components/questionIcon';
 function TokensView(props) {
   const {
     metaMaskConnected,
+    walletBalance,
+    totalBalance,
+    systemBalance,
+    bondedTokens,
+    tokensStakedFor,
+    treasuryBalance,
   } = props;
 
   return (
@@ -29,7 +35,7 @@ function TokensView(props) {
           <QuestionIcon />
         </SimpleCardTitle>
         <SimpleCardContent>
-          0
+          {totalBalance}
         </SimpleCardContent>
         <SimpleCardFooter>
           <KosuSymbol />
@@ -41,7 +47,7 @@ function TokensView(props) {
           <QuestionIcon />
         </SimpleCardTitle>
         <SimpleCardContent>
-          0
+          {systemBalance}
         </SimpleCardContent>
         <SimpleCardFooter>
           <KosuSymbol />
@@ -55,12 +61,12 @@ function TokensView(props) {
               <QuestionIcon />
             </Col>
             <Col className="text-right">
-              <Button color="outlined" text="Add" small />
+              <Button color="outlined-green" text="Add" small disabled={!metaMaskConnected} />
             </Col>
           </Row>
         </SimpleCardTitle>
         <SimpleCardContent>
-          0
+          {walletBalance}
         </SimpleCardContent>
         <SimpleCardFooter>
           <KosuSymbol />
@@ -74,12 +80,12 @@ function TokensView(props) {
               <QuestionIcon />
             </Col>
             <Col className="text-right">
-              <Button color="outlined" text="Bond" small />
+              <Button color="outlined-green" text="Bond" small disabled={!metaMaskConnected} />
             </Col>
           </Row>
         </SimpleCardTitle>
         <SimpleCardContent>
-          0
+          {bondedTokens}
         </SimpleCardContent>
         <SimpleCardFooter>
           <KosuSymbol />
@@ -93,12 +99,12 @@ function TokensView(props) {
               <QuestionIcon />
             </Col>
             <Col className="text-right">
-              <Button color="outlined" text="Stake" small />
+              <Button color="outlined-green" text="Stake" small disabled={!metaMaskConnected} />
             </Col>
           </Row>
         </SimpleCardTitle>
         <SimpleCardContent>
-          0
+          {tokensStakedFor}
         </SimpleCardContent>
         <SimpleCardFooter>
           <KosuSymbol />
@@ -112,12 +118,12 @@ function TokensView(props) {
               <QuestionIcon />
             </Col>
             <Col xs={4} className="text-right">
-              <Button color="outlined" text="Add" small />
+              <Button color="outlined-green" text="Add" small disabled={!metaMaskConnected} />
             </Col>
           </Row>
         </SimpleCardTitle>
         <SimpleCardContent>
-          0
+          {treasuryBalance}
         </SimpleCardContent>
         <SimpleCardFooter>
           <KosuSymbol />
@@ -129,10 +135,22 @@ function TokensView(props) {
 
 TokensView.propTypes = {
   metaMaskConnected: PropTypes.bool,
+  walletBalance: PropTypes.string,
+  totalBalance: PropTypes.string,
+  systemBalance: PropTypes.string,
+  bondedTokens: PropTypes.string,
+  tokensStakedFor: PropTypes.string,
+  treasuryBalance: PropTypes.string,
 };
 
 TokensView.defaultProps = {
   metaMaskConnected: false,
+  walletBalance: '0',
+  totalBalance: '0',
+  systemBalance: '0',
+  bondedTokens: '0',
+  tokensStakedFor: '0',
+  treasuryBalance: '0',
 };
 
 export default TokensView;

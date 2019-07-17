@@ -16,6 +16,12 @@ import './index.scss';
 function AccountView(props) {
   const {
     metaMaskConnected,
+    walletBalance,
+    totalBalance,
+    systemBalance,
+    bondedTokens,
+    tokensStakedFor,
+    treasuryBalance,
   } = props;
 
   return (
@@ -36,7 +42,15 @@ function AccountView(props) {
       </Row>
       <Row className="pb-5">
         <Col>
-          <TokensView />
+          <TokensView
+            metaMaskConnected
+            walletBalance={walletBalance}
+            totalBalance={totalBalance}
+            systemBalance={systemBalance}
+            bondedTokens={bondedTokens}
+            tokensStakedFor={tokensStakedFor}
+            treasuryBalance={treasuryBalance}
+          />
         </Col>
       </Row>
       <Row className="pb-4">
@@ -68,5 +82,25 @@ function AccountView(props) {
     </div>
   );
 }
+
+AccountView.propTypes = {
+  metaMaskConnected: PropTypes.bool,
+  walletBalance: PropTypes.string,
+  totalBalance: PropTypes.string,
+  systemBalance: PropTypes.string,
+  bondedTokens: PropTypes.string,
+  tokensStakedFor: PropTypes.string,
+  treasuryBalance: PropTypes.string,
+};
+
+AccountView.defaultProps = {
+  metaMaskConnected: false,
+  walletBalance: '0',
+  totalBalance: '0',
+  systemBalance: '0',
+  bondedTokens: '0',
+  tokensStakedFor: '0',
+  treasuryBalance: '0',
+};
 
 export default AccountView;
