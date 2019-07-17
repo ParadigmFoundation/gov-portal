@@ -17,6 +17,7 @@ function SimpleCardTitle(props) {
 
 SimpleCardTitle.propTypes = {
   children: PropTypes.oneOfType([
+    PropTypes.any,
     PropTypes.element,
     PropTypes.arrayOf(PropTypes.element),
   ]).isRequired,

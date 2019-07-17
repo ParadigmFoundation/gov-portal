@@ -16,7 +16,11 @@ function SimpleCardFooter(props) {
 }
 
 SimpleCardFooter.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.any,
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]).isRequired,
 };
 
 export default SimpleCardFooter;
