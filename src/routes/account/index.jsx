@@ -51,6 +51,7 @@ function Account() {
 
   return (
     <AccountView
+      metaMaskConnected={isReady}
       walletBalance={walletBalance}
       totalBalance={totalBalance}
       systemBalance={systemBalance}
