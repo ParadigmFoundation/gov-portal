@@ -46,7 +46,7 @@ function HeaderView(props) {
         <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
         <Collapse isOpen={isOpen} navbar>
           <Nav navbar>
-            <UncontrolledDropdown nav caret>
+            <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 {currentRoute}
               </DropdownToggle>
