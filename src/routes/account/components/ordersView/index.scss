@@ -1,0 +1,19 @@
+/* @define orders-view */
+
+@import 'style/variables.scss';
+
+.orders-view {
+  &__id {
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 16px;
+    color: #404040;
+    text-align: left;
+  }
+
+  &__expiration {
+    font-family: 'DINPro-Light', sans-serif;
+    font-size: 18px;
+    color: #404040;
+    text-align: left;
+  }
+}
