@@ -43,7 +43,7 @@ function AccountView(props) {
       <Row className="pb-5">
         <Col>
           <TokensView
-            metaMaskConnected
+            metaMaskConnected={metaMaskConnected}
             walletBalance={walletBalance}
             totalBalance={totalBalance}
             systemBalance={systemBalance}
@@ -63,7 +63,9 @@ function AccountView(props) {
       </Row>
       <Row className="pb-5">
         <Col>
-          <OrdersView />
+          <OrdersView
+            metaMaskConnected={metaMaskConnected}
+          />
         </Col>
       </Row>
       <Row className="pb-4">
