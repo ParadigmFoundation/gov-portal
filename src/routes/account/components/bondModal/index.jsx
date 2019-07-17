@@ -19,6 +19,7 @@ import './index.scss';
 
 function BondModal(props) {
   const {
+    currentBond,
     isOpen,
     close,
     limit,
@@ -105,12 +106,14 @@ function BondModal(props) {
 }
 
 BondModal.propTypes = {
+  currentBond: PropTypes.number,
   isOpen: PropTypes.bool,
   limit: PropTypes.number,
   close: PropTypes.func.isRequired,
 };
 
 BondModal.defaultProps = {
+  currentBond: 0,
   isOpen: false,
   limit: 0,
 };
