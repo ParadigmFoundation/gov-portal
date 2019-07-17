@@ -5,10 +5,10 @@ import {
   Col,
 } from 'reactstrap';
 
-import Card from '../../../../components/card';
-import CardTitle from '../../../../components/card/components/cardTitle';
-import CardContent from '../../../../components/card/components/cardContent';
-import CardFooter from '../../../../components/card/components/cardFooter';
+import SimpleCard from '../../../../components/simpleCard';
+import SimpleCardTitle from '../../../../components/simpleCard/components/simpleCardTitle';
+import SimpleCardContent from '../../../../components/simpleCard/components/simpleCardContent';
+import SimpleCardFooter from '../../../../components/simpleCard/components/simpleCardFooter';
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
 
@@ -114,59 +114,59 @@ function ValidatorView(props) {
       </Row>
       <Row className="pb-4">
         <Col xs={12} sm={3}>
-          <Card>
-            <CardTitle>
+          <SimpleCard>
+            <SimpleCardTitle>
               Tokens staked
-            </CardTitle>
-            <CardContent>
+            </SimpleCardTitle>
+            <SimpleCardContent>
               {tokensStaked}
-            </CardContent>
-            <CardFooter>
+            </SimpleCardContent>
+            <SimpleCardFooter>
               <KosuSymbol />
-            </CardFooter>
-          </Card>
+            </SimpleCardFooter>
+          </SimpleCard>
         </Col>
         <Col xs={12} sm={3}>
-          <Card>
-            <CardTitle>
+          <SimpleCard>
+            <SimpleCardTitle>
               Monthly reward
-            </CardTitle>
-            <CardContent>
+            </SimpleCardTitle>
+            <SimpleCardContent>
               {monthlyReward}
-            </CardContent>
-            <CardFooter>
+            </SimpleCardContent>
+            <SimpleCardFooter>
               <KosuSymbol />
-            </CardFooter>
-          </Card>
+            </SimpleCardFooter>
+          </SimpleCard>
         </Col>
         <Col xs={12} sm={3}>
-          <Card>
-            <CardTitle>
+          <SimpleCard>
+            <SimpleCardTitle>
               Voting power
-            </CardTitle>
-            <CardContent>
+            </SimpleCardTitle>
+            <SimpleCardContent>
               {`${votingPower}%`}
-            </CardContent>
-          </Card>
+            </SimpleCardContent>
+          </SimpleCard>
         </Col>
         <Col xs={12} sm={3}>
-          <Card>
-            <CardTitle>
+          <SimpleCard>
+            <SimpleCardTitle>
               Uptime
-            </CardTitle>
-            <CardContent>
+            </SimpleCardTitle>
+            <SimpleCardContent>
               {`${uptime}%`}
-            </CardContent>
-          </Card>
+            </SimpleCardContent>
+          </SimpleCard>
         </Col>
       </Row>
       <Row className="pb-5">
         <Col xs={12} sm={3}>
-          <Card>
-            <CardTitle>
+          <SimpleCard>
+            <SimpleCardTitle>
               Rank
-            </CardTitle>
-            <CardContent>
+            </SimpleCardTitle>
+            <SimpleCardContent>
               {rank}
               <span className="validator-view__rank-th-label">
                 th
@@ -175,15 +175,15 @@ function ValidatorView(props) {
               <span className="validator-view__rank-label">
                 of 99
               </span>
-            </CardContent>
-          </Card>
+            </SimpleCardContent>
+          </SimpleCard>
         </Col>
         <Col xs={12} sm={3}>
-          <Card>
-            <CardTitle>
+          <SimpleCard>
+            <SimpleCardTitle>
               Age
-            </CardTitle>
-            <CardContent>
+            </SimpleCardTitle>
+            <SimpleCardContent>
               {blockNumber}
               {' '}
               <span className="validator-view__age-block-label">
@@ -193,8 +193,8 @@ function ValidatorView(props) {
               <div className="validator-view__formatted-age">
                 {formattedAge}
               </div>
-            </CardContent>
-          </Card>
+            </SimpleCardContent>
+          </SimpleCard>
         </Col>
       </Row>
       <Row className="pb-5">

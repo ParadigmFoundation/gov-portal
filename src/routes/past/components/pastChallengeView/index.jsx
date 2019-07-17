@@ -11,10 +11,10 @@ import AcceptedSymbol from '../../../../components/symbols/acceptedSymbol';
 import ProposalSymbol from '../../../../components/symbols/proposalSymbol';
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
-import Card from '../../../../components/card';
-import CardTitle from '../../../../components/card/components/cardTitle';
-import CardContent from '../../../../components/card/components/cardContent';
-import CardFooter from '../../../../components/card/components/cardFooter';
+import SimpleCard from '../../../../components/simpleCard';
+import SimpleCardTitle from '../../../../components/simpleCard/components/simpleCardTitle';
+import SimpleCardContent from '../../../../components/simpleCard/components/simpleCardContent';
+import SimpleCardFooter from '../../../../components/simpleCard/components/simpleCardFooter';
 import Results from './components/results';
 
 import {
@@ -83,30 +83,30 @@ function PastChallengeView(props) {
       </Row>
       <Row className="pb-5">
         <Col xs="12" sm="4">
-          <Card>
-            <CardTitle>
+          <SimpleCard>
+            <SimpleCardTitle>
               Stake size
-            </CardTitle>
-            <CardContent>
+            </SimpleCardTitle>
+            <SimpleCardContent>
               {stakeSize}
-            </CardContent>
-            <CardFooter>
+            </SimpleCardContent>
+            <SimpleCardFooter>
               <KosuSymbol />
-            </CardFooter>
-          </Card>
+            </SimpleCardFooter>
+          </SimpleCard>
         </Col>
         <Col xs="12" sm="4">
-          <Card>
-            <CardTitle>
+          <SimpleCard>
+            <SimpleCardTitle>
               Daily reward
-            </CardTitle>
-            <CardContent>
+            </SimpleCardTitle>
+            <SimpleCardContent>
               {dailyReward}
-            </CardContent>
-            <CardFooter>
+            </SimpleCardContent>
+            <SimpleCardFooter>
               <KosuSymbol />
-            </CardFooter>
-          </Card>
+            </SimpleCardFooter>
+          </SimpleCard>
         </Col>
       </Row>
       <Row className="pb-4">
