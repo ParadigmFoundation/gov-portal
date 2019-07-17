@@ -3,6 +3,9 @@
  */
 
 import React, { useState } from 'react';
+import {
+  NavLink,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
   Collapse,
@@ -11,6 +14,10 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
 } from 'reactstrap';
 
 import KosuSymbol from '../../symbols/kosuSymbol';
@@ -22,6 +29,7 @@ import './index.scss';
 
 function HeaderView(props) {
   const {
+    currentRoute,
     address,
     balance,
     metaMaskConnected,
@@ -34,12 +42,24 @@ function HeaderView(props) {
       <Navbar light expand="md" className="header">
         <NavbarBrand href="/">
           <img src={ParadigmLogo} alt="Paradigm" />
-          <div className="header__subtitle">
-            Governance
-          </div>
         </NavbarBrand>
         <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
         <Collapse isOpen={isOpen} navbar>
+          <Nav navbar>
+            <UncontrolledDropdown nav caret>
+              <DropdownToggle nav caret>
+                {currentRoute}
+              </DropdownToggle>
+              <DropdownMenu>
+                <DropdownItem tag={NavLink} to="/governance">
+                  Governance
+                </DropdownItem>
+                <DropdownItem tag={NavLink} to="/account">
+                  Account
+                </DropdownItem>
+              </DropdownMenu>
+            </UncontrolledDropdown>
+          </Nav>
           <Nav className="ml-auto align-items-center" navbar>
             {metaMaskConnected ? (
               <>
@@ -74,6 +94,7 @@ function HeaderView(props) {
 }
 
 HeaderView.propTypes = {
+  currentRoute: PropTypes.string.isRequired,
   address: PropTypes.string,
   balance: PropTypes.string,
   metaMaskConnected: PropTypes.bool,

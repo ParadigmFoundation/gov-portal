@@ -1,3 +1,8 @@
+/**
+ * Handles the logic part of the header
+ * TODO: Detect the current route to pass it to the view
+ */
+
 import React, {
   useState,
   useContext,
@@ -40,6 +45,7 @@ function Header() {
 
   return (
     <HeaderView
+      currentRoute="Governance"
       address={address && shortenAddress(address)}
       balance={balance && gov.weiToEther(balance)}
       metaMaskConnected={isMetaMaskConnected}
