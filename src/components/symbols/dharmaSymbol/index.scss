@@ -1,0 +1,15 @@
+/* @define dharma-symbol */
+
+@import 'style/variables.scss';
+
+.dharma-symbol {
+  font-family: 'DINPro-Medium', sans-serif;
+  font-size: 16px;
+  color: #fff;
+  letter-spacing: 1.02px;
+  text-align: center;
+  background-color: #F08D49;
+  border-radius: 2px;
+  width: 84px;
+  height: 30px;
+}
