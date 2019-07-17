@@ -1,10 +1,61 @@
-import React from 'react';
+import React, {
+  useContext,
+  useState,
+  useEffect,
+} from 'react';
+
+import GovContext from '../../store/govContext';
 
 import AccountView from './components/accountView';
 
 function Account() {
+  const {
+    gov,
+    isReady,
+  } = useContext(GovContext);
+
+  const [totalBalance, setTotalBalance] = useState();
+  const [walletBalance, setWalletBalance] = useState();
+  const [systemBalance, setSystemBalance] = useState();
+  const [bondedTokens, setBondedTokens] = useState();
+  const [tokensStakedFor, setTokensStakedFor] = useState();
+  const [treasuryBalance, setTreasuryBalance] = useState();
+
+  useEffect(() => {
+    async function fetchBalances() {
+      if (isReady) {
+        const { coinbase } = gov;
+
+        const walletBalanceReq = await gov.kosu.kosuToken.balanceOf(coinbase);
+        setWalletBalance(walletBalanceReq.toString());
+
+        const systemBalanceReq = await gov.kosu.treasury.systemBalance(coinbase);
+        setSystemBalance(systemBalanceReq.toString());
+
+        setTotalBalance(walletBalanceReq.plus(systemBalanceReq));
+
+        const bondedTokensReq = await gov.kosu.posterRegistry.tokensRegisteredFor(coinbase);
+        setBondedTokens(bondedTokensReq.toString());
+
+        const treasuryBalanceReq = await gov.kosu.treasury.currentBalance(coinbase);
+        setTreasuryBalance(treasuryBalanceReq.toString());
+
+        setTokensStakedFor(systemBalanceReq.minus(treasuryBalanceReq).minus(bondedTokensReq));
+      }
+    }
+
+    fetchBalances();
+  }, [isReady]);
+
   return (
-    <AccountView />
+    <AccountView
+      walletBalance={walletBalance}
+      totalBalance={totalBalance}
+      systemBalance={systemBalance}
+      bondedTokens={bondedTokens}
+      tokensStakedFor={tokensStakedFor}
+      treasuryBalance={treasuryBalance}
+    />
   );
 }
 
