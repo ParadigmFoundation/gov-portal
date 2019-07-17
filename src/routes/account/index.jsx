@@ -32,7 +32,7 @@ function Account() {
         const systemBalanceReq = await gov.kosu.treasury.systemBalance(coinbase);
         setSystemBalance(systemBalanceReq.toString());
 
-        setTotalBalance(walletBalanceReq.plus(systemBalanceReq));
+        setTotalBalance(walletBalanceReq.plus(systemBalanceReq).toString());
 
         const bondedTokensReq = await gov.kosu.posterRegistry.tokensRegisteredFor(coinbase);
         setBondedTokens(bondedTokensReq.toString());
@@ -40,7 +40,9 @@ function Account() {
         const treasuryBalanceReq = await gov.kosu.treasury.currentBalance(coinbase);
         setTreasuryBalance(treasuryBalanceReq.toString());
 
-        setTokensStakedFor(systemBalanceReq.minus(treasuryBalanceReq).minus(bondedTokensReq));
+        setTokensStakedFor(
+          systemBalanceReq.minus(treasuryBalanceReq).minus(bondedTokensReq).toString(),
+        );
       }
     }
 
