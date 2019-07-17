@@ -10,10 +10,6 @@ import ValidatorSymbol from '../../../../components/symbols/validatorSymbol';
 import AcceptedSymbol from '../../../../components/symbols/acceptedSymbol';
 import RejectedSymbol from '../../../../components/symbols/rejectedSymbol';
 
-import {
-  timestampToAge,
-} from '../../../../utils/formatting';
-
 function PastChallengesView(props) {
   const {
     metaMaskConnected,
