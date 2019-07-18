@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import GovernanceActivityView from '.';
 
@@ -104,6 +105,8 @@ storiesOf('Routes/Account/GovernanceActivityView', module)
       <GovernanceActivityView
         metaMaskConnected
         activities={activities}
+        confirmListing={action('clicked')}
+        resolveChallenge={action('clicked')}
       />
     </div>
   ));

@@ -22,6 +22,8 @@ function AccountView(props) {
     bondedTokens,
     tokensStakedFor,
     treasuryBalance,
+    confirmListing,
+    resolveChallenge,
   } = props;
 
   return (
@@ -80,6 +82,8 @@ function AccountView(props) {
         <Col>
           <GovernanceActivityView
             metaMaskConnected={metaMaskConnected}
+            confirmListing={confirmListing}
+            resolveChallenge={resolveChallenge}
           />
         </Col>
       </Row>
@@ -95,6 +99,8 @@ AccountView.propTypes = {
   bondedTokens: PropTypes.string,
   tokensStakedFor: PropTypes.string,
   treasuryBalance: PropTypes.string,
+  confirmListing: PropTypes.func,
+  resolveChallenge: PropTypes.func,
 };
 
 AccountView.defaultProps = {
@@ -105,6 +111,8 @@ AccountView.defaultProps = {
   bondedTokens: '0',
   tokensStakedFor: '0',
   treasuryBalance: '0',
+  confirmListing: () => {},
+  resolveChallenge: () => {},
 };
 
 export default AccountView;

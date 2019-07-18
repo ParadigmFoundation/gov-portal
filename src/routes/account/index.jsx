@@ -58,6 +58,8 @@ function Account() {
       bondedTokens={bondedTokens}
       tokensStakedFor={tokensStakedFor}
       treasuryBalance={treasuryBalance}
+      confirmListing={isReady && gov.kosu.validatorRegistry.confirmListing()}
+      resolveChallenge={isReady && gov.kosu.validatorRegistry.confirmListing()}
     />
   );
 }
