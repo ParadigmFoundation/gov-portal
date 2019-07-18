@@ -1,0 +1,12 @@
+/* @define governance-activity-view */
+
+@import 'style/variables.scss';
+
+.governance-activity-view {
+  &__description {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 16px;
+    color: #404040;
+    text-align: left;
+  }
+}
