@@ -78,7 +78,9 @@ function AccountView(props) {
       </Row>
       <Row className="pb-4">
         <Col>
-          <GovernanceActivityView />
+          <GovernanceActivityView
+            metaMaskConnected={metaMaskConnected}
+          />
         </Col>
       </Row>
     </div>
