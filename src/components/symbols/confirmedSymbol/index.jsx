@@ -10,7 +10,7 @@ function ConfirmedSymbol(props) {
 
   return (
     <div className={!small ? 'confirmed-symbol' : 'confirmed-symbol confirmed-symbol--small'}>
-      Confirm
+      Confirmed
     </div>
   );
 }

@@ -10,7 +10,7 @@ function ResolvedSymbol(props) {
 
   return (
     <div className={!small ? 'resolved-symbol' : 'resolved-symbol resolved-symbol--small'}>
-      Confirm
+      Resolved
     </div>
   );
 }
