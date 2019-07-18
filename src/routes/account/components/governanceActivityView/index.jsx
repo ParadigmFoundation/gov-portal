@@ -4,6 +4,14 @@ import PropTypes from 'prop-types';
 import Table from '../../../../components/table';
 import ConnectMetaMask from '../../../../components/connectMetaMask';
 import EmptyState from '../../../../components/emptyState';
+import ChallengeSymbol from '../../../../components/symbols/challengeSymbol';
+import ProposalSymbol from '../../../../components/symbols/proposalSymbol';
+import AcceptedSymbol from '../../../../components/symbols/acceptedSymbol';
+import RejectedSymbol from '../../../../components/symbols/rejectedSymbol';
+import ConfirmSymbol from '../../../../components/symbols/confirmSymbol';
+import ResolveSymbol from '../../../../components/symbols/resolveSymbol';
+import ConfirmedSymbol from '../../../../components/symbols/confirmedSymbol';
+import ResolvedSymbol from '../../../../components/symbols/resolvedSymbol';
 
 import './index.scss';
 
@@ -11,7 +19,51 @@ function GovernanceActivityView(props) {
   const {
     metaMaskConnected,
     activities,
+    confirmListing,
+    resolveChallenge,
   } = props;
+
+  function displayResult(result) {
+    if (result === 'accepted') {
+      return <AcceptedSymbol />;
+    }
+
+    if (result === 'rejected') {
+      return <RejectedSymbol />;
+    }
+
+    return 'Pending';
+  }
+
+  function displayAction(type, actionable, listingKey, challengeId) {
+    if (actionable) {
+      if (type === 'proposal') {
+        return (
+          <ConfirmSymbol
+            action={async () => confirmListing(listingKey)}
+          />
+        );
+      }
+
+      if (type === 'challenge') {
+        return (
+          <ResolveSymbol
+            action={async () => resolveChallenge(challengeId)}
+          />
+        );
+      }
+    }
+
+    if (type === 'proposal') {
+      return <ConfirmedSymbol />;
+    }
+
+    if (type === 'challenge') {
+      return <ResolvedSymbol />;
+    }
+
+    return 'Unkown action';
+  }
 
   function displayContent() {
     if (!metaMaskConnected) {
@@ -41,18 +93,23 @@ function GovernanceActivityView(props) {
     }
 
     return activities.map(activity => (
-      <tr>
+      <tr key={activity.listingKey}>
         <td className="governance-activity-view__description">
           {activity.title}
         </td>
         <td>
-          {activity.type}
+          {activity.type === 'challenge' ? <ChallengeSymbol /> : <ProposalSymbol />}
         </td>
         <td>
-          {activity.result}
+          {displayResult(activity.result)}
         </td>
         <td>
-          {activity.action}
+          {displayAction(
+            activity.type,
+            activity.actionable,
+            activity.listingKey,
+            activity.challengeId,
+          )}
         </td>
       </tr>
     ));
@@ -86,11 +143,15 @@ function GovernanceActivityView(props) {
 GovernanceActivityView.propTypes = {
   metaMaskConnected: PropTypes.bool,
   activities: PropTypes.arrayOf(PropTypes.object),
+  confirmListing: PropTypes.func,
+  resolveChallenge: PropTypes.func,
 };
 
 GovernanceActivityView.defaultProps = {
   metaMaskConnected: false,
   activities: [],
+  confirmListing: () => {},
+  resolveChallenge: () => {},
 };
 
 export default GovernanceActivityView;
