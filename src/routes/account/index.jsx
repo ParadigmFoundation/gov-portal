@@ -1,3 +1,7 @@
+/**
+ * Handles the logic of the Account portal
+ */
+
 import React, {
   useContext,
   useState,
