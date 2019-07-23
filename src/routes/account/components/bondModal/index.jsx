@@ -19,16 +19,17 @@ import './index.scss';
 
 function BondModal(props) {
   const {
+    toggle,
     currentBond,
     isOpen,
-    close,
     limit,
+    confirm,
   } = props;
 
   const [tokensToBound, setTokensToBound] = useState(0);
 
   return (
-    <Modal className="bond-modal" isOpen={isOpen}>
+    <Modal className="bond-modal" isOpen={isOpen} toggle={toggle}>
       <ModalBody className="bond-modal__body">
         <Row className="pb-5">
           <Col>
@@ -39,7 +40,7 @@ function BondModal(props) {
             </div>
           </Col>
           <Col className="text-right">
-            <CloseIcon action={close} />
+            <CloseIcon action={toggle} />
           </Col>
         </Row>
         <Row className="px-5 pb-3">
@@ -89,7 +90,7 @@ function BondModal(props) {
             <Button
               color="inverted"
               text="Cancel"
-              action={close}
+              action={toggle}
             />
           </Col>
           <Col className="text-right">
@@ -97,6 +98,7 @@ function BondModal(props) {
               color="green"
               text="Confirm"
               disabled={parseInt(tokensToBound, 10) === 0}
+              action={() => confirm(tokensToBound)}
             />
           </Col>
         </Row>
@@ -109,13 +111,15 @@ BondModal.propTypes = {
   currentBond: PropTypes.number,
   isOpen: PropTypes.bool,
   limit: PropTypes.number,
-  close: PropTypes.func.isRequired,
+  toggle: PropTypes.func.isRequired,
+  confirm: PropTypes.func,
 };
 
 BondModal.defaultProps = {
   currentBond: 0,
   isOpen: false,
   limit: 0,
+  confirm: () => {},
 };
 
 export default BondModal;
