@@ -20,14 +20,14 @@ function TreasuryBalanceModal(props) {
   const {
     currentBalance,
     isOpen,
-    close,
+    toggle,
     updateBalance,
   } = props;
 
   const [newBalance, setNewBalance] = useState(0);
 
   return (
-    <Modal className="treasure-balance-modal" isOpen={isOpen}>
+    <Modal className="treasure-balance-modal" isOpen={isOpen} toggle={toggle}>
       <ModalBody className="treasure-balance-modal__body">
         <Row className="pb-5">
           <Col>
@@ -36,7 +36,7 @@ function TreasuryBalanceModal(props) {
             </div>
           </Col>
           <Col className="text-right">
-            <CloseIcon action={close} />
+            <CloseIcon action={toggle} />
           </Col>
         </Row>
         <Row className="px-5 pb-3">
@@ -95,7 +95,7 @@ function TreasuryBalanceModal(props) {
             <Button
               color="inverted"
               text="Cancel"
-              action={close}
+              action={toggle}
             />
           </Col>
           <Col className="text-right">
@@ -115,11 +115,12 @@ function TreasuryBalanceModal(props) {
 TreasuryBalanceModal.propTypes = {
   currentBalance: PropTypes.number,
   isOpen: PropTypes.bool,
-  updateBalance: PropTypes.func.isRequired,
-  close: PropTypes.func.isRequired,
+  updateBalance: PropTypes.func,
+  toggle: PropTypes.func.isRequired,
 };
 
 TreasuryBalanceModal.defaultProps = {
+  updateBalance: () => {},
   currentBalance: 0,
   isOpen: false,
 };

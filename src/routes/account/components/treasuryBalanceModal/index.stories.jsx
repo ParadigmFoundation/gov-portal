@@ -7,9 +7,9 @@ import TreasuryBalanceModal from '.';
 storiesOf('Routes/Account/TreasuryBalanceModal', module)
   .add('Standard', () => (
     <TreasuryBalanceModal
+      toggle={action('Toggle')}
       isOpen
-      currentBalance={2500}
-      close={action('close')}
+      currentBalance="2500"
       updateBalance={action('Update balance')}
     />
   ));
