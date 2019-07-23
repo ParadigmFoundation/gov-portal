@@ -66,7 +66,7 @@ function Account() {
       resolveChallenge={isReady && gov.kosu.validatorRegistry.confirmListing()}
       bondTokens={isReady && gov.kosu.posterRegistry.registerTokens}
       addToTreasury={isReady && gov.kosu.treasury.deposit}
-      removeTreasury={isReady && gov.kosu.treasury.withdraw(treasuryBalance)}
+      removeTreasury={isReady && gov.kosu.treasury.withdraw()}
     />
   );
 }
