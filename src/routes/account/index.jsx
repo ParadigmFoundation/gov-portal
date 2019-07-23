@@ -24,6 +24,7 @@ function Account() {
   const [bondedTokens, setBondedTokens] = useState();
   const [tokensStakedFor, setTokensStakedFor] = useState();
   const [treasuryBalance, setTreasuryBalance] = useState();
+  const [treasuryAllowance, setTreasuryAllowance] = useState();
 
   useEffect(() => {
     async function fetchBalances() {
@@ -47,6 +48,9 @@ function Account() {
         setTokensStakedFor(
           systemBalanceReq.minus(treasuryBalanceReq).minus(bondedTokensReq).toString(),
         );
+
+        const treasuryAllowanceReq = await gov.kosu.treasury.treasuryAllowance();
+        setTreasuryAllowance(treasuryAllowanceReq.toString());
       }
     }
 
@@ -56,17 +60,18 @@ function Account() {
   return (
     <AccountView
       metaMaskConnected={isReady}
+      treasuryAllowance={treasuryAllowance}
       walletBalance={walletBalance}
       totalBalance={totalBalance}
       systemBalance={systemBalance}
       bondedTokens={bondedTokens}
       tokensStakedFor={tokensStakedFor}
       treasuryBalance={treasuryBalance}
-      confirmListing={isReady && gov.kosu.validatorRegistry.confirmListing()}
-      resolveChallenge={isReady && gov.kosu.validatorRegistry.confirmListing()}
-      bondTokens={isReady && gov.kosu.posterRegistry.registerTokens}
-      addToTreasury={isReady && gov.kosu.treasury.deposit}
-      removeTreasury={isReady && gov.kosu.treasury.withdraw()}
+      confirmListing={isReady ? gov.kosu.validatorRegistry.confirmListing : () => {}}
+      resolveChallenge={isReady ? gov.kosu.validatorRegistry.confirmListing : () => {}}
+      bondTokens={isReady ? gov.kosu.posterRegistry.registerTokens : () => {}}
+      addToTreasury={isReady ? gov.kosu.treasury.deposit : () => {}}
+      removeTreasury={isReady ? gov.kosu.treasury.withdraw : () => {}}
     />
   );
 }
