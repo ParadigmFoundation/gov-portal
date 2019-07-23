@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  NavLink,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import Table from '../../../../components/table';
@@ -90,6 +92,20 @@ function GovernanceActivityView(props) {
           </td>
         </tr>
       );
+    }
+
+    function getTag(type, status, listingKey) {
+      if (type === 'challenge') {
+        if (status === 'pending') {
+          return NavLink;
+        }
+      }
+
+      if (type === 'proposal') {
+        if (status === 'pending') {
+          return NavLink;
+        }
+      }
     }
 
     return activities.map(activity => (

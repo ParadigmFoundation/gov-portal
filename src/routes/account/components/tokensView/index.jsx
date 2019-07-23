@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -14,6 +16,8 @@ import SimpleCardFooter from '../../../../components/simpleCard/components/simpl
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
 
+import BondModal from '../bondModal';
+
 import QuestionIcon from '../../../../components/questionIcon';
 
 function TokensView(props) {
@@ -25,10 +29,19 @@ function TokensView(props) {
     bondedTokens,
     tokensStakedFor,
     treasuryBalance,
+    bondTokens,
   } = props;
+
+  const [isBondModalOpen, setIsBondModalOpen] = useState(false);
 
   return (
     <>
+      <BondModal
+        isOpen={isBondModalOpen}
+        toggle={() => setIsBondModalOpen(!isBondModalOpen)}
+        limit={5025}
+        confirm={bondTokens}
+      />
       <SimpleCard>
         <SimpleCardTitle>
           Total balance
@@ -61,7 +74,12 @@ function TokensView(props) {
               <QuestionIcon />
             </Col>
             <Col className="text-right">
-              <Button color="outlined-green" text="Add" small disabled={!metaMaskConnected} />
+              <Button
+                color="outlined-green"
+                text="Add"
+                disabled={!metaMaskConnected}
+                small
+              />
             </Col>
           </Row>
         </SimpleCardTitle>
@@ -80,7 +98,13 @@ function TokensView(props) {
               <QuestionIcon />
             </Col>
             <Col className="text-right">
-              <Button color="outlined-green" text="Bond" small disabled={!metaMaskConnected} />
+              <Button
+                color="outlined-green"
+                text="Bond"
+                disabled={!metaMaskConnected}
+                action={() => setIsBondModalOpen(!isBondModalOpen)}
+                small
+              />
             </Col>
           </Row>
         </SimpleCardTitle>
@@ -141,6 +165,7 @@ TokensView.propTypes = {
   bondedTokens: PropTypes.string,
   tokensStakedFor: PropTypes.string,
   treasuryBalance: PropTypes.string,
+  bondTokens: PropTypes.func,
 };
 
 TokensView.defaultProps = {
@@ -151,6 +176,7 @@ TokensView.defaultProps = {
   bondedTokens: '0',
   tokensStakedFor: '0',
   treasuryBalance: '0',
+  bondTokens: () => {},
 };
 
 export default TokensView;

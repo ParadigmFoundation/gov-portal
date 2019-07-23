@@ -64,6 +64,7 @@ function Account() {
       treasuryBalance={treasuryBalance}
       confirmListing={isReady && gov.kosu.validatorRegistry.confirmListing()}
       resolveChallenge={isReady && gov.kosu.validatorRegistry.confirmListing()}
+      bondTokens={isReady && gov.kosu.posterRegistry.registerTokens}
     />
   );
 }
