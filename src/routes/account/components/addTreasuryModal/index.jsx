@@ -15,7 +15,7 @@ import CloseIcon from '../../../../components/closeIcon';
 
 import './index.scss';
 
-function AddTreasuryMondal(props) {
+function AddTreasuryModal(props) {
   const {
     isOpen,
     close,
@@ -78,14 +78,14 @@ function AddTreasuryMondal(props) {
   );
 }
 
-AddTreasuryMondal.propTypes = {
+AddTreasuryModal.propTypes = {
   isOpen: PropTypes.bool,
   add: PropTypes.func.isRequired,
   close: PropTypes.func.isRequired,
 };
 
-AddTreasuryMondal.defaultProps = {
+AddTreasuryModal.defaultProps = {
   isOpen: false,
 };
 
-export default AddTreasuryMondal;
+export default AddTreasuryModal;
