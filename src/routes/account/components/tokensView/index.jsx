@@ -41,6 +41,7 @@ function TokensView(props) {
         toggle={() => setIsBondModalOpen(!isBondModalOpen)}
         limit={5025}
         confirm={bondTokens}
+        currentBond={bondedTokens}
       />
       <SimpleCard>
         <SimpleCardTitle>
