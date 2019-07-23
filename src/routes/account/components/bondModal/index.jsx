@@ -43,6 +43,18 @@ function BondModal(props) {
             <CloseIcon action={toggle} />
           </Col>
         </Row>
+        {currentBond !== '0' && (
+          <Row className="px-5 pb-2">
+            <Col>
+              <div className="bond-modal__label">
+                Current bond
+              </div>
+              <div className="bond-modal__limit">
+                {currentBond}
+              </div>
+            </Col>
+          </Row>
+        )}
         <Row className="px-5 pb-3">
           <Col>
             <div className="bond-modal__label">
@@ -116,9 +128,9 @@ BondModal.propTypes = {
 };
 
 BondModal.defaultProps = {
-  currentBond: 0,
+  currentBond: '0',
   isOpen: false,
-  limit: 0,
+  limit: '0',
   confirm: () => {},
 };
 
