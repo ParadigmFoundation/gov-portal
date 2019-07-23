@@ -163,9 +163,9 @@ function TokensView(props) {
             <Col xs={4} className="text-right">
               <Button
                 color="outlined-green"
-                text="Add"
+                text={treasuryBalance === '0' ? 'Add' : 'Edit'}
                 disabled={!metaMaskConnected}
-                action={() => setIsAddTreasuryModalOpen(true)}
+                action={treasuryBalance === '0' ? () => setIsAddTreasuryModalOpen(true) : () => setIsManageTreasuryModalOpen(true)}
                 small
               />
             </Col>
