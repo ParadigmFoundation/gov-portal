@@ -25,6 +25,7 @@ function AccountView(props) {
     confirmListing,
     resolveChallenge,
     bondTokens,
+    addToTreasury,
   } = props;
 
   return (
@@ -54,6 +55,7 @@ function AccountView(props) {
             tokensStakedFor={tokensStakedFor}
             treasuryBalance={treasuryBalance}
             bondTokens={bondTokens}
+            addToTreasury={addToTreasury}
           />
         </Col>
       </Row>
@@ -104,6 +106,7 @@ AccountView.propTypes = {
   confirmListing: PropTypes.func,
   resolveChallenge: PropTypes.func,
   bondTokens: PropTypes.func,
+  addToTreasury: PropTypes.func,
 };
 
 AccountView.defaultProps = {
@@ -117,6 +120,7 @@ AccountView.defaultProps = {
   confirmListing: () => {},
   resolveChallenge: () => {},
   bondTokens: () => {},
+  addToTreasury: () => {},
 };
 
 export default AccountView;

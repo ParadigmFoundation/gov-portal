@@ -69,7 +69,7 @@ function AddTreasuryModal(props) {
               color="green"
               text="Add"
               disabled={parseInt(tokensToAdd, 10) === 0}
-              action={() => add(tokensToAdd)}
+              action={() => add(tokensToAdd.toString())}
             />
           </Col>
         </Row>

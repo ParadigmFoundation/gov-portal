@@ -17,6 +17,7 @@ import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
 
 import BondModal from '../bondModal';
+import AddTreasuryModal from '../addTreasuryModal';
 
 import QuestionIcon from '../../../../components/questionIcon';
 
@@ -30,9 +31,11 @@ function TokensView(props) {
     tokensStakedFor,
     treasuryBalance,
     bondTokens,
+    addToTreasury,
   } = props;
 
   const [isBondModalOpen, setIsBondModalOpen] = useState(false);
+  const [isAddTreasuryModalOpen, setIsAddTreasuryModalOpen] = useState(false);
 
   return (
     <>
@@ -42,6 +45,11 @@ function TokensView(props) {
         limit={5025}
         confirm={bondTokens}
         currentBond={bondedTokens}
+      />
+      <AddTreasuryModal
+        isOpen={isAddTreasuryModalOpen}
+        toggle={() => setIsAddTreasuryModalOpen(!isAddTreasuryModalOpen)}
+        add={addToTreasury}
       />
       <SimpleCard>
         <SimpleCardTitle>
@@ -167,6 +175,7 @@ TokensView.propTypes = {
   tokensStakedFor: PropTypes.string,
   treasuryBalance: PropTypes.string,
   bondTokens: PropTypes.func,
+  addToTreasury: PropTypes.func,
 };
 
 TokensView.defaultProps = {
@@ -178,6 +187,7 @@ TokensView.defaultProps = {
   tokensStakedFor: '0',
   treasuryBalance: '0',
   bondTokens: () => {},
+  addToTreasury: () => {},
 };
 
 export default TokensView;
