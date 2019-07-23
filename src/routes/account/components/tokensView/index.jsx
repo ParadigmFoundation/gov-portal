@@ -17,6 +17,7 @@ import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
 
 import BondModal from '../bondModal';
+import AddTreasuryModal from '../addTreasuryModal';
 
 import QuestionIcon from '../../../../components/questionIcon';
 
@@ -30,9 +31,11 @@ function TokensView(props) {
     tokensStakedFor,
     treasuryBalance,
     bondTokens,
+    addToTreasury,
   } = props;
 
   const [isBondModalOpen, setIsBondModalOpen] = useState(false);
+  const [isAddTreasuryModalOpen, setIsAddTreasuryModalOpen] = useState(false);
 
   return (
     <>
@@ -42,6 +45,11 @@ function TokensView(props) {
         limit={5025}
         confirm={bondTokens}
         currentBond={bondedTokens}
+      />
+      <AddTreasuryModal
+        isOpen={isAddTreasuryModalOpen}
+        toggle={() => setIsAddTreasuryModalOpen(!isAddTreasuryModalOpen)}
+        add={addToTreasury}
       />
       <SimpleCard>
         <SimpleCardTitle>
@@ -103,7 +111,7 @@ function TokensView(props) {
                 color="outlined-green"
                 text="Bond"
                 disabled={!metaMaskConnected}
-                action={() => setIsBondModalOpen(!isBondModalOpen)}
+                action={() => setIsBondModalOpen(true)}
                 small
               />
             </Col>
@@ -143,7 +151,13 @@ function TokensView(props) {
               <QuestionIcon />
             </Col>
             <Col xs={4} className="text-right">
-              <Button color="outlined-green" text="Add" small disabled={!metaMaskConnected} />
+              <Button
+                color="outlined-green"
+                text="Add"
+                disabled={!metaMaskConnected}
+                action={() => setIsAddTreasuryModalOpen(true)}
+                small
+              />
             </Col>
           </Row>
         </SimpleCardTitle>
@@ -167,6 +181,7 @@ TokensView.propTypes = {
   tokensStakedFor: PropTypes.string,
   treasuryBalance: PropTypes.string,
   bondTokens: PropTypes.func,
+  addToTreasury: PropTypes.func,
 };
 
 TokensView.defaultProps = {
@@ -178,6 +193,7 @@ TokensView.defaultProps = {
   tokensStakedFor: '0',
   treasuryBalance: '0',
   bondTokens: () => {},
+  addToTreasury: () => {},
 };
 
 export default TokensView;
