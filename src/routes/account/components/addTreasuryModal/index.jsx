@@ -18,14 +18,14 @@ import './index.scss';
 function AddTreasuryModal(props) {
   const {
     isOpen,
-    close,
+    toggle,
     add,
   } = props;
 
   const [tokensToAdd, setTokensToAdd] = useState(0);
 
   return (
-    <Modal className="add-tresury-modal" isOpen={isOpen}>
+    <Modal className="add-tresury-modal" isOpen={isOpen} toggle={toggle}>
       <ModalBody className="add-tresury-modal__body">
         <Row className="pb-5 align-items-center">
           <Col>
@@ -38,7 +38,7 @@ function AddTreasuryModal(props) {
             </div>
           </Col>
           <Col xs={2} className="text-right">
-            <CloseIcon action={close} />
+            <CloseIcon action={toggle} />
           </Col>
         </Row>
         <Row className="pb-5 justify-content-center">
@@ -61,7 +61,7 @@ function AddTreasuryModal(props) {
             <Button
               color="inverted"
               text="Cancel"
-              action={close}
+              action={toggle}
             />
           </Col>
           <Col className="text-right">
@@ -81,7 +81,7 @@ function AddTreasuryModal(props) {
 AddTreasuryModal.propTypes = {
   isOpen: PropTypes.bool,
   add: PropTypes.func.isRequired,
-  close: PropTypes.func.isRequired,
+  toggle: PropTypes.func.isRequired,
 };
 
 AddTreasuryModal.defaultProps = {
