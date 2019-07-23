@@ -18,6 +18,7 @@ import Button from '../../../../components/button';
 
 import BondModal from '../bondModal';
 import AddTreasuryModal from '../addTreasuryModal';
+import ManageTreasuryModal from '../manageTreasuryModal';
 
 import QuestionIcon from '../../../../components/questionIcon';
 
@@ -32,10 +33,13 @@ function TokensView(props) {
     treasuryBalance,
     bondTokens,
     addToTreasury,
+    removeTreasury,
   } = props;
 
   const [isBondModalOpen, setIsBondModalOpen] = useState(false);
+  const [isManageTreasuryModalOpen, setIsManageTreasuryModalOpen] = useState(false);
   const [isAddTreasuryModalOpen, setIsAddTreasuryModalOpen] = useState(false);
+  const [isTreasuryBalanceModalOpen, setIsTreasuryBalanceModalOpen] = useState(false);
 
   return (
     <>
@@ -45,6 +49,12 @@ function TokensView(props) {
         limit={5025}
         confirm={bondTokens}
         currentBond={bondedTokens}
+      />
+      <ManageTreasuryModal
+        isOpen={isManageTreasuryModalOpen}
+        toggle={() => setIsManageTreasuryModalOpen(!isManageTreasuryModalOpen)}
+        edit={() => setIsTreasuryBalanceModalOpen(true)}
+        remove={removeTreasury}
       />
       <AddTreasuryModal
         isOpen={isAddTreasuryModalOpen}
@@ -182,6 +192,7 @@ TokensView.propTypes = {
   treasuryBalance: PropTypes.string,
   bondTokens: PropTypes.func,
   addToTreasury: PropTypes.func,
+  removeTreasury: PropTypes.func,
 };
 
 TokensView.defaultProps = {
@@ -194,6 +205,7 @@ TokensView.defaultProps = {
   treasuryBalance: '0',
   bondTokens: () => {},
   addToTreasury: () => {},
+  removeTreasury: () => {},
 };
 
 export default TokensView;

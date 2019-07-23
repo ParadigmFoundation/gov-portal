@@ -17,7 +17,7 @@ import './index.scss';
 function ManageTreasuryModal(props) {
   const {
     isOpen,
-    close,
+    toggle,
     edit,
     remove,
   } = props;
@@ -25,7 +25,7 @@ function ManageTreasuryModal(props) {
   const [removeClicked, setRemoveClicked] = useState(false);
 
   return (
-    <Modal className="manage-treasury-modal" isOpen={isOpen}>
+    <Modal className="manage-treasury-modal" isOpen={isOpen} toggle={toggle}>
       <ModalBody className="manage-treasury-modal__body">
         <Row className="pb-5 align-items-center">
           <Col>
@@ -34,7 +34,7 @@ function ManageTreasuryModal(props) {
             </div>
           </Col>
           <Col xs={2} className="text-right">
-            <CloseIcon action={close} />
+            <CloseIcon action={toggle} />
           </Col>
         </Row>
         <Row className="pb-5 justify-content-center">
@@ -71,7 +71,7 @@ function ManageTreasuryModal(props) {
             <Button
               color="inverted"
               text="Cancel"
-              action={close}
+              action={toggle}
             />
           </Col>
         </Row>
@@ -84,7 +84,7 @@ ManageTreasuryModal.propTypes = {
   isOpen: PropTypes.bool,
   edit: PropTypes.func.isRequired,
   remove: PropTypes.func.isRequired,
-  close: PropTypes.func.isRequired,
+  toggle: PropTypes.func.isRequired,
 };
 
 ManageTreasuryModal.defaultProps = {
