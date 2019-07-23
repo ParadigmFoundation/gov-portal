@@ -25,6 +25,7 @@ import QuestionIcon from '../../../../components/questionIcon';
 function TokensView(props) {
   const {
     metaMaskConnected,
+    treasuryAllowance,
     walletBalance,
     totalBalance,
     systemBalance,
@@ -34,6 +35,7 @@ function TokensView(props) {
     bondTokens,
     addToTreasury,
     removeTreasury,
+    setTreasuryAllowance,
   } = props;
 
   const [isBondModalOpen, setIsBondModalOpen] = useState(false);
@@ -109,6 +111,19 @@ function TokensView(props) {
           <KosuSymbol />
         </SimpleCardFooter>
       </SimpleCard>
+      {metaMaskConnected && treasuryAllowance === '0' && (
+        <Row>
+          <Col>
+            <p>
+              Click here to enable access to the Treasury.
+            </p>
+            <Button
+              action={setTreasuryAllowance}
+              text="Enable"
+            />
+          </Col>
+        </Row>
+      )}
       <SimpleCard>
         <SimpleCardTitle>
           <Row>
@@ -184,6 +199,7 @@ function TokensView(props) {
 
 TokensView.propTypes = {
   metaMaskConnected: PropTypes.bool,
+  treasuryAllowance: PropTypes.string,
   walletBalance: PropTypes.string,
   totalBalance: PropTypes.string,
   systemBalance: PropTypes.string,
@@ -193,10 +209,12 @@ TokensView.propTypes = {
   bondTokens: PropTypes.func,
   addToTreasury: PropTypes.func,
   removeTreasury: PropTypes.func,
+  setTreasuryAllowance: PropTypes.func,
 };
 
 TokensView.defaultProps = {
   metaMaskConnected: false,
+  treasuryAllowance: '0',
   walletBalance: '0',
   totalBalance: '0',
   systemBalance: '0',
@@ -206,6 +224,7 @@ TokensView.defaultProps = {
   bondTokens: () => {},
   addToTreasury: () => {},
   removeTreasury: () => {},
+  setTreasuryAllowance: () => {},
 };
 
 export default TokensView;

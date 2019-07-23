@@ -26,6 +26,8 @@ function Account() {
   const [treasuryBalance, setTreasuryBalance] = useState();
   const [treasuryAllowance, setTreasuryAllowance] = useState();
 
+  const MAX_UINT_256 = '115792089237316195423570985008687907853269984665640564039457584007913129639935';
+
   useEffect(() => {
     async function fetchBalances() {
       if (isReady) {
@@ -72,6 +74,7 @@ function Account() {
       bondTokens={isReady ? gov.kosu.posterRegistry.registerTokens : () => {}}
       addToTreasury={isReady ? gov.kosu.treasury.deposit : () => {}}
       removeTreasury={isReady ? gov.kosu.treasury.withdraw : () => {}}
+      setTreasuryAllowance={isReady ? () => gov.kosu.treasury.approveTreasury(MAX_UINT_256) : () => {}}
     />
   );
 }
