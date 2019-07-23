@@ -120,9 +120,9 @@ function BondModal(props) {
 }
 
 BondModal.propTypes = {
-  currentBond: PropTypes.number,
+  currentBond: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   isOpen: PropTypes.bool,
-  limit: PropTypes.number,
+  limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   toggle: PropTypes.func.isRequired,
   confirm: PropTypes.func,
 };
