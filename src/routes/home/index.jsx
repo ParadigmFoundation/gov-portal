@@ -1,3 +1,7 @@
+/**
+ * Handle the logic behind the homepage
+ */
+
 import React, {
   useState,
   useContext,
@@ -14,7 +18,6 @@ function Home() {
     isReady,
   } = useContext(GovContext);
 
-  const [isMetaMaskConnected, setIsMetaMaskConnected] = useState(false);
   const [proposals, setProposals] = useState([]);
   const [validators, setValidators] = useState([]);
   const [activeChallenges, setActiveChallenges] = useState([]);
@@ -23,21 +26,17 @@ function Home() {
   useEffect(() => {
     async function fetchData() {
       if (isReady) {
-        setIsMetaMaskConnected(true);
-        // setProposals(gov.currentProposals());
-
-        const formattedValidators = [];
-        const currentValidators = await gov.currentValidators();
+        console.log(gov);
       }
     }
 
     fetchData();
-  }, [gov]);
+  }, [isReady]);
 
   return (
     <div>
       <HomeView
-        metaMaskConnected={isMetaMaskConnected}
+        metaMaskConnected={isReady}
         proposals={proposals}
         validators={validators}
         activeChallenges={activeChallenges}
