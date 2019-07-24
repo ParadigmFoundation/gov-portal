@@ -26,7 +26,14 @@ function Home() {
   useEffect(() => {
     async function fetchData() {
       if (isReady) {
-        console.log(gov);
+        // TODO: Fetch the data
+        // setProposals(gov.proposals);
+        // setValidators(gov.validators);
+        // setActiveChallenges(gov.challenges);
+
+        const historicalChallenges = await gov.getHistoricalChallenges();
+
+        setPastChallenges(historicalChallenges);
       }
     }
 
