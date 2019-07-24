@@ -93,7 +93,7 @@ function BondModal(props) {
           <Col xs={12} sm={6}>
             <ProgressBar
               max={limit}
-              value={tokensToBound}
+              value={parseInt(tokensToBound, 10)}
             />
           </Col>
         </Row>
