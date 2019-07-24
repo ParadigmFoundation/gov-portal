@@ -4,12 +4,12 @@
 
 .my-progress-bar {
   &__progress-bar {
-    background: #ececec;
+    background-color: #ececec !important;
     border-radius: 18px;
   }
 
   &__bar {
-    background: $color-green;
+    background-color: $color-green !important;
     border-radius: 18px;
     min-width: 1%;
   }
