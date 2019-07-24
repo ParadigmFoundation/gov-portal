@@ -36,7 +36,7 @@ function ChallengeView(props) {
   function returnStatus() {
     if (status === 'vote') {
       return (
-        <div className="challenge-view">
+        <div>
           <div className="challenge-view__challenge-label">
             Vote on this challenge
             {' '}
@@ -159,7 +159,7 @@ function ChallengeView(props) {
   }
 
   return (
-    <div>
+    <div className="challenge-view">
       <Row className="pb-5">
         <Col>
           <div className="challenge-view__title">
@@ -247,28 +247,35 @@ function ChallengeView(props) {
         </Col>
       </Row>
     </div>
-
   );
 }
 
 ChallengeView.propTypes = {
-  challengeId: PropTypes.number.isRequired,
-  validatorPublicKey: PropTypes.string.isRequired,
-  address: PropTypes.string.isRequired,
-  address2: PropTypes.string.isRequired,
-  deadline: PropTypes.number.isRequired,
-  potentialReward: PropTypes.number.isRequired,
-  challengerStake: PropTypes.number.isRequired,
+  challengeId: PropTypes.number,
+  validatorPublicKey: PropTypes.string,
+  address: PropTypes.string,
+  address2: PropTypes.string,
+  deadline: PropTypes.number,
+  potentialReward: PropTypes.string,
+  challengerStake: PropTypes.string,
   keepProposal: PropTypes.func,
   removeProposal: PropTypes.func,
   reveal: PropTypes.func,
   voteAgain: PropTypes.func,
   addToCalendar: PropTypes.func,
-  goBack: PropTypes.func.isRequired,
+  goBack: PropTypes.func,
   status: PropTypes.string,
 };
 
 ChallengeView.defaultProps = {
+  challengeId: 0,
+  validatorPublicKey: '',
+  address: '',
+  address2: '',
+  deadline: Date.now() / 1000,
+  potentialReward: '0',
+  challengerStake: '0',
+  goBack: () => {},
   status: '',
   keepProposal: () => {},
   removeProposal: () => {},

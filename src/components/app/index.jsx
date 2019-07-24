@@ -21,6 +21,7 @@ import Header from '../header';
 import Home from '../../routes/home';
 import Account from '../../routes/account';
 import Proposal from '../../routes/proposal';
+import Challenge from '../../routes/challenge';
 
 function App() {
   const [govObject, setGovObject] = useState();
@@ -67,6 +68,7 @@ function App() {
             <Route path="/account" component={Account} />
             <Route path="/governance" component={Home} />
             <Route path="/proposal/:id" component={Proposal} />
+            <Route path="/challenge/:id" component={Challenge} />
           </Switch>
         </div>
       </BrowserRouter>

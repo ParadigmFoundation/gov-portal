@@ -3,6 +3,11 @@
 @import 'style/variables.scss';
 
 .challenge-view {
+  padding-right: 125px;
+  padding-left: 125px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
   &__title {
     font-family: 'DINPro-Medium', sans-serif;
     font-size: 39px;
