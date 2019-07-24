@@ -29,7 +29,7 @@ function ProposalView(props) {
   } = props;
 
   return (
-    <div>
+    <div className="proposal-view">
       <Row className="pb-5">
         <Col>
           <div className="proposal-view__title">
@@ -157,18 +157,26 @@ function ProposalView(props) {
 }
 
 ProposalView.propTypes = {
-  tendermint: PropTypes.string.isRequired,
-  address: PropTypes.string.isRequired,
-  deadline: PropTypes.number.isRequired,
-  stakeSize: PropTypes.number.isRequired,
-  estimatedVotePower: PropTypes.number.isRequired,
-  dailyReward: PropTypes.number.isRequired,
-  challengeProposal: PropTypes.func.isRequired,
-  goBack: PropTypes.func.isRequired,
+  tendermint: PropTypes.string,
+  address: PropTypes.string,
+  deadline: PropTypes.string,
+  stakeSize: PropTypes.string,
+  estimatedVotePower: PropTypes.string,
+  dailyReward: PropTypes.string,
+  challengeProposal: PropTypes.func,
+  goBack: PropTypes.func,
   canBeChallenged: PropTypes.bool,
 };
 
 ProposalView.defaultProps = {
+  tendermint: '',
+  address: '0',
+  deadline: Date.now() / 1000,
+  stakeSize: '0',
+  estimatedVotePower: '0',
+  dailyReward: '0',
+  challengeProposal: () => {},
+  goBack: () => {},
   canBeChallenged: false,
 };
 
