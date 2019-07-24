@@ -48,9 +48,11 @@ function HeaderView(props) {
           <Nav navbar>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                {currentRoute}
+                <span className="header__current-route">
+                  {currentRoute}
+                </span>
               </DropdownToggle>
-              <DropdownMenu>
+              <DropdownMenu className="header__route-menu">
                 <DropdownItem tag={NavLink} to="/governance">
                   Governance
                 </DropdownItem>
