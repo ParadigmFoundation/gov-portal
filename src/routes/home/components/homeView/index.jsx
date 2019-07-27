@@ -98,7 +98,7 @@ HomeView.propTypes = {
   metaMaskConnected: PropTypes.bool,
   proposals: PropTypes.arrayOf(PropTypes.object),
   activeChallenges: PropTypes.arrayOf(PropTypes.element),
-  validators: PropTypes.arrayOf(PropTypes.element),
+  validators: PropTypes.arrayOf(PropTypes.object),
   pastChallenges: PropTypes.arrayOf(PropTypes.element),
 };
 
