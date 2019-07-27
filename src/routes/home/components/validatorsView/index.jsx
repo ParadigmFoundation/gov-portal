@@ -38,7 +38,7 @@ function ValidatorsView(props) {
     }
 
     return validators.map(validator => (
-      <tr>
+      <tr key={validator.owner}>
         <td>
           <Address address={validator.owner} icon short />
         </td>
@@ -49,7 +49,7 @@ function ValidatorsView(props) {
           {validator.dailyReward}
         </td>
         <td>
-          {`${validator.power}%`}
+          {`${validator.power.substring(0, 5)}%`}
         </td>
         <td>
           N/A

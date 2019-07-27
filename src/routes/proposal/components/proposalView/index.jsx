@@ -94,7 +94,7 @@ function ProposalView(props) {
               Estimated vote power
             </div>
             <div className="proposal-view__card-content">
-              {`${estimatedVotePower}%`}
+              {`${estimatedVotePower.substring(0, 5)}%`}
             </div>
           </div>
         </Col>
