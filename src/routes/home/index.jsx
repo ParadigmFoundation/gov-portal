@@ -31,9 +31,44 @@ function Home() {
         // setValidators(gov.validators);
         // setActiveChallenges(gov.challenges);
 
-        const historicalChallenges = await gov.getHistoricalChallenges();
+        const currentProposals = await gov.currentProposals();
+        const formattedProposals = [];
 
-        setPastChallenges(historicalChallenges);
+        for (let i = 0; i < Object.keys(currentProposals).length; i += 1) {
+          formattedProposals.push({
+            id: Object.keys(currentProposals)[i],
+            owner: currentProposals[Object.keys(currentProposals)[i]].owner,
+            stakeSize: gov.web3.utils.fromWei(
+              currentProposals[Object.keys(currentProposals)[i]].stakeSize.toString(),
+            ),
+            dailyReward: gov.web3.utils.fromWei(
+              currentProposals[Object.keys(currentProposals)[i]].dailyReward.toString(),
+            ),
+            power: currentProposals[Object.keys(currentProposals)[i]].power.toString(),
+            acceptUnix: currentProposals[Object.keys(currentProposals)[i]].acceptUnix,
+          });
+        }
+
+        setProposals(formattedProposals);
+
+        const currentValidators = await gov.currentValidators();
+        const formattedValidators = [];
+
+        for (let i = 0; i < Object.keys(currentValidators).length; i += 1) {
+          formattedValidators.push({
+            owner: currentValidators[Object.keys(currentValidators)[i]].owner,
+            confirmationUnix: currentValidators[Object.keys(currentValidators)[i]].confirmationUnix,
+            dailyReward: gov.web3.utils.fromWei(
+              currentValidators[Object.keys(currentValidators)[i]].dailyReward.toString(),
+            ),
+            power: currentValidators[Object.keys(currentValidators)[i]].power.toString(),
+            stakeSize: gov.web3.utils.fromWei(
+              currentValidators[Object.keys(currentValidators)[i]].stakeSize.toString(),
+            ),
+          });
+        }
+
+        setValidators(formattedValidators);
       }
     }
 
