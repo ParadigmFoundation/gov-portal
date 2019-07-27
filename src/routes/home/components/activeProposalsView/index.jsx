@@ -21,6 +21,7 @@ function ActiveProposalsView(props) {
 
   return proposals.map(proposal => (
     <ActiveProposalCard
+      key={proposal.id}
       id={proposal.id}
       owner={proposal.owner}
       stakeSize={proposal.stakeSize}
