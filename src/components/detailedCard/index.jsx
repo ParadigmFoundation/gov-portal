@@ -31,6 +31,7 @@ function DetailedCard(props) {
         </Col>
       </Row>
       <DetailedCardFooter
+        id={id}
         type={type}
         acceptUnix={acceptUnix}
       />
