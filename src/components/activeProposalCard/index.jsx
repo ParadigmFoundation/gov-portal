@@ -57,7 +57,7 @@ function ActiveProposalCard(props) {
             Estimated vote power:
             {' '}
             <span className="active-proposal-card__info-amount">
-              {`${power}%`}
+              {`${power.substring(0, 5)}%`}
             </span>
           </div>
         </Col>
