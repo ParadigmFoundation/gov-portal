@@ -96,7 +96,7 @@ function HomeView(props) {
 
 HomeView.propTypes = {
   metaMaskConnected: PropTypes.bool,
-  proposals: PropTypes.arrayOf(PropTypes.element),
+  proposals: PropTypes.arrayOf(PropTypes.object),
   activeChallenges: PropTypes.arrayOf(PropTypes.element),
   validators: PropTypes.arrayOf(PropTypes.element),
   pastChallenges: PropTypes.arrayOf(PropTypes.element),
