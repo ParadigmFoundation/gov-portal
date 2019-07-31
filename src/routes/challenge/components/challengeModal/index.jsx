@@ -36,7 +36,12 @@ function ChallengeModal(props) {
           <Row className="pb-5">
             <Col>
               <div className="challenge-modal__header">
-                {`Vote to keep ${shortenAddress(address)}.`}
+                Vote to keep
+                {' '}
+                <span className="challenge-modal__header-address">
+                  {shortenAddress(address)}
+                </span>
+                .
               </div>
             </Col>
           </Row>
