@@ -3,16 +3,24 @@
 @import 'style/variables.scss';
 
 .table {
-  background: #FFFFFF;
-  border: 1px solid #EDEDED;
+  padding: 20px 10px 17px 18px;
+  background: #fff;
+  border: 1px solid #ededed;
+  border-bottom: solid 1px #ededed;
   box-shadow: 3px 9px 15px 0 rgba(0, 0, 0, 0.07);
-  font-size: 16px;
-  color: #4A4A4A;
+  font-size: 20px;
+  color: #4a4a4a;
   text-align: left;
+  border-radius: 2px;
 }
 
 .table thead th {
-  border-bottom: 0.2px solid #979797;
+  border-bottom: solid 1px #ededed;
+  border-top: solid 1px #ededed;
+}
+
+td {
+  border-bottom: solid 1px #ededed;
 }
 
 th {
