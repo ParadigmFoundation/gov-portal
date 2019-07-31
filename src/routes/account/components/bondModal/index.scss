@@ -27,10 +27,14 @@
     background-color: #fafafa;
     font-family: 'DINPro-Medium', sans-serif;
     font-size: 100px;
-    color: #000000;
+    color: #404040;
     letter-spacing: -2.56px;
     caret-color: #444;
     width: 100%;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__limit {
