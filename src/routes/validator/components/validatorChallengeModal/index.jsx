@@ -9,7 +9,8 @@ import {
 
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
-import WarningSign from '../../../../components/warningSign';
+
+import warningSign from '../../../../assets/img/warning.png';
 
 import './index.scss';
 
@@ -63,7 +64,7 @@ function ValidatorChallengeModal(props) {
           <Col>
             <div className="validator-challenge-modal__warning">
               <div className="validator-challenge-modal__warning-title">
-                <WarningSign />
+                <img src={warningSign} width={18} alt="Warning" />
                 {' '}
                 Warning
               </div>
