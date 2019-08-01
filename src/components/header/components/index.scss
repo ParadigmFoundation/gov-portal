@@ -5,6 +5,11 @@
 .header {
   background-color: #fff;
 
+  &__logo {
+    height: 31px;
+    opacity: 0.3;
+  }
+
   &__subtitle {
     opacity: 0.25;
     font-family: 'Gilroy-Medium', sans-serif;

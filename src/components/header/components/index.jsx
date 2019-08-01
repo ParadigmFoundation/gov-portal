@@ -23,7 +23,7 @@ import {
 import KosuSymbol from '../../symbols/kosuSymbol';
 import ConnectMetaMask from '../../connectMetaMask';
 
-import ParadigmLogo from '../../../assets/img/paradigm-Logo2@2x.png';
+import ParadigmLogo from '../../../assets/img/logo.png';
 
 import './index.scss';
 
@@ -41,7 +41,11 @@ function HeaderView(props) {
     <div>
       <Navbar light expand="md" className="header">
         <NavbarBrand href="/">
-          <img src={ParadigmLogo} alt="Paradigm" />
+          <img
+            src={ParadigmLogo}
+            className="header__logo"
+            alt="Paradigm"
+          />
         </NavbarBrand>
         <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
         <Collapse isOpen={isOpen} navbar>
