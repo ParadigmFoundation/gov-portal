@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import {
   Row,
@@ -14,6 +16,8 @@ import {
   shortenAddress,
 } from '../../../../utils/formatting';
 
+import ProposalChallengeModal from '../proposalChallengeModal';
+
 import './index.scss';
 
 function ProposalView(props) {
@@ -26,12 +30,20 @@ function ProposalView(props) {
     power,
     dailyReward,
     challengeProposal,
-    goBack,
     canBeChallenged,
   } = props;
 
+  const [isProposalChallengeModalOpen, toggleProposalChallengeModal] = useState();
+
   return (
     <div className="proposal-view">
+      <ProposalChallengeModal
+        id={id}
+        isOpen={isProposalChallengeModalOpen}
+        close={() => toggleProposalChallengeModal(false)}
+        price={stakeSize}
+        challengeProposal={challengeProposal}
+      />
       <Row className="pb-5">
         <Col>
           <div className="proposal-view__title">
@@ -126,7 +138,7 @@ function ProposalView(props) {
               </div>
               <Button
                 text="Challenge proposal"
-                action={challengeProposal}
+                action={() => toggleProposalChallengeModal(true)}
                 color="red"
               />
             </div>
@@ -180,7 +192,7 @@ ProposalView.defaultProps = {
   dailyReward: '0',
   challengeProposal: () => {},
   goBack: () => {},
-  canBeChallenged: false,
+  canBeChallenged: true,
   details: '',
 };
 

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import {
   Row,
@@ -15,11 +17,14 @@ import './index.scss';
 
 function ProposalChallengeModal(props) {
   const {
+    id,
     isOpen,
     price,
     close,
-    challenge,
+    challengeProposal,
   } = props;
+
+  const [details, setDetails] = useState('');
 
   return (
     <Modal className="proposal-challenge-modal" isOpen={isOpen}>
@@ -56,6 +61,8 @@ function ProposalChallengeModal(props) {
               className="proposal-challenge-modal__reason-input"
               placeholder="Enter your reasons for challenging this proposal here."
               rows="4"
+              value={details}
+              onChange={e => setDetails(e.target.value)}
             />
           </Col>
         </Row>
@@ -85,7 +92,7 @@ function ProposalChallengeModal(props) {
             <Button
               color="green"
               text="Challenge"
-              action={challenge}
+              action={() => challengeProposal(id, details)}
               block
             />
           </Col>
@@ -96,10 +103,11 @@ function ProposalChallengeModal(props) {
 }
 
 ProposalChallengeModal.propTypes = {
+  id: PropTypes.string.isRequired,
   isOpen: PropTypes.bool,
-  price: PropTypes.number.isRequired,
+  price: PropTypes.string.isRequired,
   close: PropTypes.func.isRequired,
-  challenge: PropTypes.func.isRequired,
+  challengeProposal: PropTypes.func.isRequired,
 };
 
 ProposalChallengeModal.defaultProps = {

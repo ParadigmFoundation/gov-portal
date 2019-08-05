@@ -43,6 +43,7 @@ function Proposal(props) {
         owner={proposalData && proposalData.owner}
         power={proposalData && proposalData.power.toString()}
         stakeSize={proposalData && gov.web3.utils.fromWei(proposalData.stakeSize.toString())}
+        challengeProposal={(listingKey, details) => gov.kosu.validatorRegistry.challengeListing(listingKey, details)}
       />
     </>
   );
