@@ -1,0 +1,76 @@
+/* stylelint-disable plugin/no-unused-selectors */
+
+/* @define link */
+
+@import 'style/variables.scss';
+
+.link {
+  background: #4a4a4a;
+  font-family: 'Gilroy-Medium', sans-serif;
+  font-size: 14px;
+  color: $color-white;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+  padding: 6px 30px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    color: $color-white;
+    text-decoration: none;
+  }
+
+  &--inverted {
+    background: none;
+    color: #4a4a4a;
+    padding: 0;
+
+    &:hover {
+      color: #4a4a4a;
+    }
+  }
+
+  &--red {
+    background: $color-red;
+  }
+
+  &--green {
+    background: $color-green;
+  }
+
+  &--block {
+    width: 100%;
+  }
+
+  &--outlined {
+    border: 1px solid #bfbfbf;
+    font-family: 'DINPro-Medium', sans-serif;
+    color: #bfbfbf;
+    text-align: center;
+    background: none;
+  }
+
+  &--outlined-green {
+    border: 1px solid $color-green;
+    font-family: 'DINPro-Medium', sans-serif;
+    color: $color-green;
+    text-align: center;
+    background: none;
+  }
+
+  &--small {
+    padding: 0 10px;
+    font-size: 12px;
+  }
+
+  &--disabled {
+    background: #bfbfbf;
+    border: 1px #bfbfbf;
+    font-family: 'Gilroy-Medium', sans-serif;
+    color: #fff;
+    text-align: center;
+  }
+}
