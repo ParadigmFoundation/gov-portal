@@ -6,14 +6,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  NavLink,
-} from 'react-router-dom';
-import {
   Row,
   Col,
 } from 'reactstrap';
 
-import Button from '../../../button';
+import Link from '../../../link';
 
 import {
   timestampToCountdown,
@@ -42,8 +39,7 @@ function DetailedCardFooter(props) {
           </div>
         </Col>
         <Col className="text-right">
-          <Button
-            tag={NavLink}
+          <Link
             text="View"
             to={`/${type}/${id}`}
           />

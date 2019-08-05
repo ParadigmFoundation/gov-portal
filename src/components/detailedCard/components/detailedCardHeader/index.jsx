@@ -9,6 +9,7 @@ import './index.scss';
 
 import {
   getTimestampBadge,
+  shortenAddress,
 } from '../../../../utils/formatting';
 
 function DetailedCardHeader(props) {
@@ -51,7 +52,7 @@ function DetailedCardHeader(props) {
       <Row className="pb-4 align-items-center">
         <Col>
           <div className="detailed-card-header__id">
-            {id}
+            {shortenAddress(id)}
           </div>
         </Col>
         {displayTimestampBadge(acceptUnix)}

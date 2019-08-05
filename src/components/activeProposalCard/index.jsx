@@ -25,7 +25,7 @@ function ActiveProposalCard(props) {
 
   return (
     <DetailedCard
-      id={shortenAddress(id)}
+      id={id}
       type="proposal"
       acceptUnix={acceptUnix}
       className="active-proposal-card"

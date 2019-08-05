@@ -19,11 +19,14 @@ function Proposal(props) {
     id,
   } = props.match.params;
 
+  const [proposalData, setProposalData] = useState();
+
   useEffect(() => {
     async function fetchData() {
       if (isReady && id !== '') {
-        // TODO: fetch the data for the current proposal here
-        console.log('Fetching data for Proposal:', id);
+        if (gov.proposals[id] !== undefined) {
+          setProposalData(gov.proposals[id]);
+        }
       }
     }
 
@@ -33,18 +36,24 @@ function Proposal(props) {
   return (
     <>
       <ProposalView
-
+        id={id}
+        acceptUnix={proposalData && proposalData.acceptUnix}
+        dailyReward={proposalData && gov.web3.utils.fromWei(proposalData.dailyReward.toString())}
+        details={proposalData && proposalData.details}
+        owner={proposalData && proposalData.owner}
+        power={proposalData && proposalData.power.toString()}
+        stakeSize={proposalData && gov.web3.utils.fromWei(proposalData.stakeSize.toString())}
       />
     </>
   );
 }
 
 Proposal.propTypes = {
-  id: PropTypes.string,
-};
-
-Proposal.defaultProps = {
-  id: '',
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
 };
 
 export default Proposal;

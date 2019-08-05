@@ -7,6 +7,7 @@ import {
 
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
+import Link from '../../../../components/link';
 
 import {
   timestampToCountdown,
@@ -17,11 +18,12 @@ import './index.scss';
 
 function ProposalView(props) {
   const {
-    tendermint,
-    address,
-    deadline,
+    details,
+    id,
+    owner,
+    acceptUnix,
     stakeSize,
-    estimatedVotePower,
+    power,
     dailyReward,
     challengeProposal,
     goBack,
@@ -39,7 +41,7 @@ function ProposalView(props) {
             Tendermint public key:
           </div>
           <div className="proposal-view__tendermint">
-            {shortenAddress(tendermint)}
+            {shortenAddress(id)}
           </div>
         </Col>
       </Row>
@@ -47,7 +49,7 @@ function ProposalView(props) {
         <Col>
           <div className="proposal-view__content">
             <span className="proposal-view__address">
-              {shortenAddress(address)}
+              {shortenAddress(owner)}
             </span>
             {' '}
             wants to become a validator.
@@ -56,7 +58,7 @@ function ProposalView(props) {
             If unchallenged, 0x12345...56789 will become a validator on
             {' '}
             <span className="proposal-view__subcontent-deadline">
-              {timestampToCountdown(deadline, true)}
+              {timestampToCountdown(acceptUnix, true)}
             </span>
           </div>
         </Col>
@@ -94,7 +96,7 @@ function ProposalView(props) {
               Estimated vote power
             </div>
             <div className="proposal-view__card-content">
-              {`${estimatedVotePower.substring(0, 5)}%`}
+              {`${power.substring(0, 5)}%`}
             </div>
           </div>
         </Col>
@@ -144,9 +146,9 @@ function ProposalView(props) {
       </Row>
       <Row>
         <Col>
-          <Button
+          <Link
             text="Go Back"
-            action={goBack}
+            to="/"
             color="inverted"
           />
         </Col>
@@ -157,27 +159,29 @@ function ProposalView(props) {
 }
 
 ProposalView.propTypes = {
-  tendermint: PropTypes.string,
-  address: PropTypes.string,
-  deadline: PropTypes.string,
+  id: PropTypes.string,
+  owner: PropTypes.string,
+  acceptUnix: PropTypes.number,
   stakeSize: PropTypes.string,
-  estimatedVotePower: PropTypes.string,
+  power: PropTypes.string,
   dailyReward: PropTypes.string,
   challengeProposal: PropTypes.func,
   goBack: PropTypes.func,
   canBeChallenged: PropTypes.bool,
+  details: PropTypes.string,
 };
 
 ProposalView.defaultProps = {
-  tendermint: '',
-  address: '0',
-  deadline: Date.now() / 1000,
+  id: '',
+  owner: '0',
+  acceptUnix: Date.now() / 1000,
   stakeSize: '0',
-  estimatedVotePower: '0',
+  power: '0',
   dailyReward: '0',
   challengeProposal: () => {},
   goBack: () => {},
   canBeChallenged: false,
+  details: '',
 };
 
 export default ProposalView;
