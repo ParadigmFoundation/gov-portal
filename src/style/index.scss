@@ -5,3 +5,11 @@
 /* Variables and Boostrap */
 @import './variables.scss';
 @import '~bootstrap/scss/bootstrap';
+
+.modal-backdrop {
+  background-color: #fff;
+}
+
+.modal-backdrop.show {
+  opacity: 0.8;
+}
