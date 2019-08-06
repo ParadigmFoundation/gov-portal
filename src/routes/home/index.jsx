@@ -69,6 +69,26 @@ function Home() {
         }
 
         setValidators(formattedValidators);
+
+        const currentChallenges = await gov.currentChallenges();
+        const formattedActiveChallenges = [];
+
+        for (let i = 0; i < Object.keys(currentChallenges).length; i += 1) {
+          formattedActiveChallenges.push({
+            id: currentChallenges[Object.keys(currentChallenges)[i]].challengeId.toString(),
+            listingOwner: currentChallenges[Object.keys(currentChallenges)[i]].listingOwner,
+            challenger: currentChallenges[Object.keys(currentChallenges)[i]].challenger,
+            challengeEndUnix: currentChallenges[Object.keys(currentChallenges)[i]].challengeEndUnix,
+            challengerStake: gov.web3.utils.fromWei(
+              currentChallenges[Object.keys(currentChallenges)[i]].challengerStake.toString(),
+            ),
+            potentialReward: gov.web3.utils.fromWei(
+              currentChallenges[Object.keys(currentChallenges)[i]].challengerStake.multipliedBy(gov.web3.utils.toBN(30)).div(gov.web3.utils.toBN(100)).toString(),
+            ),
+          });
+        }
+
+        setActiveChallenges(formattedActiveChallenges);
       }
     }
 

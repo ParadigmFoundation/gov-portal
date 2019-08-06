@@ -21,6 +21,7 @@ function ActiveChallengesView(props) {
 
   return activeChallenges.map(activeChallenge => (
     <ActiveChallengeCard
+      key={activeChallenge.id}
       id={activeChallenge.id}
       listingOwner={activeChallenge.listingOwner}
       challenger={activeChallenge.challenger}
