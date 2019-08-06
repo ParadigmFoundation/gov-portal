@@ -34,25 +34,27 @@ function Account() {
         const { coinbase } = gov;
 
         const walletBalanceReq = await gov.kosu.kosuToken.balanceOf(coinbase);
-        setWalletBalance(walletBalanceReq.toString());
+        setWalletBalance(gov.web3.utils.fromWei(walletBalanceReq.toString()));
 
         const systemBalanceReq = await gov.kosu.treasury.systemBalance(coinbase);
-        setSystemBalance(systemBalanceReq.toString());
+        setSystemBalance(gov.web3.utils.fromWei(systemBalanceReq.toString()));
 
-        setTotalBalance(walletBalanceReq.plus(systemBalanceReq).toString());
+        setTotalBalance(gov.web3.utils.fromWei(walletBalanceReq.plus(systemBalanceReq).toString()));
 
         const bondedTokensReq = await gov.kosu.posterRegistry.tokensRegisteredFor(coinbase);
-        setBondedTokens(bondedTokensReq.toString());
+        setBondedTokens(gov.web3.utils.fromWei(bondedTokensReq.toString()));
 
         const treasuryBalanceReq = await gov.kosu.treasury.currentBalance(coinbase);
-        setTreasuryBalance(treasuryBalanceReq.toString());
+        setTreasuryBalance(gov.web3.utils.fromWei(treasuryBalanceReq.toString()));
 
         setTokensStakedFor(
-          systemBalanceReq.minus(treasuryBalanceReq).minus(bondedTokensReq).toString(),
+          gov.web3.utils.fromWei(
+            systemBalanceReq.minus(treasuryBalanceReq).minus(bondedTokensReq).toString(),
+          ),
         );
 
         const treasuryAllowanceReq = await gov.kosu.treasury.treasuryAllowance();
-        setTreasuryAllowance(treasuryAllowanceReq.toString());
+        setTreasuryAllowance(gov.web3.utils.fromWei(treasuryAllowanceReq.toString()));
       }
     }
 
@@ -72,8 +74,8 @@ function Account() {
       confirmListing={isReady ? gov.kosu.validatorRegistry.confirmListing : () => {}}
       resolveChallenge={isReady ? gov.kosu.validatorRegistry.confirmListing : () => {}}
       bondTokens={isReady ? gov.kosu.posterRegistry.registerTokens : () => {}}
-      addToTreasury={isReady ? gov.kosu.treasury.deposit : () => {}}
-      removeTreasury={isReady ? gov.kosu.treasury.withdraw : () => {}}
+      addToTreasury={isReady ? amount => gov.kosu.treasury.deposit(gov.web3.utils.toWei(amount)) : () => {}}
+      removeTreasury={isReady ? () => gov.kosu.treasury.withdraw(gov.web3.utils.toWei(treasuryBalance)) : () => {}}
       setTreasuryAllowance={isReady ? () => gov.kosu.treasury.approveTreasury(MAX_UINT_256) : () => {}}
     />
   );
