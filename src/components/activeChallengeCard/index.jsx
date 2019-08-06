@@ -70,8 +70,8 @@ ActiveChallengeCard.propTypes = {
   listingOwner: PropTypes.string.isRequired,
   challenger: PropTypes.string.isRequired,
   challengeEndUnix: PropTypes.number.isRequired,
-  challengerStake: PropTypes.number.isRequired,
-  potentialReward: PropTypes.number.isRequired,
+  challengerStake: PropTypes.string.isRequired,
+  potentialReward: PropTypes.string.isRequired,
 };
 
 export default ActiveChallengeCard;
