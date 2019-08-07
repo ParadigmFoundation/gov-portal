@@ -67,7 +67,7 @@ function ProposalView(props) {
             wants to become a validator.
           </div>
           <div className="proposal-view__subcontent">
-            If unchallenged, 0x12345...56789 will become a validator on
+            {`If unchallenged, ${shortenAddress(owner)} will become a validator in`}
             {' '}
             <span className="proposal-view__subcontent-deadline">
               {timestampToCountdown(acceptUnix, true)}
@@ -178,7 +178,6 @@ ProposalView.propTypes = {
   power: PropTypes.string,
   dailyReward: PropTypes.string,
   challengeProposal: PropTypes.func,
-  goBack: PropTypes.func,
   canBeChallenged: PropTypes.bool,
   details: PropTypes.string,
 };
@@ -191,7 +190,6 @@ ProposalView.defaultProps = {
   power: '0',
   dailyReward: '0',
   challengeProposal: () => {},
-  goBack: () => {},
   canBeChallenged: true,
   details: '',
 };

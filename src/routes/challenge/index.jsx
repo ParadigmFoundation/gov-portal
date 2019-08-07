@@ -24,9 +24,8 @@ function Challenge(props) {
   useEffect(() => {
     async function fetchData() {
       if (isReady && id !== '') {
-        console.log(gov);
-
         const currentChallenges = await gov.currentChallenges();
+        const currentBlock = await gov.currentBlockNumber();
 
         for (let i = 0; i < Object.keys(currentChallenges).length; i += 1) {
           if (currentChallenges[Object.keys(currentChallenges)[i]].challengeId.toString() === id) {
@@ -47,11 +46,11 @@ function Challenge(props) {
                 currentChallenges[Object.keys(currentChallenges)[i]].challengerStake.multipliedBy(gov.web3.utils.toBN(30)).div(gov.web3.utils.toBN(100)).toString(),
               ),
               challengeDetails: currentChallenges[Object.keys(currentChallenges)[i]].challengeDetails,
+              info,
+              currentBlock,
             };
 
             setChallengeData(challenge);
-
-            console.log(info);
           } else {
             console.log('Challenge does not exist');
           }
@@ -73,6 +72,7 @@ function Challenge(props) {
         challengerStake={challengeData && challengeData.challengerStake}
         potentialReward={challengeData && challengeData.potentialReward}
         challengeDetails={challengeData && challengeData.challengeDetails}
+        challengeType={challengeData && challengeData.challengeType}
       />
     </>
   );

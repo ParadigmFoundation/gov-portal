@@ -7,6 +7,7 @@ import {
 
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
+import Link from '../../../../components/link';
 
 import {
   timestampToCountdown,
@@ -18,6 +19,7 @@ import './index.scss';
 function ChallengeView(props) {
   const {
     challengeId,
+    challengeType,
     validatorPublicKey,
     listingOwner,
     challenger,
@@ -29,13 +31,23 @@ function ChallengeView(props) {
     reveal,
     voteAgain,
     addToCalendar,
-    goBack,
-    status,
     challengeDetails,
+    info,
+    blockNumber,
   } = props;
 
   function returnStatus() {
-    if (status === 'vote') {
+    let status;
+
+    if (info.challengeStart <= blockNumber && blockNumber < info.endCommitPeriod) {
+      status = 'commit';
+    } else if (info.endCommitPeriod <= blockNumber && blockNumber < info.challengeEnd) {
+      status = 'reveal';
+    } else if (info.challengeEnd <= blockNumber) {
+      status = 'over';
+    }
+
+    if (status === 'commit') {
       return (
         <div>
           <div className="challenge-view__challenge-label">
@@ -140,7 +152,7 @@ function ChallengeView(props) {
         <div className="challenge-view__voted-label">
           Thanks for voting.
           <br />
-          Remeber to reveal your vote here when the challenge ends.
+          Remember to reveal your vote here when the challenge ends.
           <br />
           Add a reminder to your
           {' '}
@@ -240,9 +252,9 @@ function ChallengeView(props) {
       </Row>
       <Row>
         <Col>
-          <Button
+          <Link
             text="Go Back"
-            action={goBack}
+            to="/"
             color="inverted"
           />
         </Col>
@@ -253,6 +265,7 @@ function ChallengeView(props) {
 
 ChallengeView.propTypes = {
   challengeId: PropTypes.string,
+  challengeType: PropTypes.string,
   validatorPublicKey: PropTypes.string,
   listingOwner: PropTypes.string,
   challenger: PropTypes.string,
@@ -264,13 +277,18 @@ ChallengeView.propTypes = {
   reveal: PropTypes.func,
   voteAgain: PropTypes.func,
   addToCalendar: PropTypes.func,
-  goBack: PropTypes.func,
-  status: PropTypes.string,
   challengeDetails: PropTypes.string,
+  info: PropTypes.shape({
+    challengeStart: PropTypes.number,
+    endCommitPeriod: PropTypes.number,
+    challengeEnd: PropTypes.number,
+  }),
+  blockNumber: PropTypes.number,
 };
 
 ChallengeView.defaultProps = {
   challengeId: '0',
+  challengeType: '',
   validatorPublicKey: '',
   listingOwner: '0x0...',
   challenger: '0x0...',
@@ -278,8 +296,12 @@ ChallengeView.defaultProps = {
   potentialReward: '0',
   challengerStake: '0',
   challengeDetails: '',
-  goBack: () => {},
-  status: '',
+  info: {
+    challengeStart: 0,
+    endCommitPeriod: 0,
+    challengeEnd: 0,
+  },
+  blockNumber: 0,
   keepProposal: () => {},
   removeProposal: () => {},
   reveal: () => {},
