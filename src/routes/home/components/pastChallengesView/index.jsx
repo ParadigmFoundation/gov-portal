@@ -55,7 +55,7 @@ function PastChallengesView(props) {
           {pastChallenge.stakedBalance}
         </td>
         <td>
-          {pastChallenge.challengeEnd}
+          {new Date(pastChallenge.challengeEnd * 1000).toLocaleDateString()}
         </td>
       </tr>
     ));
