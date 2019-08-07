@@ -89,6 +89,28 @@ function Home() {
         }
 
         setActiveChallenges(formattedActiveChallenges);
+
+        const pastChallengesRes = await gov.getHistoricalChallenges();
+        const formattedPastChallenges = [];
+
+        console.log(pastChallengesRes);
+
+        for (let i = 0; i < pastChallengesRes.length; i += 1) {
+          formattedPastChallenges.push({
+            id: i,
+            challenger: pastChallengesRes[i].challenger,
+            status: pastChallengesRes[i].listingSnapshot.status === '1' ? 'proposal' : 'validator',
+            result: pastChallengesRes[i].passed,
+            tokensAtStake: gov.web3.utils.fromWei(
+              pastChallengesRes[i].listingSnapshot.stakedBalance.plus(pastChallengesRes[i].balance).toString(),
+            ),
+            endTimestamp: await gov.getPastBlockTimestamp(
+              pastChallengesRes[i].challengeEnd.toNumber(),
+            ),
+          });
+        }
+
+        setPastChallenges(formattedPastChallenges);
       }
     }
 

@@ -19,9 +19,9 @@ function ChallengeView(props) {
   const {
     challengeId,
     validatorPublicKey,
-    address,
-    address2,
-    deadline,
+    listingOwner,
+    challenger,
+    challengeEndUnix,
     potentialReward,
     challengerStake,
     keepProposal,
@@ -31,6 +31,7 @@ function ChallengeView(props) {
     addToCalendar,
     goBack,
     status,
+    challengeDetails,
   } = props;
 
   function returnStatus() {
@@ -177,13 +178,13 @@ function ChallengeView(props) {
         <Col>
           <div className="challenge-view__content">
             <span className="challenge-view__address">
-              {shortenAddress(address)}
+              {shortenAddress(challenger)}
             </span>
             {' '}
             is challenging
             {' '}
             <span className="challenge-view__address">
-              {`${shortenAddress(address2)}'s`}
+              {`${shortenAddress(listingOwner)}'s`}
             </span>
             {' '}
             proposal.
@@ -193,13 +194,13 @@ function ChallengeView(props) {
       <Row className="pb-5">
         <Col>
           <div className="challenge-view__subcontent">
-            Entity y believes that validator x did something bad. This is meant to be a 2-5 line description.
+            {challengeDetails}
           </div>
           <div className="challenge-view__subcontent">
             This challenge will end in
             {' '}
             <span className="challenge-view__subcontent-deadline">
-              {timestampToCountdown(deadline, true)}
+              {timestampToCountdown(challengeEndUnix, true)}
             </span>
           </div>
         </Col>
@@ -251,11 +252,11 @@ function ChallengeView(props) {
 }
 
 ChallengeView.propTypes = {
-  challengeId: PropTypes.number,
+  challengeId: PropTypes.string,
   validatorPublicKey: PropTypes.string,
-  address: PropTypes.string,
-  address2: PropTypes.string,
-  deadline: PropTypes.number,
+  listingOwner: PropTypes.string,
+  challenger: PropTypes.string,
+  challengeEndUnix: PropTypes.number,
   potentialReward: PropTypes.string,
   challengerStake: PropTypes.string,
   keepProposal: PropTypes.func,
@@ -265,16 +266,18 @@ ChallengeView.propTypes = {
   addToCalendar: PropTypes.func,
   goBack: PropTypes.func,
   status: PropTypes.string,
+  challengeDetails: PropTypes.string,
 };
 
 ChallengeView.defaultProps = {
-  challengeId: 0,
+  challengeId: '0',
   validatorPublicKey: '',
-  address: '',
-  address2: '',
-  deadline: Date.now() / 1000,
+  listingOwner: '0x0...',
+  challenger: '0x0...',
+  challengeEndUnix: Date.now() / 1000,
   potentialReward: '0',
   challengerStake: '0',
+  challengeDetails: '',
   goBack: () => {},
   status: '',
   keepProposal: () => {},

@@ -52,7 +52,7 @@ function DetailedCardHeader(props) {
       <Row className="pb-4 align-items-center">
         <Col>
           <div className="detailed-card-header__id">
-            {shortenAddress(id)}
+            {type === 'challenge' ? id : shortenAddress(id)}
           </div>
         </Col>
         {displayTimestampBadge(acceptUnix)}

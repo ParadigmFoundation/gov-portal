@@ -22,7 +22,7 @@ import './index.scss';
 function ValidatorView(props) {
   const {
     validatorName,
-    validatorAddress,
+    owner,
     validatorPublicKey,
     etherscanLink,
     tokensStaked,
@@ -73,7 +73,7 @@ function ValidatorView(props) {
       <Button
         color="red"
         action={challenge}
-        text={`Challenge ${shortenAddress(validatorAddress)}`}
+        text={`Challenge ${shortenAddress(owner)}`}
       />
     );
   }
@@ -90,7 +90,7 @@ function ValidatorView(props) {
       <Row className="pb-2">
         <Col>
           <div className="validator-view__address">
-            {shortenAddress(validatorAddress)}
+            {shortenAddress(owner)}
           </div>
         </Col>
       </Row>
@@ -217,7 +217,7 @@ function ValidatorView(props) {
 
 ValidatorView.propTypes = {
   validatorName: PropTypes.string,
-  validatorAddress: PropTypes.string.isRequired,
+  owner: PropTypes.string,
   validatorPublicKey: PropTypes.string.isRequired,
   etherscanLink: PropTypes.string.isRequired,
   tokensStaked: PropTypes.string.isRequired,
@@ -234,6 +234,7 @@ ValidatorView.propTypes = {
 };
 
 ValidatorView.defaultProps = {
+  owner: '0x0',
   validatorName: '',
   challenge: () => {},
   status: '',

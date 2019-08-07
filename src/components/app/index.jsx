@@ -22,6 +22,7 @@ import Home from '../../routes/home';
 import Account from '../../routes/account';
 import Proposal from '../../routes/proposal';
 import Challenge from '../../routes/challenge';
+import Validator from '../../routes/validator';
 
 function App() {
   const [govObject, setGovObject] = useState();
@@ -69,6 +70,7 @@ function App() {
             <Route path="/governance" component={Home} />
             <Route path="/proposal/:id" component={Proposal} />
             <Route path="/challenge/:id" component={Challenge} />
+            <Route path="/validator/:id" component={Validator} />
           </Switch>
         </div>
       </BrowserRouter>
