@@ -101,10 +101,10 @@ function Home() {
             challenger: pastChallengesRes[i].challenger,
             status: pastChallengesRes[i].listingSnapshot.status === '1' ? 'proposal' : 'validator',
             result: pastChallengesRes[i].passed,
-            tokensAtStake: gov.web3.utils.fromWei(
+            stakedBalance: gov.web3.utils.fromWei(
               pastChallengesRes[i].listingSnapshot.stakedBalance.plus(pastChallengesRes[i].balance).toString(),
             ),
-            endTimestamp: await gov.getPastBlockTimestamp(
+            challengeEnd: await gov.getPastBlockTimestamp(
               pastChallengesRes[i].challengeEnd.toNumber(),
             ),
           });

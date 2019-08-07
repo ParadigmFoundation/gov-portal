@@ -38,7 +38,7 @@ function PastChallengesView(props) {
     }
 
     return pastChallenges.map(pastChallenge => (
-      <tr>
+      <tr key={pastChallenge.id}>
         <td>
           {pastChallenge.id}
         </td>
