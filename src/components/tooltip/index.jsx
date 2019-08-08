@@ -7,6 +7,7 @@ import QuestionSrc from '../../assets/img/question.png';
 const StyledTooltip = styled.div`
   position: relative;
   display: inline-block;
+  margin-left: 6px;
 
   & .text {
     text-align: left;
@@ -22,7 +23,6 @@ const StyledTooltip = styled.div`
     margin-left: -129px;
     opacity: 0;
     transition: opacity 0.75s;
-    opacity: 0.9;
     background: #4A4A4A;
     border-radius: 2px;
     font-family: 'Gilroy-Medium', sans-serif;;
@@ -42,7 +42,7 @@ const StyledTooltip = styled.div`
   }
 
   &:hover .text {
-    opacity: 1;
+    opacity: 0.9;
     visibility: visible;
   }
 `;
