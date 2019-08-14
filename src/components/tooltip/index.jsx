@@ -22,7 +22,7 @@ const StyledTooltip = styled.div`
     bottom: 100%;
     margin-left: -129px;
     opacity: 0;
-    transition: opacity 0.75s;
+    transition: opacity 0.25s;
     background: #4A4A4A;
     border-radius: 2px;
     font-family: 'Gilroy-Medium', sans-serif;;
@@ -47,6 +47,12 @@ const StyledTooltip = styled.div`
   }
 `;
 
+const Image = styled.img`
+  vertical-align: baseline;
+  height: 12px;
+  width: 12px;
+`;
+
 function Tooltip(props) {
   const {
     text,
@@ -54,12 +60,9 @@ function Tooltip(props) {
 
   return (
     <StyledTooltip>
-      <img
-        className="tooltip__question"
+      <Image
         src={QuestionSrc}
         alt="Question mark"
-        width={12}
-        height={12}
       />
       <div className="text">
         {text}
