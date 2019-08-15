@@ -2,11 +2,13 @@ import React, {
   useState,
 } from 'react';
 import PropTypes from 'prop-types';
-
+import styled from 'styled-components';
 import {
   Row,
   Col,
 } from 'reactstrap';
+
+import WarningSign from '../../../../assets/img/warning_grey.png';
 
 import ConnectMetaMask from '../../../../components/connectMetaMask';
 import SimpleCard from '../../../../components/simpleCard';
@@ -19,8 +21,34 @@ import Button from '../../../../components/button';
 import BondModal from '../bondModal';
 import AddTreasuryModal from '../addTreasuryModal';
 import ManageTreasuryModal from '../manageTreasuryModal';
+import TreasuryBalanceModal from '../treasuryBalanceModal';
 
-import QuestionIcon from '../../../../components/questionIcon';
+import Tooltip from '../../../../components/tooltip';
+
+import tooltipsJson from '../../../../assets/content/tooltips.json';
+
+const Layer = styled.div`
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  width: 849px;
+  margin: 15px;
+  height: 145px;
+  z-index: 1;
+  text-align: center;
+  line-height: normal;
+  justify-content: center;
+  align-content: center;
+  display: inline-grid;
+`;
+
+const Warning = styled.img`
+  width: 28px;
+  height: 28px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 12px;
+`;
 
 function TokensView(props) {
   const {
@@ -33,6 +61,8 @@ function TokensView(props) {
     tokensStakedFor,
     treasuryBalance,
     bondTokens,
+    unbondTokens,
+    updateBalance,
     addToTreasury,
     removeTreasury,
     setTreasuryAllowance,
@@ -63,10 +93,18 @@ function TokensView(props) {
         toggle={() => setIsAddTreasuryModalOpen(!isAddTreasuryModalOpen)}
         add={addToTreasury}
       />
+      <TreasuryBalanceModal
+        isOpen={isTreasuryBalanceModalOpen}
+        toggle={() => setIsTreasuryBalanceModalOpen(!isTreasuryBalanceModalOpen)}
+        updateBalance={updateBalance}
+        currentBalance={treasuryBalance}
+      />
       <SimpleCard>
         <SimpleCardTitle>
           Total balance
-          <QuestionIcon />
+          <Tooltip
+            text={tooltipsJson.Wallet}
+          />
         </SimpleCardTitle>
         <SimpleCardContent>
           {totalBalance}
@@ -78,7 +116,9 @@ function TokensView(props) {
       <SimpleCard>
         <SimpleCardTitle>
           System balance
-          <QuestionIcon />
+          <Tooltip
+            text={tooltipsJson.Wallet}
+          />
         </SimpleCardTitle>
         <SimpleCardContent>
           {systemBalance}
@@ -92,7 +132,9 @@ function TokensView(props) {
           <Row>
             <Col>
               In wallet
-              <QuestionIcon />
+              <Tooltip
+                text={tooltipsJson.Wallet}
+              />
             </Col>
             <Col className="text-right">
               <Button
@@ -111,88 +153,98 @@ function TokensView(props) {
           <KosuSymbol />
         </SimpleCardFooter>
       </SimpleCard>
-      {metaMaskConnected && treasuryAllowance === '0' && (
-        <Row>
-          <Col>
-            <p>
-              Click here to enable access to the Treasury.
-            </p>
-            <Button
-              action={setTreasuryAllowance}
-              text="Enable"
+      <div>
+        {treasuryAllowance === '0' && (
+          <Layer>
+            <Warning
+              src={WarningSign}
+              alt="Warning sign"
             />
-          </Col>
-        </Row>
-      )}
-      <SimpleCard>
-        <SimpleCardTitle>
-          <Row>
-            <Col>
-              Bonded
-              <QuestionIcon />
-            </Col>
-            <Col className="text-right">
-              <Button
-                color="outlined-green"
-                text="Bond"
-                disabled={!metaMaskConnected}
-                action={() => setIsBondModalOpen(true)}
-                small
-              />
-            </Col>
-          </Row>
-        </SimpleCardTitle>
-        <SimpleCardContent>
-          {bondedTokens}
-        </SimpleCardContent>
-        <SimpleCardFooter>
-          <KosuSymbol />
-        </SimpleCardFooter>
-      </SimpleCard>
-      <SimpleCard>
-        <SimpleCardTitle>
-          <Row>
-            <Col>
-              Staked
-              <QuestionIcon />
-            </Col>
-            <Col className="text-right">
-              <Button color="outlined-green" text="Stake" small disabled={!metaMaskConnected} />
-            </Col>
-          </Row>
-        </SimpleCardTitle>
-        <SimpleCardContent>
-          {tokensStakedFor}
-        </SimpleCardContent>
-        <SimpleCardFooter>
-          <KosuSymbol />
-        </SimpleCardFooter>
-      </SimpleCard>
-      <SimpleCard>
-        <SimpleCardTitle>
-          <Row>
-            <Col>
-              In treasury
-              <QuestionIcon />
-            </Col>
-            <Col xs={4} className="text-right">
-              <Button
-                color="outlined-green"
-                text={treasuryBalance === '0' ? 'Add' : 'Edit'}
-                disabled={!metaMaskConnected}
-                action={treasuryBalance === '0' ? () => setIsAddTreasuryModalOpen(true) : () => setIsManageTreasuryModalOpen(true)}
-                small
-              />
-            </Col>
-          </Row>
-        </SimpleCardTitle>
-        <SimpleCardContent>
-          {treasuryBalance}
-        </SimpleCardContent>
-        <SimpleCardFooter>
-          <KosuSymbol />
-        </SimpleCardFooter>
-      </SimpleCard>
+            <Button
+              action={() => setTreasuryAllowance}
+              text="Click here to enable access to the Treasury."
+              color="inverted"
+            />
+          </Layer>
+        )}
+        <div>
+          <SimpleCard>
+            <SimpleCardTitle>
+              <Row>
+                <Col>
+                  Bonded
+                  <Tooltip
+                    text={tooltipsJson.Wallet}
+                  />
+                </Col>
+                <Col className="text-right">
+                  <Button
+                    color="outlined-green"
+                    text="Bond"
+                    disabled={!metaMaskConnected}
+                    action={() => setIsBondModalOpen(true)}
+                    small
+                  />
+                </Col>
+              </Row>
+            </SimpleCardTitle>
+            <SimpleCardContent>
+              {bondedTokens}
+            </SimpleCardContent>
+            <SimpleCardFooter>
+              <KosuSymbol />
+            </SimpleCardFooter>
+          </SimpleCard>
+          <SimpleCard>
+            <SimpleCardTitle>
+              <Row>
+                <Col>
+                  Staked
+                  <Tooltip
+                    text={tooltipsJson.Wallet}
+                  />
+                </Col>
+                <Col className="text-right">
+                  <Button color="outlined-green" text="Stake" small disabled={!metaMaskConnected} />
+                </Col>
+              </Row>
+            </SimpleCardTitle>
+            <SimpleCardContent>
+              {tokensStakedFor}
+            </SimpleCardContent>
+            <SimpleCardFooter>
+              <KosuSymbol />
+            </SimpleCardFooter>
+          </SimpleCard>
+          <SimpleCard>
+            <SimpleCardTitle>
+              <Row>
+                <Col>
+                  In treasury
+                  <Tooltip
+                    text={tooltipsJson.Wallet}
+                  />
+                </Col>
+                <Col xs={4} className="text-right">
+                  <Button
+                    color="outlined-green"
+                    text={treasuryBalance === '0' ? 'Add' : 'Edit'}
+                    action={treasuryBalance === '0' ? () => setIsAddTreasuryModalOpen(!isAddTreasuryModalOpen) : () => setIsManageTreasuryModalOpen(!isManageTreasuryModalOpen)}
+                    disabled={!metaMaskConnected}
+                    small
+                  />
+                </Col>
+              </Row>
+            </SimpleCardTitle>
+            <SimpleCardContent>
+              {treasuryBalance}
+            </SimpleCardContent>
+            <SimpleCardFooter>
+              <KosuSymbol />
+            </SimpleCardFooter>
+          </SimpleCard>
+        </div>
+      </div>
     </>
   );
 }
@@ -207,9 +259,11 @@ TokensView.propTypes = {
   tokensStakedFor: PropTypes.string,
   treasuryBalance: PropTypes.string,
   bondTokens: PropTypes.func,
+  unbondTokens: PropTypes.func,
   addToTreasury: PropTypes.func,
   removeTreasury: PropTypes.func,
   setTreasuryAllowance: PropTypes.func,
+  updateBalance: PropTypes.func,
 };
 
 TokensView.defaultProps = {
@@ -222,9 +276,11 @@ TokensView.defaultProps = {
   tokensStakedFor: '0',
   treasuryBalance: '0',
   bondTokens: () => {},
+  unbondTokens: () => {},
   addToTreasury: () => {},
   removeTreasury: () => {},
   setTreasuryAllowance: () => {},
+  updateBalance: () => {},
 };
 
 export default TokensView;

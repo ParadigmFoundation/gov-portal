@@ -27,6 +27,8 @@ function AccountView(props) {
     bondTokens,
     addToTreasury,
     removeTreasury,
+    updateBalance,
+    treasuryAllowance,
   } = props;
 
   return (
@@ -53,11 +55,13 @@ function AccountView(props) {
             totalBalance={totalBalance}
             systemBalance={systemBalance}
             bondedTokens={bondedTokens}
+            treasuryAllowance={treasuryAllowance}
             tokensStakedFor={tokensStakedFor}
             treasuryBalance={treasuryBalance}
             bondTokens={bondTokens}
             addToTreasury={addToTreasury}
             removeTreasury={removeTreasury}
+            updateBalance={updateBalance}
           />
         </Col>
       </Row>
@@ -105,11 +109,13 @@ AccountView.propTypes = {
   bondedTokens: PropTypes.string,
   tokensStakedFor: PropTypes.string,
   treasuryBalance: PropTypes.string,
+  treasuryAllowance: PropTypes.string,
   confirmListing: PropTypes.func,
   resolveChallenge: PropTypes.func,
   bondTokens: PropTypes.func,
   addToTreasury: PropTypes.func,
   removeTreasury: PropTypes.func,
+  updateBalance: PropTypes.func,
 };
 
 AccountView.defaultProps = {
@@ -120,11 +126,13 @@ AccountView.defaultProps = {
   bondedTokens: '0',
   tokensStakedFor: '0',
   treasuryBalance: '0',
+  treasuryAllowance: '0',
   confirmListing: () => {},
   resolveChallenge: () => {},
   bondTokens: () => {},
   addToTreasury: () => {},
   removeTreasury: () => {},
+  updateBalance: () => {},
 };
 
 export default AccountView;

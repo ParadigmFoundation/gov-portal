@@ -68,8 +68,10 @@ function AddTreasuryModal(props) {
             <Button
               color="green"
               text="Add"
-              disabled={parseInt(tokensToAdd, 10) === 0}
+              disabled={tokensToAdd === '0' || tokensToAdd === ''}
               action={() => add(tokensToAdd.toString())}
+              onceConfirmed={toggle}
+              isAsync
             />
           </Col>
         </Row>

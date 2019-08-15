@@ -61,6 +61,19 @@ function Account() {
     fetchBalances();
   }, [isReady]);
 
+  async function updateBalance(newBalance) {
+    console.log(newBalance);
+
+    const newBalanceWei = gov.web3.utils.toBN(gov.web3.utils.toWei(newBalance));
+    const currentBalanceWei = gov.web3.utils.toBN(gov.web3.utils.toWei(treasuryBalance));
+
+    if (newBalanceWei.comparedTo(currentBalanceWei) === 1) {
+      return gov.kosu.treasury.deposit(newBalanceWei.minus(currentBalanceWei));
+    } if (newBalanceWei.comparedTo(currentBalanceWei) === 1) {
+      return gov.kosu.treasury.withdraw(currentBalanceWei.minus(newBalanceWei));
+    }
+  }
+
   return (
     <AccountView
       metaMaskConnected={isReady}
@@ -73,10 +86,12 @@ function Account() {
       treasuryBalance={treasuryBalance}
       confirmListing={isReady ? gov.kosu.validatorRegistry.confirmListing : () => {}}
       resolveChallenge={isReady ? gov.kosu.validatorRegistry.confirmListing : () => {}}
-      bondTokens={isReady ? gov.kosu.posterRegistry.registerTokens : () => {}}
+      bondTokens={isReady ? amount => gov.kosu.posterRegistry.registerTokens(gov.web3.utils.toWei(amount)) : () => {}}
+      unbondTokens={isReady ? amount => gov.kosu.posterRegistry.releaseTokens(gov.web3.utils.toWei(amount)) : () => {}}
       addToTreasury={isReady ? amount => gov.kosu.treasury.deposit(gov.web3.utils.toWei(amount)) : () => {}}
       removeTreasury={isReady ? () => gov.kosu.treasury.withdraw(gov.web3.utils.toWei(treasuryBalance)) : () => {}}
       setTreasuryAllowance={isReady ? () => gov.kosu.treasury.approveTreasury(MAX_UINT_256) : () => {}}
+      updateBalance={isReady ? newBalance => updateBalance(newBalance) : () => {}}
     />
   );
 }

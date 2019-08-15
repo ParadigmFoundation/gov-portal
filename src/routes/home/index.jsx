@@ -26,10 +26,7 @@ function Home() {
   useEffect(() => {
     async function fetchData() {
       if (isReady) {
-        // TODO: Fetch the data
-        // setProposals(gov.proposals);
-        // setValidators(gov.validators);
-        // setActiveChallenges(gov.challenges);
+        console.log(gov);
 
         const currentProposals = await gov.currentProposals();
         const formattedProposals = [];
@@ -92,8 +89,6 @@ function Home() {
 
         const pastChallengesRes = await gov.getHistoricalChallenges();
         const formattedPastChallenges = [];
-
-        console.log(pastChallengesRes);
 
         for (let i = 0; i < pastChallengesRes.length; i += 1) {
           formattedPastChallenges.push({

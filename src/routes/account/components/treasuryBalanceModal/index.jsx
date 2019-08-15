@@ -24,7 +24,7 @@ function TreasuryBalanceModal(props) {
     updateBalance,
   } = props;
 
-  const [newBalance, setNewBalance] = useState(0);
+  const [newBalance, setNewBalance] = useState('0');
 
   return (
     <Modal className="treasure-balance-modal" isOpen={isOpen} toggle={toggle}>
@@ -66,11 +66,11 @@ function TreasuryBalanceModal(props) {
           <Col>
             <input
               placeholder={0}
-              type="number"
+              type="text"
               value={newBalance}
               onChange={e => setNewBalance(e.target.value)}
               className="treasure-balance-modal__input"
-              min={0}
+              min="0"
             />
           </Col>
           <Col xs={2}>
@@ -85,8 +85,8 @@ function TreasuryBalanceModal(props) {
         <Row className="p-5">
           <Col xs={12} sm={6}>
             <ProgressBar
-              max={currentBalance}
-              value={newBalance}
+              max={parseInt(currentBalance, 10)}
+              value={parseInt(newBalance, 10)}
             />
           </Col>
         </Row>
@@ -102,7 +102,6 @@ function TreasuryBalanceModal(props) {
             <Button
               color="green"
               text="Update balance"
-              disabled={parseInt(newBalance, 10) === 0}
               action={() => updateBalance(newBalance)}
             />
           </Col>
@@ -113,7 +112,7 @@ function TreasuryBalanceModal(props) {
 }
 
 TreasuryBalanceModal.propTypes = {
-  currentBalance: PropTypes.number,
+  currentBalance: PropTypes.string,
   isOpen: PropTypes.bool,
   updateBalance: PropTypes.func,
   toggle: PropTypes.func.isRequired,
@@ -121,7 +120,7 @@ TreasuryBalanceModal.propTypes = {
 
 TreasuryBalanceModal.defaultProps = {
   updateBalance: () => {},
-  currentBalance: 0,
+  currentBalance: '0',
   isOpen: false,
 };
 
