@@ -1,5 +1,11 @@
-import React from 'react';
+import React, {
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
+
+import {
+  Spinner,
+} from 'reactstrap';
 
 import './index.scss';
 
@@ -11,7 +17,11 @@ function Button(props) {
     block,
     small,
     disabled,
+    isAsync,
+    onceConfirmed,
   } = props;
+
+  const [status, setStatus] = useState('');
 
   let classname = 'button';
 
@@ -47,14 +57,44 @@ function Button(props) {
     classname += ' button--block';
   }
 
+  async function asyncFunc() {
+    setStatus('loading');
+    await action();
+    setStatus('done');
+  }
+
+  function returnContent() {
+    if (status === 'loading') {
+      return <Spinner color="black" />;
+    }
+
+    if (status === 'done') {
+      return 'Done';
+    }
+
+    return text;
+  }
+
+  function clickButton() {
+    if (isAsync && status === 'done') {
+      return onceConfirmed();
+    }
+
+    if (isAsync) {
+      return asyncFunc();
+    }
+
+    return action();
+  }
+
   return (
     <button
       type="button"
       className={classname}
-      onClick={() => action()}
+      onClick={() => clickButton()}
       disabled={disabled}
     >
-      {text}
+      {returnContent()}
     </button>
   );
 }
@@ -66,6 +106,8 @@ Button.propTypes = {
   block: PropTypes.bool,
   small: PropTypes.bool,
   disabled: PropTypes.bool,
+  isAsync: PropTypes.bool,
+  onceConfirmed: PropTypes.func,
 };
 
 Button.defaultProps = {
@@ -74,6 +116,8 @@ Button.defaultProps = {
   action: () => {},
   small: false,
   disabled: false,
+  isAsync: false,
+  onceConfirmed: () => {},
 };
 
 export default Button;
