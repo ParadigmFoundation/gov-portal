@@ -65,7 +65,7 @@ function Button(props) {
 
   function returnContent() {
     if (status === 'loading') {
-      return <Spinner color="black" />;
+      return <Spinner color="light" size="sm" />;
     }
 
     if (status === 'done') {
