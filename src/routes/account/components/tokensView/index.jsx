@@ -17,11 +17,13 @@ import SimpleCardContent from '../../../../components/simpleCard/components/simp
 import SimpleCardFooter from '../../../../components/simpleCard/components/simpleCardFooter';
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
+import Link from '../../../../components/link';
 
 import BondModal from '../bondModal';
 import AddTreasuryModal from '../addTreasuryModal';
 import ManageTreasuryModal from '../manageTreasuryModal';
 import TreasuryBalanceModal from '../treasuryBalanceModal';
+import WalletModal from '../walletModal';
 
 import Tooltip from '../../../../components/tooltip';
 
@@ -66,19 +68,22 @@ function TokensView(props) {
     addToTreasury,
     removeTreasury,
     setTreasuryAllowance,
+    estimate,
+    pay,
   } = props;
 
   const [isBondModalOpen, setIsBondModalOpen] = useState(false);
   const [isManageTreasuryModalOpen, setIsManageTreasuryModalOpen] = useState(false);
   const [isAddTreasuryModalOpen, setIsAddTreasuryModalOpen] = useState(false);
   const [isTreasuryBalanceModalOpen, setIsTreasuryBalanceModalOpen] = useState(false);
+  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
 
   return (
     <>
       <BondModal
         isOpen={isBondModalOpen}
         toggle={() => setIsBondModalOpen(!isBondModalOpen)}
-        limit={5025}
+        limit={treasuryBalance}
         confirm={bondTokens}
         currentBond={bondedTokens}
       />
@@ -98,6 +103,12 @@ function TokensView(props) {
         toggle={() => setIsTreasuryBalanceModalOpen(!isTreasuryBalanceModalOpen)}
         updateBalance={updateBalance}
         currentBalance={treasuryBalance}
+      />
+      <WalletModal
+        isOpen={isWalletModalOpen}
+        toggle={() => setIsWalletModalOpen(!isWalletModalOpen)}
+        confirm={pay}
+        estimate={estimate}
       />
       <SimpleCard>
         <SimpleCardTitle>
@@ -138,6 +149,7 @@ function TokensView(props) {
             </Col>
             <Col className="text-right">
               <Button
+                action={() => setIsWalletModalOpen(!isWalletModalOpen)}
                 color="outlined-green"
                 text="Add"
                 disabled={!metaMaskConnected}
@@ -205,7 +217,7 @@ function TokensView(props) {
                   />
                 </Col>
                 <Col className="text-right">
-                  <Button color="outlined-green" text="Stake" small disabled={!metaMaskConnected} />
+                  <Link to="/" color="outlined-green" text="Stake" small disabled={!metaMaskConnected} />
                 </Col>
               </Row>
             </SimpleCardTitle>
@@ -264,6 +276,8 @@ TokensView.propTypes = {
   removeTreasury: PropTypes.func,
   setTreasuryAllowance: PropTypes.func,
   updateBalance: PropTypes.func,
+  estimate: PropTypes.func,
+  pay: PropTypes.func,
 };
 
 TokensView.defaultProps = {
@@ -281,6 +295,8 @@ TokensView.defaultProps = {
   removeTreasury: () => {},
   setTreasuryAllowance: () => {},
   updateBalance: () => {},
+  estimate: () => {},
+  pay: () => {},
 };
 
 export default TokensView;

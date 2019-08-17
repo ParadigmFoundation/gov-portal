@@ -36,6 +36,8 @@ function Account() {
       if (isReady) {
         const { coinbase } = gov;
 
+        console.log(gov);
+
         const walletBalanceReq = await gov.kosu.kosuToken.balanceOf(coinbase);
         setWalletBalance(gov.web3.utils.fromWei(walletBalanceReq.toString()));
 
@@ -167,8 +169,6 @@ function Account() {
   }, [isReady]);
 
   async function updateBalance(newBalance) {
-    console.log(newBalance);
-
     const newBalanceWei = gov.web3.utils.toBN(gov.web3.utils.toWei(newBalance));
     const currentBalanceWei = gov.web3.utils.toBN(gov.web3.utils.toWei(treasuryBalance));
 
@@ -199,6 +199,8 @@ function Account() {
       updateBalance={isReady ? newBalance => updateBalance(newBalance) : () => {}}
       orders={OrdersDummyData}
       activities={activities}
+      pay={isReady ? gov.kosu.kosuToken.pay : () => {}}
+      estimate={isReady ? gov.kosu.kosuToken.estimateEtherToToken : () => {}}
     />
   );
 }

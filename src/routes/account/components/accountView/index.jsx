@@ -31,6 +31,8 @@ function AccountView(props) {
     treasuryAllowance,
     orders,
     activities,
+    pay,
+    estimate,
   } = props;
 
   return (
@@ -64,6 +66,8 @@ function AccountView(props) {
             addToTreasury={addToTreasury}
             removeTreasury={removeTreasury}
             updateBalance={updateBalance}
+            pay={pay}
+            estimate={estimate}
           />
         </Col>
       </Row>
@@ -120,6 +124,8 @@ AccountView.propTypes = {
   addToTreasury: PropTypes.func,
   removeTreasury: PropTypes.func,
   updateBalance: PropTypes.func,
+  pay: PropTypes.func,
+  estimate: PropTypes.func,
   orders: PropTypes.arrayOf(PropTypes.object),
   activities: PropTypes.arrayOf(PropTypes.object),
 };
@@ -139,6 +145,8 @@ AccountView.defaultProps = {
   addToTreasury: () => {},
   removeTreasury: () => {},
   updateBalance: () => {},
+  pay: () => {},
+  estimate: () => {},
   orders: [],
   activities: [],
 };
