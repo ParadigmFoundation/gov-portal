@@ -68,7 +68,7 @@ function OrdersView(props) {
           {returnTypeSymbol(order.type)}
         </td>
         <td className="orders-view__expiration">
-          {new Date(order.expiration).toString()}
+          {new Date(order.expiration * 1000).toLocaleString()}
         </td>
       </tr>
     ));

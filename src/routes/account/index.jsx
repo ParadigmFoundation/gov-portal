@@ -12,6 +12,8 @@ import GovContext from '../../store/govContext';
 
 import AccountView from './components/accountView';
 
+import OrdersDummyData from '../../assets/content/ordersDummy.json';
+
 function Account() {
   const {
     gov,
@@ -92,6 +94,7 @@ function Account() {
       removeTreasury={isReady ? () => gov.kosu.treasury.withdraw(gov.web3.utils.toWei(treasuryBalance)) : () => {}}
       setTreasuryAllowance={isReady ? () => gov.kosu.treasury.approveTreasury(MAX_UINT_256) : () => {}}
       updateBalance={isReady ? newBalance => updateBalance(newBalance) : () => {}}
+      orders={OrdersDummyData}
     />
   );
 }
