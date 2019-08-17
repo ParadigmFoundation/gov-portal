@@ -110,7 +110,7 @@ function Home() {
     }
 
     fetchData();
-  }, [isReady]);
+  }, [isReady, gov]);
 
   return (
     <div>

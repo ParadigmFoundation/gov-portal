@@ -94,20 +94,6 @@ function GovernanceActivityView(props) {
       );
     }
 
-    function getTag(type, status) {
-      if (type === 'challenge') {
-        if (status === 'pending') {
-          return NavLink;
-        }
-      }
-
-      if (type === 'proposal') {
-        if (status === 'pending') {
-          return NavLink;
-        }
-      }
-    }
-
     return activities.map(activity => (
       <tr key={activity.listingKey}>
         <td className="governance-activity-view__description">

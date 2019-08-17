@@ -41,7 +41,7 @@ function Header() {
     }
 
     fetchUserInfo();
-  }, [isReady]);
+  }, [isReady, gov]);
 
   return (
     <HeaderView

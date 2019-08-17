@@ -10,7 +10,6 @@ import {
 
 import WarningSign from '../../../../assets/img/warning_grey.png';
 
-import ConnectMetaMask from '../../../../components/connectMetaMask';
 import SimpleCard from '../../../../components/simpleCard';
 import SimpleCardTitle from '../../../../components/simpleCard/components/simpleCardTitle';
 import SimpleCardContent from '../../../../components/simpleCard/components/simpleCardContent';
@@ -63,7 +62,6 @@ function TokensView(props) {
     tokensStakedFor,
     treasuryBalance,
     bondTokens,
-    unbondTokens,
     updateBalance,
     addToTreasury,
     removeTreasury,
