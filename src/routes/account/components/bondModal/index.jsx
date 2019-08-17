@@ -92,7 +92,7 @@ function BondModal(props) {
         <Row className="p-5">
           <Col xs={12} sm={6}>
             <ProgressBar
-              max={limit}
+              max={parseInt(limit, 10)}
               value={parseInt(tokensToBound, 10)}
             />
           </Col>
@@ -120,9 +120,9 @@ function BondModal(props) {
 }
 
 BondModal.propTypes = {
-  currentBond: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  currentBond: PropTypes.string,
   isOpen: PropTypes.bool,
-  limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  limit: PropTypes.string,
   toggle: PropTypes.func.isRequired,
   confirm: PropTypes.func,
 };
