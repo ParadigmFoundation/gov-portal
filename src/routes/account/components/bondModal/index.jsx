@@ -64,7 +64,7 @@ function BondModal(props) {
           <Col xs={2} />
           <Col>
             <div className="bond-modal__label">
-              Your order post limit
+              New order post limit
             </div>
           </Col>
         </Row>
@@ -77,7 +77,7 @@ function BondModal(props) {
               onChange={e => setTokensToBound(e.target.value)}
               className="bond-modal__input"
               min={0}
-              max={limit}
+              max={parseInt(limit, 10)}
             />
           </Col>
           <Col xs={2}>
