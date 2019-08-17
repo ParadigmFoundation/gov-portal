@@ -94,7 +94,7 @@ function GovernanceActivityView(props) {
       );
     }
 
-    function getTag(type, status, listingKey) {
+    function getTag(type, status) {
       if (type === 'challenge') {
         if (status === 'pending') {
           return NavLink;

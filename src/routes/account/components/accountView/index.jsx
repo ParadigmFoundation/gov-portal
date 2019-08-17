@@ -30,6 +30,7 @@ function AccountView(props) {
     updateBalance,
     treasuryAllowance,
     orders,
+    activities,
   } = props;
 
   return (
@@ -96,6 +97,7 @@ function AccountView(props) {
             metaMaskConnected={metaMaskConnected}
             confirmListing={confirmListing}
             resolveChallenge={resolveChallenge}
+            activities={activities}
           />
         </Col>
       </Row>
@@ -119,6 +121,7 @@ AccountView.propTypes = {
   removeTreasury: PropTypes.func,
   updateBalance: PropTypes.func,
   orders: PropTypes.arrayOf(PropTypes.object),
+  activities: PropTypes.arrayOf(PropTypes.object),
 };
 
 AccountView.defaultProps = {
@@ -137,6 +140,7 @@ AccountView.defaultProps = {
   removeTreasury: () => {},
   updateBalance: () => {},
   orders: [],
+  activities: [],
 };
 
 export default AccountView;
