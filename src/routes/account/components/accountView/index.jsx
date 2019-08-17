@@ -5,11 +5,12 @@ import {
   Col,
 } from 'reactstrap';
 
-import QuestionIcon from '../../../../components/questionIcon';
-
 import OrdersView from '../ordersView';
 import TokensView from '../tokensView';
 import GovernanceActivityView from '../governanceActivityView';
+
+import Tooltip from '../../../../components/tooltip';
+import tooltipsJson from '../../../../assets/content/tooltips.json';
 
 import './index.scss';
 
@@ -75,7 +76,9 @@ function AccountView(props) {
         <Col>
           <div className="account-view__subtitle">
             Your Orders
-            <QuestionIcon />
+            <Tooltip
+              text={tooltipsJson.Wallet}
+            />
           </div>
         </Col>
       </Row>
@@ -91,7 +94,9 @@ function AccountView(props) {
         <Col>
           <div className="account-view__subtitle">
             Your Governance Activity
-            <QuestionIcon />
+            <Tooltip
+              text={tooltipsJson.Wallet}
+            />
           </div>
         </Col>
       </Row>

@@ -25,7 +25,6 @@ import TreasuryBalanceModal from '../treasuryBalanceModal';
 import WalletModal from '../walletModal';
 
 import Tooltip from '../../../../components/tooltip';
-
 import tooltipsJson from '../../../../assets/content/tooltips.json';
 
 const Layer = styled.div`
