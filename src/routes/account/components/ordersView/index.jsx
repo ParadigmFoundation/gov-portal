@@ -60,7 +60,7 @@ function OrdersView(props) {
     }
 
     return orders.map(order => (
-      <tr>
+      <tr key={order.orderId}>
         <td className="orders-view__id">
           {`${order.orderId.substring(0, 18)}...`}
         </td>
