@@ -53,7 +53,9 @@ function ManageTreasuryModal(props) {
                   text="Confirm"
                   color="red"
                   action={() => remove()}
+                  onceConfirmed={toggle}
                   block
+                  isAsync
                 />
               ) : (
                 <Button
