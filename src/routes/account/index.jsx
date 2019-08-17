@@ -166,7 +166,7 @@ function Account() {
     }
 
     fetchBalances();
-  }, [isReady]);
+  }, [isReady, gov]);
 
   async function updateBalance(newBalance) {
     const newBalanceWei = gov.web3.utils.toBN(gov.web3.utils.toWei(newBalance));

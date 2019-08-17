@@ -22,7 +22,6 @@ import './index.scss';
 
 function ProposalView(props) {
   const {
-    details,
     id,
     owner,
     acceptUnix,

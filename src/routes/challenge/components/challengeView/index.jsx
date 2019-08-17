@@ -19,7 +19,6 @@ import './index.scss';
 function ChallengeView(props) {
   const {
     challengeId,
-    challengeType,
     validatorPublicKey,
     listingOwner,
     challenger,
@@ -265,7 +264,6 @@ function ChallengeView(props) {
 
 ChallengeView.propTypes = {
   challengeId: PropTypes.string,
-  challengeType: PropTypes.string,
   validatorPublicKey: PropTypes.string,
   listingOwner: PropTypes.string,
   challenger: PropTypes.string,
@@ -288,7 +286,6 @@ ChallengeView.propTypes = {
 
 ChallengeView.defaultProps = {
   challengeId: '0',
-  challengeType: '',
   validatorPublicKey: '',
   listingOwner: '0x0...',
   challenger: '0x0...',

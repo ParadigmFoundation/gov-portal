@@ -31,7 +31,7 @@ function Proposal(props) {
     }
 
     fetchData();
-  }, [isReady]);
+  }, [isReady, gov.proposals, id]);
 
   return (
     <>

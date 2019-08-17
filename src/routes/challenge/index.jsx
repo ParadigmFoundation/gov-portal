@@ -59,7 +59,7 @@ function Challenge(props) {
     }
 
     fetchData();
-  }, [isReady]);
+  }, [isReady, gov, id]);
 
   return (
     <>

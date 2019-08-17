@@ -1,6 +1,5 @@
 import React, {
   useContext,
-  useState,
   useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
@@ -19,7 +18,7 @@ function Validator(props) {
     id,
   } = props.match.params;
 
-  const [validatorData, setValidatorData] = useState();
+  // const [validatorData, setValidatorData] = useState();
 
   useEffect(() => {
     async function fetchData() {
@@ -35,13 +34,11 @@ function Validator(props) {
     }
 
     fetchData();
-  }, [isReady]);
+  }, [isReady, gov, id]);
 
   return (
     <>
-      <ValidatorView
-
-      />
+      <ValidatorView />
     </>
   );
 }
