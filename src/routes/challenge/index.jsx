@@ -16,8 +16,12 @@ function Challenge(props) {
   } = useContext(GovContext);
 
   const {
-    id,
-  } = props.match.params;
+    match: {
+      params: {
+        id,
+      },
+    },
+  } = props;
 
   const [challengeData, setChallengeData] = useState();
 
