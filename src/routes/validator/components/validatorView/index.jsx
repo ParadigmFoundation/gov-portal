@@ -11,6 +11,7 @@ import SimpleCardContent from '../../../../components/simpleCard/components/simp
 import SimpleCardFooter from '../../../../components/simpleCard/components/simpleCardFooter';
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
+import Link from '../../../../components/link';
 
 import {
   timestampToCountdown,
@@ -23,9 +24,8 @@ function ValidatorView(props) {
   const {
     validatorName,
     owner,
-    validatorPublicKey,
-    etherscanLink,
-    tokensStaked,
+    id,
+    stakeSize,
     monthlyReward,
     votingPower,
     uptime,
@@ -34,7 +34,6 @@ function ValidatorView(props) {
     confirmationUnix,
     challenge,
     challengeLink,
-    goBack,
     status,
   } = props;
 
@@ -79,7 +78,7 @@ function ValidatorView(props) {
   }
 
   return (
-    <div>
+    <div className="validator-view">
       <Row>
         <Col>
           <div className="validator-view__header">
@@ -100,12 +99,12 @@ function ValidatorView(props) {
             Validator&apos;s public key:
           </div>
           <div className="validator-view__validator-public-key">
-            {validatorPublicKey}
+            {id}
           </div>
           <div className="validator-view__link-label">
             View on
             {' '}
-            <a href={etherscanLink} className="validator-view__link">
+            <a href={`https://etherscan.io/address/${owner}`} className="validator-view__link">
               Etherscan
             </a>
             .
@@ -119,7 +118,7 @@ function ValidatorView(props) {
               Tokens staked
             </SimpleCardTitle>
             <SimpleCardContent>
-              {tokensStaked}
+              {stakeSize}
             </SimpleCardContent>
             <SimpleCardFooter>
               <KosuSymbol />
@@ -204,9 +203,9 @@ function ValidatorView(props) {
       </Row>
       <Row>
         <Col>
-          <Button
+          <Link
+            to="/"
             color="inverted"
-            action={goBack}
             text="Go back"
           />
         </Col>
@@ -218,27 +217,33 @@ function ValidatorView(props) {
 ValidatorView.propTypes = {
   validatorName: PropTypes.string,
   owner: PropTypes.string,
-  validatorPublicKey: PropTypes.string.isRequired,
-  etherscanLink: PropTypes.string.isRequired,
-  tokensStaked: PropTypes.string.isRequired,
-  monthlyReward: PropTypes.number.isRequired,
-  votingPower: PropTypes.number.isRequired,
-  uptime: PropTypes.number.isRequired,
-  rank: PropTypes.number.isRequired,
-  blockNumber: PropTypes.number.isRequired,
-  confirmationUnix: PropTypes.number.isRequired,
+  id: PropTypes.string,
+  stakeSize: PropTypes.string,
+  monthlyReward: PropTypes.string,
+  votingPower: PropTypes.string,
+  uptime: PropTypes.number,
+  rank: PropTypes.number,
+  blockNumber: PropTypes.number,
+  confirmationUnix: PropTypes.number,
   challenge: PropTypes.func,
   challengeLink: PropTypes.string,
-  goBack: PropTypes.func.isRequired,
   status: PropTypes.string,
 };
 
 ValidatorView.defaultProps = {
-  owner: '0x0',
+  owner: '0',
   validatorName: '',
   challenge: () => {},
   status: '',
   challengeLink: '',
+  id: '0x0',
+  stakeSize: '0',
+  monthlyReward: '0',
+  votingPower: '0',
+  confirmationUnix: Date.now() / 1000,
+  blockNumber: 0,
+  uptime: 0,
+  rank: 0,
 };
 
 export default ValidatorView;
