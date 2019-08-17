@@ -25,7 +25,7 @@ const StyledTooltip = styled.div`
     transition: opacity 0.25s;
     background: #4A4A4A;
     border-radius: 2px;
-    font-family: 'Gilroy-Medium', sans-serif;;
+    font-family: 'Gilroy-Medium', sans-serif;
     font-size: 12px;
     letter-spacing: 0;
 
