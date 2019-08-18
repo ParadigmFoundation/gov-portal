@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import {
   Row,
@@ -16,11 +18,14 @@ import './index.scss';
 
 function ValidatorChallengeModal(props) {
   const {
+    id,
     isOpen,
     price,
     close,
-    challenge,
+    challengeListing,
   } = props;
+
+  const [details, setDetails] = useState('');
 
   return (
     <Modal className="validator-challenge-modal" isOpen={isOpen}>
@@ -54,6 +59,8 @@ function ValidatorChallengeModal(props) {
         <Row className="pb-4">
           <Col>
             <textarea
+              value={details}
+              onChange={e => setDetails(e.target.value)}
               className="validator-challenge-modal__reason-input"
               placeholder="Enter your reasons for challenging this proposal here."
               rows="4"
@@ -86,7 +93,7 @@ function ValidatorChallengeModal(props) {
             <Button
               color="green"
               text="Challenge"
-              action={challenge}
+              action={() => challengeListing(id, details)}
               block
             />
           </Col>
@@ -97,16 +104,18 @@ function ValidatorChallengeModal(props) {
 }
 
 ValidatorChallengeModal.propTypes = {
+  id: PropTypes.string,
   isOpen: PropTypes.bool,
   price: PropTypes.string,
   close: PropTypes.func.isRequired,
-  challenge: PropTypes.func,
+  challengeListing: PropTypes.func,
 };
 
 ValidatorChallengeModal.defaultProps = {
+  id: '',
   isOpen: false,
   price: '0',
-  challenge: () => {},
+  challengeListing: () => {},
 };
 
 export default ValidatorChallengeModal;

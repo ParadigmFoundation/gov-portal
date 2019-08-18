@@ -36,9 +36,9 @@ function ValidatorView(props) {
     rank,
     blockNumber,
     confirmationUnix,
-    challenge,
     challengeLink,
     status,
+    challengeListing,
   } = props;
 
   const [isValidatorChallengeModalOpen, toggleValidatorChallengeModal] = useState(false);
@@ -85,9 +85,11 @@ function ValidatorView(props) {
   return (
     <>
       <ValidatorChallengeModal
+        id={id}
         isOpen={isValidatorChallengeModalOpen}
         close={() => toggleValidatorChallengeModal(!isValidatorChallengeModalOpen)}
         price="0"
+        challengeListing={challengeListing}
       />
       <div className="validator-view">
         <Row>
@@ -237,7 +239,7 @@ ValidatorView.propTypes = {
   rank: PropTypes.number,
   blockNumber: PropTypes.number,
   confirmationUnix: PropTypes.number,
-  challenge: PropTypes.func,
+  challengeListing: PropTypes.func,
   challengeLink: PropTypes.string,
   status: PropTypes.string,
 };
@@ -245,7 +247,7 @@ ValidatorView.propTypes = {
 ValidatorView.defaultProps = {
   owner: '0',
   validatorName: '',
-  challenge: () => {},
+  challengeListing: () => {},
   status: '',
   challengeLink: '',
   id: '0x0',

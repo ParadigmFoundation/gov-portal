@@ -64,6 +64,7 @@ function Validator(props) {
         owner={validatorData && validatorData.owner}
         power={validatorData && validatorData.power}
         stakeSize={validatorData && validatorData.stakeSize}
+        challengeListing={isReady ? gov.kosu.validatorRegistry.challengeListing : () => {}}
       />
     </>
   );
