@@ -22,7 +22,7 @@ function WalletModal(props) {
     toggle,
     isOpen,
     pay,
-    limit,
+    ethBalance,
     estimate,
   } = props;
 
@@ -87,7 +87,7 @@ function WalletModal(props) {
         <Row className="p-5">
           <Col xs={12} sm={6}>
             <ProgressBar
-              max={parseInt(limit, 10)}
+              max={parseInt(ethBalance, 10)}
               value={etherToBound}
             />
           </Col>
@@ -116,7 +116,7 @@ function WalletModal(props) {
 
 WalletModal.propTypes = {
   isOpen: PropTypes.bool,
-  limit: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  ethBalance: PropTypes.string,
   toggle: PropTypes.func.isRequired,
   pay: PropTypes.func,
   estimate: PropTypes.func,
@@ -124,7 +124,7 @@ WalletModal.propTypes = {
 
 WalletModal.defaultProps = {
   isOpen: false,
-  limit: '0',
+  ethBalance: '0',
   pay: () => {},
   estimate: () => {},
 };

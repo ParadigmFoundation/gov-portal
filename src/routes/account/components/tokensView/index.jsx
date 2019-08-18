@@ -55,6 +55,7 @@ function TokensView(props) {
     metaMaskConnected,
     treasuryAllowance,
     walletBalance,
+    ethBalance,
     totalBalance,
     systemBalance,
     bondedTokens,
@@ -106,6 +107,7 @@ function TokensView(props) {
         toggle={() => setIsWalletModalOpen(!isWalletModalOpen)}
         confirm={pay}
         estimate={estimate}
+        ethBalance={ethBalance}
       />
       <SimpleCard>
         <SimpleCardTitle>
@@ -262,6 +264,7 @@ TokensView.propTypes = {
   metaMaskConnected: PropTypes.bool,
   treasuryAllowance: PropTypes.string,
   walletBalance: PropTypes.string,
+  ethBalance: PropTypes.string,
   totalBalance: PropTypes.string,
   systemBalance: PropTypes.string,
   bondedTokens: PropTypes.string,
@@ -281,6 +284,7 @@ TokensView.defaultProps = {
   metaMaskConnected: false,
   treasuryAllowance: '0',
   walletBalance: '0',
+  ethBalance: '0',
   totalBalance: '0',
   systemBalance: '0',
   bondedTokens: '0',
