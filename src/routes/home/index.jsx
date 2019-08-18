@@ -53,6 +53,7 @@ function Home() {
 
         for (let i = 0; i < Object.keys(currentValidators).length; i += 1) {
           formattedValidators.push({
+            id: Object.keys(currentValidators)[i],
             owner: currentValidators[Object.keys(currentValidators)[i]].owner,
             confirmationUnix: currentValidators[Object.keys(currentValidators)[i]].confirmationUnix,
             dailyReward: gov.web3.utils.fromWei(

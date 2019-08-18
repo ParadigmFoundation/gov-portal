@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+  NavLink,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Table from '../../../../components/table';
@@ -40,7 +43,9 @@ function ValidatorsView(props) {
     return validators.map(validator => (
       <tr key={validator.owner}>
         <td>
-          <Address address={validator.owner} icon short />
+          <NavLink to={`/validator/${validator.id}`}>
+            <Address address={validator.owner} icon short />
+          </NavLink>
         </td>
         <td>
           {validator.stakeSize}
