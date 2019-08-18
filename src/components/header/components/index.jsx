@@ -83,7 +83,7 @@ function HeaderView(props) {
                 </NavItem>
                 <NavItem>
                   <span className="header__balance">
-                    {balance}
+                    {balance.substring(0, 4)}
                   </span>
                 </NavItem>
               </>

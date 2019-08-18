@@ -2,6 +2,28 @@ import BigNumber from 'bignumber.js';
 
 const ORDER_MAX = new BigNumber(15000);
 
+async function updateBalance(kosu, balance, newBalance) {
+  const newBalanceBn = new BigNumber(kosu.web3.utils.toWei(newBalance));
+  const balanceBn = new BigNumber(kosu.web3.utils.toWei(balance));
+
+  if (newBalanceBn.isGreaterThan(balanceBn)) {
+    return kosu.treasury.deposit(newBalanceBn.minus(balanceBn));
+  }
+
+  return kosu.treasury.withdraw(balanceBn.minus(newBalanceBn));
+}
+
+async function bond(kosu, value, newValue) {
+  const valueBn = new BigNumber(kosu.web3.utils.toWei(value));
+  const newValueBn = new BigNumber(kosu.web3.utils.toWei(newValue));
+
+  if (newValueBn.isGreaterThan(valueBn)) {
+    return kosu.posterRegistry.registerTokens(newValueBn.minus(valueBn));
+  }
+
+  return kosu.posterRegistry.releaseTokens(valueBn.minus(newValueBn));
+}
+
 async function pay(kosu, value) {
   return kosu.kosuToken.pay(
     kosu.web3.utils.toWei(value),
@@ -131,6 +153,8 @@ async function getPastActivities(kosu, user) {
 }
 
 export {
+  updateBalance,
+  bond,
   estimateEtherToToken,
   pay,
   estimateNewPostLimit,

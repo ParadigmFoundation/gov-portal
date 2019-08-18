@@ -110,7 +110,9 @@ function BondModal(props) {
               color="green"
               text="Confirm"
               disabled={parseInt(tokensToBound, 10) === 0}
-              action={() => confirm(tokensToBound)}
+              action={() => confirm(currentBond, tokensToBound)}
+              isAsync
+              onceConfirmed={toggle}
             />
           </Col>
         </Row>

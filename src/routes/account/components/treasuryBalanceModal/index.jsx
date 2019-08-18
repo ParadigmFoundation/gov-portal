@@ -102,7 +102,9 @@ function TreasuryBalanceModal(props) {
             <Button
               color="green"
               text="Update balance"
-              action={() => updateBalance(newBalance)}
+              action={() => updateBalance(currentBalance, newBalance)}
+              onceConfirmed={toggle}
+              isAsync
             />
           </Col>
         </Row>
