@@ -18,6 +18,7 @@ function AccountView(props) {
   const {
     metaMaskConnected,
     walletBalance,
+    ethBalance,
     totalBalance,
     systemBalance,
     bondedTokens,
@@ -57,6 +58,7 @@ function AccountView(props) {
           <TokensView
             metaMaskConnected={metaMaskConnected}
             walletBalance={walletBalance}
+            ethBalance={ethBalance}
             totalBalance={totalBalance}
             systemBalance={systemBalance}
             bondedTokens={bondedTokens}
@@ -117,6 +119,7 @@ function AccountView(props) {
 AccountView.propTypes = {
   metaMaskConnected: PropTypes.bool,
   walletBalance: PropTypes.string,
+  ethBalance: PropTypes.string,
   totalBalance: PropTypes.string,
   systemBalance: PropTypes.string,
   bondedTokens: PropTypes.string,
@@ -138,6 +141,7 @@ AccountView.propTypes = {
 AccountView.defaultProps = {
   metaMaskConnected: false,
   walletBalance: '0',
+  ethBalance: '0',
   totalBalance: '0',
   systemBalance: '0',
   bondedTokens: '0',
