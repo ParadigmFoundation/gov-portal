@@ -28,6 +28,7 @@ function Challenge(props) {
   useEffect(() => {
     async function fetchData() {
       if (isReady && id !== '') {
+        const currentUser = gov.coinbase;
         const currentChallenges = await gov.currentChallenges();
         const currentBlock = await gov.currentBlockNumber();
 
@@ -38,7 +39,9 @@ function Challenge(props) {
             const info = await gov.getChallengeInfo(id);
 
             const challenge = {
+              currentUser,
               challengeId: currentChallenges[Object.keys(currentChallenges)[i]].challengeId.toString(),
+              challengeType: currentChallenges[Object.keys(currentChallenges)[i]].challengeType,
               validatorPublicKey: Object.keys(currentChallenges)[i],
               listingOwner: currentChallenges[Object.keys(currentChallenges)[i]].listingOwner,
               challenger: currentChallenges[Object.keys(currentChallenges)[i]].challenger,
@@ -55,8 +58,6 @@ function Challenge(props) {
             };
 
             setChallengeData(challenge);
-          } else {
-            console.log('Challenge does not exist');
           }
         }
       }
@@ -68,7 +69,9 @@ function Challenge(props) {
   return (
     <>
       <ChallengeView
+        currentUser={challengeData && challengeData.currentUser}
         challengeId={challengeData && challengeData.challengeId}
+        challengeType={challengeData && challengeData.challengeType}
         validatorPublicKey={challengeData && challengeData.validatorPublicKey}
         listingOwner={challengeData && challengeData.listingOwner}
         challenger={challengeData && challengeData.challenger}
@@ -76,7 +79,6 @@ function Challenge(props) {
         challengerStake={challengeData && challengeData.challengerStake}
         potentialReward={challengeData && challengeData.potentialReward}
         challengeDetails={challengeData && challengeData.challengeDetails}
-        challengeType={challengeData && challengeData.challengeType}
       />
     </>
   );

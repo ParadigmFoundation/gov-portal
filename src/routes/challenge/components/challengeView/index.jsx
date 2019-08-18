@@ -9,6 +9,9 @@ import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
 import Link from '../../../../components/link';
 
+import Tooltip from '../../../../components/tooltip';
+import tooltipsJson from '../../../../assets/content/tooltips.json';
+
 import {
   timestampToCountdown,
   shortenAddress,
@@ -18,7 +21,9 @@ import './index.scss';
 
 function ChallengeView(props) {
   const {
+    currentUser,
     challengeId,
+    challengeType,
     validatorPublicKey,
     listingOwner,
     challenger,
@@ -46,27 +51,19 @@ function ChallengeView(props) {
       status = 'over';
     }
 
+    if (currentUser === challenger) {
+      status = 'youStarted';
+    }
+
     if (status === 'commit') {
       return (
         <div>
           <div className="challenge-view__challenge-label">
             Vote on this challenge
             {' '}
-            <span>
-              <svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1">
-                <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                  <g id="View-Proposal-Wallet-Connected-Copy" transform="translate(-232.000000, -653.000000)">
-                    <rect fill="#FFFFFF" x="0" y="0" width="1440" height="900" />
-                    <g id="?-copy" transform="translate(232.000000, 653.000000)">
-                      <g id="Group">
-                        <circle id="Oval" fill="#838383" cx="6" cy="6" r="6" />
-                        <path d="M5.255,7.745 C5.255,5.974 7.279,5.589 7.279,4.28 C7.279,3.51 6.685,3.147 5.915,3.147 C5.178,3.147 4.595,3.488 4.364,4.214 L3.495,3.73 C3.88,2.663 4.87,2.157 5.926,2.157 C7.147,2.157 8.302,2.861 8.302,4.236 C8.302,5.93 6.278,6.348 6.278,7.745 L5.255,7.745 Z M5.761,10.121 C5.365,10.121 5.046,9.802 5.046,9.406 C5.046,9.01 5.365,8.691 5.761,8.691 C6.168,8.691 6.476,9.01 6.476,9.406 C6.476,9.802 6.168,10.121 5.761,10.121 Z" id="?" fill="#FFFFFF" fillRule="nonzero" />
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </span>
+            <Tooltip
+              text={tooltipsJson.Wallet}
+            />
           </div>
           <Button
             text="Vote to keep proposal"
@@ -89,21 +86,9 @@ function ChallengeView(props) {
           <div className="challenge-view__challenge-label">
             Reveal your vote
             {' '}
-            <span>
-              <svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1">
-                <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                  <g id="View-Proposal-Wallet-Connected-Copy" transform="translate(-232.000000, -653.000000)">
-                    <rect fill="#FFFFFF" x="0" y="0" width="1440" height="900" />
-                    <g id="?-copy" transform="translate(232.000000, 653.000000)">
-                      <g id="Group">
-                        <circle id="Oval" fill="#838383" cx="6" cy="6" r="6" />
-                        <path d="M5.255,7.745 C5.255,5.974 7.279,5.589 7.279,4.28 C7.279,3.51 6.685,3.147 5.915,3.147 C5.178,3.147 4.595,3.488 4.364,4.214 L3.495,3.73 C3.88,2.663 4.87,2.157 5.926,2.157 C7.147,2.157 8.302,2.861 8.302,4.236 C8.302,5.93 6.278,6.348 6.278,7.745 L5.255,7.745 Z M5.761,10.121 C5.365,10.121 5.046,9.802 5.046,9.406 C5.046,9.01 5.365,8.691 5.761,8.691 C6.168,8.691 6.476,9.01 6.476,9.406 C6.476,9.802 6.168,10.121 5.761,10.121 Z" id="?" fill="#FFFFFF" fillRule="nonzero" />
-                      </g>
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </span>
+            <Tooltip
+              text={tooltipsJson.Wallet}
+            />
           </div>
           <Button
             text="Reveal"
@@ -194,11 +179,15 @@ function ChallengeView(props) {
             {' '}
             is challenging
             {' '}
-            <span className="challenge-view__address">
-              {`${shortenAddress(listingOwner)}'s`}
-            </span>
-            {' '}
-            proposal.
+            {challengeType === 'proposal' ? (
+              <span className="challenge-view__address">
+                {`${shortenAddress(listingOwner)}'s`}
+              </span>` proposal`
+            ) : (
+              <span className="challenge-view__address">
+                {`${shortenAddress(listingOwner)}.`}
+              </span>
+            )}
           </div>
         </Col>
       </Row>
@@ -263,7 +252,9 @@ function ChallengeView(props) {
 }
 
 ChallengeView.propTypes = {
+  currentUser: PropTypes.string,
   challengeId: PropTypes.string,
+  challengeType: PropTypes.string,
   validatorPublicKey: PropTypes.string,
   listingOwner: PropTypes.string,
   challenger: PropTypes.string,
@@ -285,7 +276,9 @@ ChallengeView.propTypes = {
 };
 
 ChallengeView.defaultProps = {
+  currentUser: '0',
   challengeId: '0',
+  challengeType: 'proposal',
   validatorPublicKey: '',
   listingOwner: '0x0...',
   challenger: '0x0...',

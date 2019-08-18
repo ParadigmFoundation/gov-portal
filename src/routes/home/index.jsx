@@ -74,6 +74,7 @@ function Home() {
         for (let i = 0; i < Object.keys(currentChallenges).length; i += 1) {
           formattedActiveChallenges.push({
             id: currentChallenges[Object.keys(currentChallenges)[i]].challengeId.toString(),
+            challengeType: currentChallenges[Object.keys(currentChallenges)[i]].challengeType,
             listingOwner: currentChallenges[Object.keys(currentChallenges)[i]].listingOwner,
             challenger: currentChallenges[Object.keys(currentChallenges)[i]].challenger,
             challengeEndUnix: currentChallenges[Object.keys(currentChallenges)[i]].challengeEndUnix,

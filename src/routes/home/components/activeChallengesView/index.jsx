@@ -23,6 +23,7 @@ function ActiveChallengesView(props) {
     <ActiveChallengeCard
       key={activeChallenge.id}
       id={activeChallenge.id}
+      challengeType={activeChallenge.challengeType}
       listingOwner={activeChallenge.listingOwner}
       challenger={activeChallenge.challenger}
       challengeEndUnix={activeChallenge.challengeEndUnix}

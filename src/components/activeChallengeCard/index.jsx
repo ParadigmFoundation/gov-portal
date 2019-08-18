@@ -16,6 +16,7 @@ import './index.scss';
 function ActiveChallengeCard(props) {
   const {
     id,
+    challengeType,
     listingOwner,
     challenger,
     challengeEndUnix,
@@ -37,9 +38,11 @@ function ActiveChallengeCard(props) {
             {' '}
             is challenging
             {' '}
-            {`${shortenAddress(listingOwner)}'s`}
-            {' '}
-            proposal
+            {challengeType === 'proposal' ? (
+              `${shortenAddress(listingOwner)}'s proposal.`
+            ) : (
+              `${shortenAddress(listingOwner)}.`
+            )}
           </div>
         </Col>
       </Row>
@@ -67,6 +70,7 @@ function ActiveChallengeCard(props) {
 
 ActiveChallengeCard.propTypes = {
   id: PropTypes.string.isRequired,
+  challengeType: PropTypes.string.isRequired,
   listingOwner: PropTypes.string.isRequired,
   challenger: PropTypes.string.isRequired,
   challengeEndUnix: PropTypes.number.isRequired,
