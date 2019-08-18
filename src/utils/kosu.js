@@ -2,6 +2,20 @@ import BigNumber from 'bignumber.js';
 
 const ORDER_MAX = new BigNumber(15000);
 
+async function pay(kosu, value) {
+  return kosu.kosuToken.pay(
+    kosu.web3.utils.toWei(value),
+  );
+}
+
+async function estimateEtherToToken(kosu, value) {
+  const estimate = await kosu.kosuToken.estimateEtherToToken(
+    kosu.web3.utils.toWei(value),
+  );
+
+  return kosu.web3.utils.fromWei(estimate.toString()).substring(0, 4);
+}
+
 async function estimateNewPostLimit(kosu, newBalance) {
   const totalBonded = await kosu.posterRegistry.tokensContributed();
   const newTotal = totalBonded.plus(newBalance);
@@ -117,6 +131,8 @@ async function getPastActivities(kosu, user) {
 }
 
 export {
+  estimateEtherToToken,
+  pay,
   estimateNewPostLimit,
   getPastActivities,
 };
