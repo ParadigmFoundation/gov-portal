@@ -12,6 +12,10 @@ import GovContext from '../../store/govContext';
 
 import AccountView from './components/accountView';
 
+import {
+  getPastActivities,
+} from '../../utils/kosu';
+
 import OrdersDummyData from '../../assets/content/ordersDummy.json';
 
 function Account() {
@@ -28,6 +32,7 @@ function Account() {
   const [treasuryBalance, setTreasuryBalance] = useState();
   const [treasuryAllowance, setTreasuryAllowance] = useState();
   const [activities, setActivities] = useState([]);
+  const [ethBalance, setEthBalance] = useState('0');
 
   const MAX_UINT_256 = '115792089237316195423570985008687907853269984665640564039457584007913129639935';
 
@@ -37,6 +42,9 @@ function Account() {
         const { coinbase } = gov;
 
         console.log(gov);
+
+        const ethBalanceReq = await gov.web3.eth.getBalance(coinbase);
+        setEthBalance(gov.web3.utils.fromWei(ethBalanceReq.toString()));
 
         const walletBalanceReq = await gov.kosu.kosuToken.balanceOf(coinbase);
         setWalletBalance(gov.web3.utils.fromWei(walletBalanceReq.toString()));
@@ -61,107 +69,12 @@ function Account() {
         const treasuryAllowanceReq = await gov.kosu.treasury.treasuryAllowance();
         setTreasuryAllowance(gov.web3.utils.fromWei(treasuryAllowanceReq.toString()));
 
-        const govActivity = await gov.kosu.eventEmitter.getPastDecodedLogs({
-          fromBlock: 0,
-        });
+        const govActivities = await getPastActivities(
+          gov.kosu,
+          gov.coinbase.toLowerCase(),
+        );
 
-        const govActivityData = [];
-        const user = gov.coinbase;
-
-        for (let i = 0; i < govActivity.length; i += 1) {
-          switch (govActivity[i].decodedArgs.eventType) {
-            case 'ValidatorRegistered': {
-              if (user === govActivity[i].decodedArgs.owner) {
-                const {
-                  owner,
-                  tendermintPublicKeyHex,
-                } = govActivity[i].decodedArgs;
-
-                const item = {
-                  type: 'proposal',
-                  title: 'You created a proposal',
-                  status: null,
-                  actionable: null,
-                  challengeId: null,
-                  challenger: null,
-                  owner,
-                  listingKey: tendermintPublicKeyHex,
-                };
-
-                const listing = await gov.kosu.validatorRegistry.getListing(tendermintPublicKeyHex);
-
-                if (listing.status === 1 && listing.confirmationBlock === 0) {
-                  item.actionable = true;
-                  item.status = 'pending';
-                } else if (listing.status === 2) {
-                  item.actionable = false;
-                  item.status = 'accepted';
-                } else if (listing.status === 0) {
-                  item.actionable = false;
-                  item.status = 'rejected';
-                } else if (listing.status === 3) {
-                  item.actionable = false;
-                  item.status = 'pending';
-                }
-
-                govActivityData.push(item);
-              }
-              break;
-            }
-            case 'ValidatorChallenged': {
-              const {
-                owner,
-                challenger,
-                tendermintPublicKeyHex,
-                challengeId,
-              } = govActivity[i].decodedArgs;
-
-              if (owner !== user && challenger !== user) {
-                break;
-              }
-
-              const item = {
-                type: 'challenge',
-                title: null,
-                status: null,
-                actionable: null,
-                challengeId,
-                challenger,
-                owner,
-                listingKey: tendermintPublicKeyHex,
-              };
-
-              const challenge = await gov.kosu.validatorRegistry.getChallenge(challengeId);
-              const { listingSnapshot } = challenge;
-
-              if (owner === user) {
-                item.title = `${challenger} challenged your ${listingSnapshot.status === 1 ? 'proposal' : 'validator listing'}`;
-              } else {
-                item.title = `You challenged ${owner}'s ${listingSnapshot.status === 1 ? 'proposal' : 'validator listing'}`;
-              }
-
-              if (challenge.finalized === true) {
-                item.actionable = true;
-                if (challenge.passed === true) {
-                  item.status = 'accepted';
-                } else if (challenge.passed === false) {
-                  item.status = 'rejected';
-                }
-              } else {
-                item.actionable = false;
-                item.status = 'pending';
-              }
-
-              govActivityData.push(item);
-              break;
-            }
-
-            default:
-              break;
-          }
-        }
-
-        setActivities(govActivityData);
+        setActivities(govActivities);
       }
     }
 
@@ -184,6 +97,7 @@ function Account() {
       metaMaskConnected={isReady}
       treasuryAllowance={treasuryAllowance}
       walletBalance={walletBalance}
+      ethBalance={ethBalance}
       totalBalance={totalBalance}
       systemBalance={systemBalance}
       bondedTokens={bondedTokens}
@@ -198,7 +112,7 @@ function Account() {
       setTreasuryAllowance={isReady ? () => gov.kosu.treasury.approveTreasury(MAX_UINT_256) : () => {}}
       updateBalance={isReady ? newBalance => updateBalance(newBalance) : () => {}}
       orders={OrdersDummyData}
-      activities={activities}
+      activities={activities.reverse()}
       pay={isReady ? gov.kosu.kosuToken.pay : () => {}}
       estimate={isReady ? gov.kosu.kosuToken.estimateEtherToToken : () => {}}
     />
