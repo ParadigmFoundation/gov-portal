@@ -98,13 +98,15 @@ function ValidatorChallengeModal(props) {
 
 ValidatorChallengeModal.propTypes = {
   isOpen: PropTypes.bool,
-  price: PropTypes.number.isRequired,
+  price: PropTypes.string,
   close: PropTypes.func.isRequired,
-  challenge: PropTypes.func.isRequired,
+  challenge: PropTypes.func,
 };
 
 ValidatorChallengeModal.defaultProps = {
   isOpen: false,
+  price: '0',
+  challenge: () => {},
 };
 
 export default ValidatorChallengeModal;
