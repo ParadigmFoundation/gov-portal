@@ -58,7 +58,7 @@ function BondModal(props) {
         <Row className="px-5 pb-3">
           <Col>
             <div className="bond-modal__label">
-              Tokens to bond
+              New bond amount
             </div>
           </Col>
           <Col xs={2} />
