@@ -14,6 +14,8 @@ import AccountView from './components/accountView';
 
 import {
   getPastActivities,
+  estimateEtherToToken,
+  pay,
 } from '../../utils/kosu';
 
 import OrdersDummyData from '../../assets/content/ordersDummy.json';
@@ -113,8 +115,10 @@ function Account() {
       updateBalance={isReady ? newBalance => updateBalance(newBalance) : () => {}}
       orders={OrdersDummyData}
       activities={activities.reverse()}
-      pay={isReady ? gov.kosu.kosuToken.pay : () => {}}
-      estimate={isReady ? gov.kosu.kosuToken.estimateEtherToToken : () => {}}
+      pay={isReady ? value => gov.kosu.kosuToken.pay(
+        gov.web3.utils.toWei(value),
+      ) : () => {}}
+      estimate={isReady ? value => estimateEtherToToken(gov.kosu, value) : () => {}}
     />
   );
 }

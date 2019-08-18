@@ -32,7 +32,6 @@ function WalletModal(props) {
   async function getEstimatedKosu(value) {
     setEtherToBound(value);
     const res = await estimate(value);
-    console.log(res);
     setEstimatedKosu(res);
   }
 
@@ -88,7 +87,7 @@ function WalletModal(props) {
           <Col xs={12} sm={6}>
             <ProgressBar
               max={parseInt(ethBalance, 10)}
-              value={etherToBound}
+              value={parseInt(etherToBound, 10)}
             />
           </Col>
         </Row>
@@ -106,6 +105,8 @@ function WalletModal(props) {
               text="Confirm"
               disabled={etherToBound === 0}
               action={() => pay(etherToBound)}
+              onceConfirmed={toggle}
+              isAsync
             />
           </Col>
         </Row>

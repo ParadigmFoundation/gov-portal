@@ -105,7 +105,7 @@ function TokensView(props) {
       <WalletModal
         isOpen={isWalletModalOpen}
         toggle={() => setIsWalletModalOpen(!isWalletModalOpen)}
-        confirm={pay}
+        pay={pay}
         estimate={estimate}
         ethBalance={ethBalance}
       />
@@ -117,7 +117,7 @@ function TokensView(props) {
           />
         </SimpleCardTitle>
         <SimpleCardContent>
-          {totalBalance}
+          {totalBalance.substring(0, 4)}
         </SimpleCardContent>
         <SimpleCardFooter>
           <KosuSymbol />
@@ -131,7 +131,7 @@ function TokensView(props) {
           />
         </SimpleCardTitle>
         <SimpleCardContent>
-          {systemBalance}
+          {systemBalance.substring(0, 4)}
         </SimpleCardContent>
         <SimpleCardFooter>
           <KosuSymbol />
@@ -158,7 +158,7 @@ function TokensView(props) {
           </Row>
         </SimpleCardTitle>
         <SimpleCardContent>
-          {walletBalance}
+          {walletBalance.substring(0, 4)}
         </SimpleCardContent>
         <SimpleCardFooter>
           <KosuSymbol />
@@ -200,7 +200,7 @@ function TokensView(props) {
               </Row>
             </SimpleCardTitle>
             <SimpleCardContent>
-              {bondedTokens}
+              {bondedTokens.substring(0, 4)}
             </SimpleCardContent>
             <SimpleCardFooter>
               <KosuSymbol />
@@ -221,7 +221,7 @@ function TokensView(props) {
               </Row>
             </SimpleCardTitle>
             <SimpleCardContent>
-              {tokensStakedFor}
+              {tokensStakedFor.substring(0, 4)}
             </SimpleCardContent>
             <SimpleCardFooter>
               <KosuSymbol />
@@ -248,7 +248,7 @@ function TokensView(props) {
               </Row>
             </SimpleCardTitle>
             <SimpleCardContent>
-              {treasuryBalance}
+              {treasuryBalance.substring(0, 4)}
             </SimpleCardContent>
             <SimpleCardFooter>
               <KosuSymbol />
