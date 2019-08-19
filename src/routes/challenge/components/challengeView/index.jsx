@@ -180,15 +180,10 @@ function ChallengeView(props) {
             {' '}
             is challenging
             {' '}
-            {challengeType === 'proposal' ? (
-              <span className="challenge-view__address">
-                {`${shortenAddress(listingOwner)}'s`}
-              </span>` proposal`
-            ) : (
-              <span className="challenge-view__address">
-                {`${shortenAddress(listingOwner)}.`}
-              </span>
-            )}
+            <span className="challenge-view__address">
+              {`${shortenAddress(listingOwner)}`}
+            </span>
+            {challengeType === 'proposal' ? '\'s proposal.' : '.'}
           </div>
         </Col>
       </Row>
