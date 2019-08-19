@@ -6,6 +6,7 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import numeral from 'numeral';
 
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
@@ -81,7 +82,7 @@ function ProposalView(props) {
               Stake size
             </div>
             <div className="proposal-view__card-content">
-              {stakeSize}
+              {numeral(stakeSize).format('0,0.0')}
             </div>
             <div className="proposal-view__card-footer">
               <KosuSymbol />
@@ -94,7 +95,7 @@ function ProposalView(props) {
               Daily reward
             </div>
             <div className="proposal-view__card-content">
-              {dailyReward}
+              {numeral(dailyReward).format('0,0.0')}
             </div>
             <div className="proposal-view__card-footer">
               <KosuSymbol />
@@ -107,7 +108,7 @@ function ProposalView(props) {
               Estimated vote power
             </div>
             <div className="proposal-view__card-content">
-              {`${power.substring(0, 5)}%`}
+              {`${numeral(power).format('0.0')}%`}
             </div>
           </div>
         </Col>

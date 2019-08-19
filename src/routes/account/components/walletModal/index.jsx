@@ -8,6 +8,7 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import numeral from 'numeral';
 
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import ProgressBar from '../../../../components/progressBar';
@@ -79,7 +80,7 @@ function WalletModal(props) {
           </Col>
           <Col>
             <div className="wallet-modal__estimated-kosu">
-              {estimatedKosu}
+              {numeral(estimatedKosu).format('0,0.0')}
             </div>
           </Col>
         </Row>

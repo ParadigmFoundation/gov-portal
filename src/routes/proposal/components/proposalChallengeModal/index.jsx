@@ -8,6 +8,7 @@ import {
   Modal,
   ModalBody,
 } from 'reactstrap';
+import numeral from 'numeral';
 
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
@@ -49,7 +50,7 @@ function ProposalChallengeModal(props) {
               This challenge will cost:
             </div>
             <div className="proposal-challenge-modal__price">
-              {price}
+              {numeral(price).format('0,0.0')}
             </div>
             {' '}
             <KosuSymbol />

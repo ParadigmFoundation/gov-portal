@@ -8,6 +8,7 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import numeral from 'numeral';
 
 import ProgressBar from '../../../../components/progressBar';
 import Button from '../../../../components/button';
@@ -45,7 +46,7 @@ function TreasuryBalanceModal(props) {
               Current balance
             </div>
             <div className="treasure-balance-modal__current-balance">
-              {currentBalance}
+              {numeral(currentBalance).format('0,0.0')}
             </div>
           </Col>
         </Row>
@@ -78,7 +79,7 @@ function TreasuryBalanceModal(props) {
           </Col>
           <Col>
             <div className="treasure-balance-modal__difference">
-              {newBalance - currentBalance}
+              {numeral(newBalance - currentBalance).format('0,0.0')}
             </div>
           </Col>
         </Row>

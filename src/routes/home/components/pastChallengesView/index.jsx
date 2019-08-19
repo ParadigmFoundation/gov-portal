@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import numeral from 'numeral';
 
 import Table from '../../../../components/table';
 import EmptyState from '../../../../components/emptyState';
@@ -52,7 +53,7 @@ function PastChallengesView(props) {
           {pastChallenge.result === 'passed' ? <AcceptedSymbol /> : <RejectedSymbol />}
         </td>
         <td>
-          {pastChallenge.stakedBalance}
+          {numeral(pastChallenge.stakedBalance).format('0,0.0')}
         </td>
         <td>
           {new Date(pastChallenge.challengeEnd * 1000).toLocaleDateString()}

@@ -4,6 +4,7 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import numeral from 'numeral';
 
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
@@ -212,7 +213,7 @@ function ChallengeView(props) {
               Potential reward
             </div>
             <div className="challenge-view__card-content">
-              {potentialReward}
+              {numeral(potentialReward).format('0,0.0')}
             </div>
             <div className="challenge-view__card-footer">
               <KosuSymbol />
@@ -225,7 +226,7 @@ function ChallengeView(props) {
               Challenger stake
             </div>
             <div className="challenge-view__card-content">
-              {challengerStake}
+              {numeral(challengerStake).format('0,0.0')}
             </div>
             <div className="challenge-view__card-footer">
               <KosuSymbol />

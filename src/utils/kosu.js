@@ -35,7 +35,7 @@ async function estimateEtherToToken(kosu, value) {
     kosu.web3.utils.toWei(value),
   );
 
-  return kosu.web3.utils.fromWei(estimate.toString()).substring(0, 4);
+  return kosu.web3.utils.fromWei(estimate.toString());
 }
 
 async function estimateNewPostLimit(kosu, newBalance) {

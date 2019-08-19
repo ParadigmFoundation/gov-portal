@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import numeral from 'numeral';
 
 import EmptyState from '../../../../components/emptyState';
 import ConnectMetaMask from '../../../../components/connectMetaMask';
@@ -24,8 +25,8 @@ function ActiveProposalsView(props) {
       key={proposal.id}
       id={proposal.id}
       owner={proposal.owner}
-      stakeSize={proposal.stakeSize}
-      dailyReward={proposal.dailyReward}
+      stakeSize={numeral(proposal.stakeSize).format('0,0.0')}
+      dailyReward={numeral(proposal.dailyReward).format('0,0.0')}
       power={proposal.power}
       acceptUnix={proposal.acceptUnix}
     />

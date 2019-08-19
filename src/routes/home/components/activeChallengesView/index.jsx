@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import numeral from 'numeral';
 
 import EmptyState from '../../../../components/emptyState';
 import ConnectMetaMask from '../../../../components/connectMetaMask';
@@ -27,8 +28,8 @@ function ActiveChallengesView(props) {
       listingOwner={activeChallenge.listingOwner}
       challenger={activeChallenge.challenger}
       challengeEndUnix={activeChallenge.challengeEndUnix}
-      challengerStake={activeChallenge.challengerStake}
-      potentialReward={activeChallenge.potentialReward}
+      challengerStake={numeral(activeChallenge.challengerStake).format('0,0.0')}
+      potentialReward={numeral(activeChallenge.potentialReward).format('0,0.0')}
     />
   ));
 }

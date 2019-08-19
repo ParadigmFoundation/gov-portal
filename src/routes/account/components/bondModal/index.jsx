@@ -8,6 +8,7 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import numeral from 'numeral';
 
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import ProgressBar from '../../../../components/progressBar';
@@ -59,7 +60,7 @@ function BondModal(props) {
                 Current bond
               </div>
               <div className="bond-modal__limit">
-                {currentBond}
+                {numeral(currentBond).format('0,0.0')}
               </div>
             </Col>
           </Row>
@@ -94,7 +95,7 @@ function BondModal(props) {
           </Col>
           <Col>
             <div className="bond-modal__limit">
-              {limit.substring(0, 4)}
+              {numeral(limit).format('0,0.0')}
             </div>
           </Col>
         </Row>

@@ -3,6 +3,7 @@ import {
   NavLink,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import numeral from 'numeral';
 
 import Table from '../../../../components/table';
 import EmptyState from '../../../../components/emptyState';
@@ -48,13 +49,13 @@ function ValidatorsView(props) {
           </NavLink>
         </td>
         <td>
-          {validator.stakeSize}
+          {numeral(validator.stakeSize).format('0,0.0')}
         </td>
         <td>
-          {validator.dailyReward}
+          {numeral(validator.dailyReward).format('0,0.0')}
         </td>
         <td>
-          {`${validator.power.substring(0, 5)}%`}
+          {`${numeral(validator.power).format('0.0')}%`}
         </td>
         <td>
           N/A

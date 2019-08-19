@@ -6,6 +6,7 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import numeral from 'numeral';
 
 import SimpleCard from '../../../../components/simpleCard';
 import SimpleCardTitle from '../../../../components/simpleCard/components/simpleCardTitle';
@@ -132,6 +133,7 @@ function ValidatorView(props) {
               </SimpleCardTitle>
               <SimpleCardContent>
                 {stakeSize}
+                {numeral(stakeSize).format('0,0.0')}
               </SimpleCardContent>
               <SimpleCardFooter>
                 <KosuSymbol />
@@ -144,7 +146,7 @@ function ValidatorView(props) {
                 Monthly reward
               </SimpleCardTitle>
               <SimpleCardContent>
-                {monthlyReward}
+                {numeral(monthlyReward).format('0,0.0')}
               </SimpleCardContent>
               <SimpleCardFooter>
                 <KosuSymbol />
@@ -157,7 +159,7 @@ function ValidatorView(props) {
                 Voting power
               </SimpleCardTitle>
               <SimpleCardContent>
-                {`${votingPower}%`}
+                {`${numeral(votingPower).format('0.0')}%`}
               </SimpleCardContent>
             </SimpleCard>
           </Col>
@@ -167,7 +169,7 @@ function ValidatorView(props) {
                 Uptime
               </SimpleCardTitle>
               <SimpleCardContent>
-                {`${uptime}%`}
+                {`${numeral(uptime).format('0.0')}%`}
               </SimpleCardContent>
             </SimpleCard>
           </Col>
@@ -196,7 +198,7 @@ function ValidatorView(props) {
                 Age
               </SimpleCardTitle>
               <SimpleCardContent>
-                {blockNumber}
+                {numeral(blockNumber).format('0,0')}
                 {' '}
                 <span className="validator-view__age-block-label">
                   Blocks

@@ -7,6 +7,7 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import numeral from 'numeral';
 
 import WarningSign from '../../../../assets/img/warning_grey.png';
 
@@ -119,7 +120,7 @@ function TokensView(props) {
           />
         </SimpleCardTitle>
         <SimpleCardContent>
-          {totalBalance.substring(0, 4)}
+          {numeral(totalBalance).format('0,0.0')}
         </SimpleCardContent>
         <SimpleCardFooter>
           <KosuSymbol />
@@ -133,7 +134,7 @@ function TokensView(props) {
           />
         </SimpleCardTitle>
         <SimpleCardContent>
-          {systemBalance.substring(0, 4)}
+          {numeral(systemBalance).format('0,0.0')}
         </SimpleCardContent>
         <SimpleCardFooter>
           <KosuSymbol />
@@ -160,7 +161,7 @@ function TokensView(props) {
           </Row>
         </SimpleCardTitle>
         <SimpleCardContent>
-          {walletBalance.substring(0, 4)}
+          {numeral(walletBalance).format('0,0.0')}
         </SimpleCardContent>
         <SimpleCardFooter>
           <KosuSymbol />
@@ -202,7 +203,7 @@ function TokensView(props) {
               </Row>
             </SimpleCardTitle>
             <SimpleCardContent>
-              {bondedTokens.substring(0, 4)}
+              {numeral(bondedTokens).format('0,0.0')}
             </SimpleCardContent>
             <SimpleCardFooter>
               <KosuSymbol />
@@ -223,7 +224,7 @@ function TokensView(props) {
               </Row>
             </SimpleCardTitle>
             <SimpleCardContent>
-              {tokensStakedFor.substring(0, 4)}
+              {numeral(tokensStakedFor).format('0,0.0')}
             </SimpleCardContent>
             <SimpleCardFooter>
               <KosuSymbol />
@@ -250,7 +251,7 @@ function TokensView(props) {
               </Row>
             </SimpleCardTitle>
             <SimpleCardContent>
-              {treasuryBalance.substring(0, 4)}
+              {numeral(treasuryBalance).format('0,0.0')}
             </SimpleCardContent>
             <SimpleCardFooter>
               <KosuSymbol />
