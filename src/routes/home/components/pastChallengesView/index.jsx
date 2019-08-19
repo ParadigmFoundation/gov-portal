@@ -47,7 +47,7 @@ function PastChallengesView(props) {
           <Address address={pastChallenge.challenger} short />
         </td>
         <td>
-          {pastChallenge.challengeType === 'proposal' ? <ProposalSymbol /> : <ValidatorSymbol />}
+          {pastChallenge.status === 1 ? <ProposalSymbol /> : <ValidatorSymbol />}
         </td>
         <td>
           {pastChallenge.result === 'passed' ? <AcceptedSymbol /> : <RejectedSymbol />}
@@ -56,7 +56,7 @@ function PastChallengesView(props) {
           {numeral(pastChallenge.stakedBalance).format('0,0.0')}
         </td>
         <td>
-          {new Date(pastChallenge.challengeEnd * 1000).toLocaleDateString()}
+          {new Date(pastChallenge.challengeEnd * 1000).toLocaleString('default')}
         </td>
       </tr>
     ));

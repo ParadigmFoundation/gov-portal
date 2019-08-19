@@ -96,7 +96,7 @@ function Home() {
           formattedPastChallenges.push({
             id: i,
             challenger: pastChallengesRes[i].challenger,
-            status: pastChallengesRes[i].listingSnapshot.status === '1' ? 'proposal' : 'validator',
+            status: pastChallengesRes[i].listingSnapshot.status,
             result: pastChallengesRes[i].passed,
             stakedBalance: gov.web3.utils.fromWei(
               pastChallengesRes[i].listingSnapshot.stakedBalance.plus(pastChallengesRes[i].balance).toString(),
