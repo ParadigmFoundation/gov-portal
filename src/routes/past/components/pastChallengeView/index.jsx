@@ -4,13 +4,14 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import numeral from 'numeral';
 
 import ValidatorSymbol from '../../../../components/symbols/validatorSymbol';
 import RejectedSymbol from '../../../../components/symbols/rejectedSymbol';
 import AcceptedSymbol from '../../../../components/symbols/acceptedSymbol';
 import ProposalSymbol from '../../../../components/symbols/proposalSymbol';
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
-import Button from '../../../../components/button';
+import Link from '../../../../components/link';
 import SimpleCard from '../../../../components/simpleCard';
 import SimpleCardTitle from '../../../../components/simpleCard/components/simpleCardTitle';
 import SimpleCardContent from '../../../../components/simpleCard/components/simpleCardContent';
@@ -27,18 +28,17 @@ function PastChallengeView(props) {
   const {
     status,
     challengeId,
-    validator,
+    owner,
     challenger,
     stakeSize,
     dailyReward,
     passed,
     winningTokens,
     voterTotal,
-    goBack,
   } = props;
 
   return (
-    <div>
+    <div className="past-challenge-view">
       <Row className="pb-5">
         <Col>
           <div className="past-challenge-view__title">
@@ -54,7 +54,7 @@ function PastChallengeView(props) {
           {status === 1 ? (
             <div className="past-challenge-view__content">
               <span className="past-challenge-view__content-address">
-                {shortenAddress(validator)}
+                {shortenAddress(owner)}
               </span>
               {' '}
               wanted to become a validator.
@@ -62,7 +62,7 @@ function PastChallengeView(props) {
           ) : (
             <div className="past-challenge-view__content">
               <span className="past-challenge-view__content-address">
-                {shortenAddress(validator)}
+                {shortenAddress(owner)}
               </span>
               {' '}
               was successfully challenged by
@@ -88,7 +88,7 @@ function PastChallengeView(props) {
               Stake size
             </SimpleCardTitle>
             <SimpleCardContent>
-              {stakeSize}
+              {numeral(stakeSize).format('0,0.0')}
             </SimpleCardContent>
             <SimpleCardFooter>
               <KosuSymbol />
@@ -101,7 +101,7 @@ function PastChallengeView(props) {
               Daily reward
             </SimpleCardTitle>
             <SimpleCardContent>
-              {dailyReward}
+              {numeral(dailyReward).format('0,0.0')}
             </SimpleCardContent>
             <SimpleCardFooter>
               <KosuSymbol />
@@ -127,9 +127,9 @@ function PastChallengeView(props) {
       </Row>
       <Row>
         <Col>
-          <Button
+          <Link
             text="Go Back"
-            action={goBack}
+            to="/"
             color="inverted"
           />
         </Col>
@@ -139,16 +139,27 @@ function PastChallengeView(props) {
 }
 
 PastChallengeView.propTypes = {
-  challengeId: PropTypes.number.isRequired,
-  validator: PropTypes.string.isRequired,
-  challenger: PropTypes.string.isRequired,
-  stakeSize: PropTypes.number.isRequired,
-  dailyReward: PropTypes.number.isRequired,
-  passed: PropTypes.bool.isRequired,
-  winningTokens: PropTypes.number.isRequired,
-  voterTotal: PropTypes.number.isRequired,
-  goBack: PropTypes.func.isRequired,
-  status: PropTypes.number.isRequired,
+  challengeId: PropTypes.string,
+  owner: PropTypes.string,
+  challenger: PropTypes.string,
+  stakeSize: PropTypes.string,
+  dailyReward: PropTypes.string,
+  passed: PropTypes.bool,
+  winningTokens: PropTypes.number,
+  voterTotal: PropTypes.number,
+  status: PropTypes.number,
+};
+
+PastChallengeView.defaultProps = {
+  challengeId: '0',
+  owner: '0',
+  challenger: '0',
+  stakeSize: '0',
+  dailyReward: '0',
+  passed: false,
+  winningTokens: 0,
+  voterTotal: 0,
+  status: 0,
 };
 
 export default PastChallengeView;
