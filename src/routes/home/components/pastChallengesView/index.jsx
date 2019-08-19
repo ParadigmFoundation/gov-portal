@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+  NavLink,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import numeral from 'numeral';
 
@@ -10,6 +13,8 @@ import ProposalSymbol from '../../../../components/symbols/proposalSymbol';
 import ValidatorSymbol from '../../../../components/symbols/validatorSymbol';
 import AcceptedSymbol from '../../../../components/symbols/acceptedSymbol';
 import RejectedSymbol from '../../../../components/symbols/rejectedSymbol';
+
+import './index.scss';
 
 function PastChallengesView(props) {
   const {
@@ -41,7 +46,9 @@ function PastChallengesView(props) {
     return pastChallenges.map(pastChallenge => (
       <tr key={pastChallenge.id}>
         <td>
-          {pastChallenge.id}
+          <NavLink to={`/past/${pastChallenge.id}`} className="past-challenges-view__id">
+            {pastChallenge.id}
+          </NavLink>
         </td>
         <td>
           <Address address={pastChallenge.challenger} short />
@@ -52,10 +59,10 @@ function PastChallengesView(props) {
         <td>
           {pastChallenge.result === 'passed' ? <AcceptedSymbol /> : <RejectedSymbol />}
         </td>
-        <td>
+        <td className="past-challenges-view__td">
           {numeral(pastChallenge.stakedBalance).format('0,0.0')}
         </td>
-        <td>
+        <td className="past-challenges-view__td">
           {new Date(pastChallenge.challengeEnd * 1000).toLocaleString('default')}
         </td>
       </tr>
@@ -66,22 +73,22 @@ function PastChallengesView(props) {
     <Table>
       <thead>
         <tr>
-          <th>
+          <th className="past-challenges-view__th">
             ID
           </th>
-          <th>
+          <th className="past-challenges-view__th">
             Challenger
           </th>
-          <th>
+          <th className="past-challenges-view__th">
             Type
           </th>
-          <th>
+          <th className="past-challenges-view__th">
             Result
           </th>
-          <th>
+          <th className="past-challenges-view__th">
             Tokens at Stake
           </th>
-          <th>
+          <th className="past-challenges-view__th">
             Time
           </th>
         </tr>

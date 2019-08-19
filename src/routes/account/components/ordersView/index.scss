@@ -4,10 +4,10 @@
 
 .orders-view {
   &__id {
-    font-family: 'DINPro-Medium', sans-serif;
-    font-size: 16px;
-    color: #404040;
-    text-align: left;
+    font-family: 'DINPro-Medium', sans-serif !important;
+    font-size: 16px !important;
+    color: #404040 !important;
+    text-align: left !important;
   }
 
   &__expiration {
