@@ -38,8 +38,6 @@ function Header() {
         setIsMetaMaskConnected(true);
         setAddress(coinbase);
         setBalance(res.toString());
-
-        console.log(gov.weiToEther(res.toString()));
       }
     }
 

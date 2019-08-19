@@ -45,8 +45,6 @@ function Account() {
       if (isReady) {
         const { coinbase } = gov;
 
-        console.log(gov);
-
         const ethBalanceReq = await gov.web3.eth.getBalance(coinbase);
         setEthBalance(gov.web3.utils.fromWei(ethBalanceReq.toString()));
 
