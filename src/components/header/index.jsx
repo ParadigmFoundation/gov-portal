@@ -15,6 +15,7 @@ import HeaderView from './components';
 
 import {
   shortenAddress,
+  formatAmount,
 } from '../../utils/formatting';
 
 function Header() {
@@ -37,6 +38,8 @@ function Header() {
         setIsMetaMaskConnected(true);
         setAddress(coinbase);
         setBalance(res.toString());
+
+        console.log(gov.weiToEther(res.toString()));
       }
     }
 
@@ -47,7 +50,7 @@ function Header() {
     <HeaderView
       currentRoute="Governance"
       address={address && shortenAddress(address)}
-      balance={balance && gov.weiToEther(balance)}
+      balance={balance && formatAmount(gov.weiToEther(balance))}
       metaMaskConnected={isMetaMaskConnected}
     />
   );
