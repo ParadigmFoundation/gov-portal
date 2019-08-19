@@ -40,11 +40,12 @@ async function estimateEtherToToken(kosu, value) {
 
 async function estimateNewPostLimit(kosu, newBalance) {
   const totalBonded = await kosu.posterRegistry.tokensContributed();
-  const newTotal = totalBonded.plus(newBalance);
+  const newBalanceBn = new BigNumber(kosu.web3.utils.toWei(newBalance));
+  const newTotal = totalBonded.plus(newBalanceBn);
 
-  const futureProportion = newBalance.div(newTotal);
+  const futureProportion = newBalanceBn.div(newTotal);
   const futureLimit = futureProportion.times(ORDER_MAX);
-  return futureLimit;
+  return futureLimit.toString();
 }
 
 async function getPastActivities(kosu, user) {
