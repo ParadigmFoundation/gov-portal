@@ -13,6 +13,7 @@ import GovContext from '../../store/govContext';
 import AccountView from './components/accountView';
 
 import {
+  estimateNewPostLimit,
   updateBalance,
   getPastActivities,
   estimateEtherToToken,
@@ -108,6 +109,7 @@ function Account() {
         gov.web3.utils.toWei(value),
       ) : () => {}}
       estimate={isReady ? value => estimateEtherToToken(gov.kosu, value) : () => {}}
+      estimateNewPostLimit={isReady ? value => estimateNewPostLimit(gov.kosu, value) : () => {}}
     />
   );
 }

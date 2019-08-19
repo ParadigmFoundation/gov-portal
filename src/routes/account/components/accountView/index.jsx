@@ -35,6 +35,7 @@ function AccountView(props) {
     activities,
     pay,
     estimate,
+    estimateNewPostLimit,
   } = props;
 
   return (
@@ -71,6 +72,7 @@ function AccountView(props) {
             updateBalance={updateBalance}
             pay={pay}
             estimate={estimate}
+            estimateNewPostLimit={estimateNewPostLimit}
           />
         </Col>
       </Row>
@@ -134,6 +136,7 @@ AccountView.propTypes = {
   updateBalance: PropTypes.func,
   pay: PropTypes.func,
   estimate: PropTypes.func,
+  estimateNewPostLimit: PropTypes.func,
   orders: PropTypes.arrayOf(PropTypes.object),
   activities: PropTypes.arrayOf(PropTypes.object),
 };
@@ -156,6 +159,7 @@ AccountView.defaultProps = {
   updateBalance: () => {},
   pay: () => {},
   estimate: () => {},
+  estimateNewPostLimit: () => {},
   orders: [],
   activities: [],
 };

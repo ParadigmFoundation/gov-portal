@@ -22,11 +22,20 @@ function BondModal(props) {
     toggle,
     currentBond,
     isOpen,
-    limit,
+    max,
     confirm,
+    estimateNewPostLimit,
   } = props;
 
   const [tokensToBound, setTokensToBound] = useState(0);
+  const [limit, setLimit] = useState('');
+
+  async function updateValues(val) {
+    setTokensToBound(val);
+
+    const limitReq = await estimateNewPostLimit(val);
+    setLimit(limitReq);
+  }
 
   return (
     <Modal className="bond-modal" isOpen={isOpen} toggle={toggle}>
@@ -74,10 +83,10 @@ function BondModal(props) {
               placeholder={0}
               type="number"
               value={tokensToBound}
-              onChange={e => setTokensToBound(e.target.value)}
+              onChange={e => updateValues(e.target.value)}
               className="bond-modal__input"
               min={0}
-              max={parseInt(limit, 10)}
+              max={parseInt(max, 10)}
             />
           </Col>
           <Col xs={2}>
@@ -85,14 +94,14 @@ function BondModal(props) {
           </Col>
           <Col>
             <div className="bond-modal__limit">
-              {limit}
+              {limit.substring(0, 4)}
             </div>
           </Col>
         </Row>
         <Row className="p-5">
           <Col xs={12} sm={6}>
             <ProgressBar
-              max={parseInt(limit, 10)}
+              max={parseInt(max, 10)}
               value={parseInt(tokensToBound, 10)}
             />
           </Col>
@@ -124,16 +133,18 @@ function BondModal(props) {
 BondModal.propTypes = {
   currentBond: PropTypes.string,
   isOpen: PropTypes.bool,
-  limit: PropTypes.string,
+  max: PropTypes.string,
   toggle: PropTypes.func.isRequired,
   confirm: PropTypes.func,
+  estimateNewPostLimit: PropTypes.func,
 };
 
 BondModal.defaultProps = {
   currentBond: '0',
   isOpen: false,
-  limit: '0',
+  max: '0',
   confirm: () => {},
+  estimateNewPostLimit: () => {},
 };
 
 export default BondModal;

@@ -68,6 +68,7 @@ function TokensView(props) {
     setTreasuryAllowance,
     estimate,
     pay,
+    estimateNewPostLimit,
   } = props;
 
   const [isBondModalOpen, setIsBondModalOpen] = useState(false);
@@ -81,9 +82,10 @@ function TokensView(props) {
       <BondModal
         isOpen={isBondModalOpen}
         toggle={() => setIsBondModalOpen(!isBondModalOpen)}
-        limit={treasuryBalance}
+        max={treasuryBalance}
         confirm={bondTokens}
         currentBond={bondedTokens}
+        estimateNewPostLimit={estimateNewPostLimit}
       />
       <ManageTreasuryModal
         isOpen={isManageTreasuryModalOpen}
@@ -271,13 +273,13 @@ TokensView.propTypes = {
   tokensStakedFor: PropTypes.string,
   treasuryBalance: PropTypes.string,
   bondTokens: PropTypes.func,
-  unbondTokens: PropTypes.func,
   addToTreasury: PropTypes.func,
   removeTreasury: PropTypes.func,
   setTreasuryAllowance: PropTypes.func,
   updateBalance: PropTypes.func,
   estimate: PropTypes.func,
   pay: PropTypes.func,
+  estimateNewPostLimit: PropTypes.func,
 };
 
 TokensView.defaultProps = {
@@ -291,7 +293,7 @@ TokensView.defaultProps = {
   tokensStakedFor: '0',
   treasuryBalance: '0',
   bondTokens: () => {},
-  unbondTokens: () => {},
+  estimateNewPostLimit: () => {},
   addToTreasury: () => {},
   removeTreasury: () => {},
   setTreasuryAllowance: () => {},
