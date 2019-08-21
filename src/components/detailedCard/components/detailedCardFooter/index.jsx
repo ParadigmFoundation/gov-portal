@@ -14,6 +14,7 @@ import Link from '../../../link';
 
 import {
   timestampToCountdown,
+  getTimestampBadge,
 } from '../../../../utils/formatting';
 
 import './index.scss';
@@ -29,14 +30,24 @@ function DetailedCardFooter(props) {
     <div className="detailed-card-footer">
       <Row className="align-items-center">
         <Col>
-          <div className="detailed-card-footer__content">
-            {type === 'challenge' ? 'Challenge' : 'Proposal'}
-            {' '}
-            ends in:
-          </div>
-          <div className="detailed-card-footer__countdown">
-            {timestampToCountdown(acceptUnix, true)}
-          </div>
+          {getTimestampBadge(acceptUnix) === 'ended' ? (
+            <div className="detailed-card-footer__ended">
+              {type === 'challenge' ? 'Challenge' : 'Proposal'}
+              {' '}
+              ended.
+            </div>
+          ) : (
+            <>
+              <div className="detailed-card-footer__content">
+                {type === 'challenge' ? 'Challenge' : 'Proposal'}
+                {' '}
+                ends in:
+              </div>
+              <div className="detailed-card-footer__countdown">
+                {timestampToCountdown(acceptUnix, true)}
+              </div>
+            </>
+          )}
         </Col>
         <Col className="text-right">
           <Link

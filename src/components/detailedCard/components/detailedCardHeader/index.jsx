@@ -44,6 +44,18 @@ function DetailedCardHeader(props) {
       );
     }
 
+    if (getTimestampBadge(timestamp) === 'ended') {
+      return (
+        <Col>
+          <div
+            className="detailed-card-header__timestamp-badge detailed-card-header__timestamp-badge--ended"
+          >
+            Ended
+          </div>
+        </Col>
+      );
+    }
+
     return null;
   }
 

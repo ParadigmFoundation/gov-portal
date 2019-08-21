@@ -31,6 +31,10 @@ function getTimestampBadge(timestamp) {
   const now = Date.now() / 1000;
   const timeleft = timestamp - now;
 
+  if (timeleft < 0) {
+    return 'ended';
+  }
+
   if (timeleft < day) {
     return 'endingSoon';
   }
