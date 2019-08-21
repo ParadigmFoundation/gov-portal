@@ -157,7 +157,7 @@ function ChallengeView(props) {
   }
 
   return (
-    <div className="challenge-view">
+    <div className="challenge-view container">
       <Row className="pb-5">
         <Col>
           <div className="challenge-view__title">

@@ -92,7 +92,7 @@ function ValidatorView(props) {
         price="0"
         challengeListing={challengeListing}
       />
-      <div className="validator-view">
+      <div className="validator-view container">
         <Row>
           <Col>
             <div className="validator-view__header">

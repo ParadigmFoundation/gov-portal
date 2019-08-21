@@ -36,7 +36,7 @@ function ProposalView(props) {
   const [isProposalChallengeModalOpen, toggleProposalChallengeModal] = useState();
 
   return (
-    <div className="proposal-view">
+    <div className="proposal-view container">
       <ProposalChallengeModal
         id={id}
         isOpen={isProposalChallengeModalOpen}
