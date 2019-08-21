@@ -18,6 +18,10 @@
     outline: none;
   }
 
+  &:hover {
+    background: #5C5C5C;
+  }
+
   &--inverted {
     background: none;
     color: #4a4a4a;
@@ -26,10 +30,18 @@
 
   &--red {
     background: $color-red;
+
+    &:hover {
+      background-color: #FF5757;
+    }
   }
 
   &--green {
     background: $color-green;
+
+    &:hover {
+      background-color: #1BE090;
+    }
   }
 
   &--block {
