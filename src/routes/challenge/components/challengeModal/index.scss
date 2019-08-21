@@ -3,8 +3,13 @@
 @import 'style/variables.scss';
 
 .challenge-modal {
+  background: #fff;
+  border: 1px solid #ededed;
+  box-shadow: 3px 9px 15px 0 rgba(0, 0, 0, 0.07);
+
   &__body {
-    padding-top: 15px;
+    border: none !important;
+    padding-top: 0;
     padding-right: 35px;
     padding-bottom: 35px;
     padding-left: 35px;
@@ -12,6 +17,10 @@
 
   &__close {
     text-align: right;
+    padding-top: 15px;
+    padding-right: 30px;
+    padding-bottom: 0;
+    padding-left: 0;
   }
 
   &__header {
@@ -22,26 +31,35 @@
   }
 
   &__header-address {
-    font-family: 'DIN-Medium', sans-serif;
+    font-family: 'DINPro-Medium', sans-serif;
+    font-size: 25px;
+    color: #404040;
   }
 
   &__content {
     font-family: 'Gilroy-Medium', sans-serif;
-    font-size: 18px;
+    font-size: 14px;
     color: #838383;
     text-align: left;
   }
 
   &__amount {
-    background: #F4F4F4;
+    background-color: #f4f4fa;
+    border-radius: 9px;
+    opacity: 0.75;
+    width: 75%;
+    height: 5rem;
+    font-size: 5rem;
+    color: #000000;
+    letter-spacing: -2.56px;
     font-family: 'DINPro-Medium', sans-serif;
-    font-size: 39px;
-    color: #4A4A4A;
     text-align: left;
-    width: 174px;
-    height: 56px;
     border: none;
-    padding: 10px;
+    padding: 50px 10px;
     margin-right: 12px;
+
+    &:focus {
+      border: none;
+    }
   }
 }

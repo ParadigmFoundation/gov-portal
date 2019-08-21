@@ -9,6 +9,7 @@ import {
 
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
+import CloseIcon from '../../../../components/closeIcon';
 
 import {
   shortenAddress,
@@ -27,12 +28,12 @@ function ChallengeModal(props) {
   return (
     <div>
       <Modal className="challenge-modal" isOpen={isOpen}>
+        <Row>
+          <Col className="challenge-modal__close">
+            <CloseIcon action={close} />
+          </Col>
+        </Row>
         <ModalBody className="challenge-modal__body">
-          <Row>
-            <Col className="challenge-modal__close">
-              X
-            </Col>
-          </Row>
           <Row className="pb-5">
             <Col>
               <div className="challenge-modal__header">
@@ -45,7 +46,7 @@ function ChallengeModal(props) {
               </div>
             </Col>
           </Row>
-          <Row className="pb-4">
+          <Row className="pb-5">
             <Col>
               <div className="challenge-modal__content">
                 Enter the amount of tokens you want to commit to this vote below:
