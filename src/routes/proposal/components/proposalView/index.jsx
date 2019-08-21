@@ -67,7 +67,13 @@ function ProposalView(props) {
             wants to become a validator.
           </div>
           <div className="proposal-view__subcontent">
-            {`If unchallenged, ${shortenAddress(owner)} will become a validator in`}
+            If unchallenged,
+            {' '}
+            <span className="proposal-view__owner">
+              {shortenAddress(owner)}
+            </span>
+            {' '}
+            will become a validator in
             {' '}
             <span className="proposal-view__subcontent-deadline">
               {timestampToCountdown(acceptUnix, true)}
