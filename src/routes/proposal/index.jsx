@@ -19,6 +19,8 @@ function Proposal(props) {
     id,
   } = props.match.params;
 
+  document.title('Governance | Paradigm');
+
   const [proposalData, setProposalData] = useState();
 
   useEffect(() => {

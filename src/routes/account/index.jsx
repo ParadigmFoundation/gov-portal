@@ -28,6 +28,8 @@ function Account() {
     isReady,
   } = useContext(GovContext);
 
+  document.title = 'Account | Paradigm';
+
   const [totalBalance, setTotalBalance] = useState();
   const [walletBalance, setWalletBalance] = useState();
   const [systemBalance, setSystemBalance] = useState();
