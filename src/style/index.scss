@@ -5,6 +5,11 @@
 /* Variables and Boostrap */
 @import './variables.scss';
 @import '~bootstrap/scss/bootstrap';
+@import './fonts.scss';
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
 
 .modal-backdrop {
   background-color: #fff;
