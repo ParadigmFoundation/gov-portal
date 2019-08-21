@@ -18,7 +18,9 @@ function Home() {
     isReady,
   } = useContext(GovContext);
 
-  document.title('Governance | Paradigm');
+  useEffect(() => {
+    document.title = 'Governance | Paradigm';
+  }, []);
 
   const [proposals, setProposals] = useState([]);
   const [validators, setValidators] = useState([]);

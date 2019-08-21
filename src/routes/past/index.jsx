@@ -23,7 +23,9 @@ function Past(props) {
     },
   } = props;
 
-  document.title('Governance | Paradigm');
+  useEffect(() => {
+    document.title = 'Governance | Paradigm';
+  }, []);
 
   const [pastChallengeData, setPastChallengeData] = useState();
 

@@ -16,10 +16,16 @@ function Proposal(props) {
   } = useContext(GovContext);
 
   const {
-    id,
-  } = props.match.params;
+    match: {
+      params: {
+        id,
+      },
+    },
+  } = props;
 
-  document.title('Governance | Paradigm');
+  useEffect(() => {
+    document.title = 'Governance | Paradigm';
+  }, []);
 
   const [proposalData, setProposalData] = useState();
 
