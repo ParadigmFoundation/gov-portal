@@ -38,7 +38,7 @@ function HeaderView(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div>
+    <div className="container-fluid">
       <Navbar light expand="md" className="header">
         <NavbarBrand href="/">
           <img
