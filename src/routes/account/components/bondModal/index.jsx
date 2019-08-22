@@ -28,14 +28,18 @@ function BondModal(props) {
     estimateNewPostLimit,
   } = props;
 
-  const [tokensToBound, setTokensToBound] = useState(0);
+  const [tokensToBound, setTokensToBound] = useState('');
   const [limit, setLimit] = useState('');
 
   async function updateValues(val) {
     setTokensToBound(val);
 
-    const limitReq = await estimateNewPostLimit(val);
-    setLimit(limitReq);
+    if (val !== '') {
+      const limitReq = await estimateNewPostLimit(val);
+      setLimit(limitReq);
+    } else {
+      setLimit('0');
+    }
   }
 
   return (
@@ -91,7 +95,7 @@ function BondModal(props) {
             />
           </Col>
           <Col xs={2}>
-            <img src={ArrowRightSrc} alt="arrow-right" width="100%" />
+            <img src={ArrowRightSrc} alt="arrow-right" width="75%" />
           </Col>
           <Col>
             <div className="bond-modal__limit">

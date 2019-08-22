@@ -27,13 +27,18 @@ function WalletModal(props) {
     estimate,
   } = props;
 
-  const [etherToBound, setEtherToBound] = useState(0);
+  const [etherToBound, setEtherToBound] = useState('');
   const [estimatedKosu, setEstimatedKosu] = useState('0');
 
   async function getEstimatedKosu(value) {
     setEtherToBound(value);
-    const res = await estimate(value);
-    setEstimatedKosu(res);
+
+    if (value !== '') {
+      const res = await estimate(value);
+      setEstimatedKosu(res);
+    } else {
+      setEstimatedKosu('0');
+    }
   }
 
   return (
