@@ -112,76 +112,71 @@ function TokensView(props) {
         estimate={estimate}
         ethBalance={ethBalance}
       />
-      <SimpleCard>
-        <SimpleCardTitle>
-          Total balance
-          <Tooltip
-            text={tooltipsJson.Wallet}
-          />
-        </SimpleCardTitle>
-        <SimpleCardContent>
-          {numeral(totalBalance).format('0,0.0')}
-        </SimpleCardContent>
-        <SimpleCardFooter>
-          <KosuSymbol />
-        </SimpleCardFooter>
-      </SimpleCard>
-      <SimpleCard>
-        <SimpleCardTitle>
-          System balance
-          <Tooltip
-            text={tooltipsJson.Wallet}
-          />
-        </SimpleCardTitle>
-        <SimpleCardContent>
-          {numeral(systemBalance).format('0,0.0')}
-        </SimpleCardContent>
-        <SimpleCardFooter>
-          <KosuSymbol />
-        </SimpleCardFooter>
-      </SimpleCard>
-      <SimpleCard>
-        <SimpleCardTitle>
-          <Row>
-            <Col>
-              In wallet
+      <Row>
+        <Col xs={12} sm={12} md={4} className="py-3">
+          <SimpleCard>
+            <SimpleCardTitle>
+              Total balance
               <Tooltip
                 text={tooltipsJson.Wallet}
               />
-            </Col>
-            <Col className="text-right">
-              <Button
-                action={() => setIsWalletModalOpen(!isWalletModalOpen)}
-                color="outlined-green"
-                text="Add"
-                disabled={!metaMaskConnected}
-                small
+            </SimpleCardTitle>
+            <SimpleCardContent>
+              {numeral(totalBalance).format('0,0.0')}
+            </SimpleCardContent>
+            <SimpleCardFooter>
+              <KosuSymbol />
+            </SimpleCardFooter>
+          </SimpleCard>
+        </Col>
+        <Col xs={12} sm={12} md={4} className="py-3">
+          <SimpleCard>
+            <SimpleCardTitle>
+              System balance
+              <Tooltip
+                text={tooltipsJson.Wallet}
               />
-            </Col>
-          </Row>
-        </SimpleCardTitle>
-        <SimpleCardContent>
-          {numeral(walletBalance).format('0,0.0')}
-        </SimpleCardContent>
-        <SimpleCardFooter>
-          <KosuSymbol />
-        </SimpleCardFooter>
-      </SimpleCard>
-      <div>
-        {treasuryAllowance === '0' && (
-          <Layer>
-            <Warning
-              src={WarningSign}
-              alt="Warning sign"
-            />
-            <Button
-              action={() => setTreasuryAllowance}
-              text="Click here to enable access to the Treasury."
-              color="inverted"
-            />
-          </Layer>
-        )}
-        <div>
+            </SimpleCardTitle>
+            <SimpleCardContent>
+              {numeral(systemBalance).format('0,0.0')}
+            </SimpleCardContent>
+            <SimpleCardFooter>
+              <KosuSymbol />
+            </SimpleCardFooter>
+          </SimpleCard>
+        </Col>
+        <Col xs={12} sm={12} md={4} className="py-3">
+          <SimpleCard>
+            <SimpleCardTitle>
+              <Row>
+                <Col>
+                  In wallet
+                  <Tooltip
+                    text={tooltipsJson.Wallet}
+                  />
+                </Col>
+                <Col className="text-right">
+                  <Button
+                    action={() => setIsWalletModalOpen(!isWalletModalOpen)}
+                    color="outlined-green"
+                    text="Add"
+                    disabled={!metaMaskConnected}
+                    small
+                  />
+                </Col>
+              </Row>
+            </SimpleCardTitle>
+            <SimpleCardContent>
+              {numeral(walletBalance).format('0,0.0')}
+            </SimpleCardContent>
+            <SimpleCardFooter>
+              <KosuSymbol />
+            </SimpleCardFooter>
+          </SimpleCard>
+        </Col>
+      </Row>
+      <Row className="py-3">
+        <Col xs={12} sm={12} md={4} className="py-3">
           <SimpleCard>
             <SimpleCardTitle>
               <Row>
@@ -209,6 +204,8 @@ function TokensView(props) {
               <KosuSymbol />
             </SimpleCardFooter>
           </SimpleCard>
+        </Col>
+        <Col xs={12} sm={12} md={4} className="py-3">
           <SimpleCard>
             <SimpleCardTitle>
               <Row>
@@ -230,6 +227,8 @@ function TokensView(props) {
               <KosuSymbol />
             </SimpleCardFooter>
           </SimpleCard>
+        </Col>
+        <Col xs={12} sm={12} md={4} className="py-3">
           <SimpleCard>
             <SimpleCardTitle>
               <Row>
@@ -257,8 +256,8 @@ function TokensView(props) {
               <KosuSymbol />
             </SimpleCardFooter>
           </SimpleCard>
-        </div>
-      </div>
+        </Col>
+      </Row>
     </>
   );
 }
