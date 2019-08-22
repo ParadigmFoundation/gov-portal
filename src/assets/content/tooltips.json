@@ -1,3 +1,10 @@
 {
-  "wallet": "What you have in your wallet"
+  "totalBalance": "This is the total balance.",
+  "systemBalance": "This is the system balance.",
+  "inWallet": "This is your wallet balance.",
+  "bondedTokens": "This is how much tokens are bonded.",
+  "stakedTokens": "This is the staked tokens.",
+  "inTreasury": "How much tokens are in your treasury.",
+  "yourOrders": "All your previous orders.",
+  "govActivity": "All your previous governance activity."
 }

@@ -119,7 +119,7 @@ function TokensView(props) {
             <SimpleCardTitle>
               Total balance
               <Tooltip
-                text={tooltipsJson.Wallet}
+                text={tooltipsJson.totalBalance}
               />
             </SimpleCardTitle>
             <SimpleCardContent>
@@ -135,7 +135,7 @@ function TokensView(props) {
             <SimpleCardTitle>
               System balance
               <Tooltip
-                text={tooltipsJson.Wallet}
+                text={tooltipsJson.systemBalance}
               />
             </SimpleCardTitle>
             <SimpleCardContent>
@@ -153,7 +153,7 @@ function TokensView(props) {
                 <Col>
                   In wallet
                   <Tooltip
-                    text={tooltipsJson.Wallet}
+                    text={tooltipsJson.inWallet}
                   />
                 </Col>
                 <Col className="text-right">
@@ -197,7 +197,7 @@ function TokensView(props) {
                 <Col>
                   Bonded
                   <Tooltip
-                    text={tooltipsJson.Wallet}
+                    text={tooltipsJson.bondedTokens}
                   />
                 </Col>
                 <Col className="text-right">
@@ -226,7 +226,7 @@ function TokensView(props) {
                 <Col>
                   Staked
                   <Tooltip
-                    text={tooltipsJson.Wallet}
+                    text={tooltipsJson.stakedTokens}
                   />
                 </Col>
                 <Col className="text-right">
@@ -249,7 +249,7 @@ function TokensView(props) {
                 <Col>
                   In treasury
                   <Tooltip
-                    text={tooltipsJson.Wallet}
+                    text={tooltipsJson.inTreasury}
                   />
                 </Col>
                 <Col xs={4} className="text-right">

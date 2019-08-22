@@ -83,7 +83,7 @@ function AccountView(props) {
           <div className="account-view__subtitle">
             Your Orders
             <Tooltip
-              text={tooltipsJson.Wallet}
+              text={tooltipsJson.yourOrders}
             />
           </div>
         </Col>
@@ -101,7 +101,7 @@ function AccountView(props) {
           <div className="account-view__subtitle">
             Your Governance Activity
             <Tooltip
-              text={tooltipsJson.Wallet}
+              text={tooltipsJson.govActivity}
             />
           </div>
         </Col>
