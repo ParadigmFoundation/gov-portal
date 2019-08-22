@@ -9,6 +9,8 @@ import OrdersView from '../ordersView';
 import TokensView from '../tokensView';
 import GovernanceActivityView from '../governanceActivityView';
 
+import KosuSymbol from '../../../../components/symbols/kosuSymbol';
+
 import Tooltip from '../../../../components/tooltip';
 import tooltipsJson from '../../../../assets/content/tooltips.json';
 
@@ -51,7 +53,9 @@ function AccountView(props) {
       <Row className="pb-4">
         <Col>
           <div className="account-view__subtitle">
-            Your Tokens
+            Your
+            {' '}
+            <KosuSymbol />
           </div>
         </Col>
       </Row>

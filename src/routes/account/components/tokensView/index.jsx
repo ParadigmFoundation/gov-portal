@@ -14,8 +14,6 @@ import WarningSign from '../../../../assets/img/warning_grey.png';
 import SimpleCard from '../../../../components/simpleCard';
 import SimpleCardTitle from '../../../../components/simpleCard/components/simpleCardTitle';
 import SimpleCardContent from '../../../../components/simpleCard/components/simpleCardContent';
-import SimpleCardFooter from '../../../../components/simpleCard/components/simpleCardFooter';
-import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
 import Link from '../../../../components/link';
 
@@ -125,9 +123,6 @@ function TokensView(props) {
             <SimpleCardContent>
               {numeral(totalBalance).format('0,0.0')}
             </SimpleCardContent>
-            <SimpleCardFooter>
-              <KosuSymbol />
-            </SimpleCardFooter>
           </SimpleCard>
         </Col>
         <Col xs={12} sm={12} md={4} className="py-3">
@@ -141,9 +136,6 @@ function TokensView(props) {
             <SimpleCardContent>
               {numeral(systemBalance).format('0,0.0')}
             </SimpleCardContent>
-            <SimpleCardFooter>
-              <KosuSymbol />
-            </SimpleCardFooter>
           </SimpleCard>
         </Col>
         <Col xs={12} sm={12} md={4} className="py-3">
@@ -170,9 +162,6 @@ function TokensView(props) {
             <SimpleCardContent>
               {numeral(walletBalance).format('0,0.0')}
             </SimpleCardContent>
-            <SimpleCardFooter>
-              <KosuSymbol />
-            </SimpleCardFooter>
           </SimpleCard>
         </Col>
       </Row>
@@ -214,9 +203,6 @@ function TokensView(props) {
             <SimpleCardContent>
               {numeral(bondedTokens).format('0,0.0')}
             </SimpleCardContent>
-            <SimpleCardFooter>
-              <KosuSymbol />
-            </SimpleCardFooter>
           </SimpleCard>
         </Col>
         <Col xs={12} sm={12} md={4} className="py-3">
@@ -237,9 +223,6 @@ function TokensView(props) {
             <SimpleCardContent>
               {numeral(tokensStakedFor).format('0,0.0')}
             </SimpleCardContent>
-            <SimpleCardFooter>
-              <KosuSymbol />
-            </SimpleCardFooter>
           </SimpleCard>
         </Col>
         <Col xs={12} sm={12} md={4} className="py-3">
@@ -266,9 +249,6 @@ function TokensView(props) {
             <SimpleCardContent>
               {numeral(treasuryBalance).format('0,0.0')}
             </SimpleCardContent>
-            <SimpleCardFooter>
-              <KosuSymbol />
-            </SimpleCardFooter>
           </SimpleCard>
         </Col>
       </Row>
