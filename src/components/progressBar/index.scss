@@ -5,15 +5,15 @@
 .my-progress-bar {
   &__progress-bar {
     background-color: #ececec !important;
-    border-radius: 18px;
-    height: 0.8rem;
+    border-radius: 1rem !important;
+    height: 0.8rem !important;
   }
 
   &__bar {
     background-color: $color-green !important;
-    border-radius: 18px;
+    border-radius: 1rem !important;
     min-width: 1%;
-    height: 0.8rem;
+    height: 0.8rem !important;
   }
 
   &__label {
