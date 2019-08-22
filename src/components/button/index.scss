@@ -26,6 +26,10 @@
     background: none;
     color: #4a4a4a;
     padding: 0;
+
+    &:hover {
+      background: none;
+    }
   }
 
   &--red {
