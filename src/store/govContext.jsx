@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {
+  createContext,
+} from 'react';
 
-const GovContext = React.createContext();
+const GovContext = createContext();
 
 export default GovContext;
