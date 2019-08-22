@@ -19,7 +19,18 @@
   }
 
   &:hover {
-    background: #5C5C5C;
+    background: #5c5c5c;
+  }
+
+  &--cancel {
+    color: #bfbfbf;
+    background: none;
+    padding: 0;
+
+    &:hover {
+      color: #838383;
+      background: none;
+    }
   }
 
   &--inverted {
@@ -36,7 +47,7 @@
     background: $color-red;
 
     &:hover {
-      background-color: #FF5757;
+      background-color: #ff5757;
     }
   }
 

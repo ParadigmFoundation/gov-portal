@@ -25,8 +25,12 @@ function Button(props) {
 
   let classname = 'button';
 
+  if (color === 'cancel') {
+    classname += ' button--cancel';
+  }
+
   if (color === 'inverted') {
-    classname += ' button button--inverted';
+    classname += ' button--inverted';
   }
 
   if (color === 'red') {
