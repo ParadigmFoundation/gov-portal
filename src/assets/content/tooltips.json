@@ -6,5 +6,10 @@
   "stakedTokens": "This is the staked tokens.",
   "inTreasury": "How much tokens are in your treasury.",
   "yourOrders": "All your previous orders.",
-  "govActivity": "All your previous governance activity."
+  "govActivity": "All your previous governance activity.",
+  "voteChallenge": "Vote on this challenge.",
+  "revealVote": "Reveal your vote.",
+  "activeProposals": "All the active proposals.",
+  "activeChallenges": "All the active challenges.",
+  "results": "The results are here."
 }

@@ -10,6 +10,9 @@ import PastChallengesView from '../pastChallengesView';
 import ActiveChallengesView from '../activeChallengesView';
 import ActiveProposalsView from '../activeProposalsView';
 
+import Tooltip from '../../../../components/tooltip';
+import tooltipsJson from '../../../../assets/content/tooltips.json';
+
 import './index.scss';
 
 function HomeView(props) {
@@ -34,6 +37,10 @@ function HomeView(props) {
         <Col>
           <div className="home-view__subtitle">
             Active Proposals
+            {' '}
+            <Tooltip
+              text={tooltipsJson.activeProposals}
+            />
           </div>
         </Col>
       </Row>
@@ -49,6 +56,10 @@ function HomeView(props) {
         <Col>
           <div className="home-view__subtitle">
             Active Challenges
+            {' '}
+            <Tooltip
+              text={tooltipsJson.activeChallenges}
+            />
           </div>
         </Col>
       </Row>

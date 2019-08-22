@@ -63,7 +63,7 @@ function ChallengeView(props) {
             Vote on this challenge
             {' '}
             <Tooltip
-              text={tooltipsJson.Wallet}
+              text={tooltipsJson.voteChallenge}
             />
           </div>
           <Button
@@ -88,7 +88,7 @@ function ChallengeView(props) {
             Reveal your vote
             {' '}
             <Tooltip
-              text={tooltipsJson.Wallet}
+              text={tooltipsJson.revealVote}
             />
           </div>
           <Button

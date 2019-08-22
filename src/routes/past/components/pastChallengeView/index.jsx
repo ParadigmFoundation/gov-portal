@@ -18,6 +18,9 @@ import SimpleCardContent from '../../../../components/simpleCard/components/simp
 import SimpleCardFooter from '../../../../components/simpleCard/components/simpleCardFooter';
 import Results from './components/results';
 
+import Tooltip from '../../../../components/tooltip';
+import tooltipsJson from '../../../../assets/content/tooltips.json';
+
 import {
   shortenAddress,
 } from '../../../../utils/formatting';
@@ -113,6 +116,10 @@ function PastChallengeView(props) {
         <Col>
           <div className="past-challenge-view__results-title">
             Results
+            {' '}
+            <Tooltip
+              text={tooltipsJson.results}
+            />
           </div>
         </Col>
       </Row>
