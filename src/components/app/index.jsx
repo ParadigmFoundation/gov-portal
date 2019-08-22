@@ -17,6 +17,7 @@ import Gov from '@kosu/gov-portal-helper';
 import GovContext from '../../store/govContext';
 
 import Header from '../header';
+import Footer from '../footer';
 
 import Home from '../../routes/home';
 import Account from '../../routes/account';
@@ -74,6 +75,7 @@ function App() {
             <Route path="/validator/:id" component={Validator} />
             <Route path="/past/:id" component={Past} />
           </Switch>
+          <Footer />
         </div>
       </BrowserRouter>
     </GovContext.Provider>
