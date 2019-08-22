@@ -12,6 +12,7 @@ import numeral from 'numeral';
 
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
+import CloseIcon from '../../../../components/closeIcon';
 
 import warningSign from '../../../../assets/img/warning.png';
 
@@ -30,14 +31,12 @@ function ValidatorChallengeModal(props) {
 
   return (
     <Modal className="validator-challenge-modal" isOpen={isOpen}>
-      <ModalBody className="alidator-challenge-modal__body">
-        <Row>
-          <Col>
-            <div className="validator-challenge-modal__close">
-              X
-            </div>
-          </Col>
-        </Row>
+      <Row>
+        <Col className="validator-challenge-modal__close">
+          <CloseIcon action={close} />
+        </Col>
+      </Row>
+      <ModalBody className="validator-challenge-modal__body">
         <Row className="pb-5">
           <Col>
             <div className="validator-challenge-modal__header">

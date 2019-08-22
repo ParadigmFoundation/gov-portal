@@ -12,7 +12,9 @@ import numeral from 'numeral';
 
 import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
-import WarningSign from '../../../../components/warningSign';
+import CloseIcon from '../../../../components/closeIcon';
+
+import warningSign from '../../../../assets/img/warning.png';
 
 import './index.scss';
 
@@ -29,14 +31,12 @@ function ProposalChallengeModal(props) {
 
   return (
     <Modal className="proposal-challenge-modal" isOpen={isOpen}>
+      <Row>
+        <Col className="proposal-challenge-modal__close">
+          <CloseIcon action={close} />
+        </Col>
+      </Row>
       <ModalBody className="proposal-challenge-modal__body">
-        <Row>
-          <Col>
-            <div className="proposal-challenge-modal__close">
-              X
-            </div>
-          </Col>
-        </Row>
         <Row className="pb-5">
           <Col>
             <div className="proposal-challenge-modal__header">
@@ -71,7 +71,7 @@ function ProposalChallengeModal(props) {
           <Col>
             <div className="proposal-challenge-modal__warning">
               <div className="proposal-challenge-modal__warning-title">
-                <WarningSign />
+                <img src={warningSign} width={18} alt="Warning" />
                 {' '}
                 Warning
               </div>
