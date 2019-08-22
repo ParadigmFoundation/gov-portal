@@ -65,8 +65,8 @@ function ChallengeModal(props) {
           <Row>
             <Col>
               <Button
-                text="Close"
-                color="inverted"
+                text="Cancel"
+                color="cancel"
                 action={close}
               />
             </Col>

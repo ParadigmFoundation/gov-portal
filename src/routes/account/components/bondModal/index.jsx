@@ -114,7 +114,7 @@ function BondModal(props) {
         <Row>
           <Col className="text-left">
             <Button
-              color="inverted"
+              color="cancel"
               text="Cancel"
               action={toggle}
             />

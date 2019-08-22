@@ -84,8 +84,8 @@ function ValidatorChallengeModal(props) {
         <Row>
           <Col>
             <Button
-              color="inverted"
-              text="Close"
+              color="cancel"
+              text="Cancel"
               action={close}
             />
           </Col>
