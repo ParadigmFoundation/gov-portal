@@ -29,11 +29,12 @@ import Tooltip from '../../../../components/tooltip';
 import tooltipsJson from '../../../../assets/content/tooltips.json';
 
 const Layer = styled.div`
+  top: 0;
   position: absolute;
   background-color: rgba(255, 255, 255, 0.9);
-  width: 849px;
+  width: 100%;
   margin: 15px;
-  height: 145px;
+  height: 100%;
   z-index: 1;
   text-align: center;
   line-height: normal;
@@ -176,6 +177,19 @@ function TokensView(props) {
         </Col>
       </Row>
       <Row className="py-3">
+        {treasuryAllowance === '0' && (
+          <Layer>
+            <Warning
+              src={WarningSign}
+              alt="Warning sign"
+            />
+            <Button
+              action={() => setTreasuryAllowance}
+              text="Click here to enable access to the Treasury."
+              color="inverted"
+            />
+          </Layer>
+        )}
         <Col xs={12} sm={12} md={4} className="py-3">
           <SimpleCard>
             <SimpleCardTitle>
