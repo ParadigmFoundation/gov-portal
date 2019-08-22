@@ -52,10 +52,10 @@
   }
 
   &--green {
-    background: #1be090;
+    background: $color-green;
 
     &:hover {
-      background-color: $color-green;
+      background-color: #1be090;
     }
   }
 
@@ -79,8 +79,8 @@
     background: none;
 
     &:hover {
-      background: none;
-      color: #1be090;
+      background: #1be090;
+      color: #fff;
       border: 1px solid #1be090;
     }
   }
@@ -91,10 +91,17 @@
   }
 
   &--disabled {
+    font-family: 'Gilroy-Medium', sans-serif;
     background: #bfbfbf;
     border: 1px #bfbfbf;
-    font-family: 'Gilroy-Medium', sans-serif;
     color: #fff;
     text-align: center;
+    cursor: no-drop;
+    
+    &:hover {
+      background: #bfbfbf;
+      border: 1px #bfbfbf;
+      color: #fff;
+    }
   }
 }
