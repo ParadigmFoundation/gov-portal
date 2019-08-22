@@ -52,10 +52,10 @@
   }
 
   &--green {
-    background: $color-green;
+    background: #1be090;
 
     &:hover {
-      background-color: #1be090;
+      background-color: $color-green;
     }
   }
 
