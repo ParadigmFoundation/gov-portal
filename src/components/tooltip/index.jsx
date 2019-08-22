@@ -12,7 +12,6 @@ const StyledTooltip = styled.div`
   & .text {
     text-align: left;
     min-width: 258px;
-    min-height: 97px;
     color: #fff;
     padding: 10px;
     visibility: hidden;
