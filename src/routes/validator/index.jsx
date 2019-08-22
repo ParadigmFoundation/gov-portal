@@ -36,10 +36,12 @@ function Validator(props) {
 
         for (let i = 0; i < Object.keys(currentValidators).length; i += 1) {
           if (Object.keys(currentValidators)[i] === id) {
+            const dailyReward = Object.values(currentValidators)[i].dailyReward.toString().split('.');
+
             const validator = {
               confirmationUnix: Object.values(currentValidators)[i].confirmationUnix,
               dailyReward: gov.web3.utils.fromWei(
-                Object.values(currentValidators)[i].dailyReward.toString(),
+                dailyReward[0],
               ),
               details: Object.values(currentValidators)[i].details,
               owner: Object.values(currentValidators)[i].owner,

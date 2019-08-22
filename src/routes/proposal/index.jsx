@@ -33,20 +33,27 @@ function Proposal(props) {
     async function fetchData() {
       if (isReady && id !== '') {
         if (gov.proposals[id] !== undefined) {
-          setProposalData(gov.proposals[id]);
+          const dailyReward = gov.proposals[id].dailyReward.toString().split('.');
+
+          console.log(dailyReward);
+
+          setProposalData({
+            ...gov.proposals[id],
+            dailyReward: dailyReward[0],
+          });
         }
       }
     }
 
     fetchData();
-  }, [isReady, gov.proposals, id]);
+  }, [isReady, gov, id]);
 
   return (
     <>
       <ProposalView
         id={id}
         acceptUnix={proposalData && proposalData.acceptUnix}
-        dailyReward={proposalData && gov.web3.utils.fromWei(proposalData.dailyReward.toString())}
+        dailyReward={proposalData && gov.web3.utils.fromWei(proposalData.dailyReward)}
         details={proposalData && proposalData.details}
         owner={proposalData && proposalData.owner}
         power={proposalData && proposalData.power.toString()}
