@@ -18,7 +18,6 @@ const StyledTable = styled.table`
     font-size: 18px;
     color: #404040;
     text-align: left;
-    cursor: pointer;
   }
 
   & th {
