@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-globals */
+
 import React, {
   useState,
 } from 'react';
@@ -216,7 +218,15 @@ function TokensView(props) {
                   />
                 </Col>
                 <Col className="text-right">
-                  <Link to="/" color="outlined-green" text="Stake" small disabled={!metaMaskConnected} />
+                  <Button
+                    color="outlined-green"
+                    text="Stake"
+                    disabled={!metaMaskConnected}
+                    action={() => {
+                      location.href = 'https://docs.kosu.io/overview/governance.html';
+                    }}
+                    small
+                  />
                 </Col>
               </Row>
             </SimpleCardTitle>
