@@ -36,6 +36,7 @@ function AccountView(props) {
     pay,
     estimate,
     estimateNewPostLimit,
+    setTreasuryAllowance,
   } = props;
 
   return (
@@ -73,6 +74,7 @@ function AccountView(props) {
             pay={pay}
             estimate={estimate}
             estimateNewPostLimit={estimateNewPostLimit}
+            setTreasuryAllowance={setTreasuryAllowance}
           />
         </Col>
       </Row>
@@ -137,6 +139,7 @@ AccountView.propTypes = {
   pay: PropTypes.func,
   estimate: PropTypes.func,
   estimateNewPostLimit: PropTypes.func,
+  setTreasuryAllowance: PropTypes.func,
   orders: PropTypes.arrayOf(PropTypes.object),
   activities: PropTypes.arrayOf(PropTypes.object),
 };
@@ -151,6 +154,7 @@ AccountView.defaultProps = {
   tokensStakedFor: '0',
   treasuryBalance: '0',
   treasuryAllowance: '0',
+  setTreasuryAllowance: () => {},
   confirmListing: () => {},
   resolveChallenge: () => {},
   bondTokens: () => {},

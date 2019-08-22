@@ -184,7 +184,7 @@ function TokensView(props) {
               alt="Warning sign"
             />
             <Button
-              action={() => setTreasuryAllowance}
+              action={setTreasuryAllowance}
               text="Click here to enable access to the Treasury."
               color="inverted"
             />
