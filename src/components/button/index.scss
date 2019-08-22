@@ -13,6 +13,7 @@
   border: none;
   border-radius: 2px;
   padding: 6px 30px;
+  height: 20px;
 
   &:focus {
     outline: none;
@@ -44,7 +45,7 @@
     background: $color-green;
 
     &:hover {
-      background-color: #1BE090;
+      background-color: #1be090;
     }
   }
 
@@ -66,6 +67,12 @@
     color: $color-green;
     text-align: center;
     background: none;
+
+    &:hover {
+      background: none;
+      color: #1be090;
+      border: 1px solid #1be090;
+    }
   }
 
   &--small {
