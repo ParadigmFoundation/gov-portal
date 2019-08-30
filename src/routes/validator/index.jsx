@@ -41,7 +41,7 @@ function Validator(props) {
             const validator = {
               confirmationUnix: Object.values(currentValidators)[i].confirmationUnix,
               dailyReward: gov.web3.utils.fromWei(
-                dailyReward[0],
+                dailyReward[0].toString(),
               ),
               details: Object.values(currentValidators)[i].details,
               owner: Object.values(currentValidators)[i].owner,

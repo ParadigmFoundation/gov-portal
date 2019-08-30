@@ -41,20 +41,21 @@ function ChallengeView(props) {
     blockNumber,
   } = props;
 
+  console.log("props=%o", props)
+
   function returnStatus() {
     let status;
+
+    console.log("got info=%o, block=%s", info, blockNumber)
 
     if (info.challengeStart <= blockNumber && blockNumber < info.endCommitPeriod) {
       status = 'commit';
     } else if (info.endCommitPeriod <= blockNumber && blockNumber < info.challengeEnd) {
       status = 'reveal';
-    } else if (info.challengeEnd <= blockNumber) {
+    } else if (info.challengeEnd >= blockNumber) {
       status = 'over';
     }
-
-    if (currentUser === challenger) {
-      status = 'youStarted';
-    }
+    console.log(status);
 
     if (status === 'commit') {
       return (
@@ -117,16 +118,6 @@ function ChallengeView(props) {
             </span>
             {' '}
             to vote again.
-          </div>
-        </div>
-      );
-    }
-
-    if (status === 'youStarted') {
-      return (
-        <div>
-          <div className="challenge-view__started-label">
-            You started this challenge.
           </div>
         </div>
       );
