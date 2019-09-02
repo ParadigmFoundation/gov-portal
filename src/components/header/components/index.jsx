@@ -11,7 +11,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   UncontrolledDropdown,
@@ -40,13 +39,13 @@ function HeaderView(props) {
   return (
     <div className="container-fluid">
       <Navbar light expand="md" className="header">
-        <NavbarBrand href="/">
+        <NavLink to="/">
           <img
             src={ParadigmLogo}
             className="header__logo"
             alt="Paradigm"
           />
-        </NavbarBrand>
+        </NavLink>
         <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
         <Collapse isOpen={isOpen} navbar>
           <Nav navbar>
