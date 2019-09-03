@@ -230,7 +230,7 @@ function ChallengeView(props) {
           <Link
             text="Go Back"
             to="/"
-            color="inverted"
+            color="cancel"
           />
         </Col>
       </Row>

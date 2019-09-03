@@ -167,7 +167,7 @@ function ProposalView(props) {
           <Link
             text="Go Back"
             to="/"
-            color="inverted"
+            color="cancel"
           />
         </Col>
       </Row>

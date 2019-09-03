@@ -220,7 +220,7 @@ function ValidatorView(props) {
           <Col>
             <Link
               to="/"
-              color="inverted"
+              color="cancel"
               text="Go back"
             />
           </Col>
