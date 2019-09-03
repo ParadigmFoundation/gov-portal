@@ -36,7 +36,7 @@ function Home() {
         const formattedProposals = [];
 
         for (let i = 0; i < Object.keys(currentProposals).length; i += 1) {
-          const dailyReward = currentProposals[Object.keys(currentProposals)[i]].dailyReward.toString().split('.');
+          const { dailyReward } = currentProposals[Object.keys(currentProposals)[i]];
 
           formattedProposals.push({
             id: Object.keys(currentProposals)[i],
@@ -45,7 +45,7 @@ function Home() {
               currentProposals[Object.keys(currentProposals)[i]].stakeSize.toString(),
             ),
             dailyReward: gov.web3.utils.fromWei(
-              dailyReward[0],
+              dailyReward,
             ),
             power: currentProposals[Object.keys(currentProposals)[i]].power.toString(),
             acceptUnix: currentProposals[Object.keys(currentProposals)[i]].acceptUnix,
