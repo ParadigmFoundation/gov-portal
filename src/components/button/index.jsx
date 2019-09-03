@@ -65,6 +65,7 @@ function Button(props) {
     setStatus('loading');
     await action();
     setStatus('done');
+    onceConfirmed();
   }
 
   function returnContent() {
