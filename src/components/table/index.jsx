@@ -16,7 +16,7 @@ const StyledTable = styled.table`
     border: none;
     font-family: 'DINPro-Light', sans-serif;
     font-size: 18px;
-    color: #404040;
+    color: #4a4a4a;
     text-align: left;
   }
 
@@ -24,7 +24,7 @@ const StyledTable = styled.table`
     padding: 18px;
     font-family: 'Gilroy-Medium', sans-serif;
     font-size: 20px;
-    color: #404040;
+    color: #4a4a4a;
     text-align: left;
     font-weight: normal;
     border: none;

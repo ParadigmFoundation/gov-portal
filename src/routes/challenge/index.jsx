@@ -41,6 +41,7 @@ function Challenge(props) {
             console.log(currentChallenges[Object.keys(currentChallenges)[i]]);
 
             const info = await gov.getChallengeInfo(id);
+            console.log("info=%o,id=%s", info, id);
 
             const challenge = {
               currentUser,
@@ -54,7 +55,7 @@ function Challenge(props) {
                 currentChallenges[Object.keys(currentChallenges)[i]].challengerStake.toString(),
               ),
               potentialReward: gov.web3.utils.fromWei(
-                currentChallenges[Object.keys(currentChallenges)[i]].challengerStake.multipliedBy(gov.web3.utils.toBN(30)).div(gov.web3.utils.toBN(100)).toString(),
+                currentChallenges[Object.keys(currentChallenges)[i]].challengerStake.multipliedBy(gov.web3.utils.toBN(70)).div(gov.web3.utils.toBN(100)).toString(),
               ),
               challengeDetails: currentChallenges[Object.keys(currentChallenges)[i]].challengeDetails,
               info,

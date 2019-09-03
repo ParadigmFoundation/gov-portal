@@ -53,7 +53,7 @@ function Proposal(props) {
       <ProposalView
         id={id}
         acceptUnix={proposalData && proposalData.acceptUnix}
-        dailyReward={proposalData && gov.web3.utils.fromWei(proposalData.dailyReward)}
+        dailyReward={proposalData && gov.web3.utils.fromWei(proposalData.dailyReward.toString())}
         details={proposalData && proposalData.details}
         owner={proposalData && proposalData.owner}
         power={proposalData && proposalData.power.toString()}

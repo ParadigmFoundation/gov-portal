@@ -45,7 +45,11 @@ function Home() {
               currentProposals[Object.keys(currentProposals)[i]].stakeSize.toString(),
             ),
             dailyReward: gov.web3.utils.fromWei(
+<<<<<<< HEAD
               dailyReward,
+=======
+              dailyReward[0].toString(),
+>>>>>>> b1c8ea3fe173170177e138536c4b4a90d2f53da1
             ),
             power: currentProposals[Object.keys(currentProposals)[i]].power.toString(),
             acceptUnix: currentProposals[Object.keys(currentProposals)[i]].acceptUnix,
@@ -63,11 +67,11 @@ function Home() {
             owner: currentValidators[Object.keys(currentValidators)[i]].owner,
             confirmationUnix: currentValidators[Object.keys(currentValidators)[i]].confirmationUnix,
             dailyReward: gov.web3.utils.fromWei(
-              currentValidators[Object.keys(currentValidators)[i]].dailyReward,
+              currentValidators[Object.keys(currentValidators)[i]].dailyReward.toString(),
             ),
             power: currentValidators[Object.keys(currentValidators)[i]].power.toString(),
             stakeSize: gov.web3.utils.fromWei(
-              currentValidators[Object.keys(currentValidators)[i]].stakeSize,
+              currentValidators[Object.keys(currentValidators)[i]].stakeSize.toString(),
             ),
           });
         }
@@ -85,10 +89,10 @@ function Home() {
             challenger: currentChallenges[Object.keys(currentChallenges)[i]].challenger,
             challengeEndUnix: currentChallenges[Object.keys(currentChallenges)[i]].challengeEndUnix,
             challengerStake: gov.web3.utils.fromWei(
-              currentChallenges[Object.keys(currentChallenges)[i]].challengerStake,
+              currentChallenges[Object.keys(currentChallenges)[i]].challengerStake.toString(),
             ),
             potentialReward: gov.web3.utils.fromWei(
-              currentChallenges[Object.keys(currentChallenges)[i]].challengerStake.multipliedBy(gov.web3.utils.toBN(30)).div(gov.web3.utils.toBN(100)),
+              currentChallenges[Object.keys(currentChallenges)[i]].challengerStake.multipliedBy(gov.web3.utils.toBN(30)).div(gov.web3.utils.toBN(100)).toString(),
             ),
           });
         }
@@ -105,7 +109,7 @@ function Home() {
             status: pastChallengesRes[i].listingSnapshot.status,
             result: pastChallengesRes[i].passed,
             stakedBalance: gov.web3.utils.fromWei(
-              pastChallengesRes[i].listingSnapshot.stakedBalance.plus(pastChallengesRes[i].balance),
+              pastChallengesRes[i].listingSnapshot.stakedBalance.plus(pastChallengesRes[i].balance).toString(),
             ),
             challengeEnd: await gov.getPastBlockTimestamp(
               pastChallengesRes[i].challengeEnd.toNumber(),
