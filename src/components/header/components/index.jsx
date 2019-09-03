@@ -13,16 +13,16 @@ import {
   NavbarToggler,
   Nav,
   NavItem,
-  UncontrolledDropdown,
+  Dropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
 } from 'reactstrap';
 
 import KosuSymbol from '../../symbols/kosuSymbol';
 import ConnectMetaMask from '../../connectMetaMask';
 
 import ParadigmLogo from '../../../assets/img/logo.png';
+import Caret from '../../../assets/img/caret.png';
 
 import './index.scss';
 
@@ -35,6 +35,7 @@ function HeaderView(props) {
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isDropdownOpen, toggleDropdown] = useState(false);
 
   return (
     <div className="container-fluid">
@@ -49,21 +50,37 @@ function HeaderView(props) {
         <NavbarToggler onClick={() => setIsOpen(!isOpen)} />
         <Collapse isOpen={isOpen} navbar>
           <Nav navbar>
-            <UncontrolledDropdown nav inNavbar>
-              <DropdownToggle nav caret>
-                <span className="header__current-route">
+            <Dropdown
+              isOpen={isDropdownOpen}
+              toggle={() => toggleDropdown(!isDropdownOpen)}
+              onMouseEnter={() => toggleDropdown(!isDropdownOpen)}
+              onMouseLeave={() => toggleDropdown(!isDropdownOpen)}
+              nav
+              inNavbar
+            >
+              <DropdownToggle nav>
+                <span className="header__dropdown-caption">
                   {currentRoute}
                 </span>
+                <img src={Caret} className="header__dropdown-caret" alt="caret" />
               </DropdownToggle>
-              <DropdownMenu className="header__route-menu">
-                <DropdownItem tag={NavLink} to="/governance">
+              <DropdownMenu className="header__dropdown">
+                <NavLink
+                  to="/governance"
+                  className="header__dropdown-link"
+                  onClick={() => toggleDropdown(!isDropdownOpen)}
+                >
                   Governance
-                </DropdownItem>
-                <DropdownItem tag={NavLink} to="/account">
+                </NavLink>
+                <NavLink
+                  to="/account"
+                  className="header__dropdown-link"
+                  onClick={() => toggleDropdown(!isDropdownOpen)}
+                >
                   Account
-                </DropdownItem>
+                </NavLink>
               </DropdownMenu>
-            </UncontrolledDropdown>
+            </Dropdown>
           </Nav>
           <Nav className="ml-auto align-items-center" navbar>
             {metaMaskConnected ? (

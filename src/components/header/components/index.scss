@@ -46,24 +46,82 @@
     border-radius: 10px;
     width: 12px;
     height: 12px;
+    display: inline-flex;
+    vertical-align: middle;
   }
 
-  &__current-route {
+  &__dropdown-caption {
+    color: #212529;
+    cursor: pointer;
+    font-family: 'Gilroy-Regular', sans-serif;
+    font-size: 22px;
+    font-stretch: 100%;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: normal;
     opacity: 0.25;
-    font-family: 'Gilroy-Medium', sans-serif;
-    font-size: 20px;
-    color: #000000;
-    letter-spacing: 0;
+    text-align: left;
+    text-size-adjust: 100%;
+    position: relative;
+    display: inline-block;
+    font-stretch: normal;
+    line-height: 1.2;
+    z-index: 1;
   }
 
-  &__route-menu {
-    padding-top: 5px;
-    padding-bottom: 7px;
-    padding-left: 12px;
-    border-radius: 2px;
-    box-shadow: 2px 3px 7px 0 rgba(0, 0, 0, 0.18);
-    border: solid 1px #ededed;
-    color: #bfbfbf;
+  &__dropdown-caret {
+    cursor: pointer;
+    margin-left: 6px;
+    margin-top: -1px;
+    font-size: 25px;
+    width: 14px;
+    height: 5px;
+    vertical-align: middle;
+  }
+
+  &__dropdown {
+    position: absolute !important;
+    margin-left: 9px !important;
+    min-width: 140px !important;
+    padding-top: 5px !important;
+    padding-bottom: 7px !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    border-radius: 2px !important;
+    box-shadow: 2px 3px 7px 0 rgba(0, 0, 0, 0.18) !important;
+    border: solid 1px #ededed !important;
+    background-color: #fff !important;
+    z-index: 1 !important;
+    display: block;
+    float: right;
+    position: absolute;
+    top: 31px;
+    min-width: 60px;
+    opacity: 1;
+    z-index: 10000;
+  }
+
+  &__dropdown-link {
+    background-color: none !important;
+    display: block;
+    margin-top: 4px;
     background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    opacity: 0.25;
+    font-family: Gilroy-Regular;
+    font-size: 22px;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    text-align: left;
+
+    &:hover {
+      opacity: 0.5;
+      cursor: pointer;
+      color: #000;
+      text-decoration: none;
+    }
   }
 }
