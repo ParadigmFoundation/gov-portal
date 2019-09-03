@@ -96,6 +96,7 @@ function TokensView(props) {
         remove={removeTreasury}
       />
       <AddTreasuryModal
+        walletBalance={walletBalance}
         isOpen={isAddTreasuryModalOpen}
         toggle={() => setIsAddTreasuryModalOpen(!isAddTreasuryModalOpen)}
         add={addToTreasury}

@@ -20,6 +20,7 @@ function AddTreasuryModal(props) {
     isOpen,
     toggle,
     add,
+    walletBalance,
   } = props;
 
   const [tokensToAdd, setTokensToAdd] = useState('');
@@ -68,7 +69,7 @@ function AddTreasuryModal(props) {
             <Button
               color="green"
               text="Add"
-              disabled={tokensToAdd === '0' || tokensToAdd === ''}
+              disabled={tokensToAdd === '0' || tokensToAdd === '' || tokensToAdd > parseInt(walletBalance, 10)}
               action={() => add(tokensToAdd.toString())}
               onceConfirmed={toggle}
               isAsync
@@ -84,10 +85,12 @@ AddTreasuryModal.propTypes = {
   isOpen: PropTypes.bool,
   add: PropTypes.func.isRequired,
   toggle: PropTypes.func.isRequired,
+  walletBalance: PropTypes.string,
 };
 
 AddTreasuryModal.defaultProps = {
   isOpen: false,
+  walletBalance: 0,
 };
 
 export default AddTreasuryModal;
