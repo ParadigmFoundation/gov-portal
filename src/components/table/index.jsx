@@ -21,7 +21,7 @@ const StyledTable = styled.table`
   }
 
   & th {
-    padding: 18px;
+    padding: 17px 10px 17px 18px;
     font-family: 'Gilroy-Medium', sans-serif;
     font-size: 20px;
     color: #4a4a4a;
