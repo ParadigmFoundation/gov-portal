@@ -16,11 +16,12 @@ function CloseIcon(props) {
       onKeyPress={() => action()}
       role="button"
       tabIndex={0}
+      className="close-icon"
     >
       <img
         src={CloseIconSrc}
         alt="Close"
-        className="close-icon"
+        className="close-icon__img"
       />
     </div>
   );
