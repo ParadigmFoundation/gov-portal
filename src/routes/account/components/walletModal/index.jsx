@@ -109,7 +109,7 @@ function WalletModal(props) {
             <Button
               color="green"
               text="Confirm"
-              disabled={etherToBound === 0}
+              disabled={etherToBound === 0 || etherToBound > parseInt(ethBalance, 10)}
               action={() => pay(etherToBound)}
               onceConfirmed={toggle}
               isAsync

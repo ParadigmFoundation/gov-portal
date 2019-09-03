@@ -24,13 +24,23 @@ function ProgressBar(props) {
     return className;
   }
 
+  function getBarClassName() {
+    let classname = 'my-progress-bar__bar';
+
+    if (value > max) {
+      classname += ' my-progress-bar__bar--full';
+    }
+
+    return classname;
+  }
+
   return (
     <div className="my-progress-bar">
       <Row className="pb-2">
         <Col>
           <Progress
             className="my-progress-bar__progress-bar"
-            barClassName="my-progress-bar__bar"
+            barClassName={getBarClassName()}
             max={max}
             value={value}
           />
