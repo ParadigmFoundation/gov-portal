@@ -11,5 +11,8 @@
   "revealVote": "Reveal your vote.",
   "activeProposals": "All the active proposals.",
   "activeChallenges": "All the active challenges.",
-  "results": "The results are here."
+  "results": "The results are here.",
+  "challengeTitle": "This is a challenge.",
+  "dailyReward": "Daily reward.",
+  "estimatedVotePower": "Estimated vote power."
 }
