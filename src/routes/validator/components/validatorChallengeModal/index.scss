@@ -53,6 +53,7 @@
     font-size: 12px;
     color: #4A4A4A;
     padding: 5px;
+    border-radius: 0.3rem;
 
     &::placeholder {
       font-family: 'Gilroy-Regular', sans-serif;
@@ -75,7 +76,7 @@
 
   &__warning-content {
     font-family: 'Gilroy-Regular', sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     color: #fff;
     text-align: left;
     padding-top: 8px;
