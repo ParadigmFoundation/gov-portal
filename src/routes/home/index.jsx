@@ -45,11 +45,7 @@ function Home() {
               currentProposals[Object.keys(currentProposals)[i]].stakeSize.toString(),
             ),
             dailyReward: gov.web3.utils.fromWei(
-<<<<<<< HEAD
-              dailyReward,
-=======
               dailyReward[0].toString(),
->>>>>>> b1c8ea3fe173170177e138536c4b4a90d2f53da1
             ),
             power: currentProposals[Object.keys(currentProposals)[i]].power.toString(),
             acceptUnix: currentProposals[Object.keys(currentProposals)[i]].acceptUnix,
