@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {
+  useState,
+} from 'react';
 import {
   NavLink,
+  Redirect,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import numeral from 'numeral';
@@ -19,6 +22,14 @@ function ValidatorsView(props) {
     metaMaskConnected,
     validators,
   } = props;
+
+  const [redirectTo, setRedirectTo] = useState();
+
+  function redirect() {
+    if (redirectTo) {
+      return <Redirect push to={`/validator/${redirectTo}`} />;
+    }
+  }
 
   function displayContent() {
     if (!metaMaskConnected) {
@@ -42,11 +53,9 @@ function ValidatorsView(props) {
     }
 
     return validators.map(validator => (
-      <tr key={validator.owner}>
+      <tr key={validator.owner} onClick={() => setRedirectTo(validator.id)}>
         <td>
-          <NavLink to={`/validator/${validator.id}`}>
-            <Address address={validator.owner} icon short />
-          </NavLink>
+          <Address address={validator.owner} icon short />
         </td>
         <td>
           {numeral(validator.stakeSize).format('0,0.0')}
@@ -68,33 +77,36 @@ function ValidatorsView(props) {
   }
 
   return (
-    <Table>
-      <thead>
-        <tr>
-          <th>
-            Address
-          </th>
-          <th>
-            Stake
-          </th>
-          <th>
-            Daily Reward
-          </th>
-          <th>
-            Voting Power
-          </th>
-          <th>
-            Uptime
-          </th>
-          <th>
-            Age
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {displayContent()}
-      </tbody>
-    </Table>
+    <>
+      {redirect()}
+      <Table>
+        <thead>
+          <tr>
+            <th>
+              Address
+            </th>
+            <th>
+              Stake
+            </th>
+            <th>
+              Daily Reward
+            </th>
+            <th>
+              Voting Power
+            </th>
+            <th>
+              Uptime
+            </th>
+            <th>
+              Age
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {displayContent()}
+        </tbody>
+      </Table>
+    </>
   );
 }
 
