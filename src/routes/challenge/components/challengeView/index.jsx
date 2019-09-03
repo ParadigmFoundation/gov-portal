@@ -41,12 +41,12 @@ function ChallengeView(props) {
     blockNumber,
   } = props;
 
-  console.log("props=%o", props)
+  console.log('props=%o', props);
 
   function returnStatus() {
     let status;
 
-    console.log("got info=%o, block=%s", info, blockNumber)
+    console.log('got info=%o, block=%s', info, blockNumber);
 
     if (info.challengeStart <= blockNumber && blockNumber < info.endCommitPeriod) {
       status = 'commit';
@@ -55,6 +55,7 @@ function ChallengeView(props) {
     } else if (info.challengeEnd >= blockNumber) {
       status = 'over';
     }
+
     console.log(status);
 
     if (status === 'commit') {
@@ -153,6 +154,9 @@ function ChallengeView(props) {
         <Col>
           <div className="challenge-view__title">
             {`Challenge #${challengeId}`}
+            <Tooltip
+              text={tooltipsJson.challengeTitle}
+            />
           </div>
           <div className="challenge-view__public-key-label">
             Validator&apos;s public key:

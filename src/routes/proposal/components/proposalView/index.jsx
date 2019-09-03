@@ -12,6 +12,9 @@ import KosuSymbol from '../../../../components/symbols/kosuSymbol';
 import Button from '../../../../components/button';
 import Link from '../../../../components/link';
 
+import Tooltip from '../../../../components/tooltip';
+import tooltipsJson from '../../../../assets/content/tooltips.json';
+
 import {
   timestampToCountdown,
   shortenAddress,
@@ -99,6 +102,9 @@ function ProposalView(props) {
           <div className="proposal-view__card">
             <div className="proposal-view__card-title">
               Daily reward
+              <Tooltip
+                text={tooltipsJson.dailyReward}
+              />
             </div>
             <div className="proposal-view__card-content">
               {numeral(dailyReward).format('0,0.0')}
@@ -112,6 +118,9 @@ function ProposalView(props) {
           <div className="proposal-view__card">
             <div className="proposal-view__card-title">
               Estimated vote power
+              <Tooltip
+                text={tooltipsJson.estimatedVotePower}
+              />
             </div>
             <div className="proposal-view__card-content">
               {`${numeral(power).format('0.0')}%`}
