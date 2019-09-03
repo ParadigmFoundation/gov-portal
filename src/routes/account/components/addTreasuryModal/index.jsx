@@ -22,14 +22,14 @@ function AddTreasuryModal(props) {
     add,
   } = props;
 
-  const [tokensToAdd, setTokensToAdd] = useState(0);
+  const [tokensToAdd, setTokensToAdd] = useState('');
 
   return (
-    <Modal className="add-tresury-modal" isOpen={isOpen} toggle={toggle}>
-      <ModalBody className="add-tresury-modal__body">
+    <Modal className="add-treasury-modal" isOpen={isOpen} toggle={toggle}>
+      <ModalBody className="add-treasury-modal__body">
         <Row className="pb-5 align-items-center">
           <Col>
-            <div className="add-tresury-modal__header">
+            <div className="add-treasury-modal__header">
               Add
               {' '}
               <KosuSymbol />
