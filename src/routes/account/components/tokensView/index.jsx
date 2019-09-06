@@ -195,7 +195,7 @@ function TokensView(props) {
                 <Col className="text-right">
                   <Button
                     color="outlined-green"
-                    text="Bond"
+                    text={bondedTokens === '0' ? 'Bond' : 'Edit'}
                     disabled={!metaMaskConnected}
                     action={() => setIsBondModalOpen(true)}
                     small
