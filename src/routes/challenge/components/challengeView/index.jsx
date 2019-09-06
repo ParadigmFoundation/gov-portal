@@ -154,9 +154,6 @@ function ChallengeView(props) {
         <Col>
           <div className="challenge-view__title">
             {`Challenge #${challengeId}`}
-            <Tooltip
-              text={tooltipsJson.challengeTitle}
-            />
           </div>
           <div className="challenge-view__public-key-label">
             Validator&apos;s public key:
@@ -201,6 +198,9 @@ function ChallengeView(props) {
           <div className="challenge-view__card">
             <div className="challenge-view__card-title">
               Potential reward
+              <Tooltip
+                text={tooltipsJson.potentialReward}
+              />
             </div>
             <div className="challenge-view__card-content">
               {numeral(potentialReward).format('0,0.0')}

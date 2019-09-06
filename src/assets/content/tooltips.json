@@ -14,5 +14,6 @@
   "results": "The results are here.",
   "challengeTitle": "This is a challenge.",
   "dailyReward": "Daily reward.",
-  "estimatedVotePower": "Estimated vote power."
+  "estimatedVotePower": "Estimated vote power.",
+  "potentialReward": "The potential reward."
 }
