@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import {
   Row,
   Col,
+  Spinner,
 } from 'reactstrap';
 import numeral from 'numeral';
 
@@ -17,7 +18,6 @@ import SimpleCard from '../../../../components/simpleCard';
 import SimpleCardTitle from '../../../../components/simpleCard/components/simpleCardTitle';
 import SimpleCardContent from '../../../../components/simpleCard/components/simpleCardContent';
 import Button from '../../../../components/button';
-import Link from '../../../../components/link';
 
 import BondModal from '../bondModal';
 import AddTreasuryModal from '../addTreasuryModal';
@@ -78,6 +78,37 @@ function TokensView(props) {
   const [isAddTreasuryModalOpen, setIsAddTreasuryModalOpen] = useState(false);
   const [isTreasuryBalanceModalOpen, setIsTreasuryBalanceModalOpen] = useState(false);
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
+
+  function displayAllowanceLayer() {
+    if (treasuryAllowance === '0') {
+      return (
+        <Layer>
+          <Warning
+            src={WarningSign}
+            alt="Warning sign"
+          />
+          <Button
+            action={setTreasuryAllowance}
+            text="Click here to enable access to the Treasury."
+            color="inverted"
+          />
+        </Layer>
+      );
+    }
+
+    if (treasuryAllowance === null) {
+      return (
+        <Layer>
+          <Spinner />
+          <p>
+            Checking allowance...
+          </p>
+        </Layer>
+      );
+    }
+
+    return <></>;
+  }
 
   return (
     <>
@@ -169,19 +200,7 @@ function TokensView(props) {
         </Col>
       </Row>
       <Row className="py-3">
-        {treasuryAllowance === '0' && (
-          <Layer>
-            <Warning
-              src={WarningSign}
-              alt="Warning sign"
-            />
-            <Button
-              action={setTreasuryAllowance}
-              text="Click here to enable access to the Treasury."
-              color="inverted"
-            />
-          </Layer>
-        )}
+        {displayAllowanceLayer()}
         <Col xs={12} sm={12} md={4} className="py-3">
           <SimpleCard>
             <SimpleCardTitle>
@@ -289,7 +308,7 @@ TokensView.propTypes = {
 
 TokensView.defaultProps = {
   metaMaskConnected: false,
-  treasuryAllowance: '0',
+  treasuryAllowance: null,
   walletBalance: '0',
   ethBalance: '0',
   totalBalance: '0',

@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app';
+import GovWrapper from './store/govWrapper';
 
 import './style/index.scss';
 
 ReactDOM.render(
-  <App />,
+  <GovWrapper />,
   document.getElementById('root'),
 );

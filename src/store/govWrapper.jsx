@@ -1,22 +1,23 @@
 import React, {
   useReducer,
-  useEffect,
-  useState,
 } from 'react';
-import Gov from '@kosu/gov-portal-helper';
 
-import App from '../components/app';
-
+import DataLoader from './dataLoader';
 import GovContext from './govContext';
 
 const initialState = {
   initialized: false,
-  address: '',
-  ethBalance: '0',
-  walletBalance: '0',
-  bondedTokens: '0',
-  stakedTokens: '0',
-  treasuryBalance: '0',
+  address: null,
+  ethBalance: null,
+  systemBalance: null,
+  totalBalance: null,
+  activities: null,
+  walletBalance: null,
+  bondedTokens: null,
+  stakedTokens: null,
+  treasuryBalance: null,
+  allowance: null,
+  gov: null,
 };
 
 function updateState(state, action) {
@@ -29,27 +30,34 @@ function updateState(state, action) {
     case 'set':
       return {
         ...state,
-        [action.id]: action.amount,
+        [action.target]: state[action.value],
       };
-    case 'increment':
+    case 'add':
       return {
         ...state,
-        [action.id]: state.action.id + action.amount,
+        [action.target]: state[action.target].plus(state[action.value]),
+      };
+    case 'sub':
+      return {
+        ...state,
+        [action.target]: state[action.target].minus(state[action.value]),
       };
     default:
-      throw new Error('Unexpected action');
+      throw new Error(`Unexpected action: ${action.type}`);
   }
 }
 
 function GovWrapper() {
+  const [state, dispatch] = useReducer(updateState, initialState);
 
-
-  
   return (
     <GovContext.Provider
-
+      value={{
+        ...state,
+        dispatch,
+      }}
     >
-      <App />
+      <DataLoader />
     </GovContext.Provider>
   );
 }
