@@ -38,6 +38,8 @@ function Home() {
         for (let i = 0; i < Object.keys(currentProposals).length; i += 1) {
           const { dailyReward } = currentProposals[Object.keys(currentProposals)[i]];
 
+          const formattedDailyReward = dailyReward.toString().split('.');
+
           formattedProposals.push({
             id: Object.keys(currentProposals)[i],
             owner: currentProposals[Object.keys(currentProposals)[i]].owner,
@@ -45,7 +47,7 @@ function Home() {
               currentProposals[Object.keys(currentProposals)[i]].stakeSize.toString(),
             ),
             dailyReward: gov.web3.utils.fromWei(
-              dailyReward[0].toString(),
+              formattedDailyReward[0],
             ),
             power: currentProposals[Object.keys(currentProposals)[i]].power.toString(),
             acceptUnix: currentProposals[Object.keys(currentProposals)[i]].acceptUnix,
