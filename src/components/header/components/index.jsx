@@ -65,17 +65,33 @@ function HeaderView(props) {
                 <img src={Caret} className="header__dropdown-caret" alt="caret" />
               </DropdownToggle>
               <DropdownMenu className="header__dropdown">
+                <a
+                  href="https://create.paradigm.market"
+                  className="header__dropdown-link"
+                >
+                  Create
+                </a>
+                <a
+                  href="https://explorer.paradigm.market"
+                  className="header__dropdown-link"
+                >
+                  Explorer
+                </a>
+                <a
+                  href="https://search.paradigm.market"
+                  className="header__dropdown-link"
+                >
+                  Search
+                </a>
                 <NavLink
                   to="/governance"
                   className="header__dropdown-link"
-                  onClick={() => toggleDropdown(!isDropdownOpen)}
                 >
                   Governance
                 </NavLink>
                 <NavLink
                   to="/account"
                   className="header__dropdown-link"
-                  onClick={() => toggleDropdown(!isDropdownOpen)}
                 >
                   Account
                 </NavLink>
@@ -104,9 +120,15 @@ function HeaderView(props) {
                 </NavItem>
               </>
             ) : (
-              <NavItem>
-                <ConnectMetaMask />
-              </NavItem>
+              <>
+                <NavItem>
+                  <div className="header__icon header__icon--pending" />
+                  {' '}
+                </NavItem>
+                <NavItem>
+                  <ConnectMetaMask />
+                </NavItem>
+              </>
             )}
           </Nav>
         </Collapse>

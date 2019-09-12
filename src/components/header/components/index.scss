@@ -48,6 +48,11 @@
     height: 12px;
     display: inline-flex;
     vertical-align: middle;
+
+    &--pending {
+      background-color: #ffaf00;
+      margin-right: 23px;
+    }
   }
 
   &__dropdown-caption {
