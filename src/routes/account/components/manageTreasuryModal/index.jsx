@@ -60,7 +60,7 @@ function ManageTreasuryModal(props) {
               ) : (
                 <Button
                   text="Remove entire balance"
-                  color="outlined"
+                  color="remove"
                   action={() => setRemoveClicked(true)}
                   block
                 />

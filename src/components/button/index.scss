@@ -22,6 +22,21 @@
     background: #5c5c5c;
   }
 
+  &--remove {
+    border: 1px solid #838383;
+    text-align: center;
+
+    background: none;
+    color: #838383;
+    font-family: 'Gilroy-Medium', sans-serif;
+
+    &:hover {
+      background-color: #ff5757;
+      border-color: #ff5757;
+      color: #fff;
+    }
+  }
+
   &--cancel {
     color: #bfbfbf;
     background: none;
@@ -97,7 +112,7 @@
     color: #fff;
     text-align: center;
     cursor: no-drop;
-    
+
     &:hover {
       background: #bfbfbf;
       border: 1px #bfbfbf;

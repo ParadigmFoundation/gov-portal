@@ -29,6 +29,10 @@ function Button(props) {
     classname += ' button--cancel';
   }
 
+  if (color === 'remove') {
+    classname += ' button--remove';
+  }
+
   if (color === 'inverted') {
     classname += ' button--inverted';
   }
