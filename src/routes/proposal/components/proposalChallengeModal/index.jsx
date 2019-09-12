@@ -94,6 +94,8 @@ function ProposalChallengeModal(props) {
               color="green"
               text="Challenge"
               action={() => challengeProposal(id, details)}
+              onceConfirmed={close}
+              isAsync
               block
             />
           </Col>
