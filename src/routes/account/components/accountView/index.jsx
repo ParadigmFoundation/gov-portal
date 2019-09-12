@@ -157,7 +157,7 @@ AccountView.defaultProps = {
   bondedTokens: '0',
   tokensStakedFor: '0',
   treasuryBalance: '0',
-  treasuryAllowance: '0',
+  treasuryAllowance: '',
   setTreasuryAllowance: () => {},
   confirmListing: () => {},
   resolveChallenge: () => {},
