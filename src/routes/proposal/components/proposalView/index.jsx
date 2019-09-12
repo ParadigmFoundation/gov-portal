@@ -91,7 +91,7 @@ function ProposalView(props) {
               Stake size
             </div>
             <div className="proposal-view__card-content">
-              {numeral(stakeSize).format('0,0.0')}
+              {numeral(stakeSize).format('0,0.[00]')}
             </div>
             <div className="proposal-view__card-footer">
               <KosuSymbol />
@@ -107,7 +107,7 @@ function ProposalView(props) {
               />
             </div>
             <div className="proposal-view__card-content">
-              {numeral(dailyReward).format('0,0.0')}
+              {numeral(dailyReward).format('0,0.[00]')}
             </div>
             <div className="proposal-view__card-footer">
               <KosuSymbol />
@@ -123,7 +123,7 @@ function ProposalView(props) {
               />
             </div>
             <div className="proposal-view__card-content">
-              {`${numeral(power).format('0.0')}%`}
+              {`${numeral(power).format('0,0.[00]')}%`}
             </div>
           </div>
         </Col>
@@ -194,7 +194,6 @@ ProposalView.propTypes = {
   dailyReward: PropTypes.string,
   challengeProposal: PropTypes.func,
   canBeChallenged: PropTypes.bool,
-  details: PropTypes.string,
 };
 
 ProposalView.defaultProps = {
@@ -206,7 +205,6 @@ ProposalView.defaultProps = {
   dailyReward: '0',
   challengeProposal: () => {},
   canBeChallenged: true,
-  details: '',
 };
 
 export default ProposalView;

@@ -60,7 +60,7 @@ function PastChallengesView(props) {
           {pastChallenge.result === 'passed' ? <AcceptedSymbol /> : <RejectedSymbol />}
         </td>
         <td className="past-challenges-view__td">
-          {numeral(pastChallenge.stakedBalance).format('0,0.0')}
+          {numeral(pastChallenge.stakedBalance).format('0,0.[00]')}
         </td>
         <td className="past-challenges-view__td">
           {new Date(pastChallenge.challengeEnd * 1000).toLocaleString('default')}

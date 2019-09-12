@@ -42,8 +42,8 @@ function ActiveChallengesView(props) {
               listingOwner={activeChallenges[i + j].listingOwner}
               challenger={activeChallenges[i + j].challenger}
               challengeEndUnix={activeChallenges[i + j].challengeEndUnix}
-              challengerStake={numeral(activeChallenges[i + j].challengerStake).format('0,0.0')}
-              potentialReward={numeral(activeChallenges[i + j].potentialReward).format('0,0.0')}
+              challengerStake={numeral(activeChallenges[i + j].challengerStake).format('0,0.[00]')}
+              potentialReward={numeral(activeChallenges[i + j].potentialReward).format('0,0.[00]')}
             />
           </Col>,
         );
@@ -69,8 +69,8 @@ function ActiveChallengesView(props) {
             listingOwner={activeChallenges[i].listingOwner}
             challenger={activeChallenges[i].challenger}
             challengeEndUnix={activeChallenges[i].challengeEndUnix}
-            challengerStake={numeral(activeChallenges[i].challengerStake).format('0,0.0')}
-            potentialReward={numeral(activeChallenges[i].potentialReward).format('0,0.0')}
+            challengerStake={numeral(activeChallenges[i].challengerStake).format('0,0.[00]')}
+            potentialReward={numeral(activeChallenges[i].potentialReward).format('0,0.[00]')}
           />
         </Col>,
       );

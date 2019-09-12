@@ -85,7 +85,7 @@ function WalletModal(props) {
           </Col>
           <Col>
             <div className="wallet-modal__estimated-kosu">
-              {numeral(estimatedKosu).format('0,0.0')}
+              {numeral(estimatedKosu).format('0,0.[00]')}
             </div>
           </Col>
         </Row>

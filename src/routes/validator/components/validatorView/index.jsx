@@ -133,7 +133,7 @@ function ValidatorView(props) {
               </SimpleCardTitle>
               <SimpleCardContent>
                 {stakeSize}
-                {numeral(stakeSize).format('0,0.0')}
+                {numeral(stakeSize).format('0,0.[00]')}
               </SimpleCardContent>
               <SimpleCardFooter>
                 <KosuSymbol />
@@ -146,7 +146,7 @@ function ValidatorView(props) {
                 Monthly reward
               </SimpleCardTitle>
               <SimpleCardContent>
-                {numeral(monthlyReward).format('0,0.0')}
+                {numeral(monthlyReward).format('0,0.[00]')}
               </SimpleCardContent>
               <SimpleCardFooter>
                 <KosuSymbol />
@@ -159,7 +159,7 @@ function ValidatorView(props) {
                 Voting power
               </SimpleCardTitle>
               <SimpleCardContent>
-                {`${numeral(votingPower).format('0.0')}%`}
+                {`${numeral(votingPower).format('0,0.[00]')}%`}
               </SimpleCardContent>
             </SimpleCard>
           </Col>
@@ -169,7 +169,7 @@ function ValidatorView(props) {
                 Uptime
               </SimpleCardTitle>
               <SimpleCardContent>
-                {`${numeral(uptime).format('0.0')}%`}
+                {`${numeral(uptime).format('0,0.[00]')}%`}
               </SimpleCardContent>
             </SimpleCard>
           </Col>
@@ -198,7 +198,7 @@ function ValidatorView(props) {
                 Age
               </SimpleCardTitle>
               <SimpleCardContent>
-                {numeral(blockNumber).format('0,0')}
+                {numeral(blockNumber).format('0,0.[00]')}
                 {' '}
                 <span className="validator-view__age-block-label">
                   Blocks

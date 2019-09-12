@@ -153,7 +153,7 @@ function TokensView(props) {
               />
             </SimpleCardTitle>
             <SimpleCardContent>
-              {numeral(totalBalance).format('0,0.0')}
+              {numeral(totalBalance).format('0,0.[00]')}
             </SimpleCardContent>
           </SimpleCard>
         </Col>
@@ -166,7 +166,7 @@ function TokensView(props) {
               />
             </SimpleCardTitle>
             <SimpleCardContent>
-              {numeral(systemBalance).format('0,0.0')}
+              {numeral(systemBalance).format('0,0.[00]')}
             </SimpleCardContent>
           </SimpleCard>
         </Col>
@@ -192,7 +192,7 @@ function TokensView(props) {
               </Row>
             </SimpleCardTitle>
             <SimpleCardContent>
-              {numeral(walletBalance).format('0,0.0')}
+              {numeral(walletBalance).format('0,0.[00]')}
             </SimpleCardContent>
           </SimpleCard>
         </Col>
@@ -221,7 +221,7 @@ function TokensView(props) {
               </Row>
             </SimpleCardTitle>
             <SimpleCardContent>
-              {numeral(bondedTokens).format('0,0.0')}
+              {numeral(bondedTokens).format('0,0.[00]')}
             </SimpleCardContent>
           </SimpleCard>
         </Col>
@@ -249,7 +249,7 @@ function TokensView(props) {
               </Row>
             </SimpleCardTitle>
             <SimpleCardContent>
-              {numeral(tokensStakedFor).format('0,0.0')}
+              {numeral(tokensStakedFor).format('0,0.[00]')}
             </SimpleCardContent>
           </SimpleCard>
         </Col>
@@ -275,7 +275,7 @@ function TokensView(props) {
               </Row>
             </SimpleCardTitle>
             <SimpleCardContent>
-              {numeral(treasuryBalance).format('0,0.0')}
+              {numeral(treasuryBalance).format('0,0.[00]')}
             </SimpleCardContent>
           </SimpleCard>
         </Col>

@@ -46,7 +46,7 @@ function TreasuryBalanceModal(props) {
               Current balance
             </div>
             <div className="treasure-balance-modal__current-balance">
-              {numeral(currentBalance).format('0,0.0')}
+              {numeral(currentBalance).format('0,0.[00]')}
             </div>
           </Col>
         </Row>
@@ -79,7 +79,7 @@ function TreasuryBalanceModal(props) {
           </Col>
           <Col>
             <div className="treasure-balance-modal__difference">
-              {numeral(newBalance - currentBalance).format('0,0.0')}
+              {numeral(newBalance - currentBalance).format('0,0.[00]')}
             </div>
           </Col>
         </Row>

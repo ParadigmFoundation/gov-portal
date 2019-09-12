@@ -91,7 +91,7 @@ function PastChallengeView(props) {
               Stake size
             </SimpleCardTitle>
             <SimpleCardContent>
-              {numeral(stakeSize).format('0,0.0')}
+              {numeral(stakeSize).format('0,0.[00]')}
             </SimpleCardContent>
             <SimpleCardFooter>
               <KosuSymbol />
@@ -104,7 +104,7 @@ function PastChallengeView(props) {
               Daily reward
             </SimpleCardTitle>
             <SimpleCardContent>
-              {numeral(dailyReward).format('0,0.0')}
+              {numeral(dailyReward).format('0,0.[00]')}
             </SimpleCardContent>
             <SimpleCardFooter>
               <KosuSymbol />

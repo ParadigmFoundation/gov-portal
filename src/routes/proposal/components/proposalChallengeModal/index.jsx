@@ -50,7 +50,7 @@ function ProposalChallengeModal(props) {
               This challenge will cost:
             </div>
             <div className="proposal-challenge-modal__price">
-              {numeral(price).format('0,0.0')}
+              {numeral(price).format('0,0.[00]')}
             </div>
             {' '}
             <KosuSymbol />

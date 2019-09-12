@@ -64,7 +64,7 @@ function BondModal(props) {
                 Current bond
               </div>
               <div className="bond-modal__limit">
-                {numeral(currentBond).format('0,0.0')}
+                {numeral(currentBond).format('0,0.[00]')}
               </div>
             </Col>
           </Row>
@@ -99,7 +99,7 @@ function BondModal(props) {
           </Col>
           <Col>
             <div className="bond-modal__limit">
-              {numeral(limit).format('0,0.0')}
+              {numeral(limit).format('0,0.[00]')}
             </div>
           </Col>
         </Row>

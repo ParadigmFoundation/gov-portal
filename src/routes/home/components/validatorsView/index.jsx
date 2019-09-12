@@ -58,13 +58,13 @@ function ValidatorsView(props) {
           <Address address={validator.owner} icon short />
         </td>
         <td>
-          {numeral(validator.stakeSize).format('0,0.0')}
+          {numeral(validator.stakeSize).format('0,0.[00]')}
         </td>
         <td>
-          {numeral(validator.dailyReward).format('0,0.0')}
+          {numeral(validator.dailyReward).format('0,0.[00]')}
         </td>
         <td>
-          {`${numeral(validator.power).format('0.0')}%`}
+          {`${numeral(validator.power).format('0,0.[00]')}%`}
         </td>
         <td>
           N/A

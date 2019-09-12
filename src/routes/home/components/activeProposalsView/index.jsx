@@ -39,8 +39,8 @@ function ActiveProposalsView(props) {
               key={proposals[i + j].id}
               id={proposals[i + j].id}
               owner={proposals[i + j].owner}
-              stakeSize={numeral(proposals[i + j].stakeSize).format('0,0.0')}
-              dailyReward={numeral(proposals[i + j].dailyReward).format('0,0.0')}
+              stakeSize={numeral(proposals[i + j].stakeSize).format('0,0.[00]')}
+              dailyReward={numeral(proposals[i + j].dailyReward).format('0,0.[00]')}
               power={proposals[i + j].power}
               acceptUnix={proposals[i + j].acceptUnix}
             />
@@ -65,8 +65,8 @@ function ActiveProposalsView(props) {
             key={proposals[i].id}
             id={proposals[i].id}
             owner={proposals[i].owner}
-            stakeSize={numeral(proposals[i].stakeSize).format('0,0.0')}
-            dailyReward={numeral(proposals[i].dailyReward).format('0,0.0')}
+            stakeSize={numeral(proposals[i].stakeSize).format('0,0.[00]')}
+            dailyReward={numeral(proposals[i].dailyReward).format('0,0.[00]')}
             power={proposals[i].power}
             acceptUnix={proposals[i].acceptUnix}
           />
