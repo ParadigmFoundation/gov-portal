@@ -81,8 +81,6 @@ function TokensView(props) {
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
 
   function handleAllowanceLayer() {
-    console.log('treasuryAllowance', treasuryAllowance);
-
     if (treasuryAllowance === '') {
       return (
         <Layer>
