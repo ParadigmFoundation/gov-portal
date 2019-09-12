@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import Table from '../../../../components/table';
 import ConnectMetaMask from '../../../../components/connectMetaMask';
 import EmptyState from '../../../../components/emptyState';
-import ChallengeSymbol from '../../../../components/symbols/challengeSymbol';
-import ProposalSymbol from '../../../../components/symbols/proposalSymbol';
 import AcceptedSymbol from '../../../../components/symbols/acceptedSymbol';
 import RejectedSymbol from '../../../../components/symbols/rejectedSymbol';
 import ConfirmSymbol from '../../../../components/symbols/confirmSymbol';
@@ -98,9 +96,6 @@ function GovernanceActivityView(props) {
           {activity.title}
         </td>
         <td>
-          {activity.type === 'challenge' ? <ChallengeSymbol /> : <ProposalSymbol />}
-        </td>
-        <td>
           {displayResult(activity.result)}
         </td>
         <td>
@@ -121,9 +116,6 @@ function GovernanceActivityView(props) {
         <tr>
           <th>
             Description
-          </th>
-          <th>
-            Type
           </th>
           <th>
             Result
