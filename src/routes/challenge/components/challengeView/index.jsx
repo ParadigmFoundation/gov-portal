@@ -22,7 +22,6 @@ import './index.scss';
 
 function ChallengeView(props) {
   const {
-    currentUser,
     challengeId,
     challengeType,
     validatorPublicKey,
@@ -154,9 +153,6 @@ function ChallengeView(props) {
         <Col>
           <div className="challenge-view__title">
             {`Challenge #${challengeId}`}
-            <Tooltip
-              text={tooltipsJson.challengeTitle}
-            />
           </div>
           <div className="challenge-view__public-key-label">
             Validator&apos;s public key:
@@ -201,9 +197,12 @@ function ChallengeView(props) {
           <div className="challenge-view__card">
             <div className="challenge-view__card-title">
               Potential reward
+              <Tooltip
+                text={tooltipsJson.potentialReward}
+              />
             </div>
             <div className="challenge-view__card-content">
-              {numeral(potentialReward).format('0,0.0')}
+              {numeral(potentialReward).format('0,0.[00]')}
             </div>
             <div className="challenge-view__card-footer">
               <KosuSymbol />
@@ -216,7 +215,7 @@ function ChallengeView(props) {
               Challenger stake
             </div>
             <div className="challenge-view__card-content">
-              {numeral(challengerStake).format('0,0.0')}
+              {numeral(challengerStake).format('0,0.[00]')}
             </div>
             <div className="challenge-view__card-footer">
               <KosuSymbol />
@@ -243,7 +242,6 @@ function ChallengeView(props) {
 }
 
 ChallengeView.propTypes = {
-  currentUser: PropTypes.string,
   challengeId: PropTypes.string,
   challengeType: PropTypes.string,
   validatorPublicKey: PropTypes.string,
@@ -267,12 +265,11 @@ ChallengeView.propTypes = {
 };
 
 ChallengeView.defaultProps = {
-  currentUser: '0',
   challengeId: '0',
   challengeType: 'proposal',
   validatorPublicKey: '',
-  listingOwner: '0x0...',
-  challenger: '0x0...',
+  listingOwner: '0',
+  challenger: '0',
   challengeEndUnix: Date.now() / 1000,
   potentialReward: '0',
   challengerStake: '0',
