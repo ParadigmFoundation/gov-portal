@@ -31,6 +31,10 @@ function ProgressBar(props) {
       classname += ' my-progress-bar__bar--full';
     }
 
+    if (isNaN(value) || value === 0) {
+      classname += ' my-progress-bar__bar--empty';
+    }
+
     return classname;
   }
 

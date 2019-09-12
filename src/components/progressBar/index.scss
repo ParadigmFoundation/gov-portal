@@ -5,18 +5,20 @@
 .my-progress-bar {
   &__progress-bar {
     background-color: #ececec !important;
-    border-radius: 1rem !important;
+    border-radius: 5.5px !important;
     height: 0.8rem !important;
   }
 
   &__bar {
     background-color: $color-green !important;
-    border-radius: 1rem !important;
-    min-width: 1%;
+    border-radius: 5.5px !important;
+    min-width: 2.5%;
     height: 0.8rem !important;
 
-    &--full {
+    &--full,
+    &--empty {
       background-color: #fd4848 !important;
+      width: 2.5%;
     }
   }
 
