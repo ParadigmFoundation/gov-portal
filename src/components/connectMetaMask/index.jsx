@@ -1,5 +1,6 @@
 import React, {
   useContext,
+  useState,
 } from 'react';
 import PropTypes from 'prop-types';
 
@@ -13,19 +14,26 @@ function ConnectMetaMask(props) {
     text,
   } = props;
 
+  const [state, setState] = useState('idle');
+
   const {
     initGov,
   } = useContext(GovContext);
 
+  async function handleClick() {
+    setState('pending');
+    await initGov();
+  }
+
   return (
     <div
       className={small ? 'connect-metamask connect-metamask--small' : 'connect-metamask'}
-      onClick={async () => initGov()}
+      onClick={async () => handleClick()}
       role="button"
       tabIndex="0"
-      onKeyPress={async () => initGov()}
+      onKeyPress={async () => handleClick()}
     >
-      {text}
+      {state === 'idle' ? text : 'Connecting to MetaMask...'}
     </div>
   );
 }
@@ -37,7 +45,7 @@ ConnectMetaMask.propTypes = {
 
 ConnectMetaMask.defaultProps = {
   small: false,
-  text: 'Connect to MetaMask.',
+  text: 'Connect to MetaMask',
 };
 
 export default ConnectMetaMask;
