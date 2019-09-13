@@ -44,17 +44,8 @@ function Header() {
     fetchUserInfo();
   }, [isReady, gov]);
 
-  function returnCurrentRoute() {
-    if (window.location.pathname.includes('account')) {
-      return 'Account';
-    }
-
-    return 'Governance';
-  }
-
   return (
     <HeaderView
-      currentRoute={returnCurrentRoute()}
       address={address && shortenAddress(address)}
       balance={balance && formatAmount(gov.weiToEther(balance))}
       metaMaskConnected={isMetaMaskConnected}
