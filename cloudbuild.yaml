@@ -1,0 +1,22 @@
+steps:
+  - name: node:lts
+    entrypoint: npm
+    args: ["i"]
+
+  - name: node:lts
+    entrypoint: npm
+    args: ["run", "build"]
+
+  - name: gcr.io/cloud-builders/gsutil
+    args: [
+        "-m",
+        "rsync",
+        "-r",
+        "-c",
+        "-d",
+        "./docroot",
+        "gs://govern.paradigm.market",
+      ]
+
+options:
+ machineType: "N1_HIGHCPU_8"
