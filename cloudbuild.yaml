@@ -14,7 +14,7 @@ steps:
         "-r",
         "-c",
         "-d",
-        "./docroot",
+        "./build",
         "gs://govern.paradigm.market",
       ]
 
