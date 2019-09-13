@@ -27,7 +27,7 @@ function ManageTreasuryModal(props) {
   return (
     <Modal className="manage-treasury-modal" isOpen={isOpen} toggle={toggle}>
       <ModalBody className="manage-treasury-modal__body">
-        <Row className="pb-5 align-items-center">
+        <Row className="pb-5">
           <Col>
             <div className="manage-treasury-modal__header">
               Treasury

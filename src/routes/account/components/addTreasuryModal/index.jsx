@@ -28,7 +28,7 @@ function AddTreasuryModal(props) {
   return (
     <Modal className="add-treasury-modal" isOpen={isOpen} toggle={toggle}>
       <ModalBody className="add-treasury-modal__body">
-        <Row className="pb-5 align-items-center">
+        <Row className="pb-5">
           <Col>
             <div className="add-treasury-modal__header">
               Add
@@ -69,7 +69,7 @@ function AddTreasuryModal(props) {
             <Button
               color="green"
               text="Add"
-              disabled={tokensToAdd === '0' || tokensToAdd === '' || tokensToAdd > parseInt(walletBalance, 10)}
+              disabled={tokensToAdd === '0' || tokensToAdd === '' || tokensToAdd > parseFloat(walletBalance)}
               action={() => add(tokensToAdd.toString())}
               onceConfirmed={toggle}
               isAsync

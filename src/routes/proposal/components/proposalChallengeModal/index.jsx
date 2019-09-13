@@ -31,17 +31,15 @@ function ProposalChallengeModal(props) {
 
   return (
     <Modal className="proposal-challenge-modal" isOpen={isOpen}>
-      <Row>
-        <Col className="proposal-challenge-modal__close">
-          <CloseIcon action={close} />
-        </Col>
-      </Row>
       <ModalBody className="proposal-challenge-modal__body">
         <Row className="pb-5">
           <Col>
             <div className="proposal-challenge-modal__header">
               Challenge proposal
             </div>
+          </Col>
+          <Col xs={2} className="proposal-challenge-modal__close">
+            <CloseIcon action={close} />
           </Col>
         </Row>
         <Row className="pb-4">
@@ -97,6 +95,7 @@ function ProposalChallengeModal(props) {
               onceConfirmed={close}
               isAsync
               block
+              disabled={details === ''}
             />
           </Col>
         </Row>
