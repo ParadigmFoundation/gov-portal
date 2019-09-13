@@ -30,8 +30,6 @@ function WalletModal(props) {
   const [etherToBound, setEtherToBound] = useState('');
   const [estimatedKosu, setEstimatedKosu] = useState('0');
 
-  console.log(ethBalance);
-
   async function getEstimatedKosu(value) {
     setEtherToBound(value);
 
@@ -111,7 +109,7 @@ function WalletModal(props) {
             <Button
               color="green"
               text="Confirm"
-              disabled={etherToBound === '' || etherToBound > parseFloat(ethBalance)}
+              disabled={etherToBound === '' || etherToBound === '0' || etherToBound > parseFloat(ethBalance)}
               action={() => pay(etherToBound)}
               onceConfirmed={toggle}
               isAsync
