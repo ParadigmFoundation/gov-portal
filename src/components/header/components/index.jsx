@@ -72,7 +72,7 @@ function HeaderView(props) {
                   Create
                 </a>
                 <a
-                  href="https://explorer.paradigm.market"
+                  href="https://explore.paradigm.market"
                   className="header__dropdown-link"
                 >
                   Explorer
