@@ -23,10 +23,6 @@ function Proposal(props) {
     },
   } = props;
 
-  useEffect(() => {
-    document.title = 'Governance | Paradigm';
-  }, []);
-
   const [proposalData, setProposalData] = useState();
 
   useEffect(() => {

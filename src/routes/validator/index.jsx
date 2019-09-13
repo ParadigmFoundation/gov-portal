@@ -23,10 +23,6 @@ function Validator(props) {
     },
   } = props;
 
-  useEffect(() => {
-    document.title = 'Governance | Paradigm';
-  }, []);
-
   const [validatorData, setValidatorData] = useState();
 
   useEffect(() => {

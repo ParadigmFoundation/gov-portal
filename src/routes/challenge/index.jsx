@@ -23,10 +23,6 @@ function Challenge(props) {
     },
   } = props;
 
-  useEffect(() => {
-    document.title = 'Governance | Paradigm';
-  }, []);
-
   const [challengeData, setChallengeData] = useState();
 
   useEffect(() => {
