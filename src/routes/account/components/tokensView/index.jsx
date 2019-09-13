@@ -135,6 +135,7 @@ function TokensView(props) {
         toggle={() => setIsTreasuryBalanceModalOpen(!isTreasuryBalanceModalOpen)}
         updateBalance={updateBalance}
         currentBalance={treasuryBalance}
+        walletBalance={walletBalance}
       />
       <WalletModal
         isOpen={isWalletModalOpen}
