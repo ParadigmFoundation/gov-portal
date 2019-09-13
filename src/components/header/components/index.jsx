@@ -2,7 +2,10 @@
  * Displays the header
  */
 
-import React, { useState } from 'react';
+import React, {
+  useState,
+  useEffect,
+} from 'react';
 import {
   NavLink,
 } from 'react-router-dom';
@@ -28,7 +31,6 @@ import './index.scss';
 
 function HeaderView(props) {
   const {
-    currentRoute,
     address,
     balance,
     metaMaskConnected,
@@ -36,6 +38,14 @@ function HeaderView(props) {
 
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, toggleDropdown] = useState(false);
+
+  useEffect(() => {
+    if (document.location.pathname.includes('account')) {
+      document.title = 'Account | Paradigm';
+    } else {
+      document.title = 'Governance | Paradigm';
+    }
+  });
 
   return (
     <div className="container-fluid">
@@ -60,7 +70,7 @@ function HeaderView(props) {
             >
               <DropdownToggle nav>
                 <span className="header__dropdown-caption">
-                  {currentRoute}
+                  {document.location.pathname.includes('account') ? 'Account' : 'Governance'}
                 </span>
                 <img src={Caret} className="header__dropdown-caret" alt="caret" />
               </DropdownToggle>
@@ -138,7 +148,6 @@ function HeaderView(props) {
 }
 
 HeaderView.propTypes = {
-  currentRoute: PropTypes.string.isRequired,
   address: PropTypes.string,
   balance: PropTypes.string,
   metaMaskConnected: PropTypes.bool,
