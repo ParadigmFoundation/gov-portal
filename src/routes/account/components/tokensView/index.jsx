@@ -18,7 +18,6 @@ import SimpleCard from '../../../../components/simpleCard';
 import SimpleCardTitle from '../../../../components/simpleCard/components/simpleCardTitle';
 import SimpleCardContent from '../../../../components/simpleCard/components/simpleCardContent';
 import Button from '../../../../components/button';
-import Link from '../../../../components/link';
 
 import BondModal from '../bondModal';
 import AddTreasuryModal from '../addTreasuryModal';
@@ -132,10 +131,13 @@ function TokensView(props) {
       />
       <TreasuryBalanceModal
         isOpen={isTreasuryBalanceModalOpen}
-        toggle={() => setIsTreasuryBalanceModalOpen(!isTreasuryBalanceModalOpen)}
+        toggle={() => {
+          setIsTreasuryBalanceModalOpen(!isTreasuryBalanceModalOpen);
+          setIsManageTreasuryModalOpen(!isManageTreasuryModalOpen);
+        }}
         updateBalance={updateBalance}
         currentBalance={treasuryBalance}
-        walletBalance={walletBalance}
+        max={parseFloat(walletBalance) + parseFloat(treasuryBalance)}
       />
       <WalletModal
         isOpen={isWalletModalOpen}
