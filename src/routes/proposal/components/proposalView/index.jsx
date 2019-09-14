@@ -56,7 +56,7 @@ function ProposalView(props) {
             Tendermint public key:
           </div>
           <div className="proposal-view__tendermint">
-            {shortenAddress(id)}
+            {id}
           </div>
         </Col>
       </Row>
