@@ -91,11 +91,11 @@ function BondModal(props) {
               onChange={e => updateValues(e.target.value)}
               className="bond-modal__input"
               min={0}
-              max={parseInt(max, 10)}
+              max={parseFloat(max)}
             />
           </Col>
           <Col xs={2}>
-            <img src={ArrowRightSrc} alt="arrow-right" width="75%" />
+            <img src={ArrowRightSrc} alt="arrow-right" width="65%" />
           </Col>
           <Col>
             <div className="bond-modal__limit">
@@ -106,8 +106,8 @@ function BondModal(props) {
         <Row className="p-5">
           <Col xs={12} sm={6}>
             <ProgressBar
-              max={parseInt(max, 10)}
-              value={parseInt(tokensToBound, 10)}
+              max={parseFloat(max)}
+              value={parseFloat(tokensToBound)}
             />
           </Col>
         </Row>
@@ -123,7 +123,7 @@ function BondModal(props) {
             <Button
               color="green"
               text="Confirm"
-              disabled={parseInt(tokensToBound, 10) === 0}
+              disabled={tokensToBound === '0' || tokensToBound === '' || tokensToBound > parseFloat(max)}
               action={() => confirm(currentBond, tokensToBound)}
               isAsync
               onceConfirmed={toggle}
