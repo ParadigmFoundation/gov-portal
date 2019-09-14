@@ -81,7 +81,7 @@ function WalletModal(props) {
             />
           </Col>
           <Col xs={2}>
-            <img src={ArrowRightSrc} alt="arrow-right" width="75%" />
+            <img src={ArrowRightSrc} alt="arrow-right" width="65%" />
           </Col>
           <Col>
             <div className="wallet-modal__estimated-kosu">
