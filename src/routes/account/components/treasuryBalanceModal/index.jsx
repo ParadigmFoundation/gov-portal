@@ -19,7 +19,7 @@ import './index.scss';
 
 function TreasuryBalanceModal(props) {
   const {
-    walletBalance,
+    max,
     currentBalance,
     isOpen,
     toggle,
@@ -73,24 +73,25 @@ function TreasuryBalanceModal(props) {
               onChange={e => setNewBalance(e.target.value)}
               className="treasure-balance-modal__input"
               min="0"
+              max={max}
             />
           </Col>
           <Col xs={2}>
-            <img src={ArrowRightSrc} alt="arrow-right" width="75%" />
+            <img src={ArrowRightSrc} alt="arrow-right" width="65%" />
           </Col>
           <Col>
             <div className="treasure-balance-modal__difference">
-              {newBalance - currentBalance > 0 && '+'}
+              {parseFloat(newBalance) - parseFloat(currentBalance) > 0 && '+'}
               {' '}
-              {numeral(newBalance - currentBalance).format('0,0.[00]')}
+              {numeral(parseFloat(newBalance) - parseFloat(currentBalance)).format('0,0.[00]')}
             </div>
           </Col>
         </Row>
         <Row className="p-5">
           <Col xs={12} sm={6}>
             <ProgressBar
-              max={parseInt(walletBalance, 10)}
-              value={parseInt(newBalance, 10)}
+              max={max}
+              value={parseFloat(newBalance)}
             />
           </Col>
         </Row>
@@ -122,14 +123,14 @@ TreasuryBalanceModal.propTypes = {
   isOpen: PropTypes.bool,
   updateBalance: PropTypes.func,
   toggle: PropTypes.func.isRequired,
-  walletBalance: PropTypes.string,
+  max: PropTypes.number,
 };
 
 TreasuryBalanceModal.defaultProps = {
   updateBalance: () => {},
   currentBalance: '0',
   isOpen: false,
-  walletBalance: '0',
+  max: 0,
 };
 
 export default TreasuryBalanceModal;
