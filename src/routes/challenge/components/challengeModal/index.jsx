@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import {
   Modal,
@@ -22,8 +24,12 @@ function ChallengeModal(props) {
     isOpen,
     address,
     close,
-    confirmVote,
+    commitVote,
+    value,
+    challengeId,
   } = props;
+
+  const [tokensToCommit, setTokensToCommit] = useState('');
 
   return (
     <div>
@@ -32,7 +38,7 @@ function ChallengeModal(props) {
           <Row className="pb-5">
             <Col>
               <div className="challenge-modal__header">
-                Vote to keep
+                {value === '1' ? 'Vote to remove' : 'Vote to keep'}
                 {' '}
                 <span className="challenge-modal__header-address">
                   {shortenAddress(address)}
@@ -56,6 +62,8 @@ function ChallengeModal(props) {
               <input
                 type="number"
                 className="challenge-modal__amount"
+                value={tokensToCommit}
+                onChange={e => setTokensToCommit(e.target.value)}
               />
               <KosuSymbol />
             </Col>
@@ -72,7 +80,7 @@ function ChallengeModal(props) {
               <Button
                 text="Confirm vote"
                 color="green"
-                action={confirmVote}
+                action={() => commitVote(challengeId, value, tokensToCommit)}
                 block
               />
             </Col>
@@ -87,7 +95,9 @@ ChallengeModal.propTypes = {
   isOpen: PropTypes.bool,
   address: PropTypes.string.isRequired,
   close: PropTypes.func.isRequired,
-  confirmVote: PropTypes.func.isRequired,
+  commitVote: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
+  challengeId: PropTypes.string.isRequired,
 };
 
 ChallengeModal.defaultProps = {

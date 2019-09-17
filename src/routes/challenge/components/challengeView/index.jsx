@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useState,
+} from 'react';
 import PropTypes from 'prop-types';
 import {
   Row,
@@ -18,6 +20,8 @@ import {
   shortenAddress,
 } from '../../../../utils/formatting';
 
+import ChallengeModal from '../challengeModal';
+
 import './index.scss';
 
 function ChallengeView(props) {
@@ -30,8 +34,7 @@ function ChallengeView(props) {
     challengeEndUnix,
     potentialReward,
     challengerStake,
-    keepProposal,
-    removeProposal,
+    commitVote,
     reveal,
     voteAgain,
     addToCalendar,
@@ -40,7 +43,10 @@ function ChallengeView(props) {
     blockNumber,
   } = props;
 
-  console.log('props=%o', props);
+  const [isChallengeModalOpen, toggleChallengeModal] = useState(false);
+  const [value, setValue] = useState('');
+
+  // console.log('props=%o', props);
 
   function returnStatus() {
     let status;
@@ -69,13 +75,19 @@ function ChallengeView(props) {
           </div>
           <Button
             text="Vote to keep proposal"
-            action={keepProposal}
+            action={() => {
+              setValue('1');
+              toggleChallengeModal(!isChallengeModalOpen);
+            }}
             color="green"
           />
           {' '}
           <Button
             text="Vote to remove proposal"
-            action={removeProposal}
+            action={() => {
+              setValue('0');
+              toggleChallengeModal(!isChallengeModalOpen);
+            }}
             color="red"
           />
         </div>
@@ -148,96 +160,106 @@ function ChallengeView(props) {
   }
 
   return (
-    <div className="challenge-view container">
-      <Row className="pb-5">
-        <Col>
-          <div className="challenge-view__title">
-            {`Challenge #${challengeId}`}
-          </div>
-          <div className="challenge-view__public-key-label">
-            Validator&apos;s public key:
-          </div>
-          <div className="challenge-view__public-key">
-            {validatorPublicKey}
-          </div>
-        </Col>
-      </Row>
-      <Row className="pb-2">
-        <Col>
-          <div className="challenge-view__content">
-            <span className="challenge-view__address">
-              {shortenAddress(challenger)}
-            </span>
-            {' '}
-            is challenging
-            {' '}
-            <span className="challenge-view__address">
-              {`${shortenAddress(listingOwner)}`}
-            </span>
-            {challengeType === 'proposal' ? '\'s proposal.' : '.'}
-          </div>
-        </Col>
-      </Row>
-      <Row className="pb-5">
-        <Col>
-          <div className="challenge-view__subcontent">
-            {challengeDetails}
-          </div>
-          <div className="challenge-view__subcontent">
-            This challenge will end in
-            {' '}
-            <span className="challenge-view__subcontent-deadline">
-              {timestampToCountdown(challengeEndUnix, true)}
-            </span>
-          </div>
-        </Col>
-      </Row>
-      <Row className="pb-5">
-        <Col xs="12" sm="4">
-          <div className="challenge-view__card">
-            <div className="challenge-view__card-title">
-              Potential reward
-              <Tooltip
-                text={tooltipsJson.potentialReward}
-              />
+    <>
+      <ChallengeModal
+        isOpen={isChallengeModalOpen}
+        address={listingOwner}
+        close={() => toggleChallengeModal(!isChallengeModalOpen)}
+        commitVote={commitVote}
+        challengeId={challengeId}
+        value={value}
+      />
+      <div className="challenge-view container">
+        <Row className="pb-5">
+          <Col>
+            <div className="challenge-view__title">
+              {`Challenge #${challengeId}`}
             </div>
-            <div className="challenge-view__card-content">
-              {numeral(potentialReward).format('0,0.[00]')}
+            <div className="challenge-view__public-key-label">
+              Validator&apos;s public key:
             </div>
-            <div className="challenge-view__card-footer">
-              <KosuSymbol />
+            <div className="challenge-view__public-key">
+              {validatorPublicKey}
             </div>
-          </div>
-        </Col>
-        <Col xs="12" sm="4">
-          <div className="challenge-view__card">
-            <div className="challenge-view__card-title">
-              Challenger stake
+          </Col>
+        </Row>
+        <Row className="pb-2">
+          <Col>
+            <div className="challenge-view__content">
+              <span className="challenge-view__address">
+                {shortenAddress(challenger)}
+              </span>
+              {' '}
+              is challenging
+              {' '}
+              <span className="challenge-view__address">
+                {`${shortenAddress(listingOwner)}`}
+              </span>
+              {challengeType === 'proposal' ? '\'s proposal.' : '.'}
             </div>
-            <div className="challenge-view__card-content">
-              {numeral(challengerStake).format('0,0.[00]')}
+          </Col>
+        </Row>
+        <Row className="pb-5">
+          <Col>
+            <div className="challenge-view__subcontent">
+              {challengeDetails}
             </div>
-            <div className="challenge-view__card-footer">
-              <KosuSymbol />
+            <div className="challenge-view__subcontent">
+              This challenge will end in
+              {' '}
+              <span className="challenge-view__subcontent-deadline">
+                {timestampToCountdown(challengeEndUnix, true)}
+              </span>
             </div>
-          </div>
-        </Col>
-      </Row>
-      <Row className="pb-5">
-        <Col>
-          {returnStatus()}
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Link
-            text="Go Back"
-            to="/"
-            color="cancel"
-          />
-        </Col>
-      </Row>
-    </div>
+          </Col>
+        </Row>
+        <Row className="pb-5">
+          <Col xs="12" sm="4">
+            <div className="challenge-view__card">
+              <div className="challenge-view__card-title">
+                Potential reward
+                <Tooltip
+                  text={tooltipsJson.potentialReward}
+                />
+              </div>
+              <div className="challenge-view__card-content">
+                {numeral(potentialReward).format('0,0.[00]')}
+              </div>
+              <div className="challenge-view__card-footer">
+                <KosuSymbol />
+              </div>
+            </div>
+          </Col>
+          <Col xs="12" sm="4">
+            <div className="challenge-view__card">
+              <div className="challenge-view__card-title">
+                Challenger stake
+              </div>
+              <div className="challenge-view__card-content">
+                {numeral(challengerStake).format('0,0.[00]')}
+              </div>
+              <div className="challenge-view__card-footer">
+                <KosuSymbol />
+              </div>
+            </div>
+          </Col>
+        </Row>
+        <Row className="pb-5">
+          <Col>
+            {returnStatus()}
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Link
+              text="Go Back"
+              to="/"
+              color="cancel"
+            />
+          </Col>
+        </Row>
+      </div>
+    </>
   );
 }
 
@@ -250,8 +272,7 @@ ChallengeView.propTypes = {
   challengeEndUnix: PropTypes.number,
   potentialReward: PropTypes.string,
   challengerStake: PropTypes.string,
-  keepProposal: PropTypes.func,
-  removeProposal: PropTypes.func,
+  commitVote: PropTypes.func,
   reveal: PropTypes.func,
   voteAgain: PropTypes.func,
   addToCalendar: PropTypes.func,
@@ -280,8 +301,7 @@ ChallengeView.defaultProps = {
     challengeEnd: 0,
   },
   blockNumber: 0,
-  keepProposal: () => {},
-  removeProposal: () => {},
+  commitVote: () => {},
   reveal: () => {},
   voteAgain: () => {},
   addToCalendar: () => {},

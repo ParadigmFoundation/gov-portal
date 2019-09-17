@@ -30,14 +30,16 @@ function Challenge(props) {
       if (isReady && id !== '') {
         const currentUser = gov.coinbase;
         const currentChallenges = await gov.currentChallenges();
-        const currentBlock = await gov.currentBlockNumber();
+        const blockNumber = await gov.currentBlockNumber();
+
+        console.log('Current block', blockNumber);
 
         for (let i = 0; i < Object.keys(currentChallenges).length; i += 1) {
           if (currentChallenges[Object.keys(currentChallenges)[i]].challengeId.toString() === id) {
             console.log(currentChallenges[Object.keys(currentChallenges)[i]]);
 
             const info = await gov.getChallengeInfo(id);
-            console.log("info=%o,id=%s", info, id);
+            // console.log("info=%o,id=%s", info, id);
 
             const challenge = {
               currentUser,
@@ -55,7 +57,7 @@ function Challenge(props) {
               ),
               challengeDetails: currentChallenges[Object.keys(currentChallenges)[i]].challengeDetails,
               info,
-              currentBlock,
+              blockNumber,
             };
 
             setChallengeData(challenge);
@@ -80,6 +82,11 @@ function Challenge(props) {
         challengerStake={challengeData && challengeData.challengerStake}
         potentialReward={challengeData && challengeData.potentialReward}
         challengeDetails={challengeData && challengeData.challengeDetails}
+        blockNumber={challengeData && challengeData.blockNumber}
+        info={challengeData && challengeData.info}
+        commitVote={(challengeId, value, tokensToCommit) => {
+          gov.commitVote(challengeId, value, gov.web3.utils.toWei(tokensToCommit));
+        }}
       />
     </>
   );
