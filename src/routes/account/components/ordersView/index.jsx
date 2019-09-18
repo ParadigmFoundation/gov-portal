@@ -64,9 +64,6 @@ function OrdersView(props) {
         <td className="orders-view__id">
           {`${order.orderId.substring(0, 18)}...`}
         </td>
-        <td>
-          {returnTypeSymbol(order.type)}
-        </td>
         <td className="orders-view__expiration">
           {new Date(order.expiration * 1000).toLocaleString()}
         </td>
@@ -80,9 +77,6 @@ function OrdersView(props) {
         <tr>
           <th>
             ID
-          </th>
-          <th>
-            Type
           </th>
           <th>
             Expiration
