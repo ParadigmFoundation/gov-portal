@@ -64,8 +64,6 @@ function ChallengeView(props) {
       if (hasVoted && status === 'commit') {
         status = 'thanks';
       }
-
-      status = 'reveal';
     }
 
     console.log(status);
