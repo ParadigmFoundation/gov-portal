@@ -82,6 +82,8 @@ function ChallengeModal(props) {
                 color="green"
                 action={() => commitVote(challengeId, value, tokensToCommit)}
                 block
+                isAsync
+                onceConfirmed={close}
               />
             </Col>
           </Row>
