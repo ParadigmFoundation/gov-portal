@@ -13,6 +13,8 @@ function Challenge(props) {
   const {
     gov,
     isReady,
+    govActivities,
+    coinbase,
   } = useContext(GovContext);
 
   const {
@@ -28,13 +30,21 @@ function Challenge(props) {
   useEffect(() => {
     async function fetchData() {
       if (isReady && id !== '') {
-        const currentUser = gov.coinbase;
+        const currentUser = coinbase;
         const currentChallenges = await gov.currentChallenges();
         const blockNumber = await gov.currentBlockNumber();
 
         for (let i = 0; i < Object.keys(currentChallenges).length; i += 1) {
           if (currentChallenges[Object.keys(currentChallenges)[i]].challengeId.toString() === id) {
             const info = await gov.getChallengeInfo(id);
+
+            let hasVoted = false;
+
+            for (let j = 0; j < govActivities.length; j += 1) {
+              if (govActivities[j].challengeId === id && govActivities[j].challenger === coinbase) {
+                hasVoted = true;
+              }
+            }
 
             const challenge = {
               currentUser,
@@ -53,6 +63,7 @@ function Challenge(props) {
               challengeDetails: currentChallenges[Object.keys(currentChallenges)[i]].challengeDetails,
               info,
               blockNumber,
+              hasVoted,
             };
 
             setChallengeData(challenge);
@@ -62,11 +73,12 @@ function Challenge(props) {
     }
 
     fetchData();
-  }, [isReady, gov, id]);
+  }, [isReady, gov, id, govActivities]);
 
   return (
     <>
       <ChallengeView
+        hasVoted={challengeData && challengeData.hasVoted}
         currentUser={challengeData && challengeData.currentUser}
         challengeId={challengeData && challengeData.challengeId}
         challengeType={challengeData && challengeData.challengeType}
@@ -82,6 +94,7 @@ function Challenge(props) {
         commitVote={(challengeId, value, tokensToCommit) => {
           gov.commitVote(challengeId, value, gov.web3.utils.toWei(tokensToCommit));
         }}
+        revealVote={() => gov.revealVote(challengeData.challengeId)}
       />
     </>
   );

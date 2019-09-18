@@ -27,6 +27,7 @@ import './index.scss';
 function ChallengeView(props) {
   const {
     challengeId,
+    hasVoted,
     challengeType,
     validatorPublicKey,
     listingOwner,
@@ -35,7 +36,7 @@ function ChallengeView(props) {
     potentialReward,
     challengerStake,
     commitVote,
-    reveal,
+    revealVote,
     voteAgain,
     addToCalendar,
     challengeDetails,
@@ -51,14 +52,20 @@ function ChallengeView(props) {
   function returnStatus() {
     let status;
 
-    console.log('got info=%o, block=%s', info, blockNumber);
+    if (blockNumber !== 0) {
+      if (blockNumber < info.endCommitPeriod && blockNumber >= info.challengeStart) {
+        status = 'commit';
+      } else if (blockNumber >= info.endCommitPeriod && blockNumber <= info.challengeEnd) {
+        status = 'reveal';
+      } else {
+        status = 'over';
+      }
 
-    if (info.challengeStart <= blockNumber && blockNumber < info.endCommitPeriod) {
-      status = 'commit';
-    } else if (info.endCommitPeriod <= blockNumber && blockNumber < info.challengeEnd) {
+      if (hasVoted && status === 'commit') {
+        status = 'thanks';
+      }
+
       status = 'reveal';
-    } else if (info.challengeEnd >= blockNumber) {
-      status = 'over';
     }
 
     console.log(status);
@@ -106,8 +113,9 @@ function ChallengeView(props) {
           </div>
           <Button
             text="Reveal"
-            action={reveal}
+            action={revealVote}
             color="green"
+            isAsync
           />
         </div>
       );
@@ -135,26 +143,42 @@ function ChallengeView(props) {
       );
     }
 
-    return (
-      <div>
-        <div className="challenge-view__voted-label">
-          Thanks for voting.
-          <br />
-          Remember to reveal your vote here when the challenge ends.
-          <br />
-          Add a reminder to your
-          {' '}
-          <span
-            className="challenge-view__text-action"
-            onClick={addToCalendar}
-            tabIndex="-1"
-            role="button"
-            onKeyDown={addToCalendar}
-          >
-            Google Calendar
-          </span>
-          .
+    if (status === 'thanks') {
+      return (
+        <div>
+          <div className="challenge-view__voted-label">
+            Thanks for voting.
+            <br />
+            Remember to reveal your vote here when the challenge ends.
+            <br />
+            Add a reminder to your
+            {' '}
+            <span
+              className="challenge-view__text-action"
+              onClick={addToCalendar}
+              tabIndex="-1"
+              role="button"
+              onKeyDown={addToCalendar}
+            >
+              Google Calendar
+            </span>
+            .
+          </div>
         </div>
+      );
+    }
+
+    if (status === 'over' && !hasVoted) {
+      return (
+        <div className="challenge-view__voted-label">
+          This challenge is over. You did not vote.
+        </div>
+      );
+    }
+
+    return (
+      <div className="challenge-view__voted-label">
+        Loading...
       </div>
     );
   }
@@ -204,13 +228,19 @@ function ChallengeView(props) {
             <div className="challenge-view__subcontent">
               {challengeDetails}
             </div>
-            <div className="challenge-view__subcontent">
-              This challenge will end in
-              {' '}
-              <span className="challenge-view__subcontent-deadline">
-                {timestampToCountdown(challengeEndUnix, true)}
-              </span>
-            </div>
+            {challengeEndUnix > Math.floor(Date.now() / 1000) ? (
+              <div className="challenge-view__subcontent">
+                This challenge will end in
+                {' '}
+                <span className="challenge-view__subcontent-deadline">
+                  {timestampToCountdown(challengeEndUnix, true)}
+                </span>
+              </div>
+            ) : (
+              <div className="challenge-view__subcontent">
+                This challenge has ended.
+              </div>
+            )}
           </Col>
         </Row>
         <Row className="pb-5">
@@ -273,7 +303,7 @@ ChallengeView.propTypes = {
   potentialReward: PropTypes.string,
   challengerStake: PropTypes.string,
   commitVote: PropTypes.func,
-  reveal: PropTypes.func,
+  revealVote: PropTypes.func,
   voteAgain: PropTypes.func,
   addToCalendar: PropTypes.func,
   challengeDetails: PropTypes.string,
@@ -283,9 +313,11 @@ ChallengeView.propTypes = {
     challengeEnd: PropTypes.number,
   }),
   blockNumber: PropTypes.number,
+  hasVoted: PropTypes.bool,
 };
 
 ChallengeView.defaultProps = {
+  hasVoted: false,
   challengeId: '0',
   challengeType: 'proposal',
   validatorPublicKey: '',
@@ -302,7 +334,7 @@ ChallengeView.defaultProps = {
   },
   blockNumber: 0,
   commitVote: () => {},
-  reveal: () => {},
+  revealVote: () => {},
   voteAgain: () => {},
   addToCalendar: () => {},
 };
