@@ -81,6 +81,10 @@ function Button(props) {
       return 'Done';
     }
 
+    if (status === 'error') {
+      return 'Error';
+    }
+
     return text;
   }
 
