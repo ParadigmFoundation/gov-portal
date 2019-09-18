@@ -32,14 +32,9 @@ function Challenge(props) {
         const currentChallenges = await gov.currentChallenges();
         const blockNumber = await gov.currentBlockNumber();
 
-        console.log('Current block', blockNumber);
-
         for (let i = 0; i < Object.keys(currentChallenges).length; i += 1) {
           if (currentChallenges[Object.keys(currentChallenges)[i]].challengeId.toString() === id) {
-            console.log(currentChallenges[Object.keys(currentChallenges)[i]]);
-
             const info = await gov.getChallengeInfo(id);
-            // console.log("info=%o,id=%s", info, id);
 
             const challenge = {
               currentUser,
