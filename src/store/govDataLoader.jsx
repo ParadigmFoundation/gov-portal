@@ -59,8 +59,6 @@ function GovDataLoader() {
   useEffect(() => {
     async function getData() {
       if (coinbase) {
-        console.log('Getting data for address:', coinbase);
-
         const ethBalanceReq = await gov.web3.eth.getBalance(coinbase);
         dispatch({
           type: 'set',
@@ -121,9 +119,10 @@ function GovDataLoader() {
           gov.kosu,
           coinbase.toLowerCase(),
         );
+
         dispatch({
           type: 'set',
-          target: 'activities',
+          target: 'govActivities',
           value: govActivitiesReq,
         });
       }

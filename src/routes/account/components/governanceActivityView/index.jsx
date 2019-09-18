@@ -90,8 +90,8 @@ function GovernanceActivityView(props) {
       );
     }
 
-    return activities.map(activity => (
-      <tr key={activity.listingKey}>
+    return activities.map((activity, id) => (
+      <tr key={id}>
         <td className="governance-activity-view__description">
           {activity.title}
         </td>
