@@ -19,6 +19,7 @@ import SimpleCardTitle from '../../../../components/simpleCard/components/simple
 import SimpleCardContent from '../../../../components/simpleCard/components/simpleCardContent';
 import Button from '../../../../components/button';
 
+import NothingToBond from '../nothingToBond';
 import BondModal from '../bondModal';
 import AddTreasuryModal from '../addTreasuryModal';
 import ManageTreasuryModal from '../manageTreasuryModal';
@@ -73,6 +74,7 @@ function TokensView(props) {
     estimateNewPostLimit,
   } = props;
 
+  const [isNothingToBondModalOpen, toggleNothingToBondModal] = useState(false);
   const [isBondModalOpen, setIsBondModalOpen] = useState(false);
   const [isManageTreasuryModalOpen, setIsManageTreasuryModalOpen] = useState(false);
   const [isAddTreasuryModalOpen, setIsAddTreasuryModalOpen] = useState(false);
@@ -109,6 +111,10 @@ function TokensView(props) {
 
   return (
     <>
+      <NothingToBond
+        isOpen={isNothingToBondModalOpen}
+        toggle={() => toggleNothingToBondModal(!isNothingToBondModalOpen)}
+      />
       <BondModal
         isOpen={isBondModalOpen}
         toggle={() => setIsBondModalOpen(!isBondModalOpen)}
@@ -217,7 +223,8 @@ function TokensView(props) {
                     color="outlined-green"
                     text="Bond"
                     disabled={!metaMaskConnected}
-                    action={() => setIsBondModalOpen(true)}
+                    action={
+                      treasuryBalance === '0' ? () => toggleNothingToBondModal(!isNothingToBondModalOpen) : () => setIsBondModalOpen(true)}
                     small
                   />
                 </Col>

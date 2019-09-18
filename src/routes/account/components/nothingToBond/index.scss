@@ -1,0 +1,23 @@
+/* @define manage-treasury-modal */
+
+.nothing-bond-modal {
+  background: #fff;
+  border: 1px solid #ededed;
+  box-shadow: 3px 9px 15px 0 rgba(0, 0, 0, 0.07);
+
+  &__header {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 25px;
+    color: #4a4a4a;
+    text-align: left;
+  }
+
+  &__content {
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 18px;
+    color: #4a4a4a;
+    text-align: left;
+  }
+
+
+}
