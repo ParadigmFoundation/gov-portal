@@ -66,8 +66,6 @@ function ChallengeView(props) {
       }
     }
 
-    console.log(status);
-
     if (status === 'commit') {
       return (
         <div>
@@ -170,6 +168,14 @@ function ChallengeView(props) {
       return (
         <div className="challenge-view__voted-label">
           This challenge is over. You did not vote.
+        </div>
+      );
+    }
+
+    if (status === 'over') {
+      return (
+        <div className="challenge-view__voted-label">
+          This challenge is over.
         </div>
       );
     }
