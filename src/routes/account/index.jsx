@@ -50,8 +50,14 @@ function Account() {
       treasuryBalance={treasuryBalance}
       confirmListing={isReady ? gov.kosu.validatorRegistry.confirmListing : () => {}}
       resolveChallenge={isReady ? gov.kosu.validatorRegistry.confirmListing : () => {}}
-      bondTokens={isReady ? (value, newValue) => {
-        bond(gov.kosu, value, newValue);
+      bondTokens={isReady ? async (value, newValue) => {
+        await bond(gov.kosu, value, newValue);
+
+        dispatch({
+          type: 'set',
+          target: 'bondedTokens',
+          value: newValue,
+        });
       } : () => {}}
       addToTreasury={isReady ? async (amount) => {
         await gov.kosu.treasury.deposit(gov.web3.utils.toWei(amount));
@@ -78,7 +84,15 @@ function Account() {
           value: MAX_UINT_256,
         });
       } : () => {}}
-      updateBalance={isReady ? (currentBalance, newBalance) => updateBalance(gov.kosu, currentBalance, newBalance) : () => {}}
+      updateBalance={isReady ? async (currentBalance, newBalance) => {
+        await updateBalance(gov.kosu, currentBalance, newBalance);
+
+        dispatch({
+          type: 'set',
+          target: 'treasuryBalance',
+          value: newBalance,
+        });
+      } : () => {}}
       orders={OrdersDummyData}
       activities={govActivities.reverse()}
       pay={isReady ? value => gov.kosu.kosuToken.pay(
