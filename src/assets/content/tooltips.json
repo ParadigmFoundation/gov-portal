@@ -9,9 +9,9 @@
   "govActivity": "All your previous governance activity.",
   "voteChallenge": "Vote on this challenge.",
   "revealVote": "Reveal your vote.",
-  "activeProposals": "All the active proposals.",
-  "activeChallenges": "All the active challenges.",
-  "results": "The results are here.",
+  "activeProposals": "Proposals are applications to become validators, and can be submitted by anyone. Proposals include a slashable stake, which affects the vote power the applicant will receive on the Kosu network if confirmed. ",
+  "activeChallenges": "Proposal listings may be challenged at any time by any entity willing to put up the required amount to challenge (equal to the listing stake). Pending proposals may be challenged prior to their confirmation as validators, and validators may be challenged for their spot on the registry.",
+  "results": "This is a summary of the amount of tokens used in voting on this particular challenge. The winning side (with a majority of participating tokens) receives a payout in the case of a successful challenge, taken from the slashed listing stake. The majority of the reward goes to the challenger, who risked their own assets to initiate the vote.",
   "challengeTitle": "This is a challenge.",
   "dailyReward": "Daily reward.",
   "estimatedVotePower": "Estimated vote power."
