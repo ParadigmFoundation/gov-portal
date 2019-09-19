@@ -20,7 +20,8 @@ const initialState = {
   totalBalance: '0',
   systemBalance: '0',
   treasuryAllowance: '',
-  govActivities: [],
+  activities: [],
+  orders: [],
 };
 
 function updateState(state, action) {

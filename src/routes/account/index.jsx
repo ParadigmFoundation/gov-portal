@@ -17,8 +17,6 @@ import {
   bond,
 } from '../../utils/kosu';
 
-import OrdersDummyData from '../../assets/content/ordersDummy.json';
-
 function Account() {
   const {
     dispatch,
@@ -32,7 +30,8 @@ function Account() {
     treasuryAllowance,
     stakedTokens,
     totalBalance,
-    govActivities,
+    activities,
+    orders,
   } = useContext(GovContext);
 
   const MAX_UINT_256 = '115792089237316195423570985008687907853269984665640564039457584007913129639935';
@@ -93,8 +92,8 @@ function Account() {
           value: newBalance,
         });
       } : () => {}}
-      orders={OrdersDummyData}
-      activities={govActivities.reverse()}
+      orders={orders}
+      activities={activities.reverse()}
       pay={isReady ? value => gov.kosu.kosuToken.pay(
         gov.web3.utils.toWei(value),
       ) : () => {}}

@@ -2,6 +2,7 @@ import React, {
   useEffect,
   useContext,
 } from 'react';
+import axios from 'axios';
 
 import GovContext from './govContext';
 
@@ -115,15 +116,25 @@ function GovDataLoader() {
           value: gov.web3.utils.fromWei(treasuryAllowanceReq.toString()),
         });
 
-        const govActivitiesReq = await getPastActivities(
+        const activitiesReq = await getPastActivities(
           gov.kosu,
           coinbase.toLowerCase(),
         );
 
         dispatch({
           type: 'set',
-          target: 'govActivities',
-          value: govActivitiesReq,
+          target: 'activities',
+          value: activitiesReq,
+        });
+
+        const ordersReq = await axios.get(
+          `https://orders-api.kosu.io/orders?makerAddress=${coinbase}`,
+        );
+
+        dispatch({
+          type: 'set',
+          target: 'orders',
+          value: ordersReq,
         });
       }
     }
