@@ -17,6 +17,10 @@ function Link(props) {
 
   let classname = 'link';
 
+  if (color === 'cancel') {
+    classname += ' button--cancel';
+  }
+
   if (color === 'inverted') {
     classname += ' link link--inverted';
   }
