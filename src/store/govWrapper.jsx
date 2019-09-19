@@ -22,6 +22,10 @@ const initialState = {
   treasuryAllowance: '',
   activities: [],
   orders: [],
+  proposals: [],
+  validators: [],
+  activeChallenges: [],
+  pastChallenges: [],
 };
 
 function updateState(state, action) {
