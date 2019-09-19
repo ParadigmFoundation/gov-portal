@@ -62,45 +62,19 @@ function timestampToAge(timestamp) {
 }
 
 function formatAmount(amount) {
-  if (amount.includes('.')) {
+  if (amount.length < 6) {
+    return amount.padStart(6, '0');
+  }
+
+  if (amount.length > 6) {
     const parts = amount.split('.');
 
-    if (parts[0].length >= 6) {
-      return parts[0];
-    }
+    const res = `${parts[0]}.${parts[1].substring(0, 3)}`;
 
-    if (parts[0] === '0') {
-      return `00000.${parts[1].substring(0, 1)}`;
-    }
-
-    if (parts[0].length < 6) {
-      let formattedAmount = '';
-
-      for (let i = 0; i < 6 - parts[0].length; i += 1) {
-        formattedAmount += '0';
-      }
-
-      formattedAmount += parts[0];
-
-      return formattedAmount;
-    }
-
-    return `00000.${parts[1].substring(0, 0)}`;
+    return res.padStart(6, '0');
   }
 
-  if (amount.length >= 6) {
-    return amount;
-  }
-
-  let formattedAmount = '';
-
-  for (let i = 0; i < 6 - amount.length; i += 1) {
-    formattedAmount += '0';
-  }
-
-  formattedAmount += amount;
-
-  return formattedAmount;
+  return amount;
 }
 
 export {

@@ -8,6 +8,10 @@ import React, {
   useContext,
   useEffect,
 } from 'react';
+import PropTypes from 'prop-types';
+import {
+  withRouter,
+} from 'react-router-dom';
 
 import GovContext from '../../store/govContext';
 
@@ -18,11 +22,17 @@ import {
   formatAmount,
 } from '../../utils/formatting';
 
-function Header() {
+function Header(props) {
   const {
     gov,
     isReady,
   } = useContext(GovContext);
+
+  const {
+    location: {
+      pathname,
+    },
+  } = props;
 
   const [isMetaMaskConnected, setIsMetaMaskConnected] = useState(false);
   const [address, setAddress] = useState();
@@ -46,6 +56,7 @@ function Header() {
 
   return (
     <HeaderView
+      pathname={pathname}
       address={address && shortenAddress(address)}
       balance={balance && formatAmount(gov.weiToEther(balance))}
       metaMaskConnected={isMetaMaskConnected}
@@ -53,4 +64,10 @@ function Header() {
   );
 }
 
-export default Header;
+Header.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+};
+
+export default withRouter(Header);

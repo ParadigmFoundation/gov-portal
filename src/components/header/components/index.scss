@@ -21,13 +21,20 @@
   }
 
   &__balance {
+    display: block;
+    padding: 0.5rem 1rem;
+  }
+
+  &__number {
     font-size: 40px;
     color: $color-black;
     font-family: 'DINPro-medium', sans-serif;
     opacity: 0.75;
-    display: block;
-    padding: 0.5rem 1rem;
     letter-spacing: 0;
+
+    &--grey {
+      opacity: 0.25;
+    }
   }
 
   &__address {

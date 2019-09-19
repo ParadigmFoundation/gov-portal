@@ -34,18 +34,37 @@ function HeaderView(props) {
     address,
     balance,
     metaMaskConnected,
+    pathname,
   } = props;
 
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, toggleDropdown] = useState(false);
 
   useEffect(() => {
-    if (document.location.pathname.includes('account')) {
+    if (pathname.includes('account')) {
       document.title = 'Account | Paradigm';
     } else {
       document.title = 'Governance | Paradigm';
     }
-  });
+  }, [pathname]);
+
+  function returnBalance() {
+    let zeroFirst = true;
+
+    return balance.split('').map((c, id) => {
+      if (c !== '0' && zeroFirst) {
+        zeroFirst = false;
+      }
+
+      let className = 'header__number';
+
+      if (c === '0' && zeroFirst) {
+        className += ' header__number--grey';
+      }
+
+      return <span key={id} className={className}>{c}</span>;
+    });
+  }
 
   return (
     <div className="container-fluid">
@@ -125,7 +144,7 @@ function HeaderView(props) {
                 </NavItem>
                 <NavItem>
                   <span className="header__balance">
-                    {balance}
+                    {returnBalance()}
                   </span>
                 </NavItem>
               </>
@@ -151,6 +170,7 @@ HeaderView.propTypes = {
   address: PropTypes.string,
   balance: PropTypes.string,
   metaMaskConnected: PropTypes.bool,
+  pathname: PropTypes.string.isRequired,
 };
 
 HeaderView.defaultProps = {
