@@ -47,8 +47,6 @@ function ChallengeView(props) {
   const [isChallengeModalOpen, toggleChallengeModal] = useState(false);
   const [value, setValue] = useState('');
 
-  // console.log('props=%o', props);
-
   function returnStatus() {
     let status;
 
@@ -167,7 +165,7 @@ function ChallengeView(props) {
     if (status === 'over' && !hasVoted) {
       return (
         <div className="challenge-view__voted-label">
-          This challenge is over. You did not vote.
+          This challenge has ended. You are unable to vote.
         </div>
       );
     }
