@@ -59,9 +59,11 @@
 
   &--red {
     background: $color-red;
+    border: 1px solid $color-red;
 
     &:hover {
       background-color: #ff5757;
+      border: 1px solid #ff5757;
     }
   }
 
