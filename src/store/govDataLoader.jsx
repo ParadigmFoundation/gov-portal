@@ -134,7 +134,7 @@ function GovDataLoader() {
         dispatch({
           type: 'set',
           target: 'orders',
-          value: ordersReq,
+          value: ordersReq.data,
         });
       }
     }
