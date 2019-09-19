@@ -33,7 +33,7 @@ function ConnectMetaMask(props) {
       tabIndex="0"
       onKeyPress={async () => handleClick()}
     >
-      {state === 'idle' ? text : 'Connecting to MetaMask...'}
+      {state === 'idle' ? text : 'Connecting to MetaMask'}
     </div>
   );
 }
