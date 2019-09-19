@@ -25,7 +25,6 @@
   &--remove {
     border: 1px solid #838383;
     text-align: center;
-
     background: none;
     color: #838383;
     font-family: 'Gilroy-Medium', sans-serif;
@@ -87,9 +86,9 @@
   }
 
   &--outlined-green {
-    border: 1px solid $color-green;
+    border: 1px solid;
     font-family: 'DINPro-Medium', sans-serif;
-    color: $color-green;
+    color: #1be090;
     text-align: center;
     background: none;
 
