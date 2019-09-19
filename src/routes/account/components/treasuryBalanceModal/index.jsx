@@ -109,6 +109,7 @@ function TreasuryBalanceModal(props) {
               text="Update balance"
               action={() => updateBalance(currentBalance, newBalance)}
               onceConfirmed={toggle}
+              disabled={newBalance === '' || newBalance > parseFloat(max)}
               isAsync
             />
           </Col>
