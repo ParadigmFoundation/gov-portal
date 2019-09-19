@@ -33,8 +33,8 @@ function NothingToBond(props) {
           </Col>
         </Row>
         <Row className="pb-5 justify-content-center">
-          <Col xs={8}>
-            <div className="nothing-bond-modal__content">
+          <Col xs={12}>
+            <div className="nothing-bond-modal__content text-center">
               You need
               {' '}
               <KosuSymbol />
