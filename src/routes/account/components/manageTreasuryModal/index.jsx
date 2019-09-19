@@ -1,5 +1,6 @@
 import React, {
   useState,
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -23,6 +24,12 @@ function ManageTreasuryModal(props) {
   } = props;
 
   const [removeClicked, setRemoveClicked] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setRemoveClicked(false);
+    }
+  }, [isOpen]);
 
   return (
     <Modal className="manage-treasury-modal" isOpen={isOpen} toggle={toggle}>
