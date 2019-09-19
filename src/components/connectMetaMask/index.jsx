@@ -45,7 +45,7 @@ ConnectMetaMask.propTypes = {
 
 ConnectMetaMask.defaultProps = {
   small: false,
-  text: 'Connect to MetaMask',
+  text: 'Click to connect MetaMask',
 };
 
 export default ConnectMetaMask;
