@@ -28,6 +28,7 @@ function ProposalView(props) {
   const {
     id,
     owner,
+    details,
     acceptUnix,
     stakeSize,
     power,
@@ -68,6 +69,9 @@ function ProposalView(props) {
             </span>
             {' '}
             wants to become a validator.
+          </div>
+          <div className="proposal-view__subcontent">
+            {details}
           </div>
           <div className="proposal-view__subcontent">
             If unchallenged,
