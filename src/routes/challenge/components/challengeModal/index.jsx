@@ -33,7 +33,7 @@ function ChallengeModal(props) {
 
   return (
     <div>
-      <Modal className="challenge-modal" isOpen={isOpen}>
+      <Modal className="challenge-modal" isOpen={isOpen} toggle={close}>
         <ModalBody className="challenge-modal__body">
           <Row className="pb-5">
             <Col>
@@ -46,7 +46,7 @@ function ChallengeModal(props) {
                 .
               </div>
             </Col>
-            <Col className="challenge-modal__close">
+            <Col className="challenge-modal__close" xs={2}>
               <CloseIcon action={close} />
             </Col>
           </Row>

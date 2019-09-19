@@ -30,7 +30,7 @@ function ProposalChallengeModal(props) {
   const [details, setDetails] = useState('');
 
   return (
-    <Modal className="proposal-challenge-modal" isOpen={isOpen}>
+    <Modal className="proposal-challenge-modal" isOpen={isOpen} toggle={close}>
       <ModalBody className="proposal-challenge-modal__body">
         <Row className="pb-5">
           <Col>
