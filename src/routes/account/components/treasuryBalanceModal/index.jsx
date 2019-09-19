@@ -88,7 +88,7 @@ function TreasuryBalanceModal(props) {
           </Col>
         </Row>
         <Row className="p-5">
-          <Col xs={12} sm={12}>
+          <Col xs={6}>
             <ProgressBar
               max={max}
               value={parseFloat(newBalance)}
