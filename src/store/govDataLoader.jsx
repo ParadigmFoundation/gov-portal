@@ -169,12 +169,15 @@ function GovDataLoader() {
         const formattedValidators = [];
 
         for (let i = 0; i < Object.keys(currentValidators).length; i += 1) {
+          const { dailyReward } = currentValidators[Object.keys(currentValidators)[i]];
+          const formattedDailyReward = dailyReward.toString().split('.');
+
           formattedValidators.push({
             id: Object.keys(currentValidators)[i],
             owner: currentValidators[Object.keys(currentValidators)[i]].owner,
             confirmationUnix: currentValidators[Object.keys(currentValidators)[i]].confirmationUnix,
             dailyReward: gov.web3.utils.fromWei(
-              currentValidators[Object.keys(currentValidators)[i]].dailyReward.toString(),
+              formattedDailyReward[0],
             ),
             power: currentValidators[Object.keys(currentValidators)[i]].power.toString(),
             stakeSize: gov.web3.utils.fromWei(
