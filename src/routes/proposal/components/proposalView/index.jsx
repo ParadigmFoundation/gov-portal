@@ -17,6 +17,7 @@ import tooltipsJson from '../../../../assets/content/tooltips.json';
 
 import {
   timestampToCountdown,
+  shortenAddress,
 } from '../../../../utils/formatting';
 
 import ProposalChallengeModal from '../proposalChallengeModal';
@@ -78,7 +79,7 @@ function ProposalView(props) {
             If unchallenged,
             {' '}
             <span className="proposal-view__owner">
-              {owner}
+              {shortenAddress(owner)}
             </span>
             {' '}
             will become a validator in
@@ -90,7 +91,7 @@ function ProposalView(props) {
         </Col>
       </Row>
       <Row className="pb-5">
-        <Col xs="12" sm="4">
+        <Col xs="12" sm="6" md="4" className="py-3">
           <div className="proposal-view__card">
             <div className="proposal-view__card-title">
               Stake size
@@ -103,7 +104,7 @@ function ProposalView(props) {
             </div>
           </div>
         </Col>
-        <Col xs="12" sm="4">
+        <Col xs="12" sm="6" md="4" className="py-3">
           <div className="proposal-view__card">
             <div className="proposal-view__card-title">
               Daily reward
@@ -119,7 +120,7 @@ function ProposalView(props) {
             </div>
           </div>
         </Col>
-        <Col xs="12" sm="4">
+        <Col xs="12" sm="6" md="4" className="py-3">
           <div className="proposal-view__card">
             <div className="proposal-view__card-title">
               Estimated vote power
