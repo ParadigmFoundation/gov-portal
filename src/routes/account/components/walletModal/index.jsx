@@ -1,5 +1,6 @@
 import React, {
   useState,
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -29,6 +30,12 @@ function WalletModal(props) {
 
   const [etherToBound, setEtherToBound] = useState('');
   const [estimatedKosu, setEstimatedKosu] = useState('0');
+
+  useEffect(() => {
+    if (!isOpen) {
+      setEtherToBound('');
+    }
+  }, [isOpen]);
 
   async function getEstimatedKosu(value) {
     setEtherToBound(value);
@@ -110,7 +117,7 @@ function WalletModal(props) {
               color="green"
               text="Confirm"
               disabled={etherToBound === '' || etherToBound === '0' || etherToBound > parseFloat(ethBalance)}
-              action={() => pay(etherToBound)}
+              action={() => pay(etherToBound, estimatedKosu)}
               onceConfirmed={toggle}
               isAsync
             />

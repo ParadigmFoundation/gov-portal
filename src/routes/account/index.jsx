@@ -66,8 +66,28 @@ function Account() {
           target: 'treasuryBalance',
           value: amount,
         });
+
+        dispatch({
+          type: 'add',
+          target: 'systemBalance',
+          value: amount,
+        });
       } : () => {}}
-      removeTreasury={isReady ? () => gov.kosu.treasury.withdraw(gov.web3.utils.toWei(treasuryBalance)) : () => {}}
+      removeTreasury={isReady ? async () => {
+        await gov.kosu.treasury.withdraw(gov.web3.utils.toWei(treasuryBalance));
+
+        dispatch({
+          type: 'set',
+          target: 'treasuryBalance',
+          value: '',
+        });
+
+        dispatch({
+          type: 'sub',
+          target: 'systemBalance',
+          value: treasuryBalance,
+        });
+      } : () => {}}
       setTreasuryAllowance={isReady ? async () => {
         dispatch({
           type: 'set',
@@ -91,12 +111,56 @@ function Account() {
           target: 'treasuryBalance',
           value: newBalance,
         });
+
+        if (parseFloat(currentBalance) < parseFloat(newBalance)) {
+          dispatch({
+            type: 'add',
+            target: 'systemBalance',
+            value: parseFloat(newBalance) - parseFloat(currentBalance),
+          });
+
+          dispatch({
+            type: 'sub',
+            target: 'walletBalance',
+            value: parseFloat(newBalance) - parseFloat(currentBalance),
+          });
+        } else {
+          dispatch({
+            type: 'sub',
+            target: 'systemBalance',
+            value: parseFloat(currentBalance) - parseFloat(newBalance),
+          });
+
+          dispatch({
+            type: 'add',
+            target: 'walletBalance',
+            value: parseFloat(currentBalance) - parseFloat(newBalance),
+          });
+        }
       } : () => {}}
       orders={orders}
-      activities={activities.reverse()}
-      pay={isReady ? value => gov.kosu.kosuToken.pay(
-        gov.web3.utils.toWei(value),
-      ) : () => {}}
+      activities={activities}
+      pay={isReady ? async (value, expectedTokens) => {
+        try {
+          await gov.kosu.kosuToken.pay(
+            gov.web3.utils.toWei(value),
+          );
+
+          dispatch({
+            type: 'add',
+            target: 'walletBalance',
+            value: expectedTokens,
+          });
+
+          dispatch({
+            type: 'add',
+            target: 'totalBalance',
+            value: expectedTokens,
+          });
+        } catch (err) {
+          throw new Error('Transaction failed');
+        }
+      } : () => {}}
       estimate={isReady ? value => estimateEtherToToken(gov.kosu, value) : () => {}}
       estimateNewPostLimit={isReady ? value => estimateNewPostLimit(gov.kosu, value) : () => {}}
     />

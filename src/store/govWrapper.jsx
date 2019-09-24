@@ -40,6 +40,11 @@ function updateState(state, action) {
         ...state,
         [action.target]: new BigNumber(state[action.target]).plus(new BigNumber(action.value)).toString(),
       };
+    case 'sub':
+      return {
+        ...state,
+        [action.target]: new BigNumber(state[action.target]).minus(new BigNumber(action.value)).toString(),
+      };
     default:
       throw new Error(`Unexpected action...${action}`);
   }
