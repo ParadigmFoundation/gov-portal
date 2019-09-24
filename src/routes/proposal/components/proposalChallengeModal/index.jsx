@@ -32,7 +32,7 @@ function ProposalChallengeModal(props) {
   return (
     <Modal className="proposal-challenge-modal" isOpen={isOpen} toggle={close}>
       <ModalBody className="proposal-challenge-modal__body">
-        <Row className="pb-5">
+        <Row className="pb-5 px-3 pt-1">
           <Col>
             <div className="proposal-challenge-modal__header">
               Challenge proposal
@@ -42,7 +42,7 @@ function ProposalChallengeModal(props) {
             <CloseIcon action={close} />
           </Col>
         </Row>
-        <Row className="pb-4">
+        <Row className="pb-4 px-3">
           <Col>
             <div className="proposal-challenge-modal__cost-label">
               This challenge will cost:
@@ -54,7 +54,7 @@ function ProposalChallengeModal(props) {
             <KosuSymbol />
           </Col>
         </Row>
-        <Row className="pb-4">
+        <Row className="pb-4 px-3 pt-1">
           <Col>
             <textarea
               className="proposal-challenge-modal__reason-input"
@@ -65,7 +65,7 @@ function ProposalChallengeModal(props) {
             />
           </Col>
         </Row>
-        <Row className="pb-5">
+        <Row className="pb-5 px-3">
           <Col>
             <div className="proposal-challenge-modal__warning">
               <div className="proposal-challenge-modal__warning-title">
@@ -79,7 +79,7 @@ function ProposalChallengeModal(props) {
             </div>
           </Col>
         </Row>
-        <Row>
+        <Row className="px-3">
           <Col>
             <Button
               color="cancel"
