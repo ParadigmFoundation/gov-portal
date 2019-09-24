@@ -17,7 +17,6 @@ import tooltipsJson from '../../../../assets/content/tooltips.json';
 
 import {
   timestampToCountdown,
-  shortenAddress,
 } from '../../../../utils/formatting';
 
 import ProposalChallengeModal from '../proposalChallengeModal';
@@ -67,7 +66,7 @@ function ProposalView(props) {
         <Col>
           <div className="proposal-view__content">
             <span className="proposal-view__address">
-              {shortenAddress(owner)}
+              {owner}
             </span>
             {' '}
             wants to become a validator.
@@ -79,7 +78,7 @@ function ProposalView(props) {
             If unchallenged,
             {' '}
             <span className="proposal-view__owner">
-              {shortenAddress(owner)}
+              {owner}
             </span>
             {' '}
             will become a validator in
@@ -206,8 +205,8 @@ ProposalView.propTypes = {
 
 ProposalView.defaultProps = {
   id: '',
-  owner: '0',
-  details: '',
+  owner: '...',
+  details: '...',
   acceptUnix: Date.now() / 1000,
   stakeSize: '0',
   walletBalance: '0',

@@ -17,7 +17,6 @@ import tooltipsJson from '../../../../assets/content/tooltips.json';
 
 import {
   timestampToCountdown,
-  shortenAddress,
 } from '../../../../utils/formatting';
 
 import ChallengeModal from '../challengeModal';
@@ -213,13 +212,13 @@ function ChallengeView(props) {
           <Col>
             <div className="challenge-view__content">
               <span className="challenge-view__address">
-                {shortenAddress(challenger)}
+                {challenger}
               </span>
               {' '}
               is challenging
               {' '}
               <span className="challenge-view__address">
-                {`${shortenAddress(listingOwner)}`}
+                {`${listingOwner}`}
               </span>
               {challengeType === 'proposal' ? '\'s proposal.' : '.'}
             </div>
@@ -323,12 +322,12 @@ ChallengeView.defaultProps = {
   challengeId: '0',
   challengeType: 'proposal',
   validatorPublicKey: '',
-  listingOwner: '0',
-  challenger: '0',
+  listingOwner: '...',
+  challenger: '...',
   challengeEndUnix: Date.now() / 1000,
   potentialReward: '0',
   challengerStake: '0',
-  challengeDetails: '',
+  challengeDetails: '...',
   info: {
     challengeStart: 0,
     endCommitPeriod: 0,
