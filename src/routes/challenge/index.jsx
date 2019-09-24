@@ -37,6 +37,7 @@ function Challenge(props) {
 
         for (let i = 0; i < currentChallenges.length; i += 1) {
           if (currentChallenges[i].id === id) {
+            // eslint-disable-next-line no-await-in-loop
             const info = await gov.getChallengeInfo(id);
 
             let hasVoted = false;
