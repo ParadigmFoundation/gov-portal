@@ -116,6 +116,8 @@ function GovDataLoader() {
           value: gov.web3.utils.fromWei(treasuryAllowanceReq.toString()),
         });
 
+        const pastGovActivity = await gov.getPastGovernanceActivity(coinbase);
+
         const activitiesReq = await getPastActivities(
           gov.kosu,
           coinbase.toLowerCase(),
@@ -162,7 +164,7 @@ function GovDataLoader() {
         dispatch({
           type: 'set',
           target: 'proposals',
-          value: formattedProposals,
+          value: formattedProposals.filter(proposal => proposal.acceptUnix > Math.floor(Date.now() / 1000)),
         });
 
         const currentValidators = await gov.currentValidators();
@@ -200,6 +202,7 @@ function GovDataLoader() {
             validatorPublicKey: Object.keys(currentChallenges)[i],
             id: currentChallenges[Object.keys(currentChallenges)[i]].challengeId.toString(),
             challengeType: currentChallenges[Object.keys(currentChallenges)[i]].challengeType,
+            challengeDetails: currentChallenges[Object.keys(currentChallenges)[i]].challengeDetails,
             listingOwner: currentChallenges[Object.keys(currentChallenges)[i]].listingOwner,
             challenger: currentChallenges[Object.keys(currentChallenges)[i]].challenger,
             challengeEndUnix: currentChallenges[Object.keys(currentChallenges)[i]].challengeEndUnix,
@@ -215,7 +218,7 @@ function GovDataLoader() {
         dispatch({
           type: 'set',
           target: 'activeChallenges',
-          value: formattedActiveChallenges,
+          value: formattedActiveChallenges.filter(challenge => challenge.acceptUnix > Math.floor(Date.now() / 1000)),
         });
 
         const pastChallengesRes = await gov.getHistoricalChallenges();
