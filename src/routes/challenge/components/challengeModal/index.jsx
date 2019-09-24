@@ -35,7 +35,7 @@ function ChallengeModal(props) {
     <div>
       <Modal className="challenge-modal" isOpen={isOpen} toggle={close}>
         <ModalBody className="challenge-modal__body">
-          <Row className="pb-5">
+          <Row className="pb-5 px-3 pt-1">
             <Col>
               <div className="challenge-modal__header">
                 {value === '1' ? 'Vote to remove' : 'Vote to keep'}
@@ -50,14 +50,14 @@ function ChallengeModal(props) {
               <CloseIcon action={close} />
             </Col>
           </Row>
-          <Row className="pb-5">
+          <Row className="pb-5 px-3">
             <Col>
               <div className="challenge-modal__content">
                 Enter the amount of tokens you want to commit to this vote below:
               </div>
             </Col>
           </Row>
-          <Row className="pb-5">
+          <Row className="pb-5 px-3">
             <Col>
               <input
                 type="number"
@@ -68,7 +68,7 @@ function ChallengeModal(props) {
               <KosuSymbol />
             </Col>
           </Row>
-          <Row>
+          <Row className="pb-4 px-3 pt-1">
             <Col>
               <Button
                 text="Cancel"
