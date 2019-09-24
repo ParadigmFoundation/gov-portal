@@ -21,7 +21,7 @@ function timestampToCountdown(timestamp, isUnixTimestamp) {
 }
 
 function shortenAddress(address) {
-  return `${address.substring(0, 6)}...${address.substring(address.length - 6, address.length)}`;
+  return `${address.substring(0, 5)}...${address.substring(address.length - 5, address.length)}`;
 }
 
 function getTimestampBadge(timestamp) {
