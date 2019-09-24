@@ -25,60 +25,38 @@ function ActiveProposalsView(props) {
   }
 
   function returnActiveProposals() {
-    const length = proposals.length - (proposals.length % 3);
+    const nRows = Math.ceil(proposals.length / 3);
 
     const content = [];
 
-    for (let i = 0; i < length; i += 3) {
+    for (let i = 0; i < nRows; i += 1) {
+      const id = i * 3;
+
+      const data = proposals.slice(id, id + 3);
       const cols = [];
 
-      for (let j = 0; j < 3; j += 1) {
+      for (let j = 0; j < data.length; j += 1) {
         cols.push(
-          <Col key={i + j} xs={12} sm={12} md={4} className="py-3">
+          <Col key={data[j].id} xs={12} sm={12} md={4} className="py-3">
             <ActiveProposalCard
-              key={proposals[i + j].id}
-              id={proposals[i + j].id}
-              owner={proposals[i + j].owner}
-              stakeSize={numeral(proposals[i + j].stakeSize).format('0,0.[00]')}
-              dailyReward={numeral(proposals[i + j].dailyReward).format('0,0.[00]')}
-              power={proposals[i + j].power}
-              acceptUnix={proposals[i + j].acceptUnix}
+              key={data[j].id}
+              id={data[j].id}
+              owner={data[j].owner}
+              stakeSize={numeral(data[j].stakeSize).format('0,0.[00]')}
+              dailyReward={numeral(data[j].dailyReward).format('0,0.[00]')}
+              power={data[j].power}
+              acceptUnix={data[j].acceptUnix}
             />
           </Col>,
         );
       }
 
       content.push(
-        <Row key="pe">
+        <Row key={`p${i}`}>
           {cols}
         </Row>,
       );
     }
-
-    const lastLength = proposals.length - length;
-    const cols = [];
-
-    for (let i = 0; i < lastLength; i += 1) {
-      cols.push(
-        <Col key={i} xs={12} sm={12} md={4} className="py-3">
-          <ActiveProposalCard
-            key={proposals[i].id}
-            id={proposals[i].id}
-            owner={proposals[i].owner}
-            stakeSize={numeral(proposals[i].stakeSize).format('0,0.[00]')}
-            dailyReward={numeral(proposals[i].dailyReward).format('0,0.[00]')}
-            power={proposals[i].power}
-            acceptUnix={proposals[i].acceptUnix}
-          />
-        </Col>,
-      );
-    }
-
-    content.push(
-      <Row key="ple">
-        {cols}
-      </Row>,
-    );
 
     return content;
   }

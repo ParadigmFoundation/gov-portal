@@ -23,9 +23,9 @@ function Home() {
     <div>
       <HomeView
         metaMaskConnected={isReady}
-        proposals={proposals.reverse()}
+        proposals={proposals}
         validators={validators}
-        activeChallenges={activeChallenges.reverse()}
+        activeChallenges={activeChallenges}
         pastChallenges={pastChallenges}
       />
     </div>
