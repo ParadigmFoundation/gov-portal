@@ -35,6 +35,7 @@ function ProposalView(props) {
     dailyReward,
     challengeProposal,
     canBeChallenged,
+    walletBalance,
   } = props;
 
   const [isProposalChallengeModalOpen, toggleProposalChallengeModal] = useState();
@@ -47,6 +48,7 @@ function ProposalView(props) {
         close={() => toggleProposalChallengeModal(false)}
         price={stakeSize}
         challengeProposal={challengeProposal}
+        walletBalance={walletBalance}
       />
       <Row className="pb-5">
         <Col>
@@ -192,8 +194,10 @@ function ProposalView(props) {
 ProposalView.propTypes = {
   id: PropTypes.string,
   owner: PropTypes.string,
+  details: PropTypes.string,
   acceptUnix: PropTypes.number,
   stakeSize: PropTypes.string,
+  walletBalance: PropTypes.string,
   power: PropTypes.string,
   dailyReward: PropTypes.string,
   challengeProposal: PropTypes.func,
@@ -203,8 +207,10 @@ ProposalView.propTypes = {
 ProposalView.defaultProps = {
   id: '',
   owner: '0',
+  details: '',
   acceptUnix: Date.now() / 1000,
   stakeSize: '0',
+  walletBalance: '0',
   power: '0',
   dailyReward: '0',
   challengeProposal: () => {},

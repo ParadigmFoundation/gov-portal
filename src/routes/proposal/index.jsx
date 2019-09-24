@@ -13,6 +13,7 @@ function Proposal(props) {
   const {
     gov,
     isReady,
+    walletBalance,
   } = useContext(GovContext);
 
   const {
@@ -53,6 +54,7 @@ function Proposal(props) {
         power={proposalData && proposalData.power.toString()}
         stakeSize={proposalData && gov.web3.utils.fromWei(proposalData.stakeSize.toString())}
         challengeProposal={(listingKey, details) => gov.kosu.validatorRegistry.challengeListing(listingKey, details)}
+        walletBalance={walletBalance}
       />
     </>
   );

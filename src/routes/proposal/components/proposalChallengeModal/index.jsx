@@ -25,6 +25,7 @@ function ProposalChallengeModal(props) {
     price,
     close,
     challengeProposal,
+    walletBalance,
   } = props;
 
   const [details, setDetails] = useState('');
@@ -88,15 +89,24 @@ function ProposalChallengeModal(props) {
             />
           </Col>
           <Col>
-            <Button
-              color="green"
-              text="Challenge"
-              action={() => challengeProposal(id, details)}
-              onceConfirmed={close}
-              isAsync
-              block
-              disabled={details === ''}
-            />
+            {parseFloat(price) > parseFloat(walletBalance) ? (
+              <Button
+                color="green"
+                text="Insufficient balance"
+                block
+                disabled
+              />
+            ) : (
+              <Button
+                color="green"
+                text="Challenge"
+                action={() => challengeProposal(id, details)}
+                onceConfirmed={close}
+                isAsync
+                block
+                disabled={details === ''}
+              />
+            )}
           </Col>
         </Row>
       </ModalBody>
@@ -110,6 +120,7 @@ ProposalChallengeModal.propTypes = {
   price: PropTypes.string.isRequired,
   close: PropTypes.func.isRequired,
   challengeProposal: PropTypes.func.isRequired,
+  walletBalance: PropTypes.string.isRequired,
 };
 
 ProposalChallengeModal.defaultProps = {
