@@ -13,8 +13,9 @@ function Challenge(props) {
   const {
     gov,
     isReady,
-    govActivities,
+    activities,
     coinbase,
+    activeChallenges,
   } = useContext(GovContext);
 
   const {
@@ -31,7 +32,7 @@ function Challenge(props) {
     async function fetchData() {
       if (isReady && id !== '') {
         const currentUser = coinbase;
-        const currentChallenges = await gov.currentChallenges();
+        const currentChallenges = activeChallenges;
         const blockNumber = await gov.currentBlockNumber();
 
         for (let i = 0; i < Object.keys(currentChallenges).length; i += 1) {
@@ -40,8 +41,8 @@ function Challenge(props) {
 
             let hasVoted = false;
 
-            for (let j = 0; j < govActivities.length; j += 1) {
-              if (govActivities[j].challengeId === id && govActivities[j].challenger === coinbase) {
+            for (let j = 0; j < activities.length; j += 1) {
+              if (activities[j].challengeId === id && activities[j].challenger === coinbase) {
                 hasVoted = true;
               }
             }
@@ -73,7 +74,7 @@ function Challenge(props) {
     }
 
     fetchData();
-  }, [isReady, gov, id, govActivities]);
+  }, [isReady, gov, id, activities]);
 
   return (
     <>
