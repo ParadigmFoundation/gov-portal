@@ -25,7 +25,7 @@ function ActiveChallengesView(props) {
   }
 
   function returnActiveChallenges() {
-    const length = activeChallenges.length - (activeChallenges.length % 3);
+    const length = activeChallenges.length / 3;
 
     const content = [];
 
@@ -33,20 +33,22 @@ function ActiveChallengesView(props) {
       const cols = [];
 
       for (let j = 0; j < 3; j += 1) {
-        cols.push(
-          <Col key={i + j} xs={12} sm={12} md={4} className="py-3">
-            <ActiveChallengeCard
-              key={activeChallenges[i + j].id}
-              id={activeChallenges[i + j].id}
-              challengeType={activeChallenges[i + j].challengeType}
-              listingOwner={activeChallenges[i + j].listingOwner}
-              challenger={activeChallenges[i + j].challenger}
-              challengeEndUnix={activeChallenges[i + j].challengeEndUnix}
-              challengerStake={numeral(activeChallenges[i + j].challengerStake).format('0,0.[00]')}
-              potentialReward={numeral(activeChallenges[i + j].potentialReward).format('0,0.[00]')}
-            />
-          </Col>,
-        );
+        if (i + j < activeChallenges.length) {
+          cols.push(
+            <Col key={i + j} xs={12} sm={12} md={4} className="py-3">
+              <ActiveChallengeCard
+                key={activeChallenges[i + j].id}
+                id={activeChallenges[i + j].id}
+                challengeType={activeChallenges[i + j].challengeType}
+                listingOwner={activeChallenges[i + j].listingOwner}
+                challenger={activeChallenges[i + j].challenger}
+                challengeEndUnix={activeChallenges[i + j].challengeEndUnix}
+                challengerStake={numeral(activeChallenges[i + j].challengerStake).format('0,0.[00]')}
+                potentialReward={numeral(activeChallenges[i + j].potentialReward).format('0,0.[00]')}
+              />
+            </Col>,
+          );
+        }
       }
 
       content.push(
@@ -56,7 +58,7 @@ function ActiveChallengesView(props) {
       );
     }
 
-    const lastLength = activeChallenges.length - length;
+    const lastLength = activeChallenges.length % 3;
     const cols = [];
 
     for (let i = 0; i < lastLength; i += 1) {
