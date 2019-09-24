@@ -22,7 +22,7 @@ function NothingToBond(props) {
   return (
     <Modal className="nothing-bond-modal" isOpen={isOpen} toggle={toggle}>
       <ModalBody className="nothing-bond-modal__body">
-        <Row className="pb-5">
+        <Row className="pb-5 px-3 pt-1">
           <Col>
             <div className="nothing-bond-modal__header">
               Nothing to bond
@@ -43,7 +43,7 @@ function NothingToBond(props) {
             </div>
           </Col>
         </Row>
-        <Row>
+        <Row className="px-3 pb-1">
           <Col className="text-left">
             <Button
               color="cancel"

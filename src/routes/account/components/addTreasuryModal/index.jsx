@@ -35,7 +35,7 @@ function AddTreasuryModal(props) {
   return (
     <Modal className="add-treasury-modal" isOpen={isOpen} toggle={toggle}>
       <ModalBody className="add-treasury-modal__body">
-        <Row className="pb-5">
+        <Row className="pb-5 px-3 pt-1">
           <Col>
             <div className="add-treasury-modal__header">
               Add
@@ -64,15 +64,15 @@ function AddTreasuryModal(props) {
             />
           </Col>
         </Row>
-        <Row>
-          <Col className="text-left">
+        <Row className="px-3 pb-1">
+          <Col className="text-left" xs={12} sm={6}>
             <Button
               color="cancel"
               text="Cancel"
               action={toggle}
             />
           </Col>
-          <Col className="text-right">
+          <Col className="text-right" xs={12} sm={6}>
             <Button
               color="green"
               text="Add"
@@ -80,6 +80,7 @@ function AddTreasuryModal(props) {
               action={() => add(tokensToAdd.toString())}
               onceConfirmed={toggle}
               isAsync
+              block
             />
           </Col>
         </Row>

@@ -38,7 +38,7 @@ function TreasuryBalanceModal(props) {
   return (
     <Modal className="treasure-balance-modal" isOpen={isOpen} toggle={toggle}>
       <ModalBody className="treasure-balance-modal__body">
-        <Row className="pb-5">
+        <Row className="pb-5 px-3 pt-1">
           <Col>
             <div className="treasure-balance-modal__header">
               Treasury
@@ -102,7 +102,7 @@ function TreasuryBalanceModal(props) {
             />
           </Col>
         </Row>
-        <Row>
+        <Row className="px-5 pb-1">
           <Col className="text-left">
             <Button
               color="cancel"

@@ -52,7 +52,7 @@ function BondModal(props) {
   return (
     <Modal className="bond-modal" isOpen={isOpen} toggle={toggle}>
       <ModalBody className="bond-modal__body">
-        <Row className="pb-5">
+        <Row className="pb-5 px-3 pt-1">
           <Col>
             <div className="bond-modal__header">
               Bond your
@@ -118,7 +118,7 @@ function BondModal(props) {
             />
           </Col>
         </Row>
-        <Row>
+        <Row className="px-5 pb-1">
           <Col className="text-left">
             <Button
               color="cancel"

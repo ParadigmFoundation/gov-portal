@@ -51,7 +51,7 @@ function WalletModal(props) {
   return (
     <Modal className="wallet-modal" isOpen={isOpen} toggle={toggle}>
       <ModalBody className="wallet-modal__body">
-        <Row className="pb-5">
+        <Row className="pb-5 px-3 pt-1">
           <Col>
             <div className="wallet-modal__header">
               Bond Ether to get
@@ -104,7 +104,7 @@ function WalletModal(props) {
             />
           </Col>
         </Row>
-        <Row>
+        <Row className="px-5 pb-1">
           <Col className="text-left">
             <Button
               color="cancel"

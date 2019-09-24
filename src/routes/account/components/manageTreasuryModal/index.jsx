@@ -34,7 +34,7 @@ function ManageTreasuryModal(props) {
   return (
     <Modal className="manage-treasury-modal" isOpen={isOpen} toggle={toggle}>
       <ModalBody className="manage-treasury-modal__body">
-        <Row className="pb-5">
+        <Row className="pb-5 px-3 pt-1">
           <Col>
             <div className="manage-treasury-modal__header">
               Treasury
@@ -45,7 +45,7 @@ function ManageTreasuryModal(props) {
           </Col>
         </Row>
         <Row className="pb-5 justify-content-center">
-          <Col xs={8}>
+          <Col xs={12} sm={10} md={8}>
             <div className="pb-2">
               <Button
                 text="Edit current balance"
@@ -75,7 +75,7 @@ function ManageTreasuryModal(props) {
             </div>
           </Col>
         </Row>
-        <Row>
+        <Row className="px-4">
           <Col className="text-left">
             <Button
               color="cancel"
