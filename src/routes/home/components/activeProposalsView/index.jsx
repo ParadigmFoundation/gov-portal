@@ -25,40 +25,29 @@ function ActiveProposalsView(props) {
   }
 
   function returnActiveProposals() {
-    const nRows = Math.ceil(proposals.length / 3);
+    const cols = [];
 
-    const content = [];
-
-    for (let i = 0; i < nRows; i += 1) {
-      const id = i * 3;
-
-      const data = proposals.slice(id, id + 3);
-      const cols = [];
-
-      for (let j = 0; j < data.length; j += 1) {
-        cols.push(
-          <Col key={data[j].id} xs={12} sm={12} md={4} className="py-3">
-            <ActiveProposalCard
-              key={data[j].id}
-              id={data[j].id}
-              owner={data[j].owner}
-              stakeSize={numeral(data[j].stakeSize).format('0,0.[00]')}
-              dailyReward={numeral(data[j].dailyReward).format('0,0.[00]')}
-              power={data[j].power}
-              acceptUnix={data[j].acceptUnix}
-            />
-          </Col>,
-        );
-      }
-
-      content.push(
-        <Row key={`p${i}`}>
-          {cols}
-        </Row>,
+    for (let i = 0; i < proposals.length; i += 1) {
+      cols.push(
+        <Col key={proposals[i].id} xs={12} sm={12} md={6} lg={4} className="py-3">
+          <ActiveProposalCard
+            key={proposals[i].id}
+            id={proposals[i].id}
+            owner={proposals[i].owner}
+            stakeSize={numeral(proposals[i].stakeSize).format('0,0.[00]')}
+            dailyReward={numeral(proposals[i].dailyReward).format('0,0.[00]')}
+            power={proposals[i].power}
+            acceptUnix={proposals[i].acceptUnix}
+          />
+        </Col>,
       );
     }
 
-    return content;
+    return (
+      <Row>
+        {cols}
+      </Row>
+    );
   }
 
   return returnActiveProposals();
