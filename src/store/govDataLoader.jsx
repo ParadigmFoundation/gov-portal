@@ -177,6 +177,7 @@ function GovDataLoader() {
           formattedValidators.push({
             id: Object.keys(currentValidators)[i],
             owner: currentValidators[Object.keys(currentValidators)[i]].owner,
+            details: currentValidators[Object.keys(currentValidators)[i]].details,
             confirmationUnix: currentValidators[Object.keys(currentValidators)[i]].confirmationUnix,
             dailyReward: gov.web3.utils.fromWei(
               formattedDailyReward[0],

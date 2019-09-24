@@ -27,12 +27,11 @@ import './index.scss';
 
 function ValidatorView(props) {
   const {
-    validatorName,
     owner,
     id,
     stakeSize,
-    monthlyReward,
-    votingPower,
+    dailyReward,
+    power,
     uptime,
     rank,
     blockNumber,
@@ -42,14 +41,16 @@ function ValidatorView(props) {
     challengeListing,
   } = props;
 
+  const monthlyReward = parseFloat(dailyReward) * 30;
+
   const [isValidatorChallengeModalOpen, toggleValidatorChallengeModal] = useState(false);
-  const formattedAge = timestampToCountdown(confirmationUnix, true);
+  const formattedAge = timestampToCountdown(confirmationUnix, true, true);
 
   function returnAction() {
     if (status === 'alreadyChallenged') {
       return (
         <div className="validator-view__already-challenged-label">
-          {`You've already challenged ${validatorName}. View your challenge`}
+          {`You've already challenged ${owner}. View your challenge`}
           {' '}
           <a href={challengeLink} className="validator-view__already-challenged-link">
             here
@@ -103,7 +104,7 @@ function ValidatorView(props) {
         <Row className="pb-2">
           <Col>
             <div className="validator-view__address">
-              {shortenAddress(owner)}
+              {owner}
             </div>
           </Col>
         </Row>
@@ -125,14 +126,13 @@ function ValidatorView(props) {
             </div>
           </Col>
         </Row>
-        <Row className="pb-4">
-          <Col xs={12} sm={3}>
-            <SimpleCard>
+        <Row className="pb-5">
+          <Col className="py-3" xs={12} sm={12} md={6} lg={3}>
+            <SimpleCard minHeight>
               <SimpleCardTitle>
                 Tokens staked
               </SimpleCardTitle>
               <SimpleCardContent>
-                {stakeSize}
                 {numeral(stakeSize).format('0,0.[00]')}
               </SimpleCardContent>
               <SimpleCardFooter>
@@ -140,8 +140,8 @@ function ValidatorView(props) {
               </SimpleCardFooter>
             </SimpleCard>
           </Col>
-          <Col xs={12} sm={3}>
-            <SimpleCard>
+          <Col className="py-3" xs={12} sm={12} md={6} lg={3}>
+            <SimpleCard minHeight>
               <SimpleCardTitle>
                 Monthly reward
               </SimpleCardTitle>
@@ -153,18 +153,18 @@ function ValidatorView(props) {
               </SimpleCardFooter>
             </SimpleCard>
           </Col>
-          <Col xs={12} sm={3}>
-            <SimpleCard>
+          <Col className="py-3" xs={12} sm={12} md={6} lg={3}>
+            <SimpleCard minHeight>
               <SimpleCardTitle>
                 Voting power
               </SimpleCardTitle>
               <SimpleCardContent>
-                {`${numeral(votingPower).format('0,0.[00]')}%`}
+                {`${numeral(power).format('0,0.[00]')}%`}
               </SimpleCardContent>
             </SimpleCard>
           </Col>
-          <Col xs={12} sm={3}>
-            <SimpleCard>
+          <Col className="py-3" xs={12} sm={12} md={6} lg={3}>
+            <SimpleCard minHeight>
               <SimpleCardTitle>
                 Uptime
               </SimpleCardTitle>
@@ -173,10 +173,8 @@ function ValidatorView(props) {
               </SimpleCardContent>
             </SimpleCard>
           </Col>
-        </Row>
-        <Row className="pb-5">
-          <Col xs={12} sm={3}>
-            <SimpleCard>
+          <Col className="py-3" xs={12} sm={12} md={6} lg={3}>
+            <SimpleCard minHeight>
               <SimpleCardTitle>
                 Rank
               </SimpleCardTitle>
@@ -192,13 +190,13 @@ function ValidatorView(props) {
               </SimpleCardContent>
             </SimpleCard>
           </Col>
-          <Col xs={12} sm={3}>
-            <SimpleCard>
+          <Col className="py-3" xs={12} sm={12} md={6} lg={3}>
+            <SimpleCard minHeight>
               <SimpleCardTitle>
                 Age
               </SimpleCardTitle>
               <SimpleCardContent>
-                {numeral(blockNumber).format('0,0.[00]')}
+                {numeral(blockNumber).format('0,0')}
                 {' '}
                 <span className="validator-view__age-block-label">
                   Blocks
@@ -231,12 +229,11 @@ function ValidatorView(props) {
 }
 
 ValidatorView.propTypes = {
-  validatorName: PropTypes.string,
   owner: PropTypes.string,
   id: PropTypes.string,
   stakeSize: PropTypes.string,
-  monthlyReward: PropTypes.string,
-  votingPower: PropTypes.string,
+  dailyReward: PropTypes.string,
+  power: PropTypes.string,
   uptime: PropTypes.number,
   rank: PropTypes.number,
   blockNumber: PropTypes.number,
@@ -247,15 +244,14 @@ ValidatorView.propTypes = {
 };
 
 ValidatorView.defaultProps = {
-  owner: '0',
-  validatorName: '',
+  owner: '...',
   challengeListing: () => {},
   status: '',
   challengeLink: '',
-  id: '0x0',
+  id: '...',
   stakeSize: '0',
-  monthlyReward: '0',
-  votingPower: '0',
+  dailyReward: '0',
+  power: '0',
   confirmationUnix: Date.now() / 1000,
   blockNumber: 0,
   uptime: 0,

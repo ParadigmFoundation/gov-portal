@@ -13,6 +13,7 @@ function Validator(props) {
   const {
     gov,
     isReady,
+    validators,
   } = useContext(GovContext);
 
   const {
@@ -26,35 +27,23 @@ function Validator(props) {
   const [validatorData, setValidatorData] = useState();
 
   useEffect(() => {
-    async function fetchData() {
-      if (isReady && id !== '') {
-        const currentValidators = await gov.currentValidators();
+    if (validators.length > 0) {
+      for (let i = 0; i < validators.length; i += 1) {
+        if (validators[i].id === id) {
+          const validator = {
+            confirmationUnix: validators[i].confirmationUnix,
+            dailyReward: validators[i].dailyReward,
+            details: validators[i].details,
+            owner: validators[i].owner,
+            power: validators[i].power,
+            stakeSize: validators[i].stakeSize,
+          };
 
-        for (let i = 0; i < Object.keys(currentValidators).length; i += 1) {
-          if (Object.keys(currentValidators)[i] === id) {
-            const dailyReward = Object.values(currentValidators)[i].dailyReward.toString().split('.');
-
-            const validator = {
-              confirmationUnix: Object.values(currentValidators)[i].confirmationUnix,
-              dailyReward: gov.web3.utils.fromWei(
-                dailyReward[0].toString(),
-              ),
-              details: Object.values(currentValidators)[i].details,
-              owner: Object.values(currentValidators)[i].owner,
-              power: gov.web3.utils.fromWei(Object.values(currentValidators)[i].power.toString()),
-              stakeSize: gov.web3.utils.fromWei(
-                Object.values(currentValidators)[i].stakeSize.toString(),
-              ),
-            };
-
-            setValidatorData(validator);
-          }
+          setValidatorData(validator);
         }
       }
     }
-
-    fetchData();
-  }, [isReady, gov, id]);
+  }, [validators]);
 
   return (
     <>

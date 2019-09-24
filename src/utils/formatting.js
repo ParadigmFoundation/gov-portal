@@ -1,4 +1,8 @@
-function timestampToCountdown(timestamp, isUnixTimestamp) {
+function timestampToCountdown(
+  timestamp,
+  isUnixTimestamp,
+  isAge = false,
+) {
   let now = Date.now();
   let second = 1000;
 
@@ -11,7 +15,13 @@ function timestampToCountdown(timestamp, isUnixTimestamp) {
   const hour = minute * 60;
   const day = hour * 24;
 
-  const timeleft = timestamp - now;
+  let timeleft;
+
+  if (isAge) {
+    timeleft = now - timestamp;
+  } else {
+    timeleft = timestamp - now;
+  }
 
   const remainingDays = Math.floor(timeleft / day);
   const remainingHours = Math.floor((timeleft % day) / hour);
