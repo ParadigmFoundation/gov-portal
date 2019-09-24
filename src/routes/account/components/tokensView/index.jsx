@@ -153,7 +153,7 @@ function TokensView(props) {
         ethBalance={ethBalance}
       />
       <Row>
-        <Col xs={12} sm={12} md={4} className="py-3">
+        <Col xs={12} sm={12} md={6} lg={4} className="py-3">
           <SimpleCard>
             <SimpleCardTitle>
               Total balance
@@ -166,7 +166,7 @@ function TokensView(props) {
             </SimpleCardContent>
           </SimpleCard>
         </Col>
-        <Col xs={12} sm={12} md={4} className="py-3">
+        <Col xs={12} sm={12} md={6} lg={4} className="py-3">
           <SimpleCard>
             <SimpleCardTitle>
               System balance
@@ -179,7 +179,7 @@ function TokensView(props) {
             </SimpleCardContent>
           </SimpleCard>
         </Col>
-        <Col xs={12} sm={12} md={4} className="py-3">
+        <Col xs={12} sm={12} md={6} lg={4} className="py-3">
           <SimpleCard>
             <SimpleCardTitle>
               <Row>
@@ -205,10 +205,8 @@ function TokensView(props) {
             </SimpleCardContent>
           </SimpleCard>
         </Col>
-      </Row>
-      <Row className="py-3">
         {handleAllowanceLayer()}
-        <Col xs={12} sm={12} md={4} className="py-3">
+        <Col xs={12} sm={12} md={6} lg={4} className="py-3">
           <SimpleCard>
             <SimpleCardTitle>
               <Row>
@@ -235,7 +233,7 @@ function TokensView(props) {
             </SimpleCardContent>
           </SimpleCard>
         </Col>
-        <Col xs={12} sm={12} md={4} className="py-3">
+        <Col xs={12} sm={12} md={6} lg={4} className="py-3">
           <SimpleCard>
             <SimpleCardTitle>
               <Row>
@@ -263,7 +261,7 @@ function TokensView(props) {
             </SimpleCardContent>
           </SimpleCard>
         </Col>
-        <Col xs={12} sm={12} md={4} className="py-3">
+        <Col xs={12} sm={12} md={6} lg={4} className="py-3">
           <SimpleCard>
             <SimpleCardTitle>
               <Row>
