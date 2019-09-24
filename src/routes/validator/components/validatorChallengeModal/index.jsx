@@ -1,5 +1,5 @@
 import React, {
-  useState,
+  useState, useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -29,22 +29,26 @@ function ValidatorChallengeModal(props) {
 
   const [details, setDetails] = useState('');
 
+  useEffect(() => {
+    if (!isOpen) {
+      setDetails('');
+    }
+  }, [isOpen]);
+
   return (
-    <Modal className="validator-challenge-modal" isOpen={isOpen}>
-      <Row>
-        <Col className="validator-challenge-modal__close">
-          <CloseIcon action={close} />
-        </Col>
-      </Row>
+    <Modal className="validator-challenge-modal" isOpen={isOpen} toggle={close}>
       <ModalBody className="validator-challenge-modal__body">
-        <Row className="pb-5">
+        <Row className="pb-5 px-3 pt-1">
           <Col>
             <div className="validator-challenge-modal__header">
               Challenge validator
             </div>
           </Col>
+          <Col xs={2} className="validator-challenge-modal__close">
+            <CloseIcon action={close} />
+          </Col>
         </Row>
-        <Row className="pb-4">
+        <Row className="pb-4 px-3">
           <Col>
             <div className="validator-challenge-modal__cost-label">
               This challenge will cost:
@@ -56,7 +60,7 @@ function ValidatorChallengeModal(props) {
             <KosuSymbol />
           </Col>
         </Row>
-        <Row className="pb-4">
+        <Row className="pb-4 px-3 pt-1">
           <Col>
             <textarea
               value={details}
@@ -67,7 +71,7 @@ function ValidatorChallengeModal(props) {
             />
           </Col>
         </Row>
-        <Row className="pb-5">
+        <Row className="pb-5 px-3">
           <Col>
             <div className="validator-challenge-modal__warning">
               <div className="validator-challenge-modal__warning-title">
@@ -81,7 +85,7 @@ function ValidatorChallengeModal(props) {
             </div>
           </Col>
         </Row>
-        <Row>
+        <Row className="px-3">
           <Col>
             <Button
               color="cancel"
@@ -94,7 +98,10 @@ function ValidatorChallengeModal(props) {
               color="green"
               text="Challenge"
               action={() => challengeListing(id, details)}
+              onceConfirmed={close}
               block
+              isAsync
+              disabled={details === ''}
             />
           </Col>
         </Row>
