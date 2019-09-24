@@ -10,4 +10,8 @@
   display: inline-block;
   width: 100%;
   border-radius: 2px;
+
+  &--min-height {
+    min-height: 145px;
+  }
 }
