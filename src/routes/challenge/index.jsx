@@ -35,8 +35,8 @@ function Challenge(props) {
         const currentChallenges = activeChallenges;
         const blockNumber = await gov.currentBlockNumber();
 
-        for (let i = 0; i < Object.keys(currentChallenges).length; i += 1) {
-          if (currentChallenges[Object.keys(currentChallenges)[i]].challengeId.toString() === id) {
+        for (let i = 0; i < currentChallenges.length; i += 1) {
+          if (currentChallenges[i].id === id) {
             const info = await gov.getChallengeInfo(id);
 
             let hasVoted = false;
@@ -49,19 +49,15 @@ function Challenge(props) {
 
             const challenge = {
               currentUser,
-              challengeId: currentChallenges[Object.keys(currentChallenges)[i]].challengeId.toString(),
-              challengeType: currentChallenges[Object.keys(currentChallenges)[i]].challengeType,
-              validatorPublicKey: Object.keys(currentChallenges)[i],
-              listingOwner: currentChallenges[Object.keys(currentChallenges)[i]].listingOwner,
-              challenger: currentChallenges[Object.keys(currentChallenges)[i]].challenger,
-              challengeEndUnix: currentChallenges[Object.keys(currentChallenges)[i]].challengeEndUnix,
-              challengerStake: gov.web3.utils.fromWei(
-                currentChallenges[Object.keys(currentChallenges)[i]].challengerStake.toString(),
-              ),
-              potentialReward: gov.web3.utils.fromWei(
-                currentChallenges[Object.keys(currentChallenges)[i]].challengerStake.multipliedBy(gov.web3.utils.toBN(70)).div(gov.web3.utils.toBN(100)).toString(),
-              ),
-              challengeDetails: currentChallenges[Object.keys(currentChallenges)[i]].challengeDetails,
+              challengeId: currentChallenges[i].id,
+              challengeType: currentChallenges[i].challengeType,
+              validatorPublicKey: currentChallenges[i].validatorPublicKey,
+              listingOwner: currentChallenges[i].listingOwner,
+              challenger: currentChallenges[i].challenger,
+              challengeEndUnix: currentChallenges[i].challengeEndUnix,
+              challengerStake: currentChallenges[i].challengerStake,
+              potentialReward: currentChallenges[i].potentialReward,
+              challengeDetails: currentChallenges[i].challengeDetails,
               info,
               blockNumber,
               hasVoted,

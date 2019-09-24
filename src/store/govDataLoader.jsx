@@ -197,6 +197,7 @@ function GovDataLoader() {
 
         for (let i = 0; i < Object.keys(currentChallenges).length; i += 1) {
           formattedActiveChallenges.push({
+            validatorPublicKey: 'publickey',
             id: currentChallenges[Object.keys(currentChallenges)[i]].challengeId.toString(),
             challengeType: currentChallenges[Object.keys(currentChallenges)[i]].challengeType,
             listingOwner: currentChallenges[Object.keys(currentChallenges)[i]].listingOwner,
