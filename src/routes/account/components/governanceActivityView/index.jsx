@@ -91,7 +91,8 @@ function GovernanceActivityView(props) {
     }
 
     return activities.map((activity, id) => (
-      <tr key={id}>
+      // eslint-disable-next-line
+      <tr key={`activitiy-${id}`}>
         <td className="governance-activity-view__description">
           {activity.title}
         </td>
