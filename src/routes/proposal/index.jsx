@@ -31,8 +31,6 @@ function Proposal(props) {
         if (gov.proposals[id] !== undefined) {
           const dailyReward = gov.proposals[id].dailyReward.toString().split('.');
 
-          console.log(dailyReward);
-
           setProposalData({
             ...gov.proposals[id],
             dailyReward: dailyReward[0],
