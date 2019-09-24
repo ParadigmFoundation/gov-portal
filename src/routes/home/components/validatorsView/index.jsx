@@ -2,7 +2,6 @@ import React, {
   useState,
 } from 'react';
 import {
-  NavLink,
   Redirect,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -52,8 +51,8 @@ function ValidatorsView(props) {
       );
     }
 
-    return validators.map(validator => (
-      <tr key={validator.owner} onClick={() => setRedirectTo(validator.id)}>
+    return validators.map((validator, index) => (
+      <tr key={index} onClick={() => setRedirectTo(validator.id)}>
         <td>
           <Address address={validator.owner} icon short />
         </td>
