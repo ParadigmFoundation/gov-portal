@@ -1,5 +1,6 @@
 import React, {
   useState,
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -41,6 +42,12 @@ function BondModal(props) {
       setLimit('0');
     }
   }
+
+  useEffect(() => {
+    if (!isOpen) {
+      updateValues('');
+    }
+  }, [isOpen]);
 
   return (
     <Modal className="bond-modal" isOpen={isOpen} toggle={toggle}>

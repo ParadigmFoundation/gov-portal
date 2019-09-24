@@ -1,5 +1,6 @@
 import React, {
   useState,
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -24,6 +25,12 @@ function AddTreasuryModal(props) {
   } = props;
 
   const [tokensToAdd, setTokensToAdd] = useState('');
+
+  useEffect(() => {
+    if (!isOpen) {
+      setTokensToAdd('');
+    }
+  }, [isOpen]);
 
   return (
     <Modal className="add-treasury-modal" isOpen={isOpen} toggle={toggle}>

@@ -1,5 +1,6 @@
 import React, {
   useState,
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -27,6 +28,12 @@ function TreasuryBalanceModal(props) {
   } = props;
 
   const [newBalance, setNewBalance] = useState('');
+
+  useEffect(() => {
+    if (!isOpen) {
+      setNewBalance('');
+    }
+  }, [isOpen]);
 
   return (
     <Modal className="treasure-balance-modal" isOpen={isOpen} toggle={toggle}>
