@@ -16,6 +16,8 @@ import {
   timestampToAge,
 } from '../../../../utils/formatting';
 
+import './index.scss';
+
 function ValidatorsView(props) {
   const {
     metaMaskConnected,
@@ -52,23 +54,23 @@ function ValidatorsView(props) {
     }
 
     return validators.map((validator, index) => (
-      <tr key={index} onClick={() => setRedirectTo(validator.id)}>
-        <td>
-          <Address address={validator.owner} icon short />
+      <tr key={index} onClick={() => setRedirectTo(validator.id)} className="validators-view__row">
+        <td className="validators-view__col">
+          <Address address={validator.owner} icon short clickable />
         </td>
-        <td>
+        <td className="validators-view__col">
           {numeral(validator.stakeSize).format('0,0.[00]')}
         </td>
-        <td>
+        <td className="validators-view__col">
           {numeral(validator.dailyReward).format('0,0.[00]')}
         </td>
-        <td>
+        <td className="validators-view__col">
           {`${numeral(validator.power).format('0,0.[00]')}%`}
         </td>
-        <td>
+        <td className="validators-view__col">
           N/A
         </td>
-        <td>
+        <td className="validators-view__col">
           {timestampToAge(validator.confirmationUnix)}
         </td>
       </tr>

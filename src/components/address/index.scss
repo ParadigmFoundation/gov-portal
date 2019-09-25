@@ -21,5 +21,11 @@
     text-align: left;
     display: inherit;
     align-self: center;
+
+    &--clickable {
+      &:hover {
+        color: #5d5d5d;
+      }
+    }
   }
 }

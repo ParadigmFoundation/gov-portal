@@ -1,0 +1,15 @@
+.validators-view {
+  &__row {
+    &:hover {
+      cursor: pointer;
+      color: #5d5d5d;
+    }
+  }
+
+  &__col {
+    &:hover {
+      cursor: pointer;
+      color: #5d5d5d;
+    }
+  }
+}
