@@ -43,7 +43,12 @@ function OrdersView(props) {
     return orders.map(order => (
       <tr key={order.orderId}>
         <td className="orders-view__id">
-          {order.orderId}
+          <a
+            className="orders-view__link"
+            href={`https://orders-api.kosu.io/order?id=${order.orderId}`}
+          >
+            {order.orderId}
+          </a>
         </td>
         <td className="orders-view__expiration">
           {new Date(order.expiration * 1000).toLocaleString()}
