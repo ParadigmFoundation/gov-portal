@@ -132,9 +132,6 @@ function HeaderView(props) {
               <>
                 <NavItem>
                   <div className="header__icon" />
-                  {' '}
-                </NavItem>
-                <NavItem>
                   <span className="header__address">
                     {address}
                   </span>
