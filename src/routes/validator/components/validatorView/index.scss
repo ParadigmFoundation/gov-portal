@@ -53,6 +53,10 @@
 
   &__link {
     color: #0BD080;
+
+    &:hover {
+      color: #1be090;
+    }
   }
 
   &__rank-th-label {
