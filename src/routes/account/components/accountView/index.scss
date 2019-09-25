@@ -17,4 +17,9 @@
     color: #4a4a4a;
     text-align: left;
   }
+
+  &__gov-activity-wrapper,
+  &__orders-wrapper {
+    overflow-x: auto;
+  }
 }
