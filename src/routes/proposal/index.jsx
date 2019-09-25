@@ -3,6 +3,9 @@ import React, {
   useState,
   useEffect,
 } from 'react';
+import {
+  Redirect,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import GovContext from '../../store/govContext';
@@ -25,6 +28,13 @@ function Proposal(props) {
   } = props;
 
   const [proposalData, setProposalData] = useState();
+  const [redirectTo, setRedirectTo] = useState(false);
+
+  function redirect() {
+    if (redirectTo) {
+      return <Redirect push to="/" />;
+    }
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -45,6 +55,7 @@ function Proposal(props) {
 
   return (
     <>
+      {redirect()}
       <ProposalView
         id={id}
         acceptUnix={proposalData && proposalData.acceptUnix}
@@ -53,7 +64,10 @@ function Proposal(props) {
         owner={proposalData && proposalData.owner}
         power={proposalData && proposalData.power.toString()}
         stakeSize={proposalData && gov.web3.utils.fromWei(proposalData.stakeSize.toString())}
-        challengeProposal={(listingKey, details) => gov.kosu.validatorRegistry.challengeListing(listingKey, details)}
+        challengeProposal={async (listingKey, details) => {
+          await gov.kosu.validatorRegistry.challengeListing(listingKey, details);
+          setRedirectTo(true);
+        }}
         walletBalance={walletBalance}
       />
     </>

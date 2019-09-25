@@ -3,6 +3,9 @@ import React, {
   useEffect,
   useState,
 } from 'react';
+import {
+  Redirect,
+} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import GovContext from '../../store/govContext';
@@ -12,7 +15,6 @@ import ValidatorView from './components/validatorView';
 function Validator(props) {
   const {
     gov,
-    isReady,
     validators,
   } = useContext(GovContext);
 
@@ -25,6 +27,13 @@ function Validator(props) {
   } = props;
 
   const [validatorData, setValidatorData] = useState();
+  const [redirectTo, setRedirectTo] = useState(false);
+
+  function redirect() {
+    if (redirectTo) {
+      return <Redirect push to="/" />;
+    }
+  }
 
   useEffect(() => {
     if (validators.length > 0) {
@@ -47,6 +56,7 @@ function Validator(props) {
 
   return (
     <>
+      {redirect()}
       <ValidatorView
         id={id}
         confirmationUnix={validatorData && validatorData.confirmationUnix}
@@ -55,7 +65,10 @@ function Validator(props) {
         owner={validatorData && validatorData.owner}
         power={validatorData && validatorData.power}
         stakeSize={validatorData && validatorData.stakeSize}
-        challengeListing={isReady ? gov.kosu.validatorRegistry.challengeListing : () => {}}
+        challengeListing={async (listingKey, details) => {
+          await gov.kosu.validatorRegistry.challengeListing(listingKey, details);
+          setRedirectTo(true);
+        }}
       />
     </>
   );
