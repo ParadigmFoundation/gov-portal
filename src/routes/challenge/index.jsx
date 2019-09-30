@@ -37,7 +37,7 @@ function Challenge(props) {
 
         for (let i = 0; i < currentChallenges.length; i += 1) {
           if (currentChallenges[i].id === id) {
-            // eslint-disable-next-line no-await-in-loop
+            /* eslint-disable no-await-in-loop */
             const info = await gov.getChallengeInfo(id);
 
             let hasVoted = false;
@@ -48,6 +48,20 @@ function Challenge(props) {
               }
             }
 
+            const challengeStart = currentChallenges[i].challengeEnd - gov.params.challengePeriod;
+            const startRevealBlock = challengeStart + gov.params.commitPeriod;
+            const endRevealBlock = currentChallenges[i].challengeEnd;
+
+            const startRevealUnix = await gov.estimateFutureBlockTimestamp(startRevealBlock);
+            const startRevealDate = new Date(startRevealUnix * 1000);
+            const foo = startRevealDate.toISOString().replace(/-/g, '').replace(/:/g, '').split('.');
+            const startReveal = `${foo[0]}Z`;
+
+            const endRevealUnix = await gov.estimateFutureBlockTimestamp(endRevealBlock);
+            const endRevealDate = new Date(endRevealUnix * 1000);
+            const bar = endRevealDate.toISOString().replace(/-/g, '').replace(/:/g, '').split('.');
+            const endReveal = `${bar[0]}Z`;
+
             const challenge = {
               currentUser,
               challengeId: currentChallenges[i].id,
@@ -55,6 +69,7 @@ function Challenge(props) {
               validatorPublicKey: currentChallenges[i].validatorPublicKey,
               listingOwner: currentChallenges[i].listingOwner,
               challenger: currentChallenges[i].challenger,
+              challengeEnd: currentChallenges[i].challengeEnd,
               challengeEndUnix: currentChallenges[i].challengeEndUnix,
               challengerStake: currentChallenges[i].challengerStake,
               potentialReward: currentChallenges[i].potentialReward,
@@ -62,6 +77,8 @@ function Challenge(props) {
               info,
               blockNumber,
               hasVoted,
+              startReveal,
+              endReveal,
             };
 
             setChallengeData(challenge);
@@ -84,6 +101,7 @@ function Challenge(props) {
         listingOwner={challengeData && challengeData.listingOwner}
         challenger={challengeData && challengeData.challenger}
         challengeEndUnix={challengeData && challengeData.challengeEndUnix}
+        challengeEnd={challengeData && challengeData.challengeEnd}
         challengerStake={challengeData && challengeData.challengerStake}
         potentialReward={challengeData && challengeData.potentialReward}
         challengeDetails={challengeData && challengeData.challengeDetails}
@@ -93,6 +111,8 @@ function Challenge(props) {
           gov.commitVote(challengeId, value, gov.web3.utils.toWei(tokensToCommit));
         }}
         revealVote={() => gov.revealVote(challengeData.challengeId)}
+        startReveal={challengeData && challengeData.startReveal}
+        endReveal={challengeData && challengeData.endReveal}
       />
     </>
   );

@@ -103,6 +103,16 @@
     color: $color-green;
   }
 
+  &__calendar-link {
+    color: $color-green;
+    text-decoration: none;
+
+    &:hover {
+      color: $color-green;
+      text-decoration: none;
+    }
+  }
+
   &__started-label {
     font-family: 'Gilroy-Medium', sans-serif;
     font-size: 18px;

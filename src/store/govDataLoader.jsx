@@ -225,7 +225,7 @@ function GovDataLoader() {
         dispatch({
           type: 'set',
           target: 'activeChallenges',
-          value: formattedActiveChallenges.filter(challenge => challenge.acceptUnix > Math.floor(Date.now() / 1000)),
+          value: formattedActiveChallenges.filter(challenge => challenge.challengeEndUnix > Math.floor(Date.now() / 1000)),
         });
 
         const pastChallengesRes = await gov.getHistoricalChallenges();
