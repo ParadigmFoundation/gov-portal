@@ -1,6 +1,7 @@
 import React, {
   useContext,
   useState,
+  useEffect,
 } from 'react';
 import PropTypes from 'prop-types';
 
@@ -14,11 +15,18 @@ function ConnectMetaMask(props) {
     text,
   } = props;
 
-  const [state, setState] = useState('idle');
-
   const {
     gov,
   } = useContext(GovContext);
+
+  const [state, setState] = useState('idle');
+  const [networkId, setNetworkId] = useState();
+
+  useEffect(() => {
+    if (window.ethereum) {
+      setNetworkId(window.ethereum.networkVersion);
+    }
+  });
 
   async function handleClick() {
     setState('pending');
@@ -32,10 +40,7 @@ function ConnectMetaMask(props) {
   }
 
   function isCorrectNetwork() {
-    if (
-      window.ethereum.networkVersion === '3'
-      || window.ethereum.networkVersion === '6174'
-    ) {
+    if (networkId === '3' || networkId === '6174') {
       return true;
     }
 
@@ -46,6 +51,7 @@ function ConnectMetaMask(props) {
     if (!isCorrectNetwork()) {
       return 'Wrong network...';
     }
+
     if (state === 'idle') {
       return text;
     }
