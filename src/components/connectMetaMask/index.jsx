@@ -17,23 +17,55 @@ function ConnectMetaMask(props) {
   const [state, setState] = useState('idle');
 
   const {
-    initGov,
+    gov,
   } = useContext(GovContext);
 
   async function handleClick() {
     setState('pending');
-    await initGov();
+
+    try {
+      await gov.init();
+    } catch (err) {
+      setState('idle');
+      console.log(err);
+    }
+  }
+
+  function isCorrectNetwork() {
+    if (
+      window.ethereum.networkVersion === '3'
+      || window.ethereum.networkVersion === '6174'
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
+  function returnState() {
+    if (!isCorrectNetwork()) {
+      return 'Wrong network...';
+    }
+    if (state === 'idle') {
+      return text;
+    }
+
+    if (state === 'pending') {
+      return 'Connecting MetaMask...';
+    }
+
+    return 'Loading...';
   }
 
   return (
     <div
       className={small ? 'connect-metamask connect-metamask--small' : 'connect-metamask'}
-      onClick={async () => handleClick()}
+      onClick={isCorrectNetwork() ? async () => handleClick() : (() => {})}
       role="button"
       tabIndex="0"
-      onKeyPress={async () => handleClick()}
+      onKeyPress={isCorrectNetwork() ? async () => handleClick() : (() => {})}
     >
-      {state === 'idle' ? text : 'Connecting MetaMask...'}
+      {returnState()}
     </div>
   );
 }

@@ -50,11 +50,16 @@ function GovDataLoader() {
           }
         }
       } catch (err) {
-        throw new Error(err);
+        console.log(err);
       }
     }
 
-    init();
+    if (
+      window.ethereum.networkVersion === '3'
+      || window.ethereum.networkVersion === '6174'
+    ) {
+      init();
+    }
   }, []);
 
   useEffect(() => {
@@ -207,6 +212,7 @@ function GovDataLoader() {
             listingOwner: currentChallenges[Object.keys(currentChallenges)[i]].listingOwner,
             challenger: currentChallenges[Object.keys(currentChallenges)[i]].challenger,
             challengeEndUnix: currentChallenges[Object.keys(currentChallenges)[i]].challengeEndUnix,
+            challengeEnd: currentChallenges[Object.keys(currentChallenges)[i]].challengeEnd.toString(),
             challengerStake: gov.web3.utils.fromWei(
               currentChallenges[Object.keys(currentChallenges)[i]].challengerStake.toString(),
             ),
