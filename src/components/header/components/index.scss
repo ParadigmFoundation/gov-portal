@@ -4,6 +4,8 @@
 
 .header {
   background-color: #fff;
+  // padding: 1.2rem 1.1rem;
+  padding: 1.8rem 1.1rem !important;
 
   &__logo {
     height: 31px;
@@ -21,8 +23,9 @@
   }
 
   &__balance {
-    display: block;
-    padding: 0.5rem 1rem;
+    display: flex;
+    padding: 0rem 1rem;
+    align-content: baseline;
   }
 
   &__number {
@@ -31,6 +34,7 @@
     font-family: 'DINPro-medium', sans-serif;
     opacity: 0.75;
     letter-spacing: 0;
+    line-height: 0.5;
 
     &--grey {
       opacity: 0.25;
