@@ -79,7 +79,7 @@ function HomeView(props) {
         </Col>
       </Row>
       <Row className="pb-5">
-        <Col>
+        <Col className="home-view__validators-wrapper">
           <ValidatorsView
             metaMaskConnected={metaMaskConnected}
             validators={validators}
@@ -94,7 +94,7 @@ function HomeView(props) {
         </Col>
       </Row>
       <Row className="pb-5">
-        <Col>
+        <Col className="home-view__past-challenges-wrapper">
           <PastChallengesView
             metaMaskConnected={metaMaskConnected}
             pastChallenges={pastChallenges}

@@ -17,4 +17,11 @@
     color: #4a4a4a;
     text-align: left;
   }
+
+  &__validators-wrapper,
+  &__past-challenges-wrapper {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 600px;
+  }
 }
