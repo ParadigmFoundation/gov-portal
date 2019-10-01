@@ -18,7 +18,12 @@
     text-align: left;
   }
 
-  &__gov-activity-wrapper,
+  &__gov-activity-wrapper {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 600px;
+  }
+
   &__orders-wrapper {
     overflow-x: auto;
     overflow-y: auto;

@@ -84,7 +84,7 @@ function AccountView(props) {
         </Col>
       </Row>
       <Row className="pb-4">
-        <Col className="account-view__gov-orders-wrapper">
+        <Col>
           <div className="account-view__subtitle">
             Your Orders
             <Tooltip
@@ -94,7 +94,7 @@ function AccountView(props) {
         </Col>
       </Row>
       <Row className="pb-5">
-        <Col>
+        <Col className="account-view__orders-wrapper">
           <OrdersView
             metaMaskConnected={metaMaskConnected}
             orders={orders}
