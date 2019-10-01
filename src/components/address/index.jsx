@@ -13,12 +13,16 @@ function Address(props) {
     short,
     icon,
     clickable,
+    onClick,
   } = props;
 
   return (
     <div className="address">
       {icon && <div className="address__icon" />}
-      <span className={clickable ? 'address__text address__text--clickable' : 'address__text'}>
+      <span
+        className={clickable ? 'address__text address__text--clickable' : 'address__text'}
+        onClick={onClick}
+      >
         {short ? shortenAddress(address) : address}
       </span>
     </div>
@@ -30,12 +34,14 @@ Address.propTypes = {
   short: PropTypes.bool,
   icon: PropTypes.bool,
   clickable: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 Address.defaultProps = {
   short: false,
   icon: false,
   clickable: false,
+  onClick: () => {},
 };
 
 export default Address;
