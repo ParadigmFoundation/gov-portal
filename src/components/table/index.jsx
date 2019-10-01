@@ -11,6 +11,7 @@ const StyledTable = styled.table`
   color: #4a4a4a;
   text-align: left;
   border-radius: 2px;
+  margin-bottom: 20px;
 
   & td {
     border: none;
