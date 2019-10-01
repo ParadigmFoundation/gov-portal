@@ -153,7 +153,7 @@ function ChallengeView(props) {
               rel="noopener noreferrer"
               className="challenge-view__calendar-link"
             >
-              Google Calendar
+              Calendar
             </a>
             .
           </div>
