@@ -122,6 +122,13 @@ function GovDataLoader() {
         });
 
         const pastGovActivity = await gov.getPastGovernanceActivity(coinbase);
+        console.log(pastGovActivity);
+
+        dispatch({
+          type: 'set',
+          target: 'pastActivity',
+          value: pastGovActivity,
+        });
 
         const activitiesReq = await getPastActivities(
           gov.kosu,

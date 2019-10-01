@@ -30,8 +30,9 @@ function Account() {
     treasuryAllowance,
     stakedTokens,
     totalBalance,
-    activities,
+    pastActivity,
     orders,
+    pastChallenges,
   } = useContext(GovContext);
 
   const MAX_UINT_256 = '115792089237316195423570985008687907853269984665640564039457584007913129639935';
@@ -47,8 +48,12 @@ function Account() {
       bondedTokens={bondedTokens}
       tokensStakedFor={stakedTokens}
       treasuryBalance={treasuryBalance}
-      confirmListing={isReady ? gov.kosu.validatorRegistry.confirmListing : () => {}}
-      resolveChallenge={isReady ? gov.kosu.validatorRegistry.confirmListing : () => {}}
+      confirmListing={isReady ? async (key) => {
+        await gov.kosu.validatorRegistry.confirmListing(key);
+      } : () => {}}
+      resolveChallenge={isReady ? async (key) => {
+        await gov.kosu.validatorRegistry.confirmListing(key);
+      } : () => {}}
       bondTokens={isReady ? async (value, newValue) => {
         await bond(gov.kosu, value, newValue);
 
@@ -139,7 +144,7 @@ function Account() {
         }
       } : () => {}}
       orders={orders}
-      activities={activities}
+      activities={pastActivity}
       pay={isReady ? async (value, expectedTokens) => {
         try {
           await gov.kosu.kosuToken.pay(
@@ -163,6 +168,7 @@ function Account() {
       } : () => {}}
       estimate={isReady ? value => estimateEtherToToken(gov.kosu, value) : () => {}}
       estimateNewPostLimit={isReady ? value => estimateNewPostLimit(gov.kosu, value) : () => {}}
+      pastChallenges={pastChallenges}
     />
   );
 }

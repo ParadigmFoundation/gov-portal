@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {
+  useContext,
+} from 'react';
 import PropTypes from 'prop-types';
 
 import Table from '../../../../components/table';
@@ -11,7 +13,12 @@ import ResolveSymbol from '../../../../components/symbols/resolveSymbol';
 import ConfirmedSymbol from '../../../../components/symbols/confirmedSymbol';
 import ResolvedSymbol from '../../../../components/symbols/resolvedSymbol';
 
+import Link from '../../../../components/link';
+
 import './index.scss';
+import Button from '../../../../components/button';
+
+import GovContext from '../../../../store/govContext';
 
 function GovernanceActivityView(props) {
   const {
@@ -19,14 +26,21 @@ function GovernanceActivityView(props) {
     activities,
     confirmListing,
     resolveChallenge,
+    pastChallenges,
   } = props;
 
+  const govContext = useContext(GovContext);
+
+  const {
+    gov,
+  } = govContext;
+
   function displayResult(result) {
-    if (result === 'accepted') {
+    if (result === 'ACCEPTED') {
       return <AcceptedSymbol />;
     }
 
-    if (result === 'rejected') {
+    if (result === 'REJECTED') {
       return <RejectedSymbol />;
     }
 
@@ -35,29 +49,45 @@ function GovernanceActivityView(props) {
 
   function displayAction(type, actionable, listingKey, challengeId) {
     if (actionable) {
-      if (type === 'proposal') {
+      if (type === 'PROPOSAL') {
         return (
-          <ConfirmSymbol
+          <Button
+            text="Confirm"
             action={async () => confirmListing(listingKey)}
+            onceConfirmed={() => {}}
+            isAsync
           />
         );
       }
 
-      if (type === 'challenge') {
+      return (
+        <Button
+          text="Resolve"
+          action={async () => resolveChallenge(listingKey)}
+          onceConfirmed={() => {}}
+          isAsync
+        />
+      );
+    }
+
+    if (!actionable) {
+      if (type === 'PROPOSAL') {
         return (
-          <ResolveSymbol
-            action={async () => resolveChallenge(challengeId)}
+          <Link
+            text="Challenge"
+            to={`/proposal/${listingKey}`}
           />
         );
       }
-    }
 
-    if (type === 'proposal') {
-      return <ConfirmedSymbol />;
-    }
-
-    if (type === 'challenge') {
-      return <ResolvedSymbol />;
+      if (type === 'CHALLENGE_BY' || type === 'CHALLENGE_AGAINST') {
+        return (
+          <Link
+            text="Vote"
+            to={`/challenge/${challengeId}`}
+          />
+        );
+      }
     }
 
     return 'Unkown action';
@@ -77,6 +107,22 @@ function GovernanceActivityView(props) {
       );
     }
 
+    function returnTitle(type) {
+      if (type === 'PROPOSAL') {
+        return 'You created a proposal';
+      }
+
+      if (type === 'CHALLENGE_BY') {
+        return 'You challenged a proposal';
+      }
+
+      if (type === 'CHALLENGE_AGAINST') {
+        return 'Your proposal has been challenged';
+      }
+
+      return '...';
+    }
+
     if (activities.length === 0) {
       return (
         <tr>
@@ -94,7 +140,7 @@ function GovernanceActivityView(props) {
       // eslint-disable-next-line
       <tr key={`activitiy-${id}`}>
         <td className="governance-activity-view__description">
-          {activity.title}
+          {returnTitle(activity.type)}
         </td>
         <td>
           {displayResult(activity.result)}
@@ -103,7 +149,7 @@ function GovernanceActivityView(props) {
           {displayAction(
             activity.type,
             activity.actionable,
-            activity.listingKey,
+            activity.listingPubKey,
             activity.challengeId,
           )}
         </td>
@@ -136,6 +182,7 @@ function GovernanceActivityView(props) {
 GovernanceActivityView.propTypes = {
   metaMaskConnected: PropTypes.bool,
   activities: PropTypes.arrayOf(PropTypes.object),
+  pastChallenges: PropTypes.arrayOf(PropTypes.object),
   confirmListing: PropTypes.func,
   resolveChallenge: PropTypes.func,
 };
@@ -143,6 +190,7 @@ GovernanceActivityView.propTypes = {
 GovernanceActivityView.defaultProps = {
   metaMaskConnected: false,
   activities: [],
+  pastChallenges: [],
   confirmListing: () => {},
   resolveChallenge: () => {},
 };

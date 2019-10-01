@@ -21,6 +21,7 @@ const initialState = {
   systemBalance: '0',
   treasuryAllowance: '',
   activities: [],
+  pastActivity: [],
   orders: [],
   proposals: [],
   validators: [],

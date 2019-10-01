@@ -39,6 +39,7 @@ function AccountView(props) {
     estimate,
     estimateNewPostLimit,
     setTreasuryAllowance,
+    pastChallenges,
   } = props;
 
   return (
@@ -117,6 +118,7 @@ function AccountView(props) {
             confirmListing={confirmListing}
             resolveChallenge={resolveChallenge}
             activities={activities}
+            pastChallenges={pastChallenges}
           />
         </Col>
       </Row>
@@ -146,6 +148,7 @@ AccountView.propTypes = {
   setTreasuryAllowance: PropTypes.func,
   orders: PropTypes.arrayOf(PropTypes.object),
   activities: PropTypes.arrayOf(PropTypes.object),
+  pastChallenges: PropTypes.arrayOf(PropTypes.object),
 };
 
 AccountView.defaultProps = {
@@ -170,6 +173,7 @@ AccountView.defaultProps = {
   estimateNewPostLimit: () => {},
   orders: [],
   activities: [],
+  pastChallenges: [],
 };
 
 export default AccountView;
