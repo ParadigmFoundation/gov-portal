@@ -51,7 +51,12 @@ function PastChallengesView(props) {
           </NavLink>
         </td>
         <td>
-          <Address address={pastChallenge.challenger} short />
+          <Address
+            address={pastChallenge.challenger}
+            onClick={() => window.open(`https://etherscan.io/address/${pastChallenge.challenger}`)}
+            short
+            clickable
+          />
         </td>
         <td>
           {pastChallenge.status === 1 ? <ProposalSymbol /> : <ValidatorSymbol />}
