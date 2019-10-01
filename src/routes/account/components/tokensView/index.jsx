@@ -249,7 +249,7 @@ function TokensView(props) {
                     text="Stake"
                     disabled={!metaMaskConnected}
                     action={() => {
-                      location.href = 'https://docs.kosu.io/overview/governance.html';
+                      window.open('https://docs.kosu.io/overview/governance.html');
                     }}
                     small
                   />

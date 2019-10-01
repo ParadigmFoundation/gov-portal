@@ -46,6 +46,8 @@ function OrdersView(props) {
           <a
             className="orders-view__link"
             href={`https://orders-api.kosu.io/order?id=${order.orderId}`}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             {order.orderId}
           </a>
