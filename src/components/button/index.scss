@@ -68,7 +68,7 @@
   }
 
   &--green {
-    background: $color-green;
+    background: #0bd080;
 
     &:hover {
       background-color: #1be090;
@@ -88,16 +88,16 @@
   }
 
   &--outlined-green {
-    border: 1px solid;
+    border: 1px solid #0bd080;
     font-family: 'DINPro-Medium', sans-serif;
-    color: #1be090;
+    color: #0bd080;
     text-align: center;
     background: none;
 
     &:hover {
-      background: #1be090;
+      background: #0bd080;
       color: #fff;
-      border: 1px solid #1be090;
+      border: 1px solid #0bd080;
     }
   }
 
