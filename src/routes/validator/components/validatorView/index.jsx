@@ -119,7 +119,12 @@ function ValidatorView(props) {
             <div className="validator-view__link-label">
               View on
               {' '}
-              <a href={`https://etherscan.io/address/${owner}`} className="validator-view__link">
+              <a
+                href={`https://etherscan.io/address/${owner}`}
+                className="validator-view__link"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Etherscan
               </a>
               .
