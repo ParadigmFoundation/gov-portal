@@ -50,10 +50,10 @@ function Account() {
       treasuryBalance={treasuryBalance}
       confirmListing={isReady ? async (key) => {
         await gov.kosu.validatorRegistry.confirmListing(key);
-      } : () => {}}
+      } : () => { }}
       resolveChallenge={isReady ? async (key) => {
-        await gov.kosu.validatorRegistry.confirmListing(key);
-      } : () => {}}
+        await gov.kosu.validatorRegistry.resolveChallenge(key);
+      } : () => { }}
       bondTokens={isReady ? async (value, newValue) => {
         await bond(gov.kosu, value, newValue);
 
@@ -62,7 +62,7 @@ function Account() {
           target: 'bondedTokens',
           value: newValue,
         });
-      } : () => {}}
+      } : () => { }}
       addToTreasury={isReady ? async (amount) => {
         await gov.kosu.treasury.deposit(gov.web3.utils.toWei(amount));
 
@@ -77,7 +77,7 @@ function Account() {
           target: 'systemBalance',
           value: amount,
         });
-      } : () => {}}
+      } : () => { }}
       removeTreasury={isReady ? async () => {
         await gov.kosu.treasury.withdraw(gov.web3.utils.toWei(treasuryBalance));
 
@@ -92,7 +92,7 @@ function Account() {
           target: 'systemBalance',
           value: treasuryBalance,
         });
-      } : () => {}}
+      } : () => { }}
       setTreasuryAllowance={isReady ? async () => {
         dispatch({
           type: 'set',
@@ -107,7 +107,7 @@ function Account() {
           target: 'treasuryAllowance',
           value: MAX_UINT_256,
         });
-      } : () => {}}
+      } : () => { }}
       updateBalance={isReady ? async (currentBalance, newBalance) => {
         await updateBalance(gov.kosu, currentBalance, newBalance);
 
@@ -142,7 +142,7 @@ function Account() {
             value: parseFloat(currentBalance) - parseFloat(newBalance),
           });
         }
-      } : () => {}}
+      } : () => { }}
       orders={orders}
       activities={pastActivity}
       pay={isReady ? async (value, expectedTokens) => {
@@ -165,9 +165,9 @@ function Account() {
         } catch (err) {
           throw new Error('Transaction failed');
         }
-      } : () => {}}
-      estimate={isReady ? value => estimateEtherToToken(gov.kosu, value) : () => {}}
-      estimateNewPostLimit={isReady ? value => estimateNewPostLimit(gov.kosu, value) : () => {}}
+      } : () => { }}
+      estimate={isReady ? value => estimateEtherToToken(gov.kosu, value) : () => { }}
+      estimateNewPostLimit={isReady ? value => estimateNewPostLimit(gov.kosu, value) : () => { }}
       pastChallenges={pastChallenges}
     />
   );
