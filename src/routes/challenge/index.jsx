@@ -107,8 +107,8 @@ function Challenge(props) {
         challengeDetails={challengeData && challengeData.challengeDetails}
         blockNumber={challengeData && challengeData.blockNumber}
         info={challengeData && challengeData.info}
-        commitVote={(challengeId, value, tokensToCommit) => {
-          gov.commitVote(challengeId, value, gov.web3.utils.toWei(tokensToCommit));
+        commitVote={async (challengeId, value, tokensToCommit) => {
+          await gov.commitVote(challengeId, value, gov.web3.utils.toWei(tokensToCommit));
         }}
         revealVote={() => gov.revealVote(challengeData.challengeId)}
         startReveal={challengeData && challengeData.startReveal}
