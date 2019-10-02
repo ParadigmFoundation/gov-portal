@@ -148,7 +148,7 @@ function ChallengeView(props) {
             Add a reminder to your
             {' '}
             <a
-              href={`https://www.google.com/calendar/render?action=TEMPLATE&text=Reveal+vote+on+challenge+%233&details=During+the+reveal+period%2C+you+may+reveal+your+vote+on+this+challenge.+If+you+do+not+reveal+a+vote%2C+you+will+not+be+rewarded+if+you+voted+on+the+winning+side.&location=govern.paradigm.market&dates=${startReveal}%2F${endReveal}`}
+              href={`https://www.google.com/calendar/render?action=TEMPLATE&text=Reveal+vote+on+challenge+%23${challengeId}&details=During+the+reveal+period%2C+you+may+reveal+your+vote+on+this+challenge.+If+you+do+not+reveal+a+vote%2C+you+will+not+be+rewarded+if+you+voted+on+the+winning+side.&location=govern.paradigm.market&dates=${startReveal}%2F${endReveal}`}
               target="_blank"
               rel="noopener noreferrer"
               className="challenge-view__calendar-link"
