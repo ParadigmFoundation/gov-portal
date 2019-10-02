@@ -19,6 +19,7 @@ const StyledTable = styled.table`
     font-size: 18px;
     color: #4a4a4a;
     text-align: left;
+    white-space: nowrap;
   }
 
   & th {
@@ -29,6 +30,7 @@ const StyledTable = styled.table`
     text-align: left;
     font-weight: normal;
     border: none;
+    white-space: nowrap;
   }
 
   & th:last-child {
