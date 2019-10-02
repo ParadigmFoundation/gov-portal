@@ -47,14 +47,14 @@ function GovernanceActivityView(props) {
     return 'Pending';
   }
 
-  function displayAction(type, actionable, listingKey, challengeId) {
+  function displayAction(type, actionable, listingKey, challengeId, result) {
     if (actionable) {
       if (type === 'PROPOSAL') {
         return (
           <Button
             text="Confirm"
             action={async () => confirmListing(listingKey)}
-            onceConfirmed={() => {}}
+            onceConfirmed={() => { }}
             isAsync
           />
         );
@@ -64,13 +64,13 @@ function GovernanceActivityView(props) {
         <Button
           text="Resolve"
           action={async () => resolveChallenge(listingKey)}
-          onceConfirmed={() => {}}
+          onceConfirmed={() => { }}
           isAsync
         />
       );
     }
 
-    if (!actionable) {
+    if (!actionable && result === "PENDING") {
       if (type === 'PROPOSAL') {
         return (
           <Link
@@ -90,7 +90,10 @@ function GovernanceActivityView(props) {
       }
     }
 
-    return 'Unkown action';
+    // if no action possible, activity is resolved
+    return (
+      <ResolvedSymbol />
+    );
   }
 
   function displayContent() {
@@ -138,7 +141,7 @@ function GovernanceActivityView(props) {
 
     return activities.map((activity, id) => (
       // eslint-disable-next-line
-      <tr key={`activitiy-${id}`}>
+      < tr key={`activitiy-${id}`}>
         <td className="governance-activity-view__description">
           {returnTitle(activity.type)}
         </td>
@@ -151,9 +154,10 @@ function GovernanceActivityView(props) {
             activity.actionable,
             activity.listingPubKey,
             activity.challengeId,
+            activity.result,
           )}
         </td>
-      </tr>
+      </tr >
     ));
   }
 
@@ -191,8 +195,8 @@ GovernanceActivityView.defaultProps = {
   metaMaskConnected: false,
   activities: [],
   pastChallenges: [],
-  confirmListing: () => {},
-  resolveChallenge: () => {},
+  confirmListing: () => { },
+  resolveChallenge: () => { },
 };
 
 export default GovernanceActivityView;
