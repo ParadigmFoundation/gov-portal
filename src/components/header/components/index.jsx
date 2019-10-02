@@ -113,13 +113,13 @@ function HeaderView(props) {
                   Search
                 </a>
                 <NavLink
-                  to="/governance"
+                  to="https://govern.paradigm.market"
                   className="header__dropdown-link"
                 >
                   Governance
                 </NavLink>
                 <NavLink
-                  to="/account"
+                  to="https://govern.paradigm.market/account"
                   className="header__dropdown-link"
                 >
                   Account
