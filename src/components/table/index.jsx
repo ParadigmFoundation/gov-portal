@@ -19,12 +19,12 @@ const StyledTable = styled.table`
     position: relative;
     display: block;
     width: 100%;
-    overflow-y: scroll;
+    overflow-y: hidden;
   }
 
   & tbody {
     max-height: 600px;
-    overflow-y: scroll;
+    overflow-y: auto;
     display: block;
     position: relative;
     width: 100%;
@@ -37,8 +37,8 @@ const StyledTable = styled.table`
     color: #4a4a4a;
     text-align: left;
     white-space: nowrap;
-    flex-basis:100%;
-    flex-grow:2;
+    flex-basis: 100%;
+    flex-grow: 2;
     display: block;
     padding: 10px 18px;
     border-top: 1px solid #ededed;
@@ -58,13 +58,14 @@ const StyledTable = styled.table`
     display: block;
   }
 
-  & th:last-child {
-    border-right: 1px solid #ededed;
-  }
-
   tr {
     width: 100%;
     display:flex;
+  }
+
+  & th:last-child,
+  & td:last-child {
+    margin-right: 15px;
   }
 `;
 
