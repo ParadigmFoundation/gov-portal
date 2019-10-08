@@ -66,6 +66,7 @@ function GovDataLoader() {
     async function getData() {
       if (coinbase) {
         const ethBalanceReq = await gov.web3.eth.getBalance(coinbase);
+
         dispatch({
           type: 'set',
           target: 'ethBalance',
@@ -122,7 +123,6 @@ function GovDataLoader() {
         });
 
         const pastGovActivity = await gov.getPastGovernanceActivity(coinbase);
-        console.log(pastGovActivity);
 
         dispatch({
           type: 'set',
@@ -262,6 +262,10 @@ function GovDataLoader() {
     }
 
     getData();
+
+    const interval = setInterval(getData, 120000);
+
+    return () => clearInterval(interval);
   }, [coinbase]);
 
   return <App />;
