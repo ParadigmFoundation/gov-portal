@@ -27,6 +27,7 @@ function ChallengeView(props) {
   const {
     challengeId,
     hasVoted,
+    hasRevealedVote,
     challengeType,
     validatorPublicKey,
     listingOwner,
@@ -62,6 +63,10 @@ function ChallengeView(props) {
       if (hasVoted && status === 'commit') {
         status = 'thanks';
       }
+    }
+
+    if (hasRevealedVote) {
+      status = 'hasRevealedVote';
     }
 
     if (status === 'commit') {
@@ -111,6 +116,16 @@ function ChallengeView(props) {
             color="green"
             isAsync
           />
+        </div>
+      );
+    }
+
+    if (status === 'hasRevealedVote') {
+      return (
+        <div>
+          <div className="challenge-view__challenge-label">
+          You have already revealed your vote.
+          </div>
         </div>
       );
     }
@@ -314,12 +329,14 @@ ChallengeView.propTypes = {
   }),
   blockNumber: PropTypes.number,
   hasVoted: PropTypes.bool,
+  hasRevealedVote: PropTypes.bool,
   startReveal: PropTypes.string,
   endReveal: PropTypes.string,
 };
 
 ChallengeView.defaultProps = {
   hasVoted: false,
+  hasRevealedVote: false,
   challengeId: '0',
   challengeType: 'proposal',
   validatorPublicKey: '',

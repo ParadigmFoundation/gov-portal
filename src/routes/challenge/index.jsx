@@ -40,6 +40,8 @@ function Challenge(props) {
             /* eslint-disable no-await-in-loop */
             const info = await gov.getChallengeInfo(id);
 
+            const hasRevealedVote = await gov.hasRevealedVote(id);
+
             let hasVoted = false;
 
             for (let j = 0; j < activities.length; j += 1) {
@@ -79,6 +81,7 @@ function Challenge(props) {
               hasVoted,
               startReveal,
               endReveal,
+              hasRevealedVote,
             };
 
             setChallengeData(challenge);
@@ -94,6 +97,7 @@ function Challenge(props) {
     <>
       <ChallengeView
         hasVoted={challengeData && challengeData.hasVoted}
+        hasRevealedVote={challengeData && challengeData.hasRevealedVote}
         currentUser={challengeData && challengeData.currentUser}
         challengeId={challengeData && challengeData.challengeId}
         challengeType={challengeData && challengeData.challengeType}
