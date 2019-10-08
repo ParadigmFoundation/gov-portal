@@ -12,6 +12,23 @@ const StyledTable = styled.table`
   text-align: left;
   border-radius: 2px;
   margin-bottom: 20px;
+  display: block;
+  empty-cells: show;
+
+  & thead {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow-y: scroll;
+  }
+
+  & tbody {
+    max-height: 600px;
+    overflow-y: auto;
+    display: block;
+    position: relative;
+    width: 100%;
+  }
 
   & td {
     border: none;
@@ -20,6 +37,11 @@ const StyledTable = styled.table`
     color: #4a4a4a;
     text-align: left;
     white-space: nowrap;
+    flex-basis:100%;
+    flex-grow:2;
+    display: block;
+    padding: 10px 18px;
+    border-top: 1px solid #ededed;
   }
 
   & th {
@@ -31,15 +53,24 @@ const StyledTable = styled.table`
     font-weight: normal;
     border: none;
     white-space: nowrap;
+    flex-basis:100%;
+    flex-grow:2;
+    display: block;
+  }
+
+  & td:first-child,
+  & th:first-child {
+    flex-basis:20%;
+    flex-grow:1;
   }
 
   & th:last-child {
     border-right: 1px solid #ededed;
   }
 
-  & td {
-    padding: 10px 18px;
-    border-top: 1px solid #ededed;
+  tr {
+    width: 100%;
+    display:flex;
   }
 `;
 
