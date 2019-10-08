@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@kosu/gov-portal-helper": "^0.1.25",
+    "@kosu/gov-portal-helper": "^0.1.25-patch.1",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addon-links": "^5.1.9",
     "@storybook/addons": "^5.1.9",
