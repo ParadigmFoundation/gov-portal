@@ -24,7 +24,7 @@ const StyledTable = styled.table`
 
   & tbody {
     max-height: 600px;
-    overflow-y: auto;
+    overflow-y: scroll;
     display: block;
     position: relative;
     width: 100%;
