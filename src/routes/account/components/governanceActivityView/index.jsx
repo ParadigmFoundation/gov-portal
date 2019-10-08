@@ -41,6 +41,7 @@ function GovernanceActivityView(props) {
             text="Confirm"
             action={async () => confirmListing(listingKey)}
             onceConfirmed={() => { }}
+            onceConfirmedText="Confirmed"
             isAsync
           />
         );
@@ -51,6 +52,7 @@ function GovernanceActivityView(props) {
           text="Resolve"
           action={async () => resolveChallenge(listingKey)}
           onceConfirmed={() => { }}
+          onceConfirmedText="Resolved"
           isAsync
         />
       );

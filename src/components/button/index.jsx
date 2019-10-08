@@ -19,6 +19,7 @@ function Button(props) {
     disabled,
     isAsync,
     onceConfirmed,
+    onceConfirmedText,
   } = props;
 
   const [status, setStatus] = useState('');
@@ -78,7 +79,7 @@ function Button(props) {
     }
 
     if (status === 'done') {
-      return 'Done';
+      return onceConfirmedText;
     }
 
     if (status === 'error') {
@@ -121,6 +122,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   isAsync: PropTypes.bool,
   onceConfirmed: PropTypes.func,
+  onceConfirmedText: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -131,6 +133,7 @@ Button.defaultProps = {
   disabled: false,
   isAsync: false,
   onceConfirmed: () => {},
+  onceConfirmedText: 'Done',
 };
 
 export default Button;
