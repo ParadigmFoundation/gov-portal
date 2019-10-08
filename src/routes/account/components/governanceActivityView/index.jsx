@@ -1,6 +1,4 @@
-import React, {
-  useContext,
-} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import Table from '../../../../components/table';
@@ -8,9 +6,6 @@ import ConnectMetaMask from '../../../../components/connectMetaMask';
 import EmptyState from '../../../../components/emptyState';
 import AcceptedSymbol from '../../../../components/symbols/acceptedSymbol';
 import RejectedSymbol from '../../../../components/symbols/rejectedSymbol';
-import ConfirmSymbol from '../../../../components/symbols/confirmSymbol';
-import ResolveSymbol from '../../../../components/symbols/resolveSymbol';
-import ConfirmedSymbol from '../../../../components/symbols/confirmedSymbol';
 import ResolvedSymbol from '../../../../components/symbols/resolvedSymbol';
 
 import Link from '../../../../components/link';
@@ -18,22 +13,13 @@ import Link from '../../../../components/link';
 import './index.scss';
 import Button from '../../../../components/button';
 
-import GovContext from '../../../../store/govContext';
-
 function GovernanceActivityView(props) {
   const {
     metaMaskConnected,
     activities,
     confirmListing,
     resolveChallenge,
-    pastChallenges,
   } = props;
-
-  const govContext = useContext(GovContext);
-
-  const {
-    gov,
-  } = govContext;
 
   function displayResult(result) {
     if (result === 'ACCEPTED') {
@@ -70,7 +56,7 @@ function GovernanceActivityView(props) {
       );
     }
 
-    if (!actionable && result === "PENDING") {
+    if (!actionable && result === 'PENDING') {
       if (type === 'PROPOSAL') {
         return (
           <Link
@@ -157,7 +143,7 @@ function GovernanceActivityView(props) {
             activity.result,
           )}
         </td>
-      </tr >
+      </tr>
     ));
   }
 
@@ -186,7 +172,6 @@ function GovernanceActivityView(props) {
 GovernanceActivityView.propTypes = {
   metaMaskConnected: PropTypes.bool,
   activities: PropTypes.arrayOf(PropTypes.object),
-  pastChallenges: PropTypes.arrayOf(PropTypes.object),
   confirmListing: PropTypes.func,
   resolveChallenge: PropTypes.func,
 };
@@ -194,7 +179,6 @@ GovernanceActivityView.propTypes = {
 GovernanceActivityView.defaultProps = {
   metaMaskConnected: false,
   activities: [],
-  pastChallenges: [],
   confirmListing: () => { },
   resolveChallenge: () => { },
 };
