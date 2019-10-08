@@ -7,4 +7,10 @@
     color: #4a4a4a;
     text-align: left;
   }
+
+  &__td:first-child,
+  &__th:first-child {
+    flex-basis:20%;
+    flex-grow:1;
+  }
 }

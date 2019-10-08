@@ -45,7 +45,7 @@ function PastChallengesView(props) {
 
     return pastChallenges.map(pastChallenge => (
       <tr key={pastChallenge.id}>
-        <td>
+        <td className="past-challenges-view__td">
           <NavLink to={`/past/${pastChallenge.id}`} className="past-challenges-view__id">
             {pastChallenge.id}
           </NavLink>
@@ -64,10 +64,10 @@ function PastChallengesView(props) {
         <td>
           {pastChallenge.result === 'passed' ? <AcceptedSymbol /> : <RejectedSymbol />}
         </td>
-        <td className="past-challenges-view__td">
+        <td>
           {numeral(pastChallenge.stakedBalance).format('0,0.[00]')}
         </td>
-        <td className="past-challenges-view__td">
+        <td>
           {new Date(pastChallenge.challengeEnd * 1000).toLocaleString('default')}
         </td>
       </tr>
@@ -81,19 +81,19 @@ function PastChallengesView(props) {
           <th className="past-challenges-view__th">
             ID
           </th>
-          <th className="past-challenges-view__th">
+          <th>
             Challenger
           </th>
-          <th className="past-challenges-view__th">
+          <th>
             Type
           </th>
-          <th className="past-challenges-view__th">
+          <th>
             Result
           </th>
-          <th className="past-challenges-view__th">
+          <th>
             Tokens at Stake
           </th>
-          <th className="past-challenges-view__th">
+          <th>
             Time
           </th>
         </tr>

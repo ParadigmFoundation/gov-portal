@@ -58,12 +58,6 @@ const StyledTable = styled.table`
     display: block;
   }
 
-  & td:first-child,
-  & th:first-child {
-    flex-basis:20%;
-    flex-grow:1;
-  }
-
   & th:last-child {
     border-right: 1px solid #ededed;
   }
