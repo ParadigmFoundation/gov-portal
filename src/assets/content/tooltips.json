@@ -1,18 +1,18 @@
 {
-  "totalBalance": "This is the total balance.",
-  "systemBalance": "This is the system balance.",
-  "inWallet": "This is your wallet balance.",
-  "bondedTokens": "This is how much tokens are bonded.",
-  "stakedTokens": "This is the staked tokens.",
-  "inTreasury": "How much tokens are in your treasury.",
-  "yourOrders": "All your previous orders.",
-  "govActivity": "All your previous governance activity.",
+  "totalBalance": "The total balance is the combination of tokens locked up in the system as well as tokens in your wallet.",
+  "systemBalance": "The system balance is the total amount of tokens locked up in the Kosu system. This includes all tokens that have been bonded, staked or allocated to the treasury.",
+  "inWallet": "This is the aount of available KOSU tokens you have. You can use these to bond, stake or add to the treasury.",
+  "bondedTokens": "Bonded tokens...",
+  "stakedTokens": "Staked tokens contribute to your order post limit. This dictates how many orders you are able to post to the Kosu network each period.",
+  "inTreasury": "Tokens in the treasury are necessary in order to participate in network governance, like submitting a proposal to become a validator.",
+  "yourOrders": "These are all the orders you've posted to the Kosu network.",
+  "govActivity": "Your governance activity includes all previous proposals and challenges you have either created or voted on.",
   "voteChallenge": "Vote on this challenge.",
   "revealVote": "Reveal your vote.",
   "activeProposals": "Proposals are applications to become validators, and can be submitted by anyone. Proposals include a slashable stake, which affects the vote power the applicant will receive on the Kosu network if confirmed. ",
   "activeChallenges": "Proposal listings may be challenged at any time by any entity willing to put up the required amount to challenge (equal to the listing stake). Pending proposals may be challenged prior to their confirmation as validators, and validators may be challenged for their spot on the registry.",
   "results": "This is a summary of the amount of tokens used in voting on this particular challenge. The winning side (with a majority of participating tokens) receives a payout in the case of a successful challenge, taken from the slashed listing stake. The majority of the reward goes to the challenger, who risked their own assets to initiate the vote.",
   "challengeTitle": "This is a challenge.",
-  "dailyReward": "Daily reward.",
-  "estimatedVotePower": "Estimated vote power."
+  "dailyReward": "This is the amount of KOSU tokens this validator will recieve each day.",
+  "estimatedVotePower": "This is the estimated voting power this validator will have on the network."
 }
