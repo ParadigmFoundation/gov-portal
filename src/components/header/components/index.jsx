@@ -136,10 +136,10 @@ function HeaderView(props) {
                     {address}
                   </span>
                 </NavItem>
-                <NavItem>
+                <NavItem className="header__big-screen">
                   <KosuSymbol />
                 </NavItem>
-                <NavItem>
+                <NavItem className="header__big-screen">
                   <span className="header__balance">
                     {returnBalance()}
                   </span>

@@ -7,6 +7,13 @@
   // padding: 1.2rem 1.1rem;
   padding: 1.8rem 1.1rem !important;
 
+
+  @media screen and (max-width: 770px) {
+    &__big-screen {
+      display: none;
+    }
+  }
+
   &__logo {
     height: 31px;
     opacity: 0.3;
