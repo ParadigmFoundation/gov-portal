@@ -3,6 +3,8 @@
 @import 'style/variables.scss';
 
 .kosu {
+  height: 32px;
+  line-height: 30px;
   background-color: $color-green;
   color: $color-white;
   border-radius: 2px;
@@ -10,7 +12,9 @@
   font-size: 22px;
   letter-spacing: 1.4px;
   text-align: center;
-  width: 75px;
-  padding: 1px;
+  width: 81px;
+  padding-left: 10px;
+  padding-right: 9px;
+  // padding: 1px;
   display: inline-block;
 }
