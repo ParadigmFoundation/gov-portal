@@ -49,7 +49,7 @@ function ConnectMetaMask(props) {
 
   function returnState() {
     if (!isCorrectNetwork()) {
-      return 'Wrong network...';
+      return 'Connect to Ropsten';
     }
 
     if (state === 'idle') {
@@ -57,7 +57,7 @@ function ConnectMetaMask(props) {
     }
 
     if (state === 'pending') {
-      return 'Connecting MetaMask...';
+      return 'Connecting...';
     }
 
     return 'Loading...';
