@@ -41,10 +41,9 @@ function Proposal(props) {
       if (isReady && id !== '') {
         if (gov.proposals[id] !== undefined) {
           const dailyReward = gov.proposals[id].dailyReward.toString().split('.');
-
           setProposalData({
             ...gov.proposals[id],
-            dailyReward: dailyReward[0],
+            dailyReward: await gov._estimateDailyReward(dailyReward[0]),
           });
         }
       }
@@ -59,7 +58,7 @@ function Proposal(props) {
       <ProposalView
         id={id}
         acceptUnix={proposalData && proposalData.acceptUnix}
-        dailyReward={proposalData && gov.web3.utils.fromWei(proposalData.dailyReward.toString())}
+        dailyReward={proposalData && gov.web3.utils.fromWei(proposalData.dailyReward)}
         details={proposalData && proposalData.details}
         owner={proposalData && proposalData.owner}
         power={proposalData && proposalData.power.toString()}
