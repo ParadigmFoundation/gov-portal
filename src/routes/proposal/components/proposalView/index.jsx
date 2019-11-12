@@ -114,10 +114,9 @@ function ProposalView(props) {
             </div>
             <div className="proposal-view__card-content">
               {numeral(dailyReward).format('0,0.[00]')}
-              {' '}
-              <span className="proposal-view__card-unit">
-                ETH/Period
-              </span>
+            </div>
+            <div className="proposal-view__card-footer">
+              <KosuSymbol />
             </div>
           </div>
         </Col>
