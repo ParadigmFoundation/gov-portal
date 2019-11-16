@@ -53,7 +53,7 @@ function PastChallengesView(props) {
         <td>
           <Address
             address={pastChallenge.challenger}
-            onClick={() => window.open(`https://etherscan.io/address/${pastChallenge.challenger}`)}
+            onClick={() => window.open(`https://ropsten.etherscan.io/address/${pastChallenge.challenger}`)}
             short
             clickable
           />

@@ -45,9 +45,9 @@ const StyledTable = styled.table`
   }
 
   & th {
-    padding: 17px 10px 17px 18px;
+    padding: 14px 10px 14px 18px;
     font-family: 'Gilroy-Medium', sans-serif;
-    font-size: 20px;
+    font-size: 18px;
     color: #4a4a4a;
     text-align: left;
     font-weight: normal;

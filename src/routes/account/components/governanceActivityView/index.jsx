@@ -119,7 +119,7 @@ function GovernanceActivityView(props) {
         <tr>
           <td colSpan="6">
             <EmptyState
-              text="No data found"
+              text="No past activity found."
               small
             />
           </td>

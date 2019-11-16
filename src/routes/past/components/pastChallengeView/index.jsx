@@ -41,15 +41,15 @@ function PastChallengeView(props) {
   } = props;
 
   return (
-    <div className="past-challenge-view">
+    <div className="past-challenge-view container fluid">
       <Row className="pb-5">
         <Col>
           <div className="past-challenge-view__title">
             {`Challenge #${challengeId}`}
           </div>
-          {passed ? <AcceptedSymbol /> : <RejectedSymbol />}
-          {' '}
           {status === 1 ? <ProposalSymbol /> : <ValidatorSymbol />}
+          {' '}
+          {passed ? <AcceptedSymbol /> : <RejectedSymbol />}
         </Col>
       </Row>
       <Row className="pb-3">
