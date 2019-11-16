@@ -23,7 +23,7 @@ EmptyState.propTypes = {
 
 EmptyState.defaultProps = {
   small: false,
-  text: 'Nothing to show...',
+  text: 'Nothing to display.',
 };
 
 export default EmptyState;

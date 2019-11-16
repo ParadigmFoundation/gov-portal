@@ -32,7 +32,7 @@ function OrdersView(props) {
         <tr>
           <td colSpan="6">
             <EmptyState
-              text="No data found"
+              text="No orders found."
               small
             />
           </td>

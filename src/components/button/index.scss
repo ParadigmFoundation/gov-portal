@@ -37,12 +37,12 @@
   }
 
   &--cancel {
-    color: #bfbfbf;
+    color: #838383;
     background: none;
     padding: 0;
 
     &:hover {
-      color: #838383;
+      color: #4a4a4a;
       background: none;
     }
   }
@@ -60,6 +60,7 @@
   &--red {
     background: $color-red;
     border: 1px solid $color-red;
+    padding: 8px 20px;
 
     &:hover {
       background-color: #ff5757;

@@ -41,7 +41,7 @@ function ValidatorView(props) {
     challengeListing,
   } = props;
 
-  const monthlyReward = parseFloat(dailyReward) * 30;
+  const monthlyReward = parseFloat(dailyReward);
 
   const [isValidatorChallengeModalOpen, toggleValidatorChallengeModal] = useState(false);
   const formattedAge = timestampToCountdown(confirmationUnix, true, true);
@@ -120,7 +120,7 @@ function ValidatorView(props) {
               View on
               {' '}
               <a
-                href={`https://etherscan.io/address/${owner}`}
+                href={`https://ropsten.etherscan.io/address/${owner}`}
                 className="validator-view__link"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -148,7 +148,7 @@ function ValidatorView(props) {
           <Col className="py-3" xs={12} sm={12} md={6} lg={3}>
             <SimpleCard minHeight>
               <SimpleCardTitle>
-                Monthly reward
+                Daily reward
               </SimpleCardTitle>
               <SimpleCardContent>
                 {numeral(monthlyReward).format('0,0.[00]')}
