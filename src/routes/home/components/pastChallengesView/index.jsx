@@ -46,7 +46,7 @@ function PastChallengesView(props) {
     return pastChallenges.map(pastChallenge => (
       <tr key={pastChallenge.id}>
         <td className="past-challenges-view__td">
-          <NavLink to={`/past/${pastChallenge.id}`} className="past-challenges-view__id">
+          <NavLink to={`/past/${pastChallenge.id}`} className="past-challenges-view__id past-challenges-view__id--clickable">
             {pastChallenge.id}
           </NavLink>
         </td>
